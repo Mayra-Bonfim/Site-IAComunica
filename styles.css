@@ -329,12 +329,18 @@ button {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  transform: translateY(-110%);
-  transition: transform var(--transition-smooth);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity 0.22s ease, visibility 0.22s ease, transform 0.22s ease;
   z-index: 99;
 }
 
 .nav__mobile.is-open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
   transform: translateY(0);
 }
 
