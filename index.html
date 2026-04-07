@@ -1,43 +1,666 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- TODO: Set the document title to the name of your application -->
-    <title>IA Comunica | Decisão antes da tecnologia</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="IA Comunica — Soluções com inteligência artificial para empresas. Do diagnóstico à operação, com estrutura, método e resultado mensurável." />
+  <meta name="robots" content="index, follow" />
+  <title>IA Comunica — Automação com Inteligência Artificial</title>
 
-    <!-- TODO: Update og:title to match your application name -->
-    <meta property="og:title" content="IA Comunica | Decisão antes da tecnologia" />
-    <meta property="og:description" content="Especialistas em automação B2B, controladoria e inteligência artificial para o seu negócio." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://www.iacomunica.com.br/og-image.png" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@iacomunica" />
-    <meta name="twitter:image" content="https://www.iacomunica.com.br/og-image.png" />
-    <script type="module" crossorigin src="/assets/index-C4-Dy2TM.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Cm9SdOXA.css">
-    <link rel="icon" type="image/png" href="./favicon-96x96.png">
-  </head>
+  <!-- Cal.com Embed -->
+  <script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "reuniao-apresentacao-alinhamento", {origin:"https://app.cal.com"});
+  Cal.ns["reuniao-apresentacao-alinhamento"]("ui", {"theme":"dark","cssVarsPerTheme":{"dark":{"cal-brand":"#00C2AE"}},"hideEventTypeDetails":false,"layout":"month_view"});
+  </script>
 
-  <body>
-    <div id="root"></div>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- =========================================================
+       NAV
+  ========================================================= -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a href="/" class="nav__logo" aria-label="IA Comunica — início">
+        <img src="assets/logo-transparent.png" alt="" class="nav__logo-img" />
+        <span class="nav__logo-name"><em>I.A</em> Comunica</span>
+      </a>
+
+      <nav class="nav__links" aria-label="Navegação principal">
+        <a href="#nexus" class="nav__link">Nexus</a>
+        <a href="#crm" class="nav__link">CRM IA Comunica</a>
+        <a href="#minutare" class="nav__link">Minutare</a>
+        <a href="#sobre" class="nav__link">Sobre</a>
+      </nav>
+
+      <a
+        href="#"
+        class="btn btn--teal btn--sm nav__cta"
+        data-cal-link="reuniao-apresentacao-alinhamento"
+        data-cal-namespace="reuniao-apresentacao-alinhamento"
+        data-cal-config='{"layout":"month_view","theme":"dark"}'
+      >
+        Agendar diagnóstico <span aria-hidden="true">→</span>
+      </a>
+
+      <button class="nav__hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="nav__mobile" id="mobile-menu" aria-hidden="true">
+      <a href="#nexus" class="nav__mobile-link">Nexus</a>
+      <a href="#crm" class="nav__mobile-link">CRM IA Comunica</a>
+      <a href="#minutare" class="nav__mobile-link">Minutare</a>
+      <a href="#sobre" class="nav__mobile-link">Sobre</a>
+      <a
+        href="#"
+        class="btn btn--teal nav__mobile-cta"
+        data-cal-link="reuniao-apresentacao-alinhamento"
+        data-cal-namespace="reuniao-apresentacao-alinhamento"
+        data-cal-config='{"layout":"month_view","theme":"dark"}'
+      >
+        Agendar diagnóstico gratuito
+      </a>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       HERO
+  ========================================================= -->
+  <section class="hero" aria-labelledby="hero-headline">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <h1 class="hero__headline" id="hero-headline">
+          Sua operação no piloto automático.<br />
+          Sua equipe no que importa.
+        </h1>
+
+        <p class="hero__sub">
+          Implantamos inteligência artificial em processos reais — com estrutura, método e resultado mensurável.
+        </p>
+
+        <a
+          href="#"
+          class="btn btn--teal btn--lg"
+          data-cal-link="reuniao-apresentacao-alinhamento"
+          data-cal-namespace="reuniao-apresentacao-alinhamento"
+          data-cal-config='{"layout":"month_view","theme":"dark"}'
+        >
+          Agendar diagnóstico gratuito
+        </a>
+      </div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <div class="resultado-card">
+
+          <!-- Cabeçalho do card -->
+          <div class="resultado-card__header">
+            <div class="resultado-card__empresa">
+              <span class="resultado-card__nome">Sua empresa</span>
+              <span class="resultado-card__periodo">· Esta semana</span>
+            </div>
+            <div class="resultado-card__status">
+              <span class="resultado-card__status-dot" aria-hidden="true"></span>
+              <span class="resultado-card__status-label">ativo</span>
+            </div>
+          </div>
+
+          <!-- Métrica principal -->
+          <div class="resultado-card__hero">
+            <div class="resultado-card__numero">
+              <span class="resultado-card__valor">32h</span>
+              <span class="resultado-card__unidade">economizadas</span>
+            </div>
+            <p class="resultado-card__frase">
+              que deixam de ir pro ralo e viram<br/>decisão, venda e crescimento
+            </p>
+          </div>
+
+          <!-- Divisor -->
+          <div class="resultado-card__divider" aria-hidden="true"></div>
+
+          <!-- Métricas de suporte -->
+          <div class="resultado-card__metricas">
+            <div class="resultado-card__metrica">
+              <span class="resultado-card__metrica-valor">94</span>
+              <span class="resultado-card__metrica-label">follow-ups<br/>enviados na hora certa</span>
+            </div>
+            <div class="resultado-card__metrica-sep" aria-hidden="true"></div>
+            <div class="resultado-card__metrica">
+              <span class="resultado-card__metrica-valor">18</span>
+              <span class="resultado-card__metrica-label">documentos<br/>gerados em até 2 minutos</span>
+            </div>
+            <div class="resultado-card__metrica-sep" aria-hidden="true"></div>
+            <div class="resultado-card__metrica">
+              <span class="resultado-card__metrica-valor">7</span>
+              <span class="resultado-card__metrica-label">processos<br/>sob controle, sem estresse</span>
+            </div>
+          </div>
+
+          <!-- Rodapé do card -->
+          <div class="resultado-card__footer">
+            Nenhuma dessas tarefas precisou de você.
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       MANIFESTO / SOBRE
+  ========================================================= -->
+  <section class="manifesto" id="sobre" aria-labelledby="manifesto-headline">
+    <div class="container manifesto__inner">
+      <p class="label">Nossa origem</p>
+      <h2 class="h2 manifesto__headline" id="manifesto-headline">
+        Fundada no centro das decisões do país.
+      </h2>
+
+      <div class="manifesto__text">
+        <p>
+          Brasília não é só a capital. É onde o poder se organiza, onde políticas se tornam realidade e onde o peso das decisões erradas se mede em tempo, dinheiro e oportunidade perdida.
+        </p>
+        <p>
+          Foi nesse ambiente que a IA Comunica nasceu — fundada por dois profissionais com visões complementares e uma convicção compartilhada: a humanidade não precisa competir com a tecnologia. Ela precisa ser potencializada por ela.
+        </p>
+        <p>
+          Inteligência artificial não substitui quem decide. Ela devolve às pessoas o que é exclusivamente humano — julgamento, criatividade, relação — ao tirar do caminho o que deveria nunca ter sido feito por humanos: processo repetitivo, dado desconexo e burocracia invisível.
+        </p>
+        <p>
+          Construímos um ecossistema de soluções porque acreditamos que empresas eficientes não são aquelas que trabalham mais — são as que trabalham com estrutura. E estrutura, hoje, se chama inteligência artificial aplicada com responsabilidade.
+        </p>
+      </div>
+
+      <div class="valores">
+        <div class="valor-card">
+          <div class="valor-card__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#00C4B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="valor-card__title">Integridade</h3>
+          <p class="valor-card__desc">Nunca prometemos automação mágica. Entregamos resultado real.</p>
+        </div>
+
+        <div class="valor-card">
+          <div class="valor-card__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17 20H22V18C22 16.3431 20.6569 15 19 15C18.0444 15 17.1931 15.4468 16.6438 16.1429M17 20H7M17 20V18C17 17.3438 16.8736 16.717 16.6438 16.1429M7 20H2V18C2 16.3431 3.34315 15 5 15C5.95561 15 6.80686 15.4468 7.35625 16.1429M7 20V18C7 17.3438 7.12642 16.717 7.35625 16.1429M7.35625 16.1429C7.98248 14.3003 9.74168 13 11.9999 13C14.2582 13 16.0174 14.3003 16.6438 16.1429M15 7C15 8.65685 13.6569 10 12 10C10.3431 10 9 8.65685 9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7ZM21 10C21 11.1046 20.1046 12 19 12C17.8954 12 17 11.1046 17 10C17 8.89543 17.8954 8 19 8C20.1046 8 21 8.89543 21 10ZM7 10C7 11.1046 6.10457 12 5 12C3.89543 12 3 11.1046 3 10C3 8.89543 3.89543 8 5 8C6.10457 8 7 8.89543 7 10Z" stroke="#00C4B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="valor-card__title">Humanidade</h3>
+          <p class="valor-card__desc">Tecnologia que amplifica pessoas, não as substitui.</p>
+        </div>
+
+        <div class="valor-card">
+          <div class="valor-card__icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13 10V3L4 14H11V21L20 10H13Z" stroke="#00C4B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="valor-card__title">Eficiência</h3>
+          <p class="valor-card__desc">Resultado sem desperdício de tempo, recurso ou atenção.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       ECOSSISTEMA — PRODUTOS
+  ========================================================= -->
+  <section class="ecossistema" aria-labelledby="eco-headline">
+    <div class="container">
+      <div class="section-header section-header--light">
+        <h2 class="h2 section-header__title" id="eco-headline">
+          Um ecossistema construído para empresas reais
+        </h2>
+        <p class="section-header__sub">
+          Produtos desenvolvidos do zero, cada um resolvendo uma dor específica com inteligência artificial no core.
+        </p>
+      </div>
+
+      <!-- NEXUS — Produto em destaque -->
+      <article class="nexus-destaque" id="nexus" aria-label="Produto Nexus">
+        <div class="nexus-destaque__content">
+          <span class="produto-tag">Saúde</span>
+          <h3 class="nexus-destaque__nome">Nexus</h3>
+          <p class="nexus-destaque__desc">
+            O Nexus transforma consultas em inteligência clínica estruturada. Da conversa ao prontuário completo, com documentos médicos e histórico do paciente gerados automaticamente.
+          </p>
+          <a href="#" class="btn btn--teal btn--lg"
+            data-cal-link="reuniao-apresentacao-alinhamento"
+            data-cal-namespace="reuniao-apresentacao-alinhamento"
+            data-cal-config='{"layout":"month_view","theme":"dark"}'>
+            Conhecer o Nexus <span aria-hidden="true">→</span>
+          </a>
+        </div>
+        <div class="nexus-destaque__video">
+          <video autoplay loop muted playsinline preload="metadata" aria-label="Vídeo institucional Nexus">
+            <source src="assets/video/nexus-institucional.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </article>
+
+      <!-- ECOSSISTEMA — Menção discreta outros produtos -->
+      <div class="ecossistema-mencao" id="crm">
+        <p class="ecossistema-mencao__desc">
+          Além do Nexus, a IA Comunica desenvolve soluções de CRM inteligente, gestão de documentos e sistemas sob medida — com projetos em parceria para operações que precisam de algo além do padrão.
+        </p>
+        <a href="https://api.whatsapp.com/send/?phone=556131425518&text=Gostaria+de+conversar+estrategicamente+sobre+as+solu%C3%A7%C3%B5es+da+IA+Comunica.&type=phone_number&app_absent=0"
+          class="btn btn--teal btn--lg ecossistema-mencao__cta"
+          target="_blank" rel="noopener noreferrer">
+          Conheça o que podemos construir juntos <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================
+       AUTOMAÇÕES
+  ========================================================= -->
+  <section class="automacoes" aria-labelledby="automacoes-headline">
+    <div class="container">
+
+      <div class="section-header automacoes__header">
+        <span class="eyebrow">Automações sob medida</span>
+        <h2 class="h2 section-header__title" id="automacoes-headline">
+          Seus processos, no piloto automático.
+        </h2>
+        <p class="section-header__sub">
+          Além dos sistemas, mapeamos e automatizamos os fluxos internos da sua operação — para que cada etapa aconteça sem depender de alguém lembrando de fazer.
+        </p>
+      </div>
+
+      <!-- FLUXO ANIMADO -->
+      <div class="fluxo-pipeline" aria-label="Exemplo de fluxo automatizado">
+        <div class="fluxo-step">
+          <div class="fluxo-step__icone">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <span class="fluxo-step__label">Evento chega</span>
+          <span class="fluxo-step__ex">Lead, pedido, solicitação</span>
+        </div>
+        <div class="fluxo-conector"><span class="fluxo-conector__dot"></span></div>
+
+        <div class="fluxo-step">
+          <div class="fluxo-step__icone">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+          </div>
+          <span class="fluxo-step__label">IA interpreta</span>
+          <span class="fluxo-step__ex">Classifica e decide</span>
+        </div>
+        <div class="fluxo-conector"><span class="fluxo-conector__dot"></span></div>
+
+        <div class="fluxo-step fluxo-step--destaque">
+          <div class="fluxo-step__icone">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <span class="fluxo-step__label">Fluxo ativa</span>
+          <span class="fluxo-step__ex">Automação dispara</span>
+        </div>
+        <div class="fluxo-conector"><span class="fluxo-conector__dot"></span></div>
+
+        <div class="fluxo-step">
+          <div class="fluxo-step__icone">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <span class="fluxo-step__label">Sistemas atualizados</span>
+          <span class="fluxo-step__ex">CRM, ERP, planilha</span>
+        </div>
+        <div class="fluxo-conector"><span class="fluxo-conector__dot"></span></div>
+
+        <div class="fluxo-step">
+          <div class="fluxo-step__icone">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span class="fluxo-step__label">Resultado entregue</span>
+          <span class="fluxo-step__ex">Sem ninguém intervir</span>
+        </div>
+      </div>
+
+      <!-- CARDS ANTES / DEPOIS -->
+      <div class="ad-grid">
+
+        <div class="ad-card">
+          <div class="ad-card__processo">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C4B3" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Relatório semanal
+          </div>
+          <div class="ad-card__comparativo">
+            <div class="ad-card__antes">
+              <span class="ad-card__tempo">4 horas</span>
+              <span class="ad-card__label">toda segunda, manualmente</span>
+            </div>
+            <div class="ad-card__seta">→</div>
+            <div class="ad-card__depois">
+              <span class="ad-card__tempo">0 minutos</span>
+              <span class="ad-card__label">gerado e enviado automático</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ad-card">
+          <div class="ad-card__processo">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C4B3" stroke-width="1.8" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Onboarding de cliente
+          </div>
+          <div class="ad-card__comparativo">
+            <div class="ad-card__antes">
+              <span class="ad-card__tempo">3 dias</span>
+              <span class="ad-card__label">e-mails, forms e cobranças manuais</span>
+            </div>
+            <div class="ad-card__seta">→</div>
+            <div class="ad-card__depois">
+              <span class="ad-card__tempo">2 horas</span>
+              <span class="ad-card__label">fluxo guiado e documentado</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ad-card">
+          <div class="ad-card__processo">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C4B3" stroke-width="1.8" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
+            Controladoria
+          </div>
+          <div class="ad-card__comparativo">
+            <div class="ad-card__antes">
+              <span class="ad-card__tempo">3 dias</span>
+              <span class="ad-card__label">cruzando lançamentos, notas, auditoria e planilhas manualmente</span>
+            </div>
+            <div class="ad-card__seta">→</div>
+            <div class="ad-card__depois">
+              <span class="ad-card__tempo">Dia 1</span>
+              <span class="ad-card__label">conciliação automática, relatório pronto</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /ad-grid -->
+
+    </div>
+  </section>
 
 
-    <!--
-      Cal.com element-click embed code begins
-      ⚠️ GOVERNANÇA: O slug "reuniao-apresentacao-alinhamento" é dependência crítica.
-      Se alterado no painel do Cal.com, deve ser atualizado também:
-        - no data-cal-link de cada botão
-        - no namespace do script abaixo
-    -->
-    <script type="text/javascript">
-      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-      Cal("init", "reuniao-apresentacao-alinhamento", {origin:"https://app.cal.com"});
-      Cal.ns["reuniao-apresentacao-alinhamento"]("ui", {"theme":"dark","cssVarsPerTheme":{"dark":{"cal-brand":"#00C2AE"}},"hideEventTypeDetails":false,"layout":"month_view"});
-    </script>
-    <!-- Cal.com element-click embed code ends -->
-  </body>
+  <!-- =========================================================
+       COMO TRABALHAMOS
+  ========================================================= -->
+  <section class="metodologia" aria-labelledby="metodologia-headline">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="h2 section-header__title" id="metodologia-headline">
+          Do diagnóstico à operação — com método.
+        </h2>
+        <p class="section-header__sub">
+          Não implementamos e abandonamos. Ficamos até o processo estar rodando sozinho.
+        </p>
+      </div>
+
+      <div class="passos">
+        <div class="passo">
+          <div class="passo__numero" aria-hidden="true">01</div>
+          <div class="passo__conector" aria-hidden="true"></div>
+          <div class="passo__content">
+            <h3 class="passo__titulo">Diagnóstico</h3>
+            <p class="passo__desc">Mapeamos sua operação, identificamos os gargalos reais e definimos o produto certo para o seu momento.</p>
+          </div>
+        </div>
+
+        <div class="passo">
+          <div class="passo__numero" aria-hidden="true">02</div>
+          <div class="passo__conector" aria-hidden="true"></div>
+          <div class="passo__content">
+            <h3 class="passo__titulo">Implementação</h3>
+            <p class="passo__desc">Configuramos, integramos e treinamos. O produto entra na sua operação sem interromper o que já funciona.</p>
+          </div>
+        </div>
+
+        <div class="passo passo--last">
+          <div class="passo__numero" aria-hidden="true">03</div>
+          <div class="passo__content">
+            <h3 class="passo__titulo">Operação</h3>
+            <p class="passo__desc">Você monitora via dashboard. Nós suportamos, ajustamos e evoluímos junto com o seu negócio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       DIFERENCIAIS
+  ========================================================= -->
+  <section class="diferenciais" aria-labelledby="diferenciais-headline">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="h2 section-header__title" id="diferenciais-headline">
+          Por que a IA Comunica?
+        </h2>
+        <p class="section-header__sub">
+          Porque a distância entre "usar IA" e "operar com IA" é onde a maioria das empresas fica parada.
+        </p>
+      </div>
+
+      <div class="diferenciais-grid">
+
+        <div class="diferencial-card">
+          <div class="diferencial-card__icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 3L25 8.5V14C25 19.799 20.075 24.617 14 26C7.925 24.617 3 19.799 3 14V8.5L14 3Z" stroke="#00C4B3" stroke-width="1.75" stroke-linejoin="round"/>
+              <path d="M10 14L13 17L18 11" stroke="#00C4B3" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="diferencial-card__title">Ecossistema próprio</h3>
+          <p class="diferencial-card__desc">Não revendemos ferramentas de terceiros. Nossos produtos foram construídos do zero para resolver dores específicas.</p>
+        </div>
+
+        <div class="diferencial-card">
+          <div class="diferencial-card__icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 14C4 8.477 8.477 4 14 4C17.106 4 19.886 5.393 21.78 7.58M24 14C24 19.523 19.523 24 14 24C10.894 24 8.114 22.607 6.22 20.42" stroke="#00C4B3" stroke-width="1.75" stroke-linecap="round"/>
+              <path d="M19 7L22 7.5L21.5 4.5" stroke="#00C4B3" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 21L6 20.5L6.5 23.5" stroke="#00C4B3" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10 14H18M14 10V18" stroke="#00C4B3" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="diferencial-card__title">Integração real</h3>
+          <p class="diferencial-card__desc">O produto entra no seu fluxo, não o contrário. Adaptamos a solução ao seu contexto operacional.</p>
+        </div>
+
+        <div class="diferencial-card">
+          <div class="diferencial-card__icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.333 14H18.667M9.333 18H14M6 4H22C23.105 4 24 4.895 24 6V20C24 21.105 23.105 22 22 22H11L6 27V22H6C4.895 22 4 21.105 4 20V6C4 4.895 4.895 4 6 4Z" stroke="#00C4B3" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="diferencial-card__title">Suporte contínuo</h3>
+          <p class="diferencial-card__desc">Não é implementar e sumir. Ficamos presentes porque sabemos que operação muda e a IA precisa acompanhar.</p>
+        </div>
+
+        <div class="diferencial-card">
+          <div class="diferencial-card__icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 3V25M3 14H25M7 7L21 21M21 7L7 21" stroke="#00C4B3" stroke-width="1.75" stroke-linecap="round" opacity="0"/>
+              <path d="M10 8H8C6.895 8 6 8.895 6 10V20C6 21.105 6.895 22 8 22H20C21.105 22 22 21.105 22 20V10C22 8.895 21.105 8 20 8H18M10 8V6C10 4.895 10.895 4 12 4H16C17.105 4 18 4.895 18 6V8M10 8H18" stroke="#00C4B3" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M11 15L13 17L17 13" stroke="#00C4B3" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="diferencial-card__title">Sem dependência</h3>
+          <p class="diferencial-card__desc">Você sai do projeto sabendo operar. Documentação real, treinamento real, autonomia real.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FAQ
+  ========================================================= -->
+  <section class="faq" aria-labelledby="faq-headline">
+    <div class="container faq__inner">
+      <div class="section-header section-header--light">
+        <h2 class="h2 section-header__title" id="faq-headline">Perguntas frequentes</h2>
+      </div>
+
+      <div class="faq-list" role="list">
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-item__question" aria-expanded="false" aria-controls="faq-1">
+            <span>Minha empresa é pequena demais para IA?</span>
+            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="faq-item__answer" id="faq-1" aria-hidden="true">
+            <p>Não existe empresa pequena demais para deixar de perder tempo com processo manual. Nossas soluções são dimensionadas para a realidade do seu negócio — sem overhead de grandes corporações.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-item__question" aria-expanded="false" aria-controls="faq-2">
+            <span>Quanto tempo leva para ver resultado?</span>
+            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="faq-item__answer" id="faq-2" aria-hidden="true">
+            <p>Depende do processo. Automatizações simples entram em operação em dias. Projetos mais complexos, em semanas. Em todos os casos, o diagnóstico define expectativas reais antes de qualquer contrato.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-item__question" aria-expanded="false" aria-controls="faq-3">
+            <span>Preciso saber sobre tecnologia para usar os produtos?</span>
+            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="faq-item__answer" id="faq-3" aria-hidden="true">
+            <p>Não. Nossos produtos foram desenhados para quem decide negócios, não para quem programa. Interface simples, documentação clara.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-item__question" aria-expanded="false" aria-controls="faq-4">
+            <span>Vocês integram com os sistemas que já uso?</span>
+            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="faq-item__answer" id="faq-4" aria-hidden="true">
+            <p>Na maioria dos casos, sim. Durante o diagnóstico mapeamos suas ferramentas atuais e definimos a estratégia de integração.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-item__question" aria-expanded="false" aria-controls="faq-5">
+            <span>O que acontece se a IA errar?</span>
+            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="faq-item__answer" id="faq-5" aria-hidden="true">
+            <p>IA erra. Por isso nossos sistemas são desenhados com governança — o humano sempre tem a última palavra nas decisões que importam. Automatizamos o processo, não o julgamento.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-item__question" aria-expanded="false" aria-controls="faq-6">
+            <span>Como funciona o diagnóstico gratuito?</span>
+            <svg class="faq-item__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="faq-item__answer" id="faq-6" aria-hidden="true">
+            <p>É uma conversa de 45 minutos. Você apresenta sua operação, a gente identifica os maiores gargalos e apresenta quais produtos fazem sentido — sem compromisso de contratação.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       CTA FINAL
+  ========================================================= -->
+  <section class="cta-final" aria-labelledby="cta-headline">
+    <div class="container cta-final__inner">
+      <h2 class="h2 cta-final__headline" id="cta-headline">
+        Pronto para parar de operar no improviso?
+      </h2>
+      <p class="cta-final__sub">
+        45 minutos de diagnóstico. Nenhum compromisso. Clareza total sobre o que a IA pode fazer pelo seu negócio — agora.
+      </p>
+      <a
+        href="#"
+        class="btn btn--dark btn--lg"
+        data-cal-link="reuniao-apresentacao-alinhamento"
+        data-cal-namespace="reuniao-apresentacao-alinhamento"
+        data-cal-config='{"layout":"month_view","theme":"dark"}'
+      >
+        Agendar diagnóstico gratuito
+      </a>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================= -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+
+      <!-- Coluna esquerda: slogan -->
+      <div class="footer__slogan-col">
+        <p class="footer__slogan">Tecnologia que humaniza.<br>Estratégia que conecta.<br><span>Transformando dados em decisões inteligentes para o seu negócio.</span></p>
+      </div>
+
+      <!-- Coluna direita: logo + info + social -->
+      <div class="footer__brand">
+        <a href="/" class="footer__logo-link" aria-label="IA Comunica — início">
+          <img src="assets/logo-transparent.png" alt="" class="footer__logo-img" />
+          <span class="footer__logo-name"><em>I.A</em> Comunica</span>
+        </a>
+        <address class="footer__address">
+          <p>Brasília, DF — Brasil</p>
+          <a href="mailto:contato@iacomunica.com.br" class="footer__email">contato@iacomunica.com.br</a>
+          <p class="footer__cnpj">CNPJ: 65.073.471/0001-75</p>
+        </address>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" aria-label="LinkedIn da IA Comunica" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M16.667 1.667H3.333C2.413 1.667 1.667 2.413 1.667 3.333V16.667C1.667 17.587 2.413 18.333 3.333 18.333H16.667C17.587 18.333 18.333 17.587 18.333 16.667V3.333C18.333 2.413 17.587 1.667 16.667 1.667ZM7.5 14.167H5.833V8.333H7.5V14.167ZM6.667 7.5C6.206 7.5 5.833 7.127 5.833 6.667C5.833 6.206 6.206 5.833 6.667 5.833C7.127 5.833 7.5 6.206 7.5 6.667C7.5 7.127 7.127 7.5 6.667 7.5ZM14.167 14.167H12.5V11.167C12.5 10.5 11.967 10 11.333 10C10.7 10 10.167 10.5 10.167 11.167V14.167H8.5V8.333H10.167V9.167C10.567 8.633 11.167 8.333 11.833 8.333C13.133 8.333 14.167 9.367 14.167 10.667V14.167Z" fill="currentColor"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/iacomunicaoficial" class="footer__social-link" aria-label="Instagram da IA Comunica" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="2" y="2" width="16" height="16" rx="4" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="14.5" cy="5.5" r="0.75" fill="currentColor"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p class="footer__copy">&copy; 2026 IA Comunica. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
 </html>
