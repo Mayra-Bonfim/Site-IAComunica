@@ -274,7 +274,7 @@ button {
   font-family: 'DM Sans', sans-serif;
   font-size: 15px;
   font-weight: 500;
-  color: var(--color-muted);
+  color: rgba(255, 255, 255, 0.80);
   transition: color var(--transition-base);
 }
 
@@ -361,6 +361,10 @@ button {
 
 @media (min-width: 768px) {
   .nav__hamburger {
+    display: none;
+  }
+
+  .nav__mobile {
     display: none;
   }
 
