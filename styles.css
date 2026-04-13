@@ -1788,6 +1788,12 @@ button {
     align-items: flex-start;
     gap: 24px;
   }
+  .ecossistema-mencao__cta {
+    width: 100%;
+    justify-content: center;
+    white-space: normal;
+    text-align: center;
+  }
 }
 
 /* ── FOOTER REVISADO ────────────────────────────────────────── */
@@ -1881,6 +1887,8 @@ button {
   .footer__inner {
     grid-template-columns: 1fr;
     gap: 32px;
+    padding-left: 24px;
+    padding-right: 24px;
   }
   .terminal-card {
     max-width: 100%;
