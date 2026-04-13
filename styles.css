@@ -1900,14 +1900,9 @@ button {
     display: none;
   }
 
-  /* METODOLOGIA: step 03 não tem conector, ajustar grid */
-  .passo--last {
-    grid-template-columns: 80px 1fr;
-  }
-
-  /* PIPELINE: 2 linhas, todos os 4 conectores animados visíveis
+  /* PIPELINE: 2 linhas, 3 conectores animados visíveis (Conn4 removido)
      Row1: Step1·Conn1·Step2·Conn2·Step3·Conn3 = 327px (exato)
-     Row2: Step4·Conn4·Step5 = 327px (exato, Conn4 flex cresce) */
+     Row2: Step4·Step5 (sem conector entre eles) */
   .fluxo-pipeline {
     flex-wrap: wrap;
     justify-content: center;
@@ -1923,6 +1918,10 @@ button {
   .fluxo-conector {
     flex: 1 0 16px;
     min-width: 16px;
+  }
+  /* Conn4 (8º filho): conector entre "Sistemas atualizados" e "Resultado entregue" */
+  .fluxo-pipeline > :nth-child(8) {
+    display: none;
   }
 }
 
