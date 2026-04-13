@@ -1567,6 +1567,7 @@ button {
 .automacoes {
   background: var(--color-night);
   padding: 96px 0;
+  overflow-x: hidden;
 }
 
 .automacoes__header {
@@ -1859,7 +1860,7 @@ button {
   display: flex;
   justify-content: center;
   border-top: 1px solid rgba(255,255,255,0.06);
-  padding: 20px 0;
+  padding: 20px 24px;
 }
 
 /* ── HERO sem eyebrow — ajuste de espaçamento ───────────────── */
