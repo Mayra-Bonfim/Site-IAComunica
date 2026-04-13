@@ -1905,23 +1905,22 @@ button {
     grid-template-columns: 80px 1fr;
   }
 
-  /* PIPELINE: scroll horizontal suave */
+  /* PIPELINE: grade 2 colunas no mobile — todos os 5 passos visíveis */
   .fluxo-pipeline {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 16px;
-    justify-content: flex-start;
-    gap: 0;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0,196,179,0.3) transparent;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px 16px;
+    overflow-x: visible;
+    padding-bottom: 0;
+    margin-bottom: 48px;
   }
   .fluxo-step {
-    min-width: 90px;
-    flex-shrink: 0;
+    min-width: calc(50% - 8px);
+    max-width: calc(50% - 8px);
+    flex-shrink: 1;
   }
   .fluxo-conector {
-    min-width: 28px;
-    flex-shrink: 0;
+    display: none;
   }
 }
 
