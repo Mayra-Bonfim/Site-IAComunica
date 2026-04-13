@@ -1900,6 +1900,28 @@ button {
     display: none;
   }
 
+  /* METODOLOGIA: passo--last não tem elemento .passo__conector no HTML.
+     Usar grid 2 colunas + padding p/ alinhar texto com itens 01/02 + ponto teal simulado */
+  .passo--last {
+    grid-template-columns: 80px 1fr;
+  }
+  .passo--last .passo__content {
+    padding-left: 48px;
+    position: relative;
+  }
+  .passo--last .passo__content::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    transform: translateX(-50%);
+    top: 4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-teal);
+    box-shadow: 0 0 0 4px rgba(0,196,179,0.15);
+  }
+
   /* PIPELINE: 2 linhas, 3 conectores animados visíveis (Conn4 removido)
      Row1: Step1·Conn1·Step2·Conn2·Step3·Conn3 = 327px (exato)
      Row2: Step4·Step5 (sem conector entre eles) */
