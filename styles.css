@@ -1905,21 +1905,26 @@ button {
     grid-template-columns: 80px 1fr;
   }
 
-  /* PIPELINE: grade 2 colunas no mobile — todos os 5 passos visíveis */
+  /* PIPELINE: 2 linhas com conectores animados preservados */
   .fluxo-pipeline {
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 24px 16px;
+    justify-content: flex-start;
+    gap: 24px 0;
     overflow-x: visible;
     padding-bottom: 0;
     margin-bottom: 48px;
   }
   .fluxo-step {
-    min-width: calc(50% - 8px);
-    max-width: calc(50% - 8px);
-    flex-shrink: 1;
+    min-width: 90px;
+    flex-shrink: 0;
   }
   .fluxo-conector {
+    min-width: 20px;
+    flex-shrink: 0;
+  }
+  /* Ocultar somente o conector entre "Fluxo ativa" e "Sistemas atualizados"
+     (3º conector = 6º filho do pipeline) — não faz sentido visual entre linhas */
+  .fluxo-pipeline > :nth-child(6) {
     display: none;
   }
 }
