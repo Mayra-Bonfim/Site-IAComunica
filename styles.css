@@ -1905,11 +1905,13 @@ button {
     grid-template-columns: 80px 1fr;
   }
 
-  /* PIPELINE: 2 linhas com conectores animados preservados */
+  /* PIPELINE: 2 linhas, todos os 4 conectores animados visíveis
+     Row1: Step1·Conn1·Step2·Conn2·Step3·Conn3 = 327px (exato)
+     Row2: Step4·Conn4·Step5 = 327px (exato, Conn4 flex cresce) */
   .fluxo-pipeline {
     flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 24px 0;
+    justify-content: center;
+    gap: 20px 0;
     overflow-x: visible;
     padding-bottom: 0;
     margin-bottom: 48px;
@@ -1919,13 +1921,8 @@ button {
     flex-shrink: 0;
   }
   .fluxo-conector {
-    min-width: 20px;
-    flex-shrink: 0;
-  }
-  /* Ocultar somente o conector entre "Fluxo ativa" e "Sistemas atualizados"
-     (3º conector = 6º filho do pipeline) — não faz sentido visual entre linhas */
-  .fluxo-pipeline > :nth-child(6) {
-    display: none;
+    flex: 1 0 16px;
+    min-width: 16px;
   }
 }
 
