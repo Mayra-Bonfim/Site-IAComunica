@@ -1636,6 +1636,22 @@ button {
   .quiz-modal {
     padding: 24px 20px;
   }
+
+  .passo-prompt {
+    padding-right: 54px;
+  }
+
+  .copiar-btn {
+    top: 8px;
+    right: 8px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .copiar-btn svg {
+    width: 17px;
+    height: 17px;
+  }
 }
 
 @media (max-width: 480px) {
