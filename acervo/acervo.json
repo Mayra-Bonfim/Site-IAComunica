@@ -1,0 +1,159 @@
+{
+  "playbooks": [
+    {
+      "slug": "comecar-a-usar-ia",
+      "titulo": "Nunca usou uma IA e não sabe por onde começar?",
+      "resumo": "O básico para escolher uma IA de conversa e mandar sua primeira mensagem real.",
+      "nivel": 0,
+      "dificuldade": "facil",
+      "tempoMin": 10,
+      "impacto": 1,
+      "ferramentas": ["ChatGPT", "Claude", "Gemini"],
+      "problemas": ["Começar a usar IA"],
+      "keywords": ["primeira mensagem", "chat", "conversa", "iniciante", "prompt"]
+    },
+    {
+      "slug": "resumir-emails-com-ia",
+      "titulo": "Sua caixa de e-mail vive lotada e você não tem tempo de ler tudo?",
+      "resumo": "Use IA para resumir e-mails longos e já pedir a resposta rascunhada.",
+      "nivel": 1,
+      "dificuldade": "facil",
+      "tempoMin": 15,
+      "impacto": 2,
+      "ferramentas": ["Gmail", "Gemini"],
+      "problemas": ["Responder clientes", "Economizar tempo"],
+      "keywords": ["email", "resumo", "caixa de entrada", "gmail", "outlook", "shortwave", "superhuman"]
+    },
+    {
+      "slug": "resumir-reunioes-com-ia",
+      "titulo": "Sai de uma reunião online sem lembrar direito o que foi decidido?",
+      "resumo": "Grave, transcreva e resuma reuniões automaticamente, sem anotar nada.",
+      "nivel": 1,
+      "dificuldade": "facil",
+      "tempoMin": 15,
+      "impacto": 2,
+      "ferramentas": ["Read.ai"],
+      "problemas": ["Organizar a empresa", "Economizar tempo"],
+      "keywords": ["reunião", "transcrição", "resumo", "ata", "otter", "fireflies", "fathom"]
+    },
+    {
+      "slug": "ia-marca-compromissos-na-agenda",
+      "titulo": "Quer que a IA marque compromissos direto na sua agenda?",
+      "resumo": "Conecte o Claude à Google Agenda e marque, altere ou cancele por mensagem.",
+      "nivel": 2,
+      "dificuldade": "medio",
+      "tempoMin": 20,
+      "impacto": 2,
+      "ferramentas": ["Claude", "Google Agenda"],
+      "problemas": ["Organizar a empresa", "Economizar tempo"],
+      "keywords": ["agenda", "compromisso", "google agenda", "claude", "chatgpt"]
+    },
+    {
+      "slug": "ia-rascunha-respostas-de-email",
+      "titulo": "Quer que a IA leia e responda seus e-mails por você?",
+      "resumo": "Conecte o Claude ou o ChatGPT ao Gmail e receba rascunhos de resposta prontos.",
+      "nivel": 2,
+      "dificuldade": "medio",
+      "tempoMin": 20,
+      "impacto": 2,
+      "ferramentas": ["Claude", "Gmail"],
+      "problemas": ["Responder clientes", "Economizar tempo"],
+      "keywords": ["email", "rascunho", "resposta", "gmail", "chatgpt"]
+    },
+    {
+      "slug": "organizar-arquivos-e-posts-com-chatgpt",
+      "titulo": "Quer organizar arquivo, planilha, PDF, post e apresentação com o ChatGPT Work?",
+      "resumo": "Um assistente único do ChatGPT Work para organizar arquivo, planilha, PDF, post e apresentação.",
+      "nivel": 3,
+      "caminho": "A",
+      "dificuldade": "medio",
+      "tempoMin": 40,
+      "impacto": 3,
+      "ferramentas": ["ChatGPT"],
+      "problemas": ["Organizar a empresa", "Criar conteúdo", "Criar propostas"],
+      "keywords": ["chatgpt work", "codex", "planilha", "pdf", "apresentação", "post", "arquivos"]
+    },
+    {
+      "slug": "organizar-arquivos-e-posts-com-claude",
+      "titulo": "Prefere fazer tudo isso com o Claude Cowork?",
+      "resumo": "O Claude Cowork e os workflows do Claude for Small Business para organizar arquivo, planilha, PDF, post e apresentação.",
+      "nivel": 3,
+      "caminho": "B",
+      "dificuldade": "medio",
+      "tempoMin": 40,
+      "impacto": 3,
+      "ferramentas": ["Claude"],
+      "problemas": ["Organizar a empresa", "Criar conteúdo", "Criar propostas", "Controlar o financeiro"],
+      "keywords": ["claude cowork", "claude for small business", "planilha", "pdf", "apresentação", "post"]
+    },
+    {
+      "slug": "atendimento-automatico-no-whatsapp",
+      "titulo": "Quer um atendente de WhatsApp que responde sozinho?",
+      "resumo": "Monte um agente de IA que atende seus clientes no WhatsApp com o GPTMaker.",
+      "nivel": 4,
+      "dificuldade": "avancado",
+      "tempoMin": 45,
+      "impacto": 3,
+      "ferramentas": ["GPTMaker"],
+      "problemas": ["Responder clientes", "Ter um atendente no WhatsApp"],
+      "keywords": ["whatsapp", "atendimento", "gptmaker", "agente", "z-api"]
+    },
+    {
+      "slug": "agente-de-ia-por-area-da-empresa",
+      "titulo": "Quer um agente de IA para cada área da sua empresa?",
+      "resumo": "Um agente dedicado por área — RH, financeiro, marketing — com Claude Cowork ou ChatGPT Work.",
+      "nivel": 5,
+      "dificuldade": "avancado",
+      "tempoMin": 60,
+      "impacto": 3,
+      "ferramentas": ["Claude", "ChatGPT"],
+      "problemas": ["Organizar a empresa", "Controlar o financeiro", "Criar conteúdo"],
+      "keywords": ["rh", "financeiro", "marketing", "agente", "área da empresa"]
+    }
+  ],
+  "trilha": {
+    "niveis": [
+      {
+        "nivel": 0,
+        "nome": "Nunca usei IA",
+        "playbooks": ["comecar-a-usar-ia"],
+        "proximo": "resumir-emails-com-ia"
+      },
+      {
+        "nivel": 1,
+        "nome": "Tarefas simples do dia a dia",
+        "playbooks": ["resumir-emails-com-ia", "resumir-reunioes-com-ia"],
+        "proximo": "ia-marca-compromissos-na-agenda"
+      },
+      {
+        "nivel": 2,
+        "nome": "Integrar a IA ao que você já usa",
+        "playbooks": ["ia-marca-compromissos-na-agenda", "ia-rascunha-respostas-de-email"],
+        "proximo": "organizar-arquivos-planilhas-e-posts-com-ia"
+      },
+      {
+        "nivel": 3,
+        "nome": "Arquivo, planilha, PDF, post e apresentação",
+        "paginaAbertura": "organizar-arquivos-planilhas-e-posts-com-ia",
+        "playbooks": ["organizar-arquivos-e-posts-com-chatgpt", "organizar-arquivos-e-posts-com-claude"],
+        "regraConclusao": "qualquer",
+        "proximo": "atendimento-automatico-no-whatsapp"
+      },
+      {
+        "nivel": 4,
+        "nome": "Um atendente de WhatsApp sozinho",
+        "playbooks": ["atendimento-automatico-no-whatsapp"],
+        "proximo": "agente-de-ia-por-area-da-empresa"
+      },
+      {
+        "nivel": 5,
+        "nome": "Um agente de IA para cada área da empresa",
+        "playbooks": ["agente-de-ia-por-area-da-empresa"],
+        "proximo": null
+      }
+    ]
+  },
+  "comercial": {
+    "whatsapp": "https://wa.me/556198747075"
+  }
+}

@@ -1,0 +1,60 @@
+/* ============================================================
+   ACERVO — Design Tokens
+   Extraídos de hubs/marketing/criacao/acervo-piloto/acervo-hero.html
+   e acervo-playbook.html (referência visual aprovada pela Mayra).
+   Reaproveita a paleta já documentada em architecture.md do site
+   institucional (mesmo --color-teal / --color-night / --color-primary).
+   ============================================================ */
+
+:root {
+  /* Cor */
+  --acervo-bg: #0F1629;
+  --acervo-teal: #00C4B3;
+  --acervo-teal-hover: #009D8F;
+  --acervo-blue: #004C7E;
+  --acervo-white: #FFFFFF;
+  --acervo-text: #FFFFFF;
+  --acervo-text-90: rgba(255, 255, 255, 0.9);
+  --acervo-text-80: rgba(255, 255, 255, 0.8);
+  --acervo-text-70: rgba(255, 255, 255, 0.7);
+  --acervo-text-45: rgba(255, 255, 255, 0.45);
+  --acervo-border-teal-15: rgba(0, 196, 179, 0.15);
+  --acervo-border-teal-20: rgba(0, 196, 179, 0.2);
+  --acervo-border-teal-30: rgba(0, 196, 179, 0.3);
+  --acervo-surface-blue-08: rgba(0, 76, 126, 0.08);
+  --acervo-surface-blue-10: rgba(0, 76, 126, 0.1);
+  --acervo-surface-blue-14: rgba(0, 76, 126, 0.14);
+  --acervo-surface-blue-15: rgba(0, 76, 126, 0.15);
+  --acervo-surface-teal-05: rgba(0, 196, 179, 0.05);
+  --acervo-surface-teal-08: rgba(0, 196, 179, 0.08);
+  --acervo-surface-teal-10: rgba(0, 196, 179, 0.1);
+  --acervo-surface-teal-12: rgba(0, 196, 179, 0.12);
+  --acervo-surface-teal-15: rgba(0, 196, 179, 0.15);
+  --acervo-overlay-black-30: rgba(0, 0, 0, 0.3);
+  --acervo-overlay-black-70: rgba(0, 10, 20, 0.7);
+  --acervo-success: #00C4B3;
+  --acervo-comercial: #004C7E;
+
+  /* Tipografia */
+  --acervo-font-display: 'Space Grotesk', sans-serif;
+  --acervo-font-body: 'DM Sans', sans-serif;
+
+  /* Raio de borda (4-12px conforme componente, igual à referência) */
+  --acervo-radius-sm: 4px;
+  --acervo-radius-md: 6px;
+  --acervo-radius-lg: 8px;
+  --acervo-radius-xl: 12px;
+  --acervo-radius-pill: 9999px;
+
+  /* Espaçamento — escala usada nas referências (60-80px desktop) */
+  --acervo-space-page-y: 60px;
+  --acervo-space-page-x: 80px;
+  --acervo-space-section: 60px;
+  --acervo-space-section-lg: 80px;
+
+  /* Breakpoints (documentado aqui; media queries reais em acervo.css,
+     CSS não permite @media dentro de var()) */
+  --acervo-bp-mobile: 480px;
+  --acervo-bp-tablet: 768px;
+  --acervo-bp-desktop: 1024px;
+}
