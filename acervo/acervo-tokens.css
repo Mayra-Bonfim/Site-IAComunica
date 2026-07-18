@@ -35,6 +35,15 @@
   --acervo-success: #00C4B3;
   --acervo-comercial: #004C7E;
 
+  /* Modo escuro (padrão) — tokens derivados para texto/superfícies sutis
+     que precisam de um valor diferente por tema (ver bloco [data-theme="light"]
+     abaixo). Mesma base de cor do restante do arquivo, só isolando os casos
+     em que dark e light precisam de intensidades diferentes. */
+  --acervo-teal-text: var(--acervo-teal);
+  --acervo-hairline: rgba(255, 255, 255, 0.08);
+  --acervo-hairline-strong: rgba(255, 255, 255, 0.18);
+  --acervo-panel-bg: #131b33;
+
   /* Tipografia */
   --acervo-font-display: 'Space Grotesk', sans-serif;
   --acervo-font-body: 'DM Sans', sans-serif;
@@ -57,4 +66,48 @@
   --acervo-bp-mobile: 480px;
   --acervo-bp-tablet: 768px;
   --acervo-bp-desktop: 1024px;
+}
+
+/* ============================================================
+   MODO CLARO — toggle via [data-theme="light"] no <html>
+   Teal puro (#00C4B3) não passa em contraste AA sobre fundo
+   branco (~2.2:1); por isso o modo claro usa uma variante mais
+   escura de teal para texto/ícone (--acervo-teal-text) e mantém
+   o teal original só como preenchimento de botão. --acervo-bg é
+   reaproveitado intencionalmente como "texto sobre acento" nos
+   botões cheios (ex.: quiz-block-cta), então clareá-lo aqui já
+   resolve esses componentes sem tocar em mais nada.
+   ============================================================ */
+:root[data-theme="light"] {
+  --acervo-bg: #FAFAFA;
+  --acervo-white: #10131A;
+  --acervo-text: #10131A;
+  --acervo-text-90: rgba(16, 19, 26, 0.88);
+  --acervo-text-80: rgba(16, 19, 26, 0.75);
+  --acervo-text-70: rgba(16, 19, 26, 0.62);
+  --acervo-text-45: rgba(16, 19, 26, 0.40);
+
+  --acervo-teal: #00877A;
+  --acervo-teal-hover: #00695E;
+  --acervo-teal-text: #00695E;
+  --acervo-blue: #004C7E;
+
+  --acervo-border-teal-15: rgba(0, 135, 122, 0.18);
+  --acervo-border-teal-20: rgba(0, 135, 122, 0.25);
+  --acervo-border-teal-30: rgba(0, 135, 122, 0.35);
+
+  --acervo-surface-blue-08: rgba(0, 76, 126, 0.05);
+  --acervo-surface-blue-10: rgba(0, 76, 126, 0.06);
+  --acervo-surface-blue-14: rgba(0, 76, 126, 0.08);
+  --acervo-surface-blue-15: rgba(0, 76, 126, 0.09);
+
+  --acervo-surface-teal-05: rgba(0, 135, 122, 0.04);
+  --acervo-surface-teal-08: rgba(0, 135, 122, 0.06);
+  --acervo-surface-teal-10: rgba(0, 135, 122, 0.08);
+  --acervo-surface-teal-12: rgba(0, 135, 122, 0.10);
+  --acervo-surface-teal-15: rgba(0, 135, 122, 0.12);
+
+  --acervo-hairline: rgba(16, 19, 26, 0.10);
+  --acervo-hairline-strong: rgba(16, 19, 26, 0.20);
+  --acervo-panel-bg: #FFFFFF;
 }

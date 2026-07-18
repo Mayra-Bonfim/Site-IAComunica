@@ -57,7 +57,8 @@ button {
   position: sticky;
   top: 0;
   z-index: 200;
-  background: rgba(15, 22, 41, 0.92);
+  background: var(--acervo-bg);
+  background: color-mix(in srgb, var(--acervo-bg) 92%, transparent);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--acervo-border-teal-15);
 }
@@ -99,7 +100,7 @@ button {
 }
 
 .acervo-topbar__acervo {
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   text-transform: uppercase;
   letter-spacing: 1.5px;
 }
@@ -117,7 +118,7 @@ button {
 
 .acervo-search__input {
   width: 100%;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--acervo-hairline);
   border: 1px solid var(--acervo-border-teal-20);
   border-radius: var(--acervo-radius-pill);
   padding: 9px 16px 9px 38px;
@@ -134,7 +135,7 @@ button {
 .acervo-search__input:focus {
   outline: none;
   border-color: var(--acervo-teal);
-  background: rgba(255, 255, 255, 0.07);
+  background: var(--acervo-hairline-strong);
 }
 
 .acervo-search__icon {
@@ -151,7 +152,7 @@ button {
   top: calc(100% + 8px);
   left: 0;
   right: 0;
-  background: #131b33;
+  background: var(--acervo-panel-bg);
   border: 1px solid var(--acervo-border-teal-20);
   border-radius: var(--acervo-radius-lg);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
@@ -169,7 +170,7 @@ button {
   display: block;
   padding: 12px 16px;
   text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--acervo-hairline);
   cursor: pointer;
 }
 
@@ -188,7 +189,7 @@ button {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   margin-bottom: 4px;
 }
 
@@ -227,12 +228,12 @@ button {
 
 .breadcrumb {
   font-size: 13px;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   font-weight: 500;
 }
 
 .breadcrumb a {
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   text-decoration: none;
   border-bottom: 1px solid rgba(0, 196, 179, 0.3);
   transition: border-color 0.3s ease;
@@ -260,7 +261,7 @@ button {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--acervo-hairline-strong);
 }
 
 .trilha-indicador__dot.is-atual {
@@ -280,13 +281,22 @@ button {
   margin: 0 auto;
 }
 
-.acervo-hero__eyebrow {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--acervo-teal);
-  margin-bottom: 28px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+.acervo-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .acervo-hero__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(380px, 440px);
+    gap: 72px;
+  }
+  .acervo-hero__aside {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 
 .acervo-hero h1 {
@@ -294,18 +304,18 @@ button {
   font-size: 40px;
   font-weight: 700;
   line-height: 1.18;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   color: var(--acervo-white);
-  max-width: 920px;
+  max-width: 640px;
 }
 
 .acervo-hero__intro {
   font-size: 17px;
   font-weight: 400;
   line-height: 1.7;
-  margin-bottom: 40px;
+  margin-bottom: 0;
   color: var(--acervo-text-90);
-  max-width: 820px;
+  max-width: none;
 }
 
 .quiz-block {
@@ -313,14 +323,15 @@ button {
   border: 2px solid var(--acervo-teal);
   border-radius: var(--acervo-radius-xl);
   padding: 32px;
-  margin-bottom: 64px;
-  max-width: 460px;
+  margin-bottom: 0;
+  max-width: 440px;
+  width: 100%;
 }
 
 .quiz-block-label {
   font-size: 12px;
   font-weight: 700;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 14px;
@@ -362,7 +373,7 @@ button {
   font-family: var(--acervo-font-display);
   font-size: 21px;
   font-weight: 700;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   margin-bottom: 24px;
   padding-left: 14px;
   border-left: 4px solid var(--acervo-blue);
@@ -438,7 +449,7 @@ button {
 .resultados-panel__title {
   font-size: 13px;
   font-weight: 700;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 16px;
@@ -465,8 +476,8 @@ button {
 .resultado-item {
   display: block;
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--acervo-hairline);
+  border: 1px solid var(--acervo-hairline);
   border-radius: var(--acervo-radius-lg);
   padding: 16px;
   transition: border-color 0.2s ease;
@@ -479,7 +490,7 @@ button {
 .resultado-item__nivel {
   font-size: 11px;
   font-weight: 700;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 6px;
@@ -506,7 +517,7 @@ button {
   flex: 1;
   height: 6px;
   border-radius: var(--acervo-radius-pill);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--acervo-hairline);
 }
 
 .trilha-progresso__seg.is-concluido {
@@ -554,7 +565,7 @@ button {
   font-family: var(--acervo-font-display);
   font-size: 28px;
   font-weight: 700;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   margin-bottom: 6px;
 }
 
@@ -594,7 +605,7 @@ button {
   flex-wrap: wrap;
   gap: 10px 20px;
   font-size: 13px;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   margin-bottom: 28px;
   font-weight: 500;
 }
@@ -646,7 +657,7 @@ button {
   font-family: var(--acervo-font-display);
   font-size: 19px;
   font-weight: 700;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   margin-bottom: 18px;
 }
 
@@ -709,7 +720,7 @@ button {
   font-family: var(--acervo-font-display);
   font-size: 17px;
   font-weight: 700;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   margin-bottom: 8px;
   padding-right: 24px;
 }
@@ -747,11 +758,11 @@ button {
 .comparador-tabela td {
   text-align: left;
   padding: 12px 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--acervo-hairline);
 }
 
 .comparador-tabela th {
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   font-family: var(--acervo-font-display);
   font-weight: 700;
   white-space: nowrap;
@@ -774,7 +785,7 @@ button {
   font-family: var(--acervo-font-display);
   font-size: 19px;
   font-weight: 700;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   margin-bottom: 24px;
 }
 
@@ -800,7 +811,7 @@ button {
   font-family: var(--acervo-font-display);
   font-size: 24px;
   font-weight: 700;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   margin-bottom: 10px;
 }
 
@@ -842,8 +853,17 @@ button {
   border-radius: var(--acervo-radius-sm);
   font-size: 13px;
   font-style: italic;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   position: relative;
+}
+
+/* Modo claro: um overlay preto translúcido sobre uma superfície já
+   clara não escurece o suficiente para o texto teal (recalibrado
+   para ser escuro em modo claro) manter contraste AA. Em vez de
+   inventar uma cor nova, reaproveita-se --acervo-panel-bg (já usado
+   em outras superfícies elevadas) só neste tema. */
+[data-theme="light"] .passo-prompt {
+  background: var(--acervo-panel-bg);
 }
 
 .passo-lista .passo-prompt {
@@ -856,7 +876,7 @@ button {
   right: 10px;
   background: rgba(0, 196, 179, 0.12);
   border: 1px solid var(--acervo-border-teal-30);
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   border-radius: var(--acervo-radius-sm);
   width: 30px;
   height: 30px;
@@ -902,7 +922,7 @@ button {
   font-family: var(--acervo-font-display);
   font-size: 18px;
   font-weight: 700;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   margin-bottom: 20px;
 }
 
@@ -936,7 +956,7 @@ button {
   align-items: center;
   justify-content: center;
   font-size: 13px;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   transition: all 0.2s ease;
 }
 
@@ -948,7 +968,7 @@ button {
 .checklist-item.is-marcado .checklist-item__label {
   color: var(--acervo-text-70);
   text-decoration: line-through;
-  text-decoration-color: rgba(255, 255, 255, 0.3);
+  text-decoration-color: var(--acervo-hairline-strong);
 }
 
 /* Calculadora */
@@ -964,7 +984,7 @@ button {
   font-family: var(--acervo-font-display);
   font-size: 18px;
   font-weight: 700;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   margin-bottom: 8px;
 }
 
@@ -1007,7 +1027,7 @@ button {
 .stepper button {
   background: rgba(0, 196, 179, 0.1);
   border: none;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   width: 34px;
   height: 38px;
   font-size: 18px;
@@ -1039,7 +1059,7 @@ button {
 }
 
 .calculadora-select {
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--acervo-hairline);
   border: 1px solid var(--acervo-border-teal-20);
   border-radius: var(--acervo-radius-md);
   color: var(--acervo-white);
@@ -1061,7 +1081,7 @@ button {
   font-family: var(--acervo-font-display);
   font-size: 28px;
   font-weight: 700;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   margin-bottom: 4px;
 }
 
@@ -1087,7 +1107,7 @@ button {
 }
 
 .cta-text a {
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   text-decoration: none;
   border-bottom: 2px solid var(--acervo-teal);
   font-weight: 600;
@@ -1104,7 +1124,7 @@ button {
 }
 
 .cta-section.cta-comercial .cta-text a {
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   border-bottom-color: var(--acervo-teal);
 }
 
@@ -1186,7 +1206,7 @@ button {
 .resolveu-relacionados a {
   font-size: 13px;
   font-weight: 600;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   text-decoration: none;
   border: 1px solid var(--acervo-border-teal-30);
   padding: 8px 14px;
@@ -1204,7 +1224,7 @@ button {
   font-weight: 600;
   color: var(--acervo-white);
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid var(--acervo-hairline-strong);
   padding: 10px 20px;
   border-radius: var(--acervo-radius-pill);
   transition: all 0.2s ease;
@@ -1212,7 +1232,7 @@ button {
 
 .btn-outline-comercial:hover {
   border-color: var(--acervo-teal);
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
 }
 
 @keyframes acervo-fade-in {
@@ -1261,7 +1281,7 @@ button {
 .caminho-card__label {
   font-size: 12px;
   font-weight: 700;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   text-transform: uppercase;
   letter-spacing: 1.5px;
   margin-bottom: 10px;
@@ -1301,7 +1321,7 @@ button {
 }
 
 .quiz-modal {
-  background: #131b33;
+  background: var(--acervo-panel-bg);
   border: 1px solid var(--acervo-border-teal-20);
   border-radius: var(--acervo-radius-xl);
   max-width: 520px;
@@ -1339,7 +1359,7 @@ button {
   flex: 1;
   height: 4px;
   border-radius: var(--acervo-radius-pill);
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--acervo-hairline);
 }
 
 .quiz-progress__seg.is-atual,
@@ -1369,8 +1389,8 @@ button {
   display: block;
   width: 100%;
   text-align: left;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--acervo-hairline);
+  border: 1px solid var(--acervo-hairline);
   border-radius: var(--acervo-radius-lg);
   padding: 16px 18px;
   color: var(--acervo-white);
@@ -1398,7 +1418,7 @@ button {
 .quiz-resultado__label {
   font-size: 12px;
   font-weight: 700;
-  color: var(--acervo-teal);
+  color: var(--acervo-teal-text);
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 12px;
@@ -1455,7 +1475,7 @@ button {
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%) translateY(20px);
-  background: #131b33;
+  background: var(--acervo-panel-bg);
   border: 1px solid var(--acervo-border-teal-30);
   color: var(--acervo-white);
   padding: 14px 22px;
@@ -1484,40 +1504,120 @@ button {
 }
 
 /* ------------------------------------------------------------
-   Rodapé
+   FOOTER — idêntico ao institucional (iacomunica.com.br)
    ------------------------------------------------------------ */
-.acervo-footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 32px 24px 40px;
+.footer {
+  background: var(--acervo-bg);
+  border-top: 1px solid var(--acervo-hairline);
 }
 
-.acervo-footer__inner {
-  max-width: 1440px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
+.footer__inner {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 64px;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  padding: 64px 0 48px;
 }
 
-.acervo-footer__copy {
-  font-size: 12px;
+.footer__slogan-col { display: flex; align-items: center; }
+.footer__slogan {
+  font-family: var(--acervo-font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--acervo-text-80);
+  line-height: 1.55;
+  margin: 0;
+}
+.footer__slogan span {
+  font-weight: 400;
+  font-size: 1rem;
   color: var(--acervo-text-45);
+  display: block;
+  margin-top: 10px;
+  font-family: var(--acervo-font-body);
+  line-height: 1.6;
 }
 
-.acervo-footer__social {
+.footer__brand { display: flex; flex-direction: column; gap: 20px; }
+.footer__logo-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.footer__logo-img { height: 52px; width: auto; display: block; }
+.footer__logo-name {
+  font-family: var(--acervo-font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--acervo-white);
+  letter-spacing: 0.01em;
+}
+.footer__logo-name em { color: var(--acervo-teal); font-style: normal; font-weight: 700; }
+
+.footer__address { font-style: normal; display: flex; flex-direction: column; gap: 6px; }
+.footer__address p { font-size: 14px; color: var(--acervo-text-45); margin: 0; }
+.footer__email { font-size: 14px; color: var(--acervo-teal-text); transition: opacity 0.2s ease; }
+.footer__email:hover { opacity: 0.75; }
+.footer__cnpj { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--acervo-text-45); margin-top: 4px; }
+
+.footer__social { display: flex; gap: 12px; }
+.footer__social-link {
+  display: flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: var(--acervo-radius-lg);
+  background: var(--acervo-hairline);
+  color: var(--acervo-text-45);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.footer__social-link:hover { background: var(--acervo-surface-teal-15); color: var(--acervo-teal-text); }
+
+.footer__bottom { border-top: 1px solid var(--acervo-hairline); padding: 20px 0; }
+.footer__bottom-inner { display: flex; justify-content: center; padding: 0 24px; }
+.footer__copy { font-size: 13px; color: var(--acervo-text-45); }
+
+@media (max-width: 768px) {
+  .footer__inner { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* ------------------------------------------------------------
+   Topbar — link "IA Comunica" reforçado (seta + hover)
+   ------------------------------------------------------------ */
+.acervo-topbar__site {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.acervo-topbar__site-icon { transition: transform 0.2s ease; }
+.acervo-topbar__site:hover .acervo-topbar__site-icon { transform: translateX(-2px); }
+.acervo-topbar__site:hover { color: var(--acervo-white); }
+
+/* ------------------------------------------------------------
+   Toggle de tema (claro/escuro)
+   ------------------------------------------------------------ */
+.acervo-theme-toggle {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--acervo-radius-pill);
+  border: 1px solid var(--acervo-border-teal-20);
+  background: var(--acervo-hairline);
   display: flex;
-  gap: 14px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
 }
+.acervo-theme-toggle:hover { border-color: var(--acervo-teal); }
 
-.acervo-footer__social a {
+.acervo-theme-toggle__icon {
+  position: absolute;
   color: var(--acervo-text-70);
-  transition: color 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.3s ease;
 }
+.acervo-theme-toggle__icon--sun  { opacity: 0; transform: rotate(-90deg) scale(0.6); }
+.acervo-theme-toggle__icon--moon { opacity: 1; transform: rotate(0)     scale(1); }
 
-.acervo-footer__social a:hover {
-  color: var(--acervo-teal);
+[data-theme="light"] .acervo-theme-toggle__icon--sun  { opacity: 1; transform: rotate(0)    scale(1); }
+[data-theme="light"] .acervo-theme-toggle__icon--moon { opacity: 0; transform: rotate(90deg) scale(0.6); }
+
+@media (prefers-reduced-motion: reduce) {
+  .acervo-theme-toggle__icon { transition: opacity 0.01s linear; }
 }
 
 /* ============================================================
@@ -1659,10 +1759,6 @@ button {
     font-size: 24px;
   }
 
-  .acervo-hero__eyebrow {
-    margin-bottom: 18px;
-  }
-
   .nivel-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -1678,12 +1774,6 @@ button {
 
   .quiz-resultado__nivel {
     font-size: 32px;
-  }
-
-  .acervo-footer__inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
   }
 
   .caminho-card {

@@ -16,7 +16,8 @@
     progresso: 'acervo:progresso',
     checkPrefix: 'acervo:check:',
     resolveuPrefix: 'acervo:resolveu:',
-    calc: 'acervo:calc'
+    calc: 'acervo:calc',
+    theme: 'acervo:theme'
   };
 
   function safeGet(key, fallback) {
@@ -57,6 +58,44 @@
     }
     p.ultimoVisitado = slug;
     setProgresso(p);
+  }
+
+  /* ----------------------------------------------------------
+     Tema (claro/escuro) — persistido em localStorage.
+     O <head> de cada página já aplica o tema salvo (ou a
+     preferência do sistema) via script inline síncrono, antes do
+     CSS pintar, para evitar flash do tema errado (FOUC). Aqui só
+     cuidamos do botão de alternância e de manter o estado salvo
+     em sincronia com o que já foi aplicado no <html>.
+     ---------------------------------------------------------- */
+  function getPreferredTheme() {
+    var saved = safeGet(KEYS.theme, null);
+    if (saved === 'light' || saved === 'dark') return saved;
+    return (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    var btn = document.querySelector('[data-theme-toggle]');
+    if (btn) {
+      btn.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
+      btn.setAttribute('aria-label', theme === 'light' ? 'Ativar modo escuro' : 'Ativar modo claro');
+    }
+  }
+
+  function setTheme(theme) {
+    applyTheme(theme);
+    safeSet(KEYS.theme, theme);
+  }
+
+  function initTheme() {
+    var btn = document.querySelector('[data-theme-toggle]');
+    if (!btn) return;
+    applyTheme(document.documentElement.getAttribute('data-theme') || getPreferredTheme());
+    btn.addEventListener('click', function () {
+      var current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+      setTheme(current === 'light' ? 'dark' : 'light');
+    });
   }
 
   /* ----------------------------------------------------------
@@ -890,6 +929,8 @@
      Init geral
      ---------------------------------------------------------- */
   document.addEventListener('DOMContentLoaded', function () {
+    initTheme();
+
     var slug = document.body.getAttribute('data-slug');
     if (slug && !document.body.hasAttribute('data-abertura') && document.body.getAttribute('data-page') === 'playbook') {
       marcarUltimoVisitado(slug);
