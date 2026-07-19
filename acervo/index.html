@@ -1,0 +1,87 @@
+---
+---
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Acervo IA Comunica: guias práticos de inteligência artificial para resolver o dia a dia do seu negócio, por ferramenta, por problema ou por nível." />
+  <meta name="robots" content="index, follow" />
+  <title>Acervo — Guias práticos de IA para o seu negócio | IA Comunica</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="/favicon-96x96.png" />
+  <link rel="stylesheet" href="/acervo/acervo-tokens.css" />
+  <link rel="stylesheet" href="/acervo/acervo.css" />
+{% include acervo-head-theme.html %}
+</head>
+<body data-page="hub">
+
+{% include acervo-topbar.html %}
+
+  <main>
+    <section class="acervo-hero">
+      <div class="acervo-hero__grid">
+        <div class="acervo-hero__text">
+          <h1>Acervo: guias práticos de IA para resolver o dia a dia do seu negócio, por ferramenta ou por problema.</h1>
+          <div class="acervo-hero__intro">
+            <p>O Acervo reúne guias práticos para você resolver problemas reais do seu negócio usando inteligência artificial, sem enrolação e sem jargão técnico. Cada guia parte de uma situação que você já vive na loja, no consultório, na oficina ou no escritório, como responder um cliente mais rápido ou organizar a agenda da semana, e mostra o passo a passo com as ferramentas certas para resolver. Você pode navegar por ferramenta, por problema ou seguir a trilha de níveis, do zero até o uso avançado, no seu ritmo. Não sabe por onde começar? Faça o quiz rápido "Descubra seu nível" e a gente indica o primeiro guia pra você.</p>
+          </div>
+        </div>
+
+        <aside class="acervo-hero__aside">
+          <div class="quiz-block">
+            <div class="quiz-block-label">Começar agora</div>
+            <div class="quiz-block-title">Descubra seu nível</div>
+            <button type="button" class="quiz-block-cta" data-quiz-abrir>Fazer o Quiz</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="acervo-container">
+      <section class="nav-section" aria-labelledby="titulo-ferramenta">
+        <h2 class="nav-section-title" id="titulo-ferramenta">Por Ferramenta</h2>
+        <div class="nav-grid" id="grid-ferramentas"></div>
+        <div class="resultados-panel" id="resultados-ferramenta"></div>
+      </section>
+
+      <section class="nav-section" aria-labelledby="titulo-problema">
+        <h2 class="nav-section-title" id="titulo-problema">Por Problema</h2>
+        <div class="nav-grid" id="grid-problemas"></div>
+        <div class="resultados-panel" id="resultados-problema"></div>
+      </section>
+
+      <section class="nivel-section" aria-labelledby="titulo-trilha">
+        <h2 class="nav-section-title" id="titulo-trilha">Pela Trilha de Níveis</h2>
+        <div class="trilha-progresso" id="trilha-progresso-barra"></div>
+        <div class="nivel-grid" id="grid-niveis"></div>
+      </section>
+
+      <noscript>
+        <p style="margin: 40px 0; color: rgba(255,255,255,0.7); font-size: 14px;">
+          A navegação por ferramenta, problema e nível depende de JavaScript. Sem JavaScript, comece pelo
+          <a href="/acervo/comecar-a-usar-ia/" style="color:#00C4B3;">Nível 0 — Nunca usei IA</a>.
+        </p>
+      </noscript>
+    </div>
+  </main>
+
+  <!-- Modal do Quiz -->
+  <div class="quiz-overlay" data-quiz-overlay role="dialog" aria-modal="true" aria-label="Quiz: descubra seu nível">
+    <div class="quiz-modal">
+      <button type="button" class="quiz-modal__close" data-quiz-fechar aria-label="Fechar quiz">✕</button>
+      <div class="quiz-progress" data-quiz-progress></div>
+      <div data-quiz-steps></div>
+    </div>
+  </div>
+
+{% include acervo-footer.html %}
+
+  <div class="acervo-live-region" aria-live="polite" data-acervo-live></div>
+  <script src="/acervo/acervo.js"></script>
+</body>
+</html>

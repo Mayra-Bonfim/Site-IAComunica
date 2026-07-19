@@ -2,7 +2,7 @@
 
 **URL:** https://iacomunica.com.br  
 **GitHub:** https://github.com/Mayra-Bonfim/Site-IAComunica  
-**Última atualização:** 2026-04-07  
+**Última atualização:** 2026-07-19  
 **Responsável:** Mayra Madera + Sofia (IA Comunica)
 
 ---
@@ -14,6 +14,7 @@
 | Linguagem | HTML5 + CSS3 + JavaScript (ES6+) |
 | Framework | Nenhum — site estático puro |
 | Hospedagem | GitHub Pages |
+| Templating (só Acervo) | Jekyll nativo do GitHub Pages (`_includes/`, sem `_config.yml`) — ver seção "Acervo — Dependência do Jekyll" |
 | Domínio | iacomunica.com.br (CNAME no repo) |
 | Fontes | Google Fonts (Space Grotesk, DM Sans, JetBrains Mono) |
 | Agendamento | Cal.com embed |
@@ -37,6 +38,14 @@ Site-IAComunica/
 │       └── nexus-institucional.mp4  ← Vídeo do Nexus (5.9MB)
 ├── docs/
 │   └── nexusmed/index.html       ← Documentação Nexus (página separada)
+├── acervo/                       ← Acervo: guias práticos de IA (12 páginas, processadas via Jekyll — ver seção dedicada abaixo)
+│   ├── index.html                ← Hub principal do Acervo
+│   ├── acervo-tokens.css / acervo.css / acervo.js
+│   └── <slug>/index.html         ← 11 páginas de playbook
+├── _includes/                    ← Partials Jekyll usados pelo Acervo (NÃO mover para dentro de acervo/)
+│   ├── acervo-topbar.html
+│   ├── acervo-footer.html
+│   └── acervo-head-theme.html
 └── superafiliadoia/              ← Landing page afiliados (separada)
     ├── index.html
     └── CNAME
@@ -44,6 +53,31 @@ Site-IAComunica/
 
 **Backup do site antigo:** branch `backup-site-antigo` no mesmo repo.  
 **Arquivos locais (não no repo):** `sites/institucional/` em `ecosistema-ia-comunica/setores/marketing/`
+
+---
+
+## ⚠️ Acervo — Dependência do Jekyll nativo do GitHub Pages (CRÍTICO)
+
+O Acervo (`acervo/`, 12 páginas: `acervo/index.html` + 11 playbooks em `acervo/<slug>/index.html`) elimina a duplicação de topbar, footer institucional e script anti-FOUC de tema usando **includes do Jekyll** (`{% include %}`), processados pelo motor Jekyll que o GitHub Pages roda automaticamente em todo push — sem nenhuma configuração adicional (não há `_config.yml` no repo; o build usa os defaults do GitHub Pages).
+
+**Como funciona:**
+- Os 12 arquivos HTML do Acervo têm front matter Jekyll vazio no topo (`---` `---`) — é isso que ativa o processamento Liquid/Jekyll naquele arquivo específico. Sem essas duas linhas, o Jekyll trata o arquivo como asset estático e NÃO processa `{% include %}`.
+- Os partials ficam em `_includes/` **na raiz do repositório** (não dentro de `acervo/`) — é onde o Jekyll procura por padrão:
+  - `_includes/acervo-topbar.html`
+  - `_includes/acervo-footer.html`
+  - `_includes/acervo-head-theme.html`
+- As tags de include nas páginas ficam **sem indentação própria** (`{% include acervo-topbar.html %}`, começando na coluna 0) porque os próprios arquivos de partial já carregam sua indentação original de 2 espaços na primeira linha. Se a tag também tivesse indentação, o resultado renderizado ficaria com a primeira linha do bloco duplamente indentada (inofensivo visualmente, mas sujo).
+- Conteúdo que varia por página (breadcrumb com o nome do playbook, indicador de trilha) **fica fora** dos includes, na página, logo abaixo do `{% include acervo-topbar.html %}`.
+
+**🔴 NUNCA adicionar um arquivo `.nojekyll` na raiz do repositório.** Isso é uma prática comum ao publicar SPAs (o app institucional Vite/React que vive na raiz do repo pode, no futuro, precisar de algo do tipo para evitar que o GitHub Pages tente processar pastas como `_includes`/`assets` como Jekyll). Se isso for feito, o Jekyll para de rodar em todo o repositório e:
+- O `{% include ... %}` simplesmente **não é processado** — a tag aparece como texto literal na página publicada, ou
+- Pior: a página é servida **sem topbar e sem footer** (o texto do `{% include %}` pode ser interpretado como conteúdo/HTML inválido dependendo de onde cai).
+
+Isso quebraria silenciosamente as 12 páginas do Acervo em produção, sem erro de build — o GitHub Pages não avisa, só para de rodar Jekyll.
+
+Se algum dia for necessário desativar o Jekyll para o app institucional (SPA), a solução correta é usar `_config.yml` com `exclude:`/`include:`, ou mover o SPA para hospedagem separada — nunca `.nojekyll` na raiz enquanto o Acervo depender de `_includes`.
+
+**Verificação real de Jekyll — não feita nesta sessão.** Não havia Ruby/Jekyll instalados na máquina. Foi tentado `winget install RubyInstallerTeam.Ruby.3.3` (sucesso) seguido de `gem install jekyll bundler`, mas a instalação do gem `jekyll` falhou por falta do toolchain MSYS2 (necessário para compilar uma dependência nativa) — completar isso exigiria instalar o MSYS2 também, um footprint maior do que fazia sentido só para essa verificação pontual. O Ruby foi desinstalado (`winget uninstall`) para não deixar resíduo na máquina. Em vez disso, a verificação foi feita por simulação: um script Python reproduziu manualmente a substituição literal do Liquid (`{% include %}` → conteúdo do partial, front matter removido) para os 12 arquivos migrados e comparou byte a byte com o conteúdo original (pré-migração, via `git show HEAD:<arquivo>`) — resultado: os 12 arquivos reconstroem o HTML original exatamente. Isso dá confiança alta de que o Jekyll real vai renderizar certo (o comportamento do `{% include %}` é substituição textual simples, bem documentado, sem lógica condicional nos nossos partials), mas **não é o mesmo que rodar o build real do Jekyll**. Confirmar visualmente no primeiro deploy real (GitHub Pages) após o merge.
 
 ---
 
