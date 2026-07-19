@@ -632,8 +632,21 @@
 
         function toggle() {
           var idx = selecionados.indexOf(card);
-          var novoSelecionado = idx === -1;
-          if (idx !== -1) {
+          var jaSelecionado = idx !== -1;
+
+          /* Clicar num card já selecionado, mas que não é o ativo no
+             momento, reativa esse card (mostra o passo a passo dele)
+             em vez de removê-lo da comparação — é o gesto natural
+             sugerido pelo hint da página ("toque para ver o passo a
+             passo"). Remover da comparação exige clicar no card que
+             já é o ativo. */
+          if (jaSelecionado && passosSection && cardAtivo !== card) {
+            marcarAtivo(card);
+            return;
+          }
+
+          var novoSelecionado = !jaSelecionado;
+          if (jaSelecionado) {
             selecionados.splice(idx, 1);
             card.setAttribute('aria-checked', 'false');
           } else {
