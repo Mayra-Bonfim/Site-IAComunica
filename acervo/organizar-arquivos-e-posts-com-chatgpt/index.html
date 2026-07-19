@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -14,56 +16,11 @@
   <link rel="icon" href="/favicon-96x96.png" />
   <link rel="stylesheet" href="/acervo/acervo-tokens.css" />
   <link rel="stylesheet" href="/acervo/acervo.css" />
-  <script>
-  (function () {
-    try {
-      var saved = localStorage.getItem('acervo:theme');
-      var theme = saved ? JSON.parse(saved) : null;
-      if (theme !== 'light' && theme !== 'dark') {
-        theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-      }
-      document.documentElement.setAttribute('data-theme', theme);
-    } catch (e) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-  })();
-  </script>
+{% include acervo-head-theme.html %}
 </head>
 <body data-page="playbook" data-slug="organizar-arquivos-e-posts-com-chatgpt" data-nivel="3">
 
-  <header class="acervo-topbar">
-    <div class="acervo-topbar__inner">
-      <div class="acervo-topbar__brand">
-        <a href="/" class="acervo-topbar__site" aria-label="Voltar para o site institucional IA Comunica">
-          <svg class="acervo-topbar__site-icon" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          IA Comunica
-        </a>
-        <span class="acervo-topbar__sep" aria-hidden="true">/</span>
-        <a href="/acervo/" class="acervo-topbar__acervo">Acervo</a>
-      </div>
-      <div class="acervo-search">
-        <span class="acervo-search__icon" aria-hidden="true">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.4" />
-            <path d="M11.5 11.5 15 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
-          </svg>
-        </span>
-        <input type="search" class="acervo-search__input" placeholder="Buscar por ferramenta, problema..." aria-label="Buscar no Acervo" autocomplete="off" />
-        <div class="acervo-search__results" role="listbox"></div>
-      </div>
-      <button type="button" class="acervo-theme-toggle" data-theme-toggle aria-label="Ativar modo claro" aria-pressed="false">
-        <svg class="acervo-theme-toggle__icon acervo-theme-toggle__icon--sun" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <circle cx="8" cy="8" r="3.5" stroke="currentColor" stroke-width="1.4"/>
-          <path d="M8 1v1.5M8 13.5V15M15 8h-1.5M2.5 8H1M12.7 3.3l-1 1M4.3 11.7l-1 1M12.7 12.7l-1-1M4.3 4.3l-1-1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-        </svg>
-        <svg class="acervo-theme-toggle__icon acervo-theme-toggle__icon--moon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M13.5 9.3A5.8 5.8 0 0 1 6.7 2.5a5.8 5.8 0 1 0 6.8 6.8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
-        </svg>
-      </button>
-    </div>
-  </header>
+{% include acervo-topbar.html %}
 
   <div class="acervo-breadcrumb-row">
     <div class="breadcrumb"><a href="/acervo/">Acervo</a> / Nível 3 · Caminho A · ChatGPT Work</div>
@@ -229,41 +186,7 @@
     </div>
   </main>
 
-  <footer class="footer" role="contentinfo">
-    <div class="acervo-container footer__inner">
-
-      <div class="footer__slogan-col">
-        <p class="footer__slogan">Tecnologia que humaniza.<br>Estratégia que conecta.<br><span>Transformando dados em decisões inteligentes para o seu negócio.</span></p>
-      </div>
-
-      <div class="footer__brand">
-        <a href="/" class="footer__logo-link" aria-label="IA Comunica — início">
-          <img src="/assets/logo-transparent.png" alt="" class="footer__logo-img" />
-          <span class="footer__logo-name"><em>I.A</em> Comunica</span>
-        </a>
-        <address class="footer__address">
-          <p>Brasília, DF — Brasil</p>
-          <a href="mailto:contato@iacomunica.com.br" class="footer__email">contato@iacomunica.com.br</a>
-          <p class="footer__cnpj">CNPJ: 65.073.471/0001-75</p>
-        </address>
-        <div class="footer__social">
-          <a href="#" class="footer__social-link" aria-label="LinkedIn da IA Comunica" target="_blank" rel="noopener noreferrer">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M16.667 1.667H3.333C2.413 1.667 1.667 2.413 1.667 3.333V16.667C1.667 17.587 2.413 18.333 3.333 18.333H16.667C17.587 18.333 18.333 17.587 18.333 16.667V3.333C18.333 2.413 17.587 1.667 16.667 1.667ZM7.5 14.167H5.833V8.333H7.5V14.167ZM6.667 7.5C6.206 7.5 5.833 7.127 5.833 6.667C5.833 6.206 6.206 5.833 6.667 5.833C7.127 5.833 7.5 6.206 7.5 6.667C7.5 7.127 7.127 7.5 6.667 7.5ZM14.167 14.167H12.5V11.167C12.5 10.5 11.967 10 11.333 10C10.7 10 10.167 10.5 10.167 11.167V14.167H8.5V8.333H10.167V9.167C10.567 8.633 11.167 8.333 11.833 8.333C13.133 8.333 14.167 9.367 14.167 10.667V14.167Z" fill="currentColor"/></svg>
-          </a>
-          <a href="https://www.instagram.com/iacomunicaoficial" class="footer__social-link" aria-label="Instagram da IA Comunica" target="_blank" rel="noopener noreferrer">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="2" width="16" height="16" rx="4" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/><circle cx="14.5" cy="5.5" r="0.75" fill="currentColor"/></svg>
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="footer__bottom">
-      <div class="acervo-container footer__bottom-inner">
-        <p class="footer__copy">&copy; 2026 IA Comunica. Todos os direitos reservados.</p>
-      </div>
-    </div>
-  </footer>
+{% include acervo-footer.html %}
 
   <div class="acervo-live-region" aria-live="polite" data-acervo-live></div>
   <script src="/acervo/acervo.js"></script>
