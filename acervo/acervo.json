@@ -37,6 +37,18 @@
       "keywords": ["reunião", "transcrição", "resumo", "ata", "otter", "fireflies", "fathom"]
     },
     {
+      "slug": "criar-apresentacao-de-slides-com-ia",
+      "titulo": "Precisa montar uma apresentação de slides e não tem tempo (nem jeito) para deixar bonita?",
+      "resumo": "Gere uma apresentação pronta com o Gamma e veja como ela se compara ao que ChatGPT Work e Claude Cowork já fazem no Nível 3.",
+      "nivel": 1,
+      "dificuldade": "facil",
+      "tempoMin": 20,
+      "impacto": 2,
+      "ferramentas": ["Gamma"],
+      "problemas": ["Criar apresentações", "Criar propostas"],
+      "keywords": ["apresentação", "slides", "gamma", "powerpoint", "pitch", "proposta visual", "deck"]
+    },
+    {
       "slug": "ia-marca-compromissos-na-agenda",
       "titulo": "Quer que a IA marque compromissos direto na sua agenda?",
       "resumo": "Conecte o Claude à Google Agenda e marque, altere ou cancele por mensagem.",
@@ -122,7 +134,7 @@
       {
         "nivel": 1,
         "nome": "Tarefas simples do dia a dia",
-        "playbooks": ["resumir-emails-com-ia", "resumir-reunioes-com-ia"],
+        "playbooks": ["resumir-emails-com-ia", "resumir-reunioes-com-ia", "criar-apresentacao-de-slides-com-ia"],
         "proximo": "ia-marca-compromissos-na-agenda"
       },
       {

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Precisa montar uma apresentação e não tem tempo para deixar bonita? Use IA para gerar slides prontos com o Gamma, sem precisar de designer." />
+  <meta name="robots" content="index, follow" />
+  <title>Precisa montar uma apresentação de slides e não tem tempo (nem jeito) para deixar bonita? | Acervo IA Comunica</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="/favicon-96x96.png" />
+  <link rel="stylesheet" href="/acervo/acervo-tokens.css" />
+  <link rel="stylesheet" href="/acervo/acervo.css" />
+  <script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('acervo:theme');
+      var theme = saved ? JSON.parse(saved) : null;
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+  </script>
+</head>
+<body data-page="playbook" data-slug="criar-apresentacao-de-slides-com-ia" data-nivel="1">
+
+  <header class="acervo-topbar">
+    <div class="acervo-topbar__inner">
+      <div class="acervo-topbar__brand">
+        <a href="/" class="acervo-topbar__site" aria-label="Voltar para o site institucional IA Comunica">
+          <svg class="acervo-topbar__site-icon" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          IA Comunica
+        </a>
+        <span class="acervo-topbar__sep" aria-hidden="true">/</span>
+        <a href="/acervo/" class="acervo-topbar__acervo">Acervo</a>
+      </div>
+      <div class="acervo-search">
+        <span class="acervo-search__icon" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.4" />
+            <path d="M11.5 11.5 15 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+          </svg>
+        </span>
+        <input type="search" class="acervo-search__input" placeholder="Buscar por ferramenta, problema..." aria-label="Buscar no Acervo" autocomplete="off" />
+        <div class="acervo-search__results" role="listbox"></div>
+      </div>
+      <button type="button" class="acervo-theme-toggle" data-theme-toggle aria-label="Ativar modo claro" aria-pressed="false">
+        <svg class="acervo-theme-toggle__icon acervo-theme-toggle__icon--sun" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <circle cx="8" cy="8" r="3.5" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M8 1v1.5M8 13.5V15M15 8h-1.5M2.5 8H1M12.7 3.3l-1 1M4.3 11.7l-1 1M12.7 12.7l-1-1M4.3 4.3l-1-1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <svg class="acervo-theme-toggle__icon acervo-theme-toggle__icon--moon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M13.5 9.3A5.8 5.8 0 0 1 6.7 2.5a5.8 5.8 0 1 0 6.8 6.8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="acervo-breadcrumb-row">
+    <div class="breadcrumb"><a href="/acervo/">Acervo</a> / Criar apresentação de slides com IA</div>
+    <div class="trilha-indicador" data-trilha-indicador></div>
+  </div>
+
+  <main class="playbook">
+    <div class="metadata">
+      <span class="selo-nivel">Nível 1</span>
+      <div class="metadata-item"><span aria-hidden="true">🕐</span><span>20 min</span></div>
+      <div class="metadata-item"><span aria-hidden="true">🟢</span><span>Fácil</span></div>
+      <div class="metadata-item"><span aria-hidden="true">⭐⭐</span><span>Médio impacto</span></div>
+    </div>
+
+    <h1>Precisa montar uma apresentação de slides e não tem tempo (nem jeito) para deixar bonita?</h1>
+
+    <div class="contexto">
+      <p>Mostrar seu negócio pra um cliente novo, um fornecedor ou um investidor costuma esbarrar no mesmo problema: o conteúdo você sabe, o design não sai. Hoje existem ferramentas de IA que resolvem isso de formas diferentes — algumas escrevem o roteiro, outras entregam a apresentação já pronta, com design, imagens e layout. Veja as opções e o que cada uma cobra:</p>
+    </div>
+
+    <div class="ferramentas-section" data-comparador>
+      <div class="ferramentas-grid">
+        <div class="ferramenta-card" data-comparavel data-nome="Gamma" data-preco="Grátis com 400 créditos únicos; Plus a partir de US$9/mês" data-gratis="Sim (400 créditos únicos, sem cartão)" data-obs="Até 10 slides por geração; marca 'Made with Gamma' até assinar">
+          <span class="ferramenta-card__check" aria-hidden="true">✓</span>
+          <div class="ferramenta-nome">Gamma</div>
+          <div class="ferramenta-desc">Ferramenta feita só para apresentação (também documento e site). Plano grátis sem cartão de crédito, com 400 créditos únicos (não recarregam por mês) e até 10 slides por geração — exporta em PDF, PowerPoint ou PNG, mas com a marca "Made with Gamma". Para remover a marca e ter mais créditos todo mês, o plano Plus custa a partir de US$9/mês.</div>
+        </div>
+        <div class="ferramenta-card" data-comparavel data-nome="ChatGPT Work" data-preco="Já incluso na assinatura do ChatGPT Work" data-gratis="Não (precisa do ChatGPT Work)" data-obs="Gera o roteiro dentro do mesmo assistente que organiza arquivo, planilha, PDF e post">
+          <span class="ferramenta-card__check" aria-hidden="true">✓</span>
+          <div class="ferramenta-nome">ChatGPT Work</div>
+          <div class="ferramenta-desc">Gera o roteiro da apresentação dentro do mesmo assistente que também organiza arquivo, planilha, PDF e post — vantagem se você já usa o ChatGPT Work para essas outras tarefas, mas o resultado visual é mais simples que o do Gamma.</div>
+        </div>
+        <div class="ferramenta-card" data-comparavel data-nome="Claude Cowork" data-preco="Plano Pro a partir de US$17/mês" data-gratis="Não" data-obs="Mesma lógica do ChatGPT Work, dentro do plano Pro">
+          <span class="ferramenta-card__check" aria-hidden="true">✓</span>
+          <div class="ferramenta-nome">Claude Cowork</div>
+          <div class="ferramenta-desc">Mesma lógica do ChatGPT Work, dentro do plano Pro (US$17/mês) — o texto tende a sair mais elaborado, mas também sem o design pronto automático.</div>
+        </div>
+      </div>
+      <p class="ferramentas-hint">Toque em duas ou mais para comparar lado a lado.</p>
+      <div class="comparador-wrap">
+        <table class="comparador-tabela"></table>
+      </div>
+    </div>
+
+    <div class="contexto">
+      <p>Independente do que você marcou na comparação acima, o passo a passo abaixo é sobre o Gamma: hoje é a única das três com um plano grátis dedicado a apresentação, sem precisar de assinatura para começar.</p>
+    </div>
+
+    <div class="passos-section">
+      <h2 class="passos-title">Passo a Passo com o Gamma</h2>
+
+      <div class="passo">
+        <div class="passo-numero">1</div>
+        <div class="passo-titulo">Acesse o Gamma</div>
+        <div class="passo-desc">Acesse gamma.app e crie uma conta gratuita (com Google ou e-mail) — não pede cartão de crédito.</div>
+      </div>
+
+      <div class="passo highlight">
+        <div class="passo-numero">2</div>
+        <div class="passo-titulo">Gere a apresentação a partir de um prompt</div>
+        <div class="passo-desc">Escolha "Gerar" → "Apresentação" e descreva o que você precisa:</div>
+        <div class="passo-prompt" data-copy-text="Crie uma apresentação de 6 slides para mostrar meus serviços de [ramo do seu negócio] a um cliente novo, com um slide de abertura, um de diferenciais, um de serviços, um de preços e um de contato.">
+          "Crie uma apresentação de 6 slides para mostrar meus serviços de [ramo do seu negócio] a um cliente novo, com um slide de abertura, um de diferenciais, um de serviços, um de preços e um de contato."
+          <button type="button" class="copiar-btn" data-copiar aria-label="Copiar prompt">
+            <svg class="icon-copy" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 7V3.8C7 3.36 7.36 3 7.8 3h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H13M3.8 7h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H3.8c-.44 0-.8-.36-.8-.8V7.8c0-.44.36-.8.8-.8Z" stroke="currentColor" stroke-width="1.4" /></svg>
+            <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="passo">
+        <div class="passo-numero">3</div>
+        <div class="passo-titulo">Revise o design antes de exportar</div>
+        <div class="passo-desc">O Gamma já entrega o layout, as imagens e a paleta de cores prontos — troque qualquer imagem gerada por uma foto real do seu negócio, se quiser, e ajuste o texto de cada slide.</div>
+      </div>
+
+      <div class="passo">
+        <div class="passo-numero">4</div>
+        <div class="passo-titulo">Exporte ou compartilhe</div>
+        <div class="passo-desc">No plano grátis, você exporta em PDF, PowerPoint (PPTX) ou PNG, ou compartilha por link direto — só saem com a marca "Made with Gamma" até você assinar um plano pago.</div>
+      </div>
+    </div>
+
+    <div class="checklist-section" data-checklist>
+      <h2 class="checklist-title">Seu Checklist</h2>
+      <button type="button" class="checklist-item">
+        <span class="checkbox" aria-hidden="true"></span>
+        <span class="checklist-item__label">Criei uma conta gratuita no Gamma, sem cartão de crédito</span>
+      </button>
+      <button type="button" class="checklist-item">
+        <span class="checkbox" aria-hidden="true"></span>
+        <span class="checklist-item__label">Gerei uma apresentação real a partir de um prompt direto</span>
+      </button>
+      <button type="button" class="checklist-item">
+        <span class="checkbox" aria-hidden="true"></span>
+        <span class="checklist-item__label">Revisei o design e troquei ao menos uma imagem ou texto antes de exportar</span>
+      </button>
+      <button type="button" class="checklist-item">
+        <span class="checkbox" aria-hidden="true"></span>
+        <span class="checklist-item__label">Exportei ou compartilhei a apresentação pronta</span>
+      </button>
+    </div>
+
+    <div class="calculadora-section" data-calculadora>
+      <h2 class="calculadora-title">Quanto tempo isso pode economizar por mês?</h2>
+      <p class="calculadora-desc">Estimativa com base em pesquisa de mercado sobre uso real de IA em tarefas administrativas (não é uma promessa, é uma referência).</p>
+      <div class="calculadora-row">
+        <div class="calculadora-field">
+          <label for="calc-horas-criar-apresentacao-de-slides-com-ia">Horas por semana com essa tarefa</label>
+          <div class="stepper">
+            <button type="button" data-calc-menos aria-label="Diminuir horas">−</button>
+            <input type="number" id="calc-horas-criar-apresentacao-de-slides-com-ia" data-calc-horas value="3" min="0" max="80" inputmode="numeric" />
+            <button type="button" data-calc-mais aria-label="Aumentar horas">+</button>
+          </div>
+        </div>
+        <div class="calculadora-field">
+          <label for="calc-categoria-criar-apresentacao-de-slides-com-ia">Tipo de tarefa</label>
+          <select id="calc-categoria-criar-apresentacao-de-slides-com-ia" class="calculadora-select" data-calc-categoria>
+            <option value="redacao">Redação e comunicação (e-mail, conteúdo, resumo de reunião)</option>
+            <option value="atendimento">Atendimento ao cliente</option>
+            <option value="geral" selected>Agendamento, organização de arquivos e outras tarefas administrativas</option>
+          </select>
+        </div>
+      </div>
+      <div class="calculadora-resultado">
+        <div class="calculadora-resultado__valor" data-calc-resultado aria-live="polite">0 horas por mês</div>
+        <div class="calculadora-resultado__nota" data-calc-nota></div>
+      </div>
+    </div>
+
+    <section class="resolveu-section" data-resolveu>
+      <h2 class="resolveu-title">Você resolveu esse problema?</h2>
+      <div class="resolveu-botoes">
+        <button type="button" class="resolveu-btn" data-resolveu-resposta="sim" aria-pressed="false">Sim, resolvi</button>
+        <button type="button" class="resolveu-btn" data-resolveu-resposta="nao" aria-pressed="false">Ainda não</button>
+      </div>
+      <div class="resolveu-resultado resolveu-resultado--sim" data-resolveu-resultado="sim">
+        <p>Ótimo! Agora você tem uma apresentação pronta em minutos, sem depender de designer.</p>
+        <a class="quiz-resultado__cta" data-resolveu-proximo-link href="/acervo/ia-marca-compromissos-na-agenda/">Continuar para o Nível 2</a>
+      </div>
+      <div class="resolveu-resultado resolveu-resultado--nao" data-resolveu-resultado="nao">
+        <p>Sem problema, cada negócio tem seu ritmo. Aqui vão outros guias relacionados — e se preferir, a IA Comunica te ajuda direto.</p>
+        <div class="resolveu-relacionados" data-resolveu-relacionados></div>
+        <a class="btn-outline-comercial" data-comercial-link href="#">Falar com a IA Comunica</a>
+      </div>
+    </section>
+
+    <div class="cta-section">
+      <p class="cta-text">Você já sabe montar uma apresentação pronta em minutos. No <a href="/acervo/ia-marca-compromissos-na-agenda/">Nível 2</a>, a IA passa a mexer direto na sua agenda e nos seus e-mails. (Quer ver apresentação dentro de um assistente que também organiza arquivo, planilha, PDF e post? Isso é o <a href="/acervo/organizar-arquivos-planilhas-e-posts-com-ia/">Nível 3</a>.)</p>
+    </div>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="acervo-container footer__inner">
+
+      <div class="footer__slogan-col">
+        <p class="footer__slogan">Tecnologia que humaniza.<br>Estratégia que conecta.<br><span>Transformando dados em decisões inteligentes para o seu negócio.</span></p>
+      </div>
+
+      <div class="footer__brand">
+        <a href="/" class="footer__logo-link" aria-label="IA Comunica — início">
+          <img src="/assets/logo-transparent.png" alt="" class="footer__logo-img" />
+          <span class="footer__logo-name"><em>I.A</em> Comunica</span>
+        </a>
+        <address class="footer__address">
+          <p>Brasília, DF — Brasil</p>
+          <a href="mailto:contato@iacomunica.com.br" class="footer__email">contato@iacomunica.com.br</a>
+          <p class="footer__cnpj">CNPJ: 65.073.471/0001-75</p>
+        </address>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" aria-label="LinkedIn da IA Comunica" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M16.667 1.667H3.333C2.413 1.667 1.667 2.413 1.667 3.333V16.667C1.667 17.587 2.413 18.333 3.333 18.333H16.667C17.587 18.333 18.333 17.587 18.333 16.667V3.333C18.333 2.413 17.587 1.667 16.667 1.667ZM7.5 14.167H5.833V8.333H7.5V14.167ZM6.667 7.5C6.206 7.5 5.833 7.127 5.833 6.667C5.833 6.206 6.206 5.833 6.667 5.833C7.127 5.833 7.5 6.206 7.5 6.667C7.5 7.127 7.127 7.5 6.667 7.5ZM14.167 14.167H12.5V11.167C12.5 10.5 11.967 10 11.333 10C10.7 10 10.167 10.5 10.167 11.167V14.167H8.5V8.333H10.167V9.167C10.567 8.633 11.167 8.333 11.833 8.333C13.133 8.333 14.167 9.367 14.167 10.667V14.167Z" fill="currentColor"/></svg>
+          </a>
+          <a href="https://www.instagram.com/iacomunicaoficial" class="footer__social-link" aria-label="Instagram da IA Comunica" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="2" width="16" height="16" rx="4" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/><circle cx="14.5" cy="5.5" r="0.75" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <div class="acervo-container footer__bottom-inner">
+        <p class="footer__copy">&copy; 2026 IA Comunica. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="acervo-live-region" aria-live="polite" data-acervo-live></div>
+  <script src="/acervo/acervo.js"></script>
+</body>
+</html>
