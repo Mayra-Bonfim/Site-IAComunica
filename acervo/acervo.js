@@ -561,11 +561,31 @@
         logo abaixo (aria-current) — só ativo em páginas que marcam
         a seção de passos com [data-passos-dinamico].
 
+     Duas variações de exibição do passo a passo, conforme o que a
+     página tem disponível:
+     a) Modo inline — a seção de passos contém vários blocos
+        [data-passo-bloco="<chave>"], um por ferramenta, cada um
+        com o passo a passo completo já escrito na página. O card
+        aponta para o bloco dele via [data-passo-inline="<chave>"].
+        Trocar de ferramenta apenas alterna qual bloco fica visível
+        (mostra/esconde com o atributo "hidden"), sem reescrever o
+        DOM. Usado quando todas as ferramentas do comparador já têm
+        conteúdo real publicado na própria página (ex.: as 4 páginas
+        de e-mail/agenda/reunião).
+     b) Modo externo — igual ao inline, mas quando a ferramenta tem
+        passo a passo publicado em OUTRO playbook do Acervo. O card
+        aponta para lá via [data-passo-slug="<slug-da-pagina>"] e o
+        bloco exibido é um resumo com link, montado a partir do
+        acervo.json (evita duplicar conteúdo). Usado na página do
+        Gamma para ChatGPT Work / Claude Cowork.
+
      Regra da escolha: o card que acabou de ser marcado (selecionado
      pela primeira vez) vira o ativo. Se o card ativo for desmarcado,
      a exibição cai para o último card ainda selecionado ou, se
      nenhum restar, para o card "local" (o dono da própria página,
-     sem data-passo-slug — ex.: Gamma na página do Gamma).
+     sem data-passo-slug nem data-passo-inline — ex.: Gamma na
+     página do Gamma). Em páginas 100% inline não existe card
+     "local": o padrão é o primeiro bloco presente no HTML.
      ---------------------------------------------------------- */
   function initComparador(data) {
     var secoes = document.querySelectorAll('.ferramentas-section[data-comparador]');
@@ -577,12 +597,27 @@
       var selecionados = [];
 
       var passosSection = document.querySelector('.passos-section[data-passos-dinamico]');
-      var passosOriginalHTML = passosSection ? passosSection.innerHTML : null;
+      var blocosInline = passosSection ? passosSection.querySelectorAll('[data-passo-bloco]') : [];
+      var modoInline = blocosInline.length > 0;
+      var passosOriginalHTML = (passosSection && !modoInline) ? passosSection.innerHTML : null;
       var cardLocal = null;
       var cardAtivo = null;
       cards.forEach(function (c) {
-        if (!c.hasAttribute('data-passo-slug')) cardLocal = c;
+        if (!c.hasAttribute('data-passo-slug') && !c.hasAttribute('data-passo-inline')) cardLocal = c;
       });
+
+      /* Card padrão: para onde a exibição cai quando nenhum card
+         segue selecionado. No modo externo é o cardLocal (dono da
+         própria página). No modo inline, como toda ferramenta tem
+         data-passo-inline (não existe "dono" único), o padrão é o
+         card que corresponde ao primeiro bloco escrito no HTML. */
+      var cardPadrao = cardLocal;
+      if (modoInline && !cardPadrao) {
+        var chavePadrao = blocosInline[0].getAttribute('data-passo-bloco');
+        cards.forEach(function (c) {
+          if (!cardPadrao && c.getAttribute('data-passo-inline') === chavePadrao) cardPadrao = c;
+        });
+      }
 
       cards.forEach(function (card) {
         card.setAttribute('role', 'checkbox');
@@ -610,7 +645,7 @@
             if (novoSelecionado) {
               marcarAtivo(card);
             } else if (cardAtivo === card) {
-              marcarAtivo(selecionados.length ? selecionados[selecionados.length - 1] : cardLocal);
+              marcarAtivo(selecionados.length ? selecionados[selecionados.length - 1] : cardPadrao);
             }
           }
         }
@@ -634,6 +669,10 @@
 
       function renderPassos() {
         if (!passosSection) return;
+        if (modoInline) {
+          renderPassosInline();
+          return;
+        }
         if (!cardAtivo || !cardAtivo.hasAttribute('data-passo-slug')) {
           passosSection.innerHTML = passosOriginalHTML;
           return;
@@ -651,7 +690,16 @@
           '</div>';
       }
 
-      if (passosSection && cardLocal) {
+      function renderPassosInline() {
+        var chave = cardAtivo ? cardAtivo.getAttribute('data-passo-inline') : null;
+        blocosInline.forEach(function (bloco) {
+          bloco.hidden = bloco.getAttribute('data-passo-bloco') !== chave;
+        });
+      }
+
+      if (passosSection && modoInline) {
+        marcarAtivo(cardPadrao || cards[0]);
+      } else if (passosSection && cardLocal) {
         marcarAtivo(cardLocal);
       }
 

@@ -87,68 +87,181 @@
 
     <div class="ferramentas-section" data-comparador>
       <div class="ferramentas-grid">
-        <div class="ferramenta-card" data-comparavel data-nome="Read.ai" data-preco="Grátis até 5 transcrições/mês; pago US$15–22/mês" data-gratis="Sim (limitado)" data-obs="Grava e resume a reunião automaticamente">
+        <div class="ferramenta-card" data-comparavel data-nome="Read.ai" data-preco="Grátis até 5 transcrições/mês; pago US$15–22/mês" data-gratis="Sim (limitado)" data-obs="Grava e resume a reunião automaticamente" data-passo-inline="readai">
           <span class="ferramenta-card__check" aria-hidden="true">✓</span>
           <div class="ferramenta-nome">Read.ai</div>
           <div class="ferramenta-desc">Grava e resume a reunião automaticamente, gratuito até 5 transcrições por mês, pago a partir de cerca de US$15 a US$22 por mês.</div>
         </div>
-        <div class="ferramenta-card" data-comparavel data-nome="Otter.ai" data-preco="A partir de US$8,33/mês" data-gratis="Sim" data-obs="Transcreve e resume em tempo real">
+        <div class="ferramenta-card" data-comparavel data-nome="Otter.ai" data-preco="A partir de US$8,33/mês" data-gratis="Sim" data-obs="Transcreve e resume em tempo real" data-passo-inline="otter">
           <span class="ferramenta-card__check" aria-hidden="true">✓</span>
           <div class="ferramenta-nome">Otter.ai</div>
           <div class="ferramenta-desc">Transcreve e resume em tempo real, tem plano gratuito e pagos a partir de US$8,33 por mês.</div>
         </div>
-        <div class="ferramenta-card" data-comparavel data-nome="Fireflies.ai" data-preco="A partir de US$10/mês" data-gratis="Sim" data-obs="Integração forte a CRM">
+        <div class="ferramenta-card" data-comparavel data-nome="Fireflies.ai" data-preco="A partir de US$10/mês" data-gratis="Sim" data-obs="Integração forte a CRM" data-passo-inline="fireflies">
           <span class="ferramenta-card__check" aria-hidden="true">✓</span>
           <div class="ferramenta-nome">Fireflies.ai</div>
           <div class="ferramenta-desc">Grava, transcreve e resume, com integração forte a CRM, plano gratuito e pagos a partir de US$10 por mês.</div>
         </div>
-        <div class="ferramenta-card" data-comparavel data-nome="Fathom" data-preco="A partir de US$15/mês" data-gratis="Sim (mais generoso do grupo)" data-obs="Sem limite de gravações no gratuito">
+        <div class="ferramenta-card" data-comparavel data-nome="Fathom" data-preco="A partir de US$16/mês" data-gratis="Sim (mais generoso do grupo)" data-obs="Gravação ilimitada no grátis; resumo avançado de IA limitado a 5/mês" data-passo-inline="fathom">
           <span class="ferramenta-card__check" aria-hidden="true">✓</span>
           <div class="ferramenta-nome">Fathom</div>
-          <div class="ferramenta-desc">Tem o plano gratuito mais generoso do grupo, sem limite de gravações, e pagos a partir de US$15 por mês.</div>
+          <div class="ferramenta-desc">Tem o plano gratuito mais generoso do grupo, sem limite de gravações ou armazenamento — mas o resumo avançado de IA, que é o valor central da ferramenta, é limitado a 5 chamadas por mês no grátis. Pagos a partir de US$16 por mês (Premium individual, anual).</div>
         </div>
       </div>
-      <p class="ferramentas-hint">Toque em duas ou mais para comparar lado a lado.</p>
+      <p class="ferramentas-hint">Toque em uma ferramenta para ver o passo a passo dela abaixo. Toque em duas ou mais para comparar lado a lado.</p>
       <div class="comparador-wrap">
         <table class="comparador-tabela"></table>
       </div>
     </div>
 
     <div class="contexto">
-      <p>O passo a passo usa o Read.ai como exemplo, mas é parecido em qualquer uma:</p>
+      <p>O passo a passo é parecido em qualquer uma das quatro — escolha a sua:</p>
     </div>
 
-    <div class="passos-section">
-      <h2 class="passos-title">Passo a Passo com o Read.ai</h2>
+    <div class="passos-section" data-passos-dinamico>
+      <div class="passo-bloco" data-passo-bloco="readai">
+        <h2 class="passos-title">Passo a Passo com o Read.ai</h2>
 
-      <div class="passo">
-        <div class="passo-numero">1</div>
-        <div class="passo-titulo">Crie uma conta gratuita</div>
-        <div class="passo-desc">Crie uma conta gratuita em read.ai com seu e-mail de trabalho.</div>
+        <div class="passo">
+          <div class="passo-numero">1</div>
+          <div class="passo-titulo">Crie uma conta gratuita</div>
+          <div class="passo-desc">Crie uma conta gratuita em read.ai com seu e-mail de trabalho.</div>
+        </div>
+
+        <div class="passo">
+          <div class="passo-numero">2</div>
+          <div class="passo-titulo">Conecte sua agenda</div>
+          <div class="passo-desc">Conecte sua agenda (Google Agenda ou Outlook), assim a ferramenta já sabe quando você tem reunião.</div>
+        </div>
+
+        <div class="passo">
+          <div class="passo-numero">3</div>
+          <div class="passo-titulo">Deixe o assistente entrar na chamada</div>
+          <div class="passo-desc">Na hora da chamada, deixe o assistente entrar automaticamente na sala.</div>
+        </div>
+
+        <div class="passo highlight">
+          <div class="passo-numero">4</div>
+          <div class="passo-titulo">Abra o resumo e peça um detalhe extra</div>
+          <div class="passo-desc">Depois da reunião, abra o resumo e peça um detalhe extra se precisar:</div>
+          <div class="passo-prompt" data-copy-text="Liste só as tarefas que ficaram combinadas para mim, com prazo, se foi mencionado.">
+            "Liste só as tarefas que ficaram combinadas para mim, com prazo, se foi mencionado."
+            <button type="button" class="copiar-btn" data-copiar aria-label="Copiar prompt">
+              <svg class="icon-copy" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 7V3.8C7 3.36 7.36 3 7.8 3h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H13M3.8 7h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H3.8c-.44 0-.8-.36-.8-.8V7.8c0-.44.36-.8.8-.8Z" stroke="currentColor" stroke-width="1.4" /></svg>
+              <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div class="passo">
-        <div class="passo-numero">2</div>
-        <div class="passo-titulo">Conecte sua agenda</div>
-        <div class="passo-desc">Conecte sua agenda (Google Agenda ou Outlook), assim a ferramenta já sabe quando você tem reunião.</div>
+      <div class="passo-bloco" data-passo-bloco="otter" hidden>
+        <h2 class="passos-title">Passo a Passo com o Otter.ai</h2>
+
+        <div class="passo">
+          <div class="passo-numero">1</div>
+          <div class="passo-titulo">Crie uma conta gratuita</div>
+          <div class="passo-desc">Crie uma conta gratuita em otter.ai com seu e-mail de trabalho. O plano grátis já dá 300 minutos de transcrição por mês, o suficiente pra várias reuniões curtas.</div>
+        </div>
+
+        <div class="passo">
+          <div class="passo-numero">2</div>
+          <div class="passo-titulo">Conecte sua agenda</div>
+          <div class="passo-desc">Conecte sua agenda (Google Agenda ou Outlook) em Apps → Connect calendars, assim o Otter já sabe quando você tem reunião marcada.</div>
+        </div>
+
+        <div class="passo">
+          <div class="passo-numero">3</div>
+          <div class="passo-titulo">Deixe o assistente entrar na chamada</div>
+          <div class="passo-desc">Na hora da chamada (Zoom, Google Meet ou Teams), deixe o Otter Notetaker entrar automaticamente na sala. Se for uma reunião sem agendamento, dá pra gravar na hora pelo app ou celular.</div>
+        </div>
+
+        <div class="passo highlight">
+          <div class="passo-numero">4</div>
+          <div class="passo-titulo">Abra o resumo e peça um detalhe extra</div>
+          <div class="passo-desc">Depois da reunião, abra o resumo automático com os pontos principais e as tarefas combinadas. Peça um recorte extra se precisar:</div>
+          <div class="passo-prompt" data-copy-text="Liste só as decisões que a gente tomou nessa reunião, sem os detalhes da conversa.">
+            "Liste só as decisões que a gente tomou nessa reunião, sem os detalhes da conversa."
+            <button type="button" class="copiar-btn" data-copiar aria-label="Copiar prompt">
+              <svg class="icon-copy" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 7V3.8C7 3.36 7.36 3 7.8 3h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H13M3.8 7h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H3.8c-.44 0-.8-.36-.8-.8V7.8c0-.44.36-.8.8-.8Z" stroke="currentColor" stroke-width="1.4" /></svg>
+              <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div class="passo">
-        <div class="passo-numero">3</div>
-        <div class="passo-titulo">Deixe o assistente entrar na chamada</div>
-        <div class="passo-desc">Na hora da chamada, deixe o assistente entrar automaticamente na sala.</div>
+      <div class="passo-bloco" data-passo-bloco="fireflies" hidden>
+        <h2 class="passos-title">Passo a Passo com o Fireflies.ai</h2>
+
+        <div class="passo">
+          <div class="passo-numero">1</div>
+          <div class="passo-titulo">Crie uma conta gratuita</div>
+          <div class="passo-desc">Crie uma conta gratuita em fireflies.ai com seu e-mail de trabalho. O plano grátis dá 800 minutos de armazenamento, sem limite de transcrições ou resumos.</div>
+        </div>
+
+        <div class="passo">
+          <div class="passo-numero">2</div>
+          <div class="passo-titulo">Conecte sua agenda</div>
+          <div class="passo-desc">Conecte sua agenda (Google ou Outlook) e ative a entrada automática, assim o assistente da Fireflies (chamado "Fred") entra sozinho em toda reunião com link de Zoom, Meet ou Teams. Também dá pra convidar fred@fireflies.ai direto pra uma reunião pontual.</div>
+        </div>
+
+        <div class="passo">
+          <div class="passo-numero">3</div>
+          <div class="passo-titulo">Deixe a reunião rolar normalmente</div>
+          <div class="passo-desc">Durante a chamada, a Fireflies grava e transcreve em tempo real. Ao final, chega um e-mail com o link do resumo pronto.</div>
+        </div>
+
+        <div class="passo highlight">
+          <div class="passo-numero">4</div>
+          <div class="passo-titulo">Abra o resumo e ajuste o foco</div>
+          <div class="passo-desc">Abra o resumo na aba "Notes" (visão geral, pontos-chave e tarefas) e peça um recorte mais específico se quiser:</div>
+          <div class="passo-prompt" data-copy-text="Gera um resumo focado só nos próximos passos e em quem ficou responsável por cada um.">
+            "Gera um resumo focado só nos próximos passos e em quem ficou responsável por cada um."
+            <button type="button" class="copiar-btn" data-copiar aria-label="Copiar prompt">
+              <svg class="icon-copy" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 7V3.8C7 3.36 7.36 3 7.8 3h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H13M3.8 7h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H3.8c-.44 0-.8-.36-.8-.8V7.8c0-.44.36-.8.8-.8Z" stroke="currentColor" stroke-width="1.4" /></svg>
+              <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div class="passo highlight">
-        <div class="passo-numero">4</div>
-        <div class="passo-titulo">Abra o resumo e peça um detalhe extra</div>
-        <div class="passo-desc">Depois da reunião, abra o resumo e peça um detalhe extra se precisar:</div>
-        <div class="passo-prompt" data-copy-text="Liste só as tarefas que ficaram combinadas para mim, com prazo, se foi mencionado.">
-          "Liste só as tarefas que ficaram combinadas para mim, com prazo, se foi mencionado."
-          <button type="button" class="copiar-btn" data-copiar aria-label="Copiar prompt">
-            <svg class="icon-copy" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 7V3.8C7 3.36 7.36 3 7.8 3h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H13M3.8 7h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H3.8c-.44 0-.8-.36-.8-.8V7.8c0-.44.36-.8.8-.8Z" stroke="currentColor" stroke-width="1.4" /></svg>
-            <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
-          </button>
+      <div class="passo-bloco" data-passo-bloco="fathom" hidden>
+        <h2 class="passos-title">Passo a Passo com o Fathom</h2>
+
+        <div class="passo">
+          <div class="passo-numero">1</div>
+          <div class="passo-titulo">Crie uma conta gratuita</div>
+          <div class="passo-desc">Crie uma conta gratuita em fathom.ai (o app baixa em segundos) — não pede cartão de crédito.</div>
+        </div>
+
+        <div class="passo">
+          <div class="passo-numero">2</div>
+          <div class="passo-titulo">Conecte sua agenda</div>
+          <div class="passo-desc">Conecte sua agenda Google ou Microsoft, assim o Fathom aparece sozinho oferecendo entrar nas suas reuniões do Zoom, Google Meet ou Teams.</div>
+        </div>
+
+        <div class="passo">
+          <div class="passo-numero">3</div>
+          <div class="passo-titulo">Deixe o Fathom entrar e gravar</div>
+          <div class="passo-desc">Na hora da chamada, clique no ícone do Fathom (extensão ou app) pra ele entrar na sala e começar a gravar. Nas configurações dá pra ativar "auto-record", assim você nunca esquece de apertar gravar.</div>
+        </div>
+
+        <div class="passo highlight">
+          <div class="passo-numero">4</div>
+          <div class="passo-titulo">Abra o resumo e peça um recorte</div>
+          <div class="passo-desc">Depois da chamada, o resumo com transcrição e tarefas já está pronto no painel. Peça algo mais específico se quiser:</div>
+          <div class="passo-prompt" data-copy-text="Separa só as objeções que o cliente levantou nessa call.">
+            "Separa só as objeções que o cliente levantou nessa call."
+            <button type="button" class="copiar-btn" data-copiar aria-label="Copiar prompt">
+              <svg class="icon-copy" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 7V3.8C7 3.36 7.36 3 7.8 3h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H13M3.8 7h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H3.8c-.44 0-.8-.36-.8-.8V7.8c0-.44.36-.8.8-.8Z" stroke="currentColor" stroke-width="1.4" /></svg>
+              <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="passo">
+          <div class="passo-numero">5</div>
+          <div class="passo-titulo">Atenção ao limite do grátis</div>
+          <div class="passo-desc">No plano grátis, só as 5 primeiras chamadas do mês recebem esse resumo avançado — da 6ª em diante vem um resumo mais básico.</div>
         </div>
       </div>
     </div>

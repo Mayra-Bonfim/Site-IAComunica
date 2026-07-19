@@ -86,66 +86,110 @@
 
     <div class="ferramentas-section" data-comparador>
       <div class="ferramentas-grid">
-        <div class="ferramenta-card" data-comparavel data-nome="Claude" data-preco="Conectores disponíveis nos planos do Claude" data-gratis="—" data-obs="Cria rascunhos; você sempre revisa e envia">
+        <div class="ferramenta-card" data-comparavel data-nome="Claude" data-preco="Conectores disponíveis nos planos do Claude" data-gratis="—" data-obs="Cria rascunhos; você sempre revisa e envia" data-passo-inline="claude">
           <span class="ferramenta-card__check" aria-hidden="true">✓</span>
           <div class="ferramenta-nome">Claude</div>
           <div class="ferramenta-desc">Conecta com o Gmail, lê seus e-mails e cria rascunhos de resposta prontos para você revisar, mas não envia sozinho. Quem aperta enviar é sempre você.</div>
         </div>
-        <div class="ferramenta-card" data-comparavel data-nome="ChatGPT" data-preco="Pago (Plus, Pro, Team ou Enterprise)" data-gratis="Não" data-obs="Sem anexo; bloqueado para contas da UE e do Reino Unido">
+        <div class="ferramenta-card" data-comparavel data-nome="ChatGPT" data-preco="Pago (Plus, Pro, Team ou Enterprise)" data-gratis="Não" data-obs="Sem anexo; bloqueado para contas da UE e do Reino Unido" data-passo-inline="chatgpt">
           <span class="ferramenta-card__check" aria-hidden="true">✓</span>
           <div class="ferramenta-nome">ChatGPT</div>
           <div class="ferramenta-desc">Conecta com o Gmail e consegue enviar um e-mail por vez, sempre pedindo sua aprovação antes de mandar. Não envia anexo, é um recurso pago (Plus, Pro, Team ou Enterprise) e hoje está bloqueado para contas na União Europeia e no Reino Unido.</div>
         </div>
       </div>
-      <p class="ferramentas-hint">Toque nas duas para comparar lado a lado.</p>
+      <p class="ferramentas-hint">Toque em uma ferramenta para ver o passo a passo dela abaixo. Toque nas duas para comparar lado a lado.</p>
       <div class="comparador-wrap">
         <table class="comparador-tabela"></table>
       </div>
     </div>
 
     <div class="contexto">
-      <p>Independente do que você marcou na comparação acima, o passo a passo abaixo é sobre o Claude: é a opção que mantém você no controle antes de qualquer envio.</p>
+      <p>Se você prefere manter o controle antes de qualquer envio, o caminho mais simples é o Claude:</p>
     </div>
 
-    <div class="passos-section">
-      <h2 class="passos-title">Passo a Passo com o Claude</h2>
+    <div class="passos-section" data-passos-dinamico>
+      <div class="passo-bloco" data-passo-bloco="claude">
+        <h2 class="passos-title">Passo a Passo com o Claude</h2>
 
-      <div class="passo">
-        <div class="passo-numero">1</div>
-        <div class="passo-titulo">Conecte o Gmail no Claude</div>
-        <div class="passo-desc">No Claude, conecte o Gmail pelas configurações de conectores, do mesmo jeito que conectou a agenda.</div>
-      </div>
+        <div class="passo">
+          <div class="passo-numero">1</div>
+          <div class="passo-titulo">Conecte o Gmail no Claude</div>
+          <div class="passo-desc">No Claude, conecte o Gmail pelas configurações de conectores, do mesmo jeito que conectou a agenda.</div>
+        </div>
 
-      <div class="passo highlight">
-        <div class="passo-numero">2</div>
-        <div class="passo-titulo">Peça um panorama da caixa de entrada</div>
-        <div class="passo-desc">Peça um panorama da caixa de entrada:</div>
-        <div class="passo-prompt" data-copy-text="Veja meus e-mails não lidos de hoje e me diga quais realmente precisam de resposta.">
-          "Veja meus e-mails não lidos de hoje e me diga quais realmente precisam de resposta."
-          <button type="button" class="copiar-btn" data-copiar aria-label="Copiar prompt">
-            <svg class="icon-copy" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 7V3.8C7 3.36 7.36 3 7.8 3h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H13M3.8 7h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H3.8c-.44 0-.8-.36-.8-.8V7.8c0-.44.36-.8.8-.8Z" stroke="currentColor" stroke-width="1.4" /></svg>
-            <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
-          </button>
+        <div class="passo highlight">
+          <div class="passo-numero">2</div>
+          <div class="passo-titulo">Peça um panorama da caixa de entrada</div>
+          <div class="passo-desc">Peça um panorama da caixa de entrada:</div>
+          <div class="passo-prompt" data-copy-text="Veja meus e-mails não lidos de hoje e me diga quais realmente precisam de resposta.">
+            "Veja meus e-mails não lidos de hoje e me diga quais realmente precisam de resposta."
+            <button type="button" class="copiar-btn" data-copiar aria-label="Copiar prompt">
+              <svg class="icon-copy" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 7V3.8C7 3.36 7.36 3 7.8 3h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H13M3.8 7h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H3.8c-.44 0-.8-.36-.8-.8V7.8c0-.44.36-.8.8-.8Z" stroke="currentColor" stroke-width="1.4" /></svg>
+              <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="passo">
+          <div class="passo-numero">3</div>
+          <div class="passo-titulo">Escolha um e peça o rascunho</div>
+          <div class="passo-desc">Escolha um e peça o rascunho:</div>
+          <div class="passo-prompt" data-copy-text="Crie um rascunho de resposta para o e-mail do cliente João, confirmando que o orçamento sai até sexta-feira.">
+            "Crie um rascunho de resposta para o e-mail do cliente João, confirmando que o orçamento sai até sexta-feira."
+            <button type="button" class="copiar-btn" data-copiar aria-label="Copiar prompt">
+              <svg class="icon-copy" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 7V3.8C7 3.36 7.36 3 7.8 3h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H13M3.8 7h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H3.8c-.44 0-.8-.36-.8-.8V7.8c0-.44.36-.8.8-.8Z" stroke="currentColor" stroke-width="1.4" /></svg>
+              <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="passo">
+          <div class="passo-numero">4</div>
+          <div class="passo-titulo">Revise, vá ao Gmail e envie você mesmo</div>
+          <div class="passo-desc">Vá até o Gmail, revise o rascunho e envie você mesmo. Se o seu objetivo é a IA enviar sozinha com sua aprovação em cada envio, essa função existe hoje no ChatGPT (paga, sem anexo, e indisponível para contas da União Europeia e do Reino Unido).</div>
         </div>
       </div>
 
-      <div class="passo">
-        <div class="passo-numero">3</div>
-        <div class="passo-titulo">Escolha um e peça o rascunho</div>
-        <div class="passo-desc">Escolha um e peça o rascunho:</div>
-        <div class="passo-prompt" data-copy-text="Crie um rascunho de resposta para o e-mail do cliente João, confirmando que o orçamento sai até sexta-feira.">
-          "Crie um rascunho de resposta para o e-mail do cliente João, confirmando que o orçamento sai até sexta-feira."
-          <button type="button" class="copiar-btn" data-copiar aria-label="Copiar prompt">
-            <svg class="icon-copy" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 7V3.8C7 3.36 7.36 3 7.8 3h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H13M3.8 7h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H3.8c-.44 0-.8-.36-.8-.8V7.8c0-.44.36-.8.8-.8Z" stroke="currentColor" stroke-width="1.4" /></svg>
-            <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
-          </button>
-        </div>
-      </div>
+      <div class="passo-bloco" data-passo-bloco="chatgpt" hidden>
+        <h2 class="passos-title">Passo a Passo com o ChatGPT</h2>
 
-      <div class="passo">
-        <div class="passo-numero">4</div>
-        <div class="passo-titulo">Revise, vá ao Gmail e envie você mesmo</div>
-        <div class="passo-desc">Vá até o Gmail, revise o rascunho e envie você mesmo. Se o seu objetivo é a IA enviar sozinha com sua aprovação em cada envio, essa função existe hoje no ChatGPT (paga, sem anexo, e indisponível para contas da União Europeia e do Reino Unido).</div>
+        <div class="passo">
+          <div class="passo-numero">1</div>
+          <div class="passo-titulo">Conecte o Gmail no ChatGPT</div>
+          <div class="passo-desc">No ChatGPT, vá em Configurações → Conectores (Connected Apps) e clique em "Conectar" ao lado do Gmail; autorize o acesso com sua conta Google.</div>
+        </div>
+
+        <div class="passo highlight">
+          <div class="passo-numero">2</div>
+          <div class="passo-titulo">Peça um panorama da caixa de entrada</div>
+          <div class="passo-desc">Peça um panorama da caixa de entrada:</div>
+          <div class="passo-prompt" data-copy-text="Veja meus e-mails não lidos de hoje e me diga quais realmente precisam de resposta.">
+            "Veja meus e-mails não lidos de hoje e me diga quais realmente precisam de resposta."
+            <button type="button" class="copiar-btn" data-copiar aria-label="Copiar prompt">
+              <svg class="icon-copy" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 7V3.8C7 3.36 7.36 3 7.8 3h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H13M3.8 7h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H3.8c-.44 0-.8-.36-.8-.8V7.8c0-.44.36-.8.8-.8Z" stroke="currentColor" stroke-width="1.4" /></svg>
+              <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="passo">
+          <div class="passo-numero">3</div>
+          <div class="passo-titulo">Peça o rascunho da resposta</div>
+          <div class="passo-desc">Peça o rascunho da resposta:</div>
+          <div class="passo-prompt" data-copy-text="Escreva uma resposta para o e-mail do cliente João confirmando que o orçamento sai até sexta-feira.">
+            "Escreva uma resposta para o e-mail do cliente João confirmando que o orçamento sai até sexta-feira."
+            <button type="button" class="copiar-btn" data-copiar aria-label="Copiar prompt">
+              <svg class="icon-copy" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 7V3.8C7 3.36 7.36 3 7.8 3h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H13M3.8 7h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H3.8c-.44 0-.8-.36-.8-.8V7.8c0-.44.36-.8.8-.8Z" stroke="currentColor" stroke-width="1.4" /></svg>
+              <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="passo">
+          <div class="passo-numero">4</div>
+          <div class="passo-titulo">Aprove o envio ou envie você mesmo</div>
+          <div class="passo-desc">O ChatGPT mostra o rascunho e pede sua aprovação antes de enviar — manda um e-mail por vez, sem anexo. Esse envio direto exige plano pago (Plus, Pro, Team ou Enterprise) e hoje está bloqueado para contas da União Europeia e do Reino Unido; nesses casos (ou se preferir não usar o envio automático), revise e envie você mesmo pelo Gmail.</div>
+        </div>
       </div>
     </div>
 
