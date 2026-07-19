@@ -510,28 +510,33 @@
 
   /* ----------------------------------------------------------
      Playbook — botão copiar
+
+     Listener delegado em document (não anexado direto em cada
+     botão): initComparador() pode reatribuir o innerHTML da seção
+     de passos depois que este init roda, o que recriaria o
+     <button data-copiar> do zero e destruiria um listener anexado
+     diretamente nele. Delegação sobrevive a qualquer reescrita de
+     DOM, atual ou futura.
      ---------------------------------------------------------- */
   function initCopiar() {
-    var botoes = document.querySelectorAll('[data-copiar]');
-    if (!botoes.length) return;
-    botoes.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var wrap = btn.closest('.passo-prompt');
-        var texto = wrap ? wrap.getAttribute('data-copy-text') : '';
-        if (!texto) return;
-        var copiado = function () {
-          btn.classList.add('is-copiado');
-          announce('Prompt copiado');
-          window.setTimeout(function () { btn.classList.remove('is-copiado'); }, 2000);
-        };
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(texto).then(copiado).catch(function () {
-            fallbackCopy(texto, copiado);
-          });
-        } else {
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest ? e.target.closest('[data-copiar]') : null;
+      if (!btn) return;
+      var wrap = btn.closest('.passo-prompt');
+      var texto = wrap ? wrap.getAttribute('data-copy-text') : '';
+      if (!texto) return;
+      var copiado = function () {
+        btn.classList.add('is-copiado');
+        announce('Prompt copiado');
+        window.setTimeout(function () { btn.classList.remove('is-copiado'); }, 2000);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texto).then(copiado).catch(function () {
           fallbackCopy(texto, copiado);
-        }
-      });
+        });
+      } else {
+        fallbackCopy(texto, copiado);
+      }
     });
   }
 
