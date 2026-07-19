@@ -2,7 +2,7 @@
 
 **URL:** https://iacomunica.com.br  
 **GitHub:** https://github.com/Mayra-Bonfim/Site-IAComunica  
-**Última atualização:** 2026-04-07  
+**Última atualização:** 2026-07-19  
 **Responsável:** Mayra Madera + Sofia (IA Comunica)
 
 ---
