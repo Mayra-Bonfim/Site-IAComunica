@@ -553,8 +553,21 @@
 
   /* ----------------------------------------------------------
      Playbook — comparador de ferramentas (até 3)
+
+     Cada card tem duas funções que coexistem sem conflito:
+     1) Seleção múltipla para a tabela de comparação lado a lado
+        (aria-checked, até 3 ao mesmo tempo — comportamento original).
+     2) Escolha de qual ferramenta define o "Passo a Passo" exibido
+        logo abaixo (aria-current) — só ativo em páginas que marcam
+        a seção de passos com [data-passos-dinamico].
+
+     Regra da escolha: o card que acabou de ser marcado (selecionado
+     pela primeira vez) vira o ativo. Se o card ativo for desmarcado,
+     a exibição cai para o último card ainda selecionado ou, se
+     nenhum restar, para o card "local" (o dono da própria página,
+     sem data-passo-slug — ex.: Gamma na página do Gamma).
      ---------------------------------------------------------- */
-  function initComparador() {
+  function initComparador(data) {
     var secoes = document.querySelectorAll('.ferramentas-section[data-comparador]');
     secoes.forEach(function (secao) {
       var cards = secao.querySelectorAll('.ferramenta-card[data-comparavel]');
@@ -563,13 +576,23 @@
       var tabela = wrap.querySelector('.comparador-tabela');
       var selecionados = [];
 
+      var passosSection = document.querySelector('.passos-section[data-passos-dinamico]');
+      var passosOriginalHTML = passosSection ? passosSection.innerHTML : null;
+      var cardLocal = null;
+      var cardAtivo = null;
+      cards.forEach(function (c) {
+        if (!c.hasAttribute('data-passo-slug')) cardLocal = c;
+      });
+
       cards.forEach(function (card) {
         card.setAttribute('role', 'checkbox');
         card.setAttribute('aria-checked', 'false');
         card.setAttribute('tabindex', '0');
+        if (passosSection) card.setAttribute('aria-current', 'false');
 
         function toggle() {
           var idx = selecionados.indexOf(card);
+          var novoSelecionado = idx === -1;
           if (idx !== -1) {
             selecionados.splice(idx, 1);
             card.setAttribute('aria-checked', 'false');
@@ -582,6 +605,14 @@
             card.setAttribute('aria-checked', 'true');
           }
           render();
+
+          if (passosSection) {
+            if (novoSelecionado) {
+              marcarAtivo(card);
+            } else if (cardAtivo === card) {
+              marcarAtivo(selecionados.length ? selecionados[selecionados.length - 1] : cardLocal);
+            }
+          }
         }
 
         card.addEventListener('click', toggle);
@@ -592,6 +623,37 @@
           }
         });
       });
+
+      function marcarAtivo(card) {
+        cardAtivo = card;
+        cards.forEach(function (c) {
+          c.setAttribute('aria-current', c === card ? 'true' : 'false');
+        });
+        renderPassos();
+      }
+
+      function renderPassos() {
+        if (!passosSection) return;
+        if (!cardAtivo || !cardAtivo.hasAttribute('data-passo-slug')) {
+          passosSection.innerHTML = passosOriginalHTML;
+          return;
+        }
+        var slug = cardAtivo.getAttribute('data-passo-slug');
+        var nome = cardAtivo.getAttribute('data-nome');
+        var pb = data ? findPlaybook(data, slug) : null;
+        var resumo = pb ? pb.resumo : '';
+        passosSection.innerHTML =
+          '<h2 class="passos-title">Passo a Passo com ' + nome + '</h2>' +
+          '<div class="passo-externo">' +
+          '<p class="passo-externo__aviso">O passo a passo completo do ' + nome + ' já existe no Acervo.</p>' +
+          (resumo ? '<p class="passo-externo__resumo">' + resumo + '</p>' : '') +
+          '<a class="quiz-resultado__cta passo-externo__link" href="/acervo/' + slug + '/">Ver playbook completo do ' + nome + '</a>' +
+          '</div>';
+      }
+
+      if (passosSection && cardLocal) {
+        marcarAtivo(cardLocal);
+      }
 
       function render() {
         if (selecionados.length < 2) {
@@ -944,7 +1006,7 @@
       initIndicadorTrilha(data);
       initChecklist(data);
       initCopiar();
-      initComparador();
+      initComparador(data);
       initCalculadora();
       initResolveu(data);
       initQuiz(data);

@@ -692,6 +692,25 @@ button {
   box-shadow: 0 0 0 1px var(--acervo-teal);
 }
 
+.ferramenta-card[aria-current="true"] {
+  border-color: var(--acervo-teal);
+}
+
+.ferramenta-card[aria-current="true"]::before {
+  content: 'Mostrando abaixo';
+  position: absolute;
+  top: -10px;
+  left: 16px;
+  background: var(--acervo-teal);
+  color: var(--acervo-bg);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: var(--acervo-radius-pill);
+}
+
 .ferramenta-card__check {
   position: absolute;
   top: 16px;
@@ -843,6 +862,36 @@ button {
 
 .passo-lista li {
   margin-bottom: 6px;
+}
+
+/* Bloco exibido quando o passo a passo escolhido no comparador
+   pertence a outro playbook do Acervo (ex.: ChatGPT Work, Claude
+   Cowork na página do Gamma) — evita duplicar conteúdo já publicado
+   em outro lugar, aponta direto para o playbook completo. */
+.passo-externo {
+  background: var(--acervo-surface-blue-10);
+  border-left: 4px solid var(--acervo-teal);
+  border-radius: var(--acervo-radius-lg);
+  padding: 24px;
+}
+
+.passo-externo__aviso {
+  font-family: var(--acervo-font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--acervo-white);
+  margin-bottom: 10px;
+}
+
+.passo-externo__resumo {
+  font-size: 14px;
+  color: var(--acervo-text-80);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.passo-externo__link {
+  display: inline-block;
 }
 
 .passo-prompt {
