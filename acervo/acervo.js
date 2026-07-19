@@ -755,42 +755,42 @@
   var QUIZ_PERGUNTAS = [
     {
       id: 'p1',
-      pergunta: 'Você já usou alguma IA de conversa, tipo ChatGPT, Claude ou Gemini?',
+      pergunta: 'Você já pediu pra alguma IA (ChatGPT, Claude, Gemini ou parecido) fazer algo por você — escrever um texto, responder uma dúvida, o que for — mesmo que só uma vez?',
       respostas: [
-        { texto: 'Nunca usei', resultado: 0 },
-        { texto: 'Já usei, pelo menos pra conversar', proximo: 'p2' }
+        { texto: 'Nunca usei nenhuma IA pra nada', resultado: 0 },
+        { texto: 'Já usei, pelo menos uma vez', proximo: 'p2' }
       ]
     },
     {
       id: 'p2',
-      pergunta: 'Você já usa a IA conectada a ferramentas do dia a dia, tipo Google Agenda ou Gmail?',
+      pergunta: 'Hoje, você só usa IA abrindo o chat (ChatGPT, Claude, Gemini) numa aba separada? Ou ela já age sozinha dentro de outro app que você usa — tipo marcando compromisso direto na sua agenda ou rascunhando resposta de e-mail sem você copiar e colar?',
       respostas: [
-        { texto: 'Não, uso só o chat separado', resultado: 1 },
-        { texto: 'Sim, já conectei agenda ou e-mail', proximo: 'p3' }
+        { texto: 'Só uso no chat, separado de tudo', resultado: 1 },
+        { texto: 'Já uso IA que faz isso integrada a outro app', proximo: 'p3' }
       ]
     },
     {
       id: 'p3',
-      pergunta: 'Você já usa a IA para organizar arquivos, montar planilha, PDF, post ou apresentação inteira?',
+      pergunta: 'Você já usa a IA pra tocar uma tarefa inteira sozinha do início ao fim — tipo organizar uma pasta de arquivo, montar uma planilha, gerar um PDF, criar um post ou montar uma apresentação completa?',
       respostas: [
-        { texto: 'Ainda não', resultado: 2 },
-        { texto: 'Sim, já uso pra isso', proximo: 'p4' }
+        { texto: 'Ainda não, uso mais pra coisas pontuais e curtas', resultado: 2 },
+        { texto: 'Sim, já faço tarefa administrativa inteira assim', proximo: 'p4' }
       ]
     },
     {
       id: 'p4',
-      pergunta: 'Sua empresa já tem um atendente de IA que responde sozinho no WhatsApp?',
+      pergunta: 'Sua empresa já tem um atendente de IA que responde os clientes sozinho no WhatsApp, sem uma pessoa do time digitando cada resposta?',
       respostas: [
-        { texto: 'Não, ainda respondo tudo eu', resultado: 3 },
-        { texto: 'Sim, já tenho um atendente automático', proximo: 'p5' }
+        { texto: 'Não, quem responde no WhatsApp ainda é alguém do time', resultado: 3 },
+        { texto: 'Sim, já temos um atendente automático', proximo: 'p5' }
       ]
     },
     {
       id: 'p5',
-      pergunta: 'Cada área da sua empresa (RH, financeiro, marketing...) já tem um agente de IA próprio?',
+      pergunta: 'Além do atendimento no WhatsApp, sua empresa já tem outro agente de IA trabalhando em alguma área específica — financeiro, RH, marketing, vendas — cada um com sua função própria?',
       respostas: [
-        { texto: 'Não, uso a IA de forma mais solta', resultado: 4 },
-        { texto: 'Sim, já tenho isso organizado', resultado: 5 }
+        { texto: 'Não, o único agente de IA que temos é o do WhatsApp', resultado: 4 },
+        { texto: 'Sim, já temos agentes de IA em mais de uma área, cada um com sua tarefa', resultado: 5 }
       ]
     }
   ];
