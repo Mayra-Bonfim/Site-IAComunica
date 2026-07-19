@@ -1,0 +1,12 @@
+# Configuração mínima do Jekyll para o build do GitHub Pages (build_type: legacy).
+#
+# Exclui architecture.md do pipeline do Jekyll. É um documento interno de
+# arquitetura (não é página pública do site) e seu texto contém exemplos
+# literais de tags Liquid (`{% include %}`) para documentar o sistema de
+# includes do Acervo. O plugin jekyll-optional-front-matter (ativo por
+# padrão no GitHub Pages) processa qualquer .md do repo via Liquid mesmo
+# sem front matter — sem esta exclusão, o Jekyll tenta interpretar esses
+# trechos como tags Liquid reais e o build falha com:
+#   "Liquid Exception: Invalid syntax for include tag ... in architecture.md"
+exclude:
+  - architecture.md
