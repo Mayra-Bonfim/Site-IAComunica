@@ -51,14 +51,14 @@
     {
       "slug": "ia-marca-compromissos-na-agenda",
       "titulo": "Quer que a IA marque compromissos direto na sua agenda?",
-      "resumo": "Conecte o Claude à Google Agenda e marque, altere ou cancele por mensagem.",
+      "resumo": "Conecte o Claude à Google Agenda ou ao Microsoft 365 e marque, altere ou cancele por mensagem.",
       "nivel": 2,
       "dificuldade": "medio",
       "tempoMin": 20,
       "impacto": 2,
-      "ferramentas": ["Claude", "Google Agenda"],
+      "ferramentas": ["Claude", "Google Agenda", "Microsoft 365"],
       "problemas": ["Organizar a empresa", "Economizar tempo"],
-      "keywords": ["agenda", "compromisso", "google agenda", "claude", "chatgpt"]
+      "keywords": ["agenda", "compromisso", "google agenda", "outlook", "microsoft 365", "claude", "chatgpt"]
     },
     {
       "slug": "ia-rascunha-respostas-de-email",
@@ -99,10 +99,70 @@
       "keywords": ["claude cowork", "claude for small business", "planilha", "pdf", "apresentação", "post"]
     },
     {
+      "slug": "gerar-documento-pronto-com-artifacts",
+      "titulo": "Quer que a IA entregue o documento pronto — apresentação, comparação, linha do tempo — não só o texto corrido?",
+      "resumo": "Use os Artifacts do Claude para transformar qualquer pedido num documento visual de verdade, pronto pra exportar em PDF, PowerPoint, Word ou Excel.",
+      "nivel": 4,
+      "dificuldade": "medio",
+      "tempoMin": 30,
+      "impacto": 3,
+      "ferramentas": ["Claude"],
+      "problemas": ["Criar apresentações", "Criar propostas"],
+      "keywords": ["artifact", "artifacts", "claude design", "apresentação", "proposta", "documento visual", "canvas", "live artifact"]
+    },
+    {
+      "slug": "um-espaco-por-cliente-ou-projeto",
+      "titulo": "Cansa de reexplicar o mesmo cliente ou projeto toda vez que abre uma conversa nova?",
+      "resumo": "Use os Projects do Claude pra guardar o histórico de cada cliente, caso ou projeto recorrente — sem repetir contexto.",
+      "nivel": 4,
+      "dificuldade": "medio",
+      "tempoMin": 20,
+      "impacto": 2,
+      "ferramentas": ["Claude"],
+      "problemas": ["Organizar a empresa"],
+      "keywords": ["projects", "projeto", "cliente recorrente", "contexto", "pasta", "cowork"]
+    },
+    {
+      "slug": "o-que-e-uma-skill-e-como-criar",
+      "titulo": "Você ensina a mesma coisa pro Claude toda vez? Dá pra ensinar só uma vez.",
+      "resumo": "Entenda o que é uma skill, como criar uma em minutos sem programar, e onde encontrar prontas.",
+      "nivel": 4,
+      "dificuldade": "medio",
+      "tempoMin": 25,
+      "impacto": 3,
+      "ferramentas": ["Claude"],
+      "problemas": ["Economizar tempo", "Organizar a empresa"],
+      "keywords": ["skill", "skills", "plugin", "automatizar", "ensinar a ia", "padrão da empresa", "find-skills"]
+    },
+    {
+      "slug": "economia-de-tokens-no-cowork",
+      "titulo": "Seu limite de uso do Claude acaba rápido demais?",
+      "resumo": "Hábitos reais e verificados pra economizar tokens no Cowork sem perder qualidade.",
+      "nivel": 4,
+      "dificuldade": "facil",
+      "tempoMin": 20,
+      "impacto": 2,
+      "ferramentas": ["Claude"],
+      "problemas": ["Economizar tempo", "Organizar a empresa"],
+      "keywords": ["tokens", "economia de tokens", "limite de uso", "custo", "cowork", "contexto"]
+    },
+    {
+      "slug": "prompt-que-funciona-papel-contexto-formato-restricao",
+      "titulo": "Pede a mesma coisa duas vezes e sai diferente? Existe uma estrutura por trás de todo prompt que funciona.",
+      "resumo": "Os 4 elementos que qualquer prompt bem estruturado usa — papel, contexto, formato e restrição.",
+      "nivel": 4,
+      "dificuldade": "facil",
+      "tempoMin": 15,
+      "impacto": 3,
+      "ferramentas": ["Claude", "ChatGPT", "Gemini"],
+      "problemas": ["Economizar tempo", "Criar conteúdo"],
+      "keywords": ["prompt", "papel", "contexto", "formato", "restrição", "prompt engineering", "escrever prompt"]
+    },
+    {
       "slug": "atendimento-automatico-no-whatsapp",
       "titulo": "Quer um atendente de WhatsApp que responde sozinho?",
       "resumo": "Monte um agente de IA que atende seus clientes no WhatsApp com o GPTMaker.",
-      "nivel": 4,
+      "nivel": 5,
       "dificuldade": "avancado",
       "tempoMin": 45,
       "impacto": 3,
@@ -114,7 +174,7 @@
       "slug": "agente-de-ia-por-area-da-empresa",
       "titulo": "Quer um agente de IA para cada área da sua empresa?",
       "resumo": "Um agente dedicado por área — RH, financeiro, marketing — com Claude Cowork ou ChatGPT Work.",
-      "nivel": 5,
+      "nivel": 6,
       "dificuldade": "avancado",
       "tempoMin": 60,
       "impacto": 3,
@@ -149,16 +209,22 @@
         "paginaAbertura": "organizar-arquivos-planilhas-e-posts-com-ia",
         "playbooks": ["organizar-arquivos-e-posts-com-chatgpt", "organizar-arquivos-e-posts-com-claude"],
         "regraConclusao": "qualquer",
-        "proximo": "atendimento-automatico-no-whatsapp"
+        "proximo": "gerar-documento-pronto-com-artifacts"
       },
       {
         "nivel": 4,
+        "nome": "Documento pronto, contexto por cliente e tarefa automatizada",
+        "playbooks": ["gerar-documento-pronto-com-artifacts", "um-espaco-por-cliente-ou-projeto", "o-que-e-uma-skill-e-como-criar", "economia-de-tokens-no-cowork", "prompt-que-funciona-papel-contexto-formato-restricao"],
+        "proximo": "atendimento-automatico-no-whatsapp"
+      },
+      {
+        "nivel": 5,
         "nome": "Um atendente de WhatsApp sozinho",
         "playbooks": ["atendimento-automatico-no-whatsapp"],
         "proximo": "agente-de-ia-por-area-da-empresa"
       },
       {
-        "nivel": 5,
+        "nivel": 6,
         "nome": "Um agente de IA para cada área da empresa",
         "playbooks": ["agente-de-ia-por-area-da-empresa"],
         "proximo": null
