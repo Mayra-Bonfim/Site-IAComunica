@@ -62,16 +62,18 @@
 
   /* ----------------------------------------------------------
      Tema (claro/escuro) — persistido em localStorage.
-     O <head> de cada página já aplica o tema salvo (ou a
-     preferência do sistema) via script inline síncrono, antes do
-     CSS pintar, para evitar flash do tema errado (FOUC). Aqui só
+     O <head> de cada página já aplica o tema salvo (ou o padrão
+     oficial claro) via script inline síncrono, antes do CSS
+     pintar, para evitar flash do tema errado (FOUC). Aqui só
      cuidamos do botão de alternância e de manter o estado salvo
-     em sincronia com o que já foi aplicado no <html>.
+     em sincronia com o que já foi aplicado no <html>. O tema
+     oficial do Acervo é claro — o escuro só entra se a pessoa
+     escolher explicitamente pelo botão.
      ---------------------------------------------------------- */
   function getPreferredTheme() {
     var saved = safeGet(KEYS.theme, null);
     if (saved === 'light' || saved === 'dark') return saved;
-    return (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
+    return 'light';
   }
 
   function applyTheme(theme) {
