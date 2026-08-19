@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pediu a mesma coisa duas vezes e saiu diferente? Veja os 4 elementos que qualquer prompt bem estruturado usa, segundo os próprios guias da Anthropic." />
+  <meta name="robots" content="index, follow" />
+  <title>Pede a mesma coisa duas vezes e sai diferente? | Acervo IA Comunica</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="/favicon-96x96.png" />
+  <link rel="stylesheet" href="/acervo/acervo-tokens.css" />
+  <link rel="stylesheet" href="/acervo/acervo.css" />
+{% include acervo-head-theme.html %}
+</head>
+<body data-page="playbook" data-slug="prompt-que-funciona-papel-contexto-formato-restricao" data-nivel="4">
+
+{% include acervo-topbar.html %}
+
+  <div class="acervo-breadcrumb-row">
+    <div class="breadcrumb"><a href="/acervo/">Acervo</a> / Prompt que funciona</div>
+    <div class="trilha-indicador" data-trilha-indicador></div>
+  </div>
+
+  <main class="playbook">
+    <div class="metadata">
+      <span class="selo-nivel">Nível 4</span>
+      <div class="metadata-item"><span aria-hidden="true">🕐</span><span>15 min</span></div>
+      <div class="metadata-item"><span aria-hidden="true">🟢</span><span>Fácil</span></div>
+      <div class="metadata-item"><span aria-hidden="true">⭐⭐⭐</span><span>Alto impacto</span></div>
+    </div>
+
+    <h1>Pede a mesma coisa duas vezes e sai diferente? Existe uma estrutura por trás de todo prompt que funciona.</h1>
+
+    <div class="contexto">
+      <p>Não é sobre escrever mais — é sobre pedir com quatro elementos, sempre. A própria Anthropic recomenda tratar o Claude como "um contratado novo e brilhante": ele não tem contexto sobre você, sua empresa ou seu jeito de trabalhar, então quanto mais preciso o pedido, melhor o resultado. Esse resumo abaixo reúne, em quatro palavras fáceis de lembrar, as práticas que os próprios guias da Anthropic recomendam.</p>
+    </div>
+
+    <div class="passos-section">
+      <h2 class="passos-title">Os 4 elementos de um prompt que funciona</h2>
+
+      <div class="passo">
+        <div class="passo-numero">1</div>
+        <div class="passo-titulo">Papel — quem a IA deve "ser"</div>
+        <div class="passo-desc">Diga o papel antes do pedido: "Você é um advogado trabalhista sênior", "Você é um professor de inglês experiente com alunos iniciantes". Um papel bem definido muda o tom e o nível técnico da resposta, mesmo numa frase só.</div>
+      </div>
+
+      <div class="passo">
+        <div class="passo-numero">2</div>
+        <div class="passo-titulo">Contexto — os fatos do caso, sem dado sigiloso</div>
+        <div class="passo-desc">Quanto mais contexto real você der (sem nome de cliente, CPF ou dado que identifique alguém), melhor a resposta. Contexto vago gera resposta vaga.</div>
+      </div>
+
+      <div class="passo">
+        <div class="passo-numero">3</div>
+        <div class="passo-titulo">Formato — como você quer a resposta</div>
+        <div class="passo-desc">Diga o formato: lista com marcadores, seções numeradas, tamanho do texto, se quer tabela ou parágrafo corrido. A Anthropic chama isso de "ser claro e direto" — ao invés de "crie uma apresentação", prefira "crie uma apresentação de 6 slides, um título e três pontos por slide".</div>
+      </div>
+
+      <div class="passo highlight">
+        <div class="passo-numero">4</div>
+        <div class="passo-titulo">Restrição — o que a IA não pode fazer</div>
+        <div class="passo-desc">É o elemento mais esquecido, e o mais importante. Diga explicitamente o que não fazer:</div>
+        <div class="passo-prompt" data-copy-text="Não invente informação. Se não tiver certeza de um dado ou de uma fonte, escreva [VERIFICAR] em vez de afirmar algo como certo.">
+          "Não invente informação. Se não tiver certeza de um dado ou de uma fonte, escreva [VERIFICAR] em vez de afirmar algo como certo."
+          <button type="button" class="copiar-btn" data-copiar aria-label="Copiar prompt">
+            <svg class="icon-copy" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 7V3.8C7 3.36 7.36 3 7.8 3h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H13M3.8 7h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H3.8c-.44 0-.8-.36-.8-.8V7.8c0-.44.36-.8.8-.8Z" stroke="currentColor" stroke-width="1.4" /></svg>
+            <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="passo">
+        <div class="passo-numero">5</div>
+        <div class="passo-titulo">Teste com o "colega confuso"</div>
+        <div class="passo-desc">A própria Anthropic sugere essa regra prática: mostre seu prompt pra um colega com pouco contexto sobre a tarefa e peça pra ele seguir à risca. Se ele ficaria confuso, o Claude também vai ficar.</div>
+      </div>
+    </div>
+
+    <div class="contexto">
+      <p>Juntando os quatro num exemplo real:</p>
+    </div>
+
+    <div class="passo highlight" style="margin: 0 0 32px;">
+      <div class="passo-prompt" data-copy-text="Você é um professor de inglês com 10 anos de experiência com alunos adultos iniciantes. Preciso de uma aula de 45 minutos sobre phrasal verbs do dia a dia, pra uma turma que já sabe o básico de presente e passado. Organize em: aquecimento (5 min), explicação com 5 exemplos (15 min), atividade prática (15 min) e quiz final de 5 perguntas (10 min). Não use phrasal verbs muito informais ou de gíria — só os de uso comum em conversa profissional.">
+      "Você é um professor de inglês com 10 anos de experiência com alunos adultos iniciantes. Preciso de uma aula de 45 minutos sobre phrasal verbs do dia a dia, pra uma turma que já sabe o básico de presente e passado. Organize em: aquecimento (5 min), explicação com 5 exemplos (15 min), atividade prática (15 min) e quiz final de 5 perguntas (10 min). Não use phrasal verbs muito informais ou de gíria — só os de uso comum em conversa profissional."
+      <button type="button" class="copiar-btn" data-copiar aria-label="Copiar prompt">
+        <svg class="icon-copy" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 7V3.8C7 3.36 7.36 3 7.8 3h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H13M3.8 7h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H3.8c-.44 0-.8-.36-.8-.8V7.8c0-.44.36-.8.8-.8Z" stroke="currentColor" stroke-width="1.4" /></svg>
+        <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </button>
+    </div>
+    </div>
+
+    <div class="checklist-section" data-checklist>
+      <h2 class="checklist-title">Seu Checklist</h2>
+      <button type="button" class="checklist-item">
+        <span class="checkbox" aria-hidden="true"></span>
+        <span class="checklist-item__label">Testei dar um papel específico pro Claude antes do pedido</span>
+      </button>
+      <button type="button" class="checklist-item">
+        <span class="checkbox" aria-hidden="true"></span>
+        <span class="checklist-item__label">Dei contexto real (sem dado sigiloso) numa tarefa da minha rotina</span>
+      </button>
+      <button type="button" class="checklist-item">
+        <span class="checkbox" aria-hidden="true"></span>
+        <span class="checklist-item__label">Especifiquei o formato exato que eu queria de volta</span>
+      </button>
+      <button type="button" class="checklist-item">
+        <span class="checkbox" aria-hidden="true"></span>
+        <span class="checklist-item__label">Incluí pelo menos uma restrição explícita no meu prompt</span>
+      </button>
+    </div>
+
+    <div class="calculadora-section" data-calculadora>
+      <h2 class="calculadora-title">Quanto tempo isso pode economizar por mês?</h2>
+      <p class="calculadora-desc">Estimativa com base em pesquisa de mercado sobre uso real de IA em tarefas de redação e comunicação (não é uma promessa, é uma referência).</p>
+      <div class="calculadora-row">
+        <div class="calculadora-field">
+          <label for="calc-horas-prompt">Horas por semana com essa tarefa</label>
+          <div class="stepper">
+            <button type="button" data-calc-menos aria-label="Diminuir horas">−</button>
+            <input type="number" id="calc-horas-prompt" data-calc-horas value="5" min="0" max="80" inputmode="numeric" />
+            <button type="button" data-calc-mais aria-label="Aumentar horas">+</button>
+          </div>
+        </div>
+        <div class="calculadora-field">
+          <label for="calc-categoria-prompt">Tipo de tarefa</label>
+          <select id="calc-categoria-prompt" class="calculadora-select" data-calc-categoria>
+            <option value="redacao" selected>Redação e comunicação (e-mail, conteúdo, resumo de reunião)</option>
+            <option value="atendimento">Atendimento ao cliente</option>
+            <option value="geral">Agendamento, organização de arquivos e outras tarefas administrativas</option>
+          </select>
+        </div>
+      </div>
+      <div class="calculadora-resultado">
+        <div class="calculadora-resultado__valor" data-calc-resultado aria-live="polite">0 horas por mês</div>
+        <div class="calculadora-resultado__nota" data-calc-nota></div>
+      </div>
+    </div>
+
+    <section class="resolveu-section" data-resolveu>
+      <h2 class="resolveu-title">Você resolveu esse problema?</h2>
+      <div class="resolveu-botoes">
+        <button type="button" class="resolveu-btn" data-resolveu-resposta="sim" aria-pressed="false">Sim, resolvi</button>
+        <button type="button" class="resolveu-btn" data-resolveu-resposta="nao" aria-pressed="false">Ainda não</button>
+      </div>
+      <div class="resolveu-resultado resolveu-resultado--sim" data-resolveu-resultado="sim">
+        <p>Você concluiu os 5 guias do Nível 4. Agora você já sabe pedir documento pronto, guardar contexto por cliente, criar skill, economizar tokens e estruturar um prompt que funciona.</p>
+        <a class="quiz-resultado__cta" data-resolveu-proximo-link href="/acervo/atendimento-automatico-no-whatsapp/">Continuar para o Nível 5</a>
+      </div>
+      <div class="resolveu-resultado resolveu-resultado--nao" data-resolveu-resultado="nao">
+        <p>Sem problema, cada negócio tem seu ritmo. Aqui vão outros guias relacionados — e se preferir, a IA Comunica te ajuda direto.</p>
+        <div class="resolveu-relacionados" data-resolveu-relacionados></div>
+        <a class="btn-outline-comercial" data-comercial-link href="#">Falar com a IA Comunica</a>
+      </div>
+    </section>
+
+    <div class="cta-section">
+      <p class="cta-text">Terminou o Nível 4? No <a href="/acervo/atendimento-automatico-no-whatsapp/">Nível 5</a>, você monta um atendente automático no WhatsApp do seu negócio.</p>
+    </div>
+  </main>
+
+{% include acervo-footer.html %}
+
+  <div class="acervo-live-region" aria-live="polite" data-acervo-live></div>
+  <script src="/acervo/acervo.js"></script>
+</body>
+</html>

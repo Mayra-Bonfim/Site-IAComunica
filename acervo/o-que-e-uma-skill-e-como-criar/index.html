@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Você ensina a mesma coisa pro Claude toda vez? Entenda o que é uma skill, como criar uma sem programar e onde encontrar prontas." />
+  <meta name="robots" content="index, follow" />
+  <title>Você ensina a mesma coisa pro Claude toda vez? Dá pra ensinar só uma vez. | Acervo IA Comunica</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="/favicon-96x96.png" />
+  <link rel="stylesheet" href="/acervo/acervo-tokens.css" />
+  <link rel="stylesheet" href="/acervo/acervo.css" />
+{% include acervo-head-theme.html %}
+</head>
+<body data-page="playbook" data-slug="o-que-e-uma-skill-e-como-criar" data-nivel="4">
+
+{% include acervo-topbar.html %}
+
+  <div class="acervo-breadcrumb-row">
+    <div class="breadcrumb"><a href="/acervo/">Acervo</a> / O que é uma skill</div>
+    <div class="trilha-indicador" data-trilha-indicador></div>
+  </div>
+
+  <main class="playbook">
+    <div class="metadata">
+      <span class="selo-nivel">Nível 4</span>
+      <div class="metadata-item"><span aria-hidden="true">🕐</span><span>25 min</span></div>
+      <div class="metadata-item"><span aria-hidden="true">🟡</span><span>Médio</span></div>
+      <div class="metadata-item"><span aria-hidden="true">⭐⭐⭐</span><span>Alto impacto</span></div>
+    </div>
+
+    <h1>Você ensina a mesma coisa pro Claude toda vez? Dá pra ensinar só uma vez.</h1>
+
+    <div class="contexto">
+      <p>Uma skill é um jeito de ensinar o Claude a fazer uma tarefa sempre do jeito do seu negócio — sem programar nada, sem nada técnico. Você ensina uma vez, com suas próprias palavras (ou deixa o próprio Claude "aprender fazendo"), e ele repete daquele jeito toda vez que a tarefa aparecer de novo, em qualquer conversa. O mesmo vale dentro do Claude for Excel, PowerPoint, Word e Outlook: a skill que você liga uma vez fica disponível nesses apps também.</p>
+    </div>
+
+    <div class="passos-section">
+      <h2 class="passos-title">Passo a Passo</h2>
+
+      <div class="passo">
+        <div class="passo-numero">1</div>
+        <div class="passo-titulo">Ative skills nas configurações</div>
+        <div class="passo-desc">No Claude, vá em Configurações → Capacidades e confirme que "Execução de código e criação de arquivos" está ativado — as skills dependem desse recurso pra funcionar. Depois, vá em Customizar → Skills.</div>
+      </div>
+
+      <div class="passo">
+        <div class="passo-numero">2</div>
+        <div class="passo-titulo">Veja as skills prontas da Anthropic</div>
+        <div class="passo-desc">Em Customizar → Skills você encontra uma lista de skills de exemplo já prontas, organizadas por categoria (documentos, design, comunicação, entre outras) — é só ligar a que fizer sentido pro seu negócio. Uma vez ligada, o Claude usa sozinho sempre que o pedido combinar com ela, sem precisar chamar pelo nome.</div>
+      </div>
+
+      <div class="passo highlight">
+        <div class="passo-numero">3</div>
+        <div class="passo-titulo">Crie a sua, com suas próprias palavras</div>
+        <div class="passo-desc">Identifique uma tarefa que você já pede sempre do mesmo jeito, e peça pro Claude criar a skill pra você:</div>
+        <div class="passo-prompt" data-copy-text="Cria uma pasta chamada 'Contratos — Modelos' aqui no computador. Guarda ali os modelos que a gente sempre usa. Da próxima vez que eu pedir um contrato, usa esses modelos como base e só me pergunta quem são as partes. Transforma isso numa skill, pra eu não precisar explicar de novo.">
+          "Cria uma pasta chamada 'Contratos — Modelos' aqui no computador. Guarda ali os modelos que a gente sempre usa. Da próxima vez que eu pedir um contrato, usa esses modelos como base e só me pergunta quem são as partes. Transforma isso numa skill, pra eu não precisar explicar de novo."
+          <button type="button" class="copiar-btn" data-copiar aria-label="Copiar prompt">
+            <svg class="icon-copy" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 7V3.8C7 3.36 7.36 3 7.8 3h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H13M3.8 7h8.4c.44 0 .8.36.8.8v8.4c0 .44-.36.8-.8.8H3.8c-.44 0-.8-.36-.8-.8V7.8c0-.44.36-.8.8-.8Z" stroke="currentColor" stroke-width="1.4" /></svg>
+            <svg class="icon-check" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5 8 14.5 16 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="passo">
+        <div class="passo-numero">4</div>
+        <div class="passo-titulo">Use e refine</div>
+        <div class="passo-desc">Teste a skill numa tarefa real. Se algo não saiu do jeito que você queria, é só pedir pro Claude ajustar a skill — ela vai ficando melhor a cada correção, sem você precisar reescrever tudo do zero.</div>
+      </div>
+
+      <div class="passo">
+        <div class="passo-numero">5</div>
+        <div class="passo-titulo">Compartilhe com a equipe, se fizer sentido</div>
+        <div class="passo-desc">Uma skill sua pode ser exportada como arquivo (.zip) e enviada pra outra pessoa do time subir na conta dela, em Customizar → Skills → "+ Create skill". Assim todo mundo usa exatamente do mesmo jeito, sem cada um configurar por conta própria.</div>
+      </div>
+    </div>
+
+    <div class="contexto">
+      <p><strong>De onde vêm as skills prontas da Anthropic:</strong> além das que já aparecem dentro do Claude, a Anthropic mantém um repositório público (<code>anthropics/skills</code>, no GitHub) com exemplos prontos — de formatação de documento a análise de dados. Isso é mais avançado e nem sempre necessário: pra quem não é técnico, o caminho mais simples continua sendo Customizar → Skills, direto no Claude, sem precisar mexer em GitHub.</p>
+      <p><strong>Atenção:</strong> você pode ver por aí menção a uma "skill que encontra skill" (chamada find-skills) — ela existe, mas é de terceiros (não da Anthropic) e depende de terminal, pensada pra quem programa com o Claude Code. Pra quem usa o Cowork sem terminal, o caminho oficial e mais simples é mesmo o Customizar → Skills descrito acima.</p>
+    </div>
+
+    <div class="checklist-section" data-checklist>
+      <h2 class="checklist-title">Seu Checklist</h2>
+      <button type="button" class="checklist-item">
+        <span class="checkbox" aria-hidden="true"></span>
+        <span class="checklist-item__label">Ativei skills em Configurações → Capacidades</span>
+      </button>
+      <button type="button" class="checklist-item">
+        <span class="checkbox" aria-hidden="true"></span>
+        <span class="checklist-item__label">Dei uma olhada nas skills prontas da Anthropic em Customizar → Skills</span>
+      </button>
+      <button type="button" class="checklist-item">
+        <span class="checkbox" aria-hidden="true"></span>
+        <span class="checklist-item__label">Criei minha primeira skill com minhas próprias palavras</span>
+      </button>
+      <button type="button" class="checklist-item">
+        <span class="checkbox" aria-hidden="true"></span>
+        <span class="checklist-item__label">Testei a skill numa tarefa real e ajustei o que não saiu certo</span>
+      </button>
+    </div>
+
+    <div class="calculadora-section" data-calculadora>
+      <h2 class="calculadora-title">Quanto tempo isso pode economizar por mês?</h2>
+      <p class="calculadora-desc">Estimativa conservadora, por analogia — não há medição direta dessas tarefas administrativas na literatura encontrada (não é uma promessa, é uma referência).</p>
+      <div class="calculadora-row">
+        <div class="calculadora-field">
+          <label for="calc-horas-skill">Horas por semana com essa tarefa</label>
+          <div class="stepper">
+            <button type="button" data-calc-menos aria-label="Diminuir horas">−</button>
+            <input type="number" id="calc-horas-skill" data-calc-horas value="4" min="0" max="80" inputmode="numeric" />
+            <button type="button" data-calc-mais aria-label="Aumentar horas">+</button>
+          </div>
+        </div>
+        <div class="calculadora-field">
+          <label for="calc-categoria-skill">Tipo de tarefa</label>
+          <select id="calc-categoria-skill" class="calculadora-select" data-calc-categoria>
+            <option value="redacao">Redação e comunicação (e-mail, conteúdo, resumo de reunião)</option>
+            <option value="atendimento">Atendimento ao cliente</option>
+            <option value="geral" selected>Agendamento, organização de arquivos e outras tarefas administrativas</option>
+          </select>
+        </div>
+      </div>
+      <div class="calculadora-resultado">
+        <div class="calculadora-resultado__valor" data-calc-resultado aria-live="polite">0 horas por mês</div>
+        <div class="calculadora-resultado__nota" data-calc-nota></div>
+      </div>
+    </div>
+
+    <section class="resolveu-section" data-resolveu>
+      <h2 class="resolveu-title">Você resolveu esse problema?</h2>
+      <div class="resolveu-botoes">
+        <button type="button" class="resolveu-btn" data-resolveu-resposta="sim" aria-pressed="false">Sim, resolvi</button>
+        <button type="button" class="resolveu-btn" data-resolveu-resposta="nao" aria-pressed="false">Ainda não</button>
+      </div>
+      <div class="resolveu-resultado resolveu-resultado--sim" data-resolveu-resultado="sim">
+        <p>Muito bem! Faltam dois guias do Nível 4: economizar tokens no Cowork e a estrutura de um prompt que funciona.</p>
+        <a class="quiz-resultado__cta" data-resolveu-proximo-link href="/acervo/economia-de-tokens-no-cowork/">Continuar no Nível 4</a>
+      </div>
+      <div class="resolveu-resultado resolveu-resultado--nao" data-resolveu-resultado="nao">
+        <p>Sem problema, cada negócio tem seu ritmo. Aqui vão outros guias relacionados — e se preferir, a IA Comunica te ajuda direto.</p>
+        <div class="resolveu-relacionados" data-resolveu-relacionados></div>
+        <a class="btn-outline-comercial" data-comercial-link href="#">Falar com a IA Comunica</a>
+      </div>
+    </section>
+
+    <div class="cta-section">
+      <p class="cta-text">Ainda no Nível 4: <a href="/acervo/economia-de-tokens-no-cowork/">como economizar tokens no Cowork</a> e <a href="/acervo/prompt-que-funciona-papel-contexto-formato-restricao/">a estrutura de um prompt que funciona</a>.</p>
+    </div>
+  </main>
+
+{% include acervo-footer.html %}
+
+  <div class="acervo-live-region" aria-live="polite" data-acervo-live></div>
+  <script src="/acervo/acervo.js"></script>
+</body>
+</html>
