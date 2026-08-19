@@ -101,7 +101,7 @@
     {
       "slug": "gerar-documento-pronto-com-artifacts",
       "titulo": "Quer que a IA entregue o documento pronto — apresentação, comparação, linha do tempo — não só o texto corrido?",
-      "resumo": "Use os Artifacts do Claude para transformar qualquer pedido num documento visual de verdade, pronto pra exportar em PDF, PowerPoint, Word ou Excel.",
+      "resumo": "Use os Artifacts do Claude para transformar qualquer pedido num documento visual de verdade — compartilhe por link ou baixe pronto em PDF, PowerPoint, Word ou Excel.",
       "nivel": 4,
       "dificuldade": "medio",
       "tempoMin": 30,
