@@ -4,40 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nexus Med - Documentação Oficial da API</title>
-    <link rel="icon" type="image/png" href="../../favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" href="assets/logo/nexus-favicon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=DM+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
-        /* CSS Reset e Variáveis */
+        /* CSS Reset e Variáveis — paleta oficial Nexus Med */
         :root {
-            --blue-50: #eff6ff;
-            --blue-100: #dbeafe;
-            --blue-200: #bfdbfe;
-            --blue-500: #3b82f6;
-            --blue-600: #2563eb;
-            --blue-700: #1d4ed8;
-            --blue-900: #1e3a8a;
-            --slate-50: #f8fafc;
-            --slate-100: #f1f5f9;
-            --slate-200: #e2e8f0;
-            --slate-300: #cbd5e1;
-            --slate-400: #94a3b8;
-            --slate-500: #64748b;
-            --slate-600: #475569;
-            --slate-700: #334155;
-            --slate-800: #1e293b;
-            --slate-900: #0f172a;
-            --emerald-50: #ecfdf5;
-            --emerald-200: #a7f3d0;
-            --emerald-500: #10b981;
-            --emerald-600: #059669;
-            --rose-50: #fff1f2;
-            --rose-100: #ffe4e6;
-            --rose-600: #e11d48;
-            --rose-700: #be123c;
-            --rose-900: #881337;
-            --amber-50: #fffbeb;
-            --amber-100: #fef3c7;
-            --amber-600: #d97706;
-            --amber-700: #b45309;
+            --cobalt: #1C4ED8;
+            --cobalt-light: #3B82F6;
+            --teal: #00C2AE;
+            --teal-light: #5EEAD4;
+            --navy: #0B2545;
+            --slate: #64748B;
+            --ice: #EEF4FA;
+            --white: #FFFFFF;
+            --midnight: #060E1C;
+            --silver: #E2EAF4;
+
+            /* Cores funcionais de status HTTP — mantidas na mesma família semântica
+               (verde/vermelho/amarelo), só ajustadas pra harmonizar com a paleta nova. */
+            --success: #059669;
+            --success-bg: #ECFDF5;
+            --success-border: #A7F3D0;
+            --warn: #B45309;
+            --warn-bg: #FFFBEB;
+            --warn-border: #FDE68A;
+            --danger: #BE123C;
+            --danger-bg: #FFF1F2;
+            --danger-border: #FECDD3;
         }
 
         * {
@@ -51,9 +48,9 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-            background-color: var(--slate-50);
-            color: var(--slate-700);
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--ice);
+            color: var(--navy);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
@@ -75,13 +72,15 @@
             left: 0;
             right: 0;
             height: 64px;
-            background: white;
-            border-bottom: 1px solid var(--slate-200);
+            background: var(--white);
+            border-bottom: 1px solid var(--silver);
             z-index: 50;
             padding: 0 1rem;
             align-items: center;
             justify-content: space-between;
         }
+
+        .mobile-header img.brand-logo { height: 26px; width: auto; display: block; }
 
         /* Sidebar */
         .sidebar {
@@ -90,8 +89,8 @@
             left: 0;
             bottom: 0;
             width: 288px;
-            background: white;
-            border-right: 1px solid var(--slate-200);
+            background: var(--white);
+            border-right: 1px solid var(--silver);
             z-index: 40;
             overflow-y: auto;
             transition: transform 0.3s ease;
@@ -101,32 +100,22 @@
             padding: 2.5rem 2rem;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
         }
 
-        .logo-box {
-            width: 40px;
-            height: 40px;
-            background: var(--blue-600);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-style: italic;
-            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
-        }
-
-        .brand-name {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--slate-900);
-            letter-spacing: -0.025em;
-        }
+        .sidebar-brand img.brand-logo { height: 32px; width: auto; display: block; }
 
         .sidebar-nav {
             padding: 0 1rem;
+        }
+
+        .sidebar-section-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.6875rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--slate);
+            padding: 1rem 1rem 0.375rem;
         }
 
         .sidebar-link {
@@ -135,7 +124,7 @@
             gap: 0.75rem;
             padding: 0.625rem 1rem;
             text-decoration: none;
-            color: var(--slate-600);
+            color: var(--slate);
             font-size: 0.875rem;
             border-radius: 6px;
             margin-bottom: 0.25rem;
@@ -144,36 +133,37 @@
         }
 
         .sidebar-link:hover {
-            background: var(--slate-50);
-            color: var(--slate-900);
+            background: var(--ice);
+            color: var(--navy);
         }
 
         .sidebar-link.active {
-            background: var(--blue-50);
-            color: var(--blue-600);
+            background: rgba(28, 78, 216, 0.08);
+            color: var(--cobalt);
             font-weight: 600;
-            border-left-color: var(--blue-600);
+            border-left-color: var(--cobalt);
         }
 
         .sidebar-link svg {
             width: 18px;
             height: 18px;
             stroke-width: 2;
+            flex-shrink: 0;
         }
 
         /* Main Content */
         main {
             margin-left: 288px;
-            background: white;
+            background: var(--white);
             min-height: 100vh;
         }
 
         .top-nav {
             position: sticky;
             top: 0;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--slate-200);
+            border-bottom: 1px solid var(--silver);
             height: 64px;
             z-index: 30;
             padding: 0 2rem;
@@ -183,11 +173,12 @@
 
         .breadcrumb {
             font-size: 0.875rem;
-            color: var(--slate-500);
+            color: var(--slate);
         }
 
         .breadcrumb strong {
-            color: var(--slate-900);
+            color: var(--navy);
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .container {
@@ -197,22 +188,28 @@
         }
 
         /* Typography */
-        h1 { font-size: 3rem; font-weight: 800; color: var(--slate-900); margin-bottom: 1.5rem; letter-spacing: -0.05em; }
-        h1 span { color: var(--slate-400); font-weight: 300; }
-        h2 { font-size: 1.5rem; font-weight: 700; color: var(--slate-900); margin-bottom: 1.5rem; border-bottom: 1px solid var(--slate-200); padding-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; margin-top: 4rem; scroll-margin-top: 5rem; }
-        h4 { font-size: 1.125rem; font-weight: 600; color: var(--slate-900); margin: 1.5rem 0 0.5rem; }
-        p { color: var(--slate-600); margin-bottom: 1rem; font-size: 1.125rem; }
-        code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.875rem; background: var(--slate-100); padding: 0.2rem 0.4rem; border-radius: 4px; color: var(--slate-900); }
+        h1 { font-family: 'Space Grotesk', sans-serif; font-size: 3rem; font-weight: 800; color: var(--navy); margin-bottom: 1.5rem; letter-spacing: -0.03em; }
+        h1 span { color: var(--slate); font-weight: 400; }
+        h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--navy); margin-bottom: 1.5rem; border-bottom: 1px solid var(--silver); padding-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; margin-top: 4rem; scroll-margin-top: 5rem; }
+        h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.125rem; font-weight: 700; color: var(--navy); margin: 1.5rem 0 0.5rem; }
+        h5 { font-family: 'Space Grotesk', sans-serif; }
+        p { color: var(--slate); margin-bottom: 1rem; font-size: 1.0625rem; }
+        code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.875rem; background: var(--ice); padding: 0.2rem 0.4rem; border-radius: 4px; color: var(--navy); }
 
-        .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; margin-bottom: 1rem; border: 1px solid transparent; }
-        .badge-blue { background: var(--blue-50); color: var(--blue-600); border-color: var(--blue-100); }
-        .badge-green { background: #10b981; color: white; text-transform: uppercase; border-radius: 4px; padding: 0.2rem 0.5rem; }
+        .badge { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; margin-bottom: 1rem; border: 1px solid transparent; font-family: 'Space Grotesk', sans-serif; letter-spacing: 0.02em; }
+        .badge-blue { background: rgba(28, 78, 216, 0.08); color: var(--cobalt); border-color: rgba(28, 78, 216, 0.18); }
+        .badge-green { background: var(--teal); color: var(--white); text-transform: uppercase; border-radius: 4px; padding: 0.2rem 0.5rem; font-family: ui-monospace, monospace; letter-spacing: 0; }
+        .badge-method-get { background: var(--cobalt); color: var(--white); text-transform: uppercase; border-radius: 4px; padding: 0.2rem 0.5rem; font-family: ui-monospace, monospace; letter-spacing: 0; font-weight: 700; font-size: 0.75rem; }
+
+        /* Badges de status do produto — SELF-SERVICE e BETA */
+        .badge-self-service { background: rgba(0, 194, 174, 0.18); color: var(--teal); text-transform: uppercase; }
+        .badge-beta { background: var(--white); color: var(--navy); border: 1px solid var(--silver); text-transform: uppercase; }
 
         /* Code Blocks */
         .relative { position: relative; }
         .code-container {
-            background-color: var(--slate-800);
-            border: 1px solid var(--slate-700);
+            background-color: var(--midnight);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 8px;
             padding: 1.25rem;
             margin: 1.5rem 0;
@@ -221,7 +218,7 @@
         }
 
         .code-container pre {
-            color: #f8fafc;
+            color: #EEF4FA;
             font-family: ui-monospace, SFMono-Regular, monospace;
             font-size: 0.875rem;
             line-height: 1.7;
@@ -233,7 +230,7 @@
             top: 0.5rem;
             right: 3rem;
             font-size: 0.75rem;
-            color: var(--slate-400);
+            color: var(--slate);
             text-transform: uppercase;
             font-family: monospace;
             pointer-events: none;
@@ -245,24 +242,24 @@
             right: 0.5rem;
             background: transparent;
             border: none;
-            color: var(--slate-400);
+            color: var(--slate);
             cursor: pointer;
             padding: 0.4rem;
             border-radius: 4px;
             transition: color 0.2s;
         }
 
-        .copy-btn:hover { color: white; }
+        .copy-btn:hover { color: var(--white); }
         .copy-btn svg { width: 16px; height: 16px; }
 
         /* Tables */
         .table-wrapper {
             width: 100%;
             overflow-x: auto;
-            border: 1px solid var(--slate-200);
+            border: 1px solid var(--silver);
             border-radius: 12px;
             margin: 1.5rem 0;
-            box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+            box-shadow: 0 1px 2px 0 rgba(11,37,69,0.05);
         }
 
         table {
@@ -273,40 +270,41 @@
             min-width: 600px;
         }
 
-        th { background: var(--slate-50); padding: 0.75rem 1rem; font-weight: 700; color: var(--slate-700); border-bottom: 1px solid var(--slate-200); }
-        td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--slate-100); }
+        th { font-family: 'Space Grotesk', sans-serif; background: var(--ice); padding: 0.75rem 1rem; font-weight: 700; color: var(--navy); border-bottom: 1px solid var(--silver); }
+        td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--silver); color: var(--slate); }
         tr:last-child td { border-bottom: none; }
 
         /* Helpers & Alerts */
         .alert { display: flex; gap: 1rem; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; border: 1px solid transparent; }
-        .alert-blue { background: var(--blue-50); border-color: var(--blue-100); }
-        .alert-amber { background: var(--amber-50); border-color: var(--amber-100); color: var(--amber-700); }
-        .alert-rose { background: var(--rose-50); border-color: var(--rose-100); color: var(--rose-900); }
-        .alert-icon { color: var(--blue-600); flex-shrink: 0; }
-        .alert-amber .alert-icon { color: var(--amber-600); }
-        .alert-rose .alert-icon { color: var(--rose-600); }
+        .alert-blue { background: rgba(28, 78, 216, 0.06); border-color: rgba(28, 78, 216, 0.16); }
+        .alert-teal { background: rgba(0, 194, 174, 0.08); border-color: rgba(0, 194, 174, 0.22); }
+        .alert-amber { background: var(--warn-bg); border-color: var(--warn-border); color: var(--warn); }
+        .alert-rose { background: var(--danger-bg); border-color: var(--danger-border); color: var(--danger); }
+        .alert-icon { color: var(--cobalt); flex-shrink: 0; }
+        .alert-teal .alert-icon { color: var(--teal); }
+        .alert-amber .alert-icon { color: var(--warn); }
+        .alert-rose .alert-icon { color: var(--danger); }
         .alert h4 { margin-top: 0; color: inherit; }
         .alert p { margin-bottom: 0; font-size: 0.875rem; color: inherit; opacity: 0.9; }
 
         /* List Grid */
         .list-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 2rem 0; }
-        .list-item { display: flex; gap: 1rem; padding: 1.25rem; border: 1px solid var(--slate-200); border-radius: 8px; transition: border-color 0.2s; }
-        .list-item:hover { border-color: var(--blue-200); background: rgba(37, 99, 235, 0.02); }
-        .item-number { width: 32px; height: 32px; background: var(--blue-100); color: var(--blue-600); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.875rem; flex-shrink: 0; }
-        .item-content h5 { font-weight: 700; color: var(--slate-900); margin-bottom: 0.25rem; }
-        .item-content p { font-size: 0.875rem; color: var(--slate-600); margin: 0; }
+        .list-item { display: flex; gap: 1rem; padding: 1.25rem; border: 1px solid var(--silver); border-radius: 8px; transition: border-color 0.2s; }
+        .list-item:hover { border-color: rgba(28, 78, 216, 0.3); background: rgba(28, 78, 216, 0.02); }
+        .item-number { width: 32px; height: 32px; background: rgba(28, 78, 216, 0.1); color: var(--cobalt); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.875rem; flex-shrink: 0; font-family: 'Space Grotesk', sans-serif; }
+        .item-content h5 { font-weight: 700; color: var(--navy); margin-bottom: 0.25rem; }
+        .item-content p { font-size: 0.875rem; color: var(--slate); margin: 0; }
 
         /* Support Section */
-        .support-divider { height: 1px; background: var(--slate-200); width: 100%; margin: 8rem 0 4rem; }
+        .support-divider { height: 1px; background: var(--silver); width: 100%; margin: 8rem 0 4rem; }
         .support-card {
-            background: var(--slate-900);
-            color: white;
+            background: var(--midnight);
+            color: var(--white);
             padding: 2.5rem;
             border-radius: 16px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
-            ring: 1px solid var(--slate-800);
+            box-shadow: 0 25px 50px -12px rgba(6,14,28,0.5);
             margin-bottom: 4rem;
         }
 
@@ -314,34 +312,35 @@
             position: absolute;
             top: -20px;
             right: -20px;
-            color: var(--slate-800);
-            opacity: 0.2;
+            color: rgba(255,255,255,0.08);
+            opacity: 1;
             width: 140px;
             height: 140px;
             pointer-events: none;
         }
 
-        .support-card h3 { font-size: 1.875rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.025em; }
-        .support-card p { color: var(--slate-300); font-size: 1.125rem; margin-bottom: 2rem; max-width: 32rem; }
-        .support-card .footer-note { border-top: 1px solid var(--slate-800); padding-top: 1.5rem; margin-top: 2.5rem; font-size: 0.875rem; font-style: italic; color: var(--slate-400); }
+        .support-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.875rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -0.02em; }
+        .support-card p { color: var(--silver); font-size: 1.125rem; margin-bottom: 2rem; max-width: 32rem; }
+        .support-card .footer-note { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 1.5rem; margin-top: 2.5rem; font-size: 0.875rem; font-style: italic; color: var(--slate); }
 
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
-            background: var(--blue-600);
-            color: white;
+            background: var(--cobalt);
+            color: var(--white);
             padding: 1rem 2.5rem;
             border-radius: 10px;
             text-decoration: none;
             font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
             transition: all 0.2s;
-            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 10px 15px -3px rgba(28, 78, 216, 0.35);
         }
 
-        .btn:hover { background: var(--blue-500); transform: translateY(-1px); }
+        .btn:hover { background: var(--cobalt-light); transform: translateY(-1px); }
 
-        footer { padding: 3rem 0; border-top: 1px solid var(--slate-200); text-align: center; color: var(--slate-400); font-size: 0.875rem; margin-top: 8rem; }
+        footer { padding: 3rem 0; border-top: 1px solid var(--silver); text-align: center; color: var(--slate); font-size: 0.875rem; margin-top: 8rem; }
 
         /* Mobile Adjustments */
         @media (max-width: 768px) {
@@ -357,10 +356,11 @@
         }
 
         /* Utils */
-        .txt-blue { color: var(--blue-600); }
-        .txt-emerald { color: var(--emerald-600); }
-        .txt-amber { color: var(--amber-600); }
-        .txt-rose { color: var(--rose-600); }
+        .txt-blue { color: var(--cobalt); }
+        .txt-teal { color: var(--teal); }
+        .txt-emerald { color: var(--success); }
+        .txt-amber { color: var(--warn); }
+        .txt-rose { color: var(--danger); }
         .txt-bold { font-weight: 700; }
         .txt-mono { font-family: monospace; }
         .txt-italic { font-style: italic; }
@@ -373,10 +373,9 @@
     <!-- Mobile Header -->
     <header class="mobile-header">
         <div class="flex items-center gap-2">
-            <div class="logo-box" style="width: 32px; height: 32px; font-size: 12px;">NM</div>
-            <span class="brand-name" style="font-size: 1rem;">Nexus Med</span>
+            <img class="brand-logo" src="assets/logo/nexus-logo-primary.svg" alt="Nexus Med">
         </div>
-        <button id="menu-toggle" style="background:none; border:none; color: var(--slate-600); padding: 8px; cursor: pointer;">
+        <button id="menu-toggle" style="background:none; border:none; color: var(--slate); padding: 8px; cursor: pointer;">
             <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
             <svg id="close-icon" style="display:none;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
         </button>
@@ -385,49 +384,56 @@
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-brand">
-            <div class="logo-box">NM</div>
-            <h1 class="brand-name" style="margin:0;">Nexus Med</h1>
+            <img class="brand-logo" src="assets/logo/nexus-logo-primary.svg" alt="Nexus Med">
         </div>
         <nav class="sidebar-nav">
             <a href="#visao-geral" class="sidebar-link active">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h9z"></path></svg>
                 1. Visão Geral
             </a>
-            <a href="#base-url" class="sidebar-link">
+            <a href="#ambiente" class="sidebar-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-                2. Base URL
+                2. Ambiente e Base URL
             </a>
-            <a href="#seguranca" class="sidebar-link">
+            <a href="#autenticacao" class="sidebar-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
-                3. Segurança
+                3. Autenticação (HMAC)
             </a>
-            <a href="#inbound" class="sidebar-link">
+            <a href="#onboarding" class="sidebar-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                4. Como Obter a Credencial
+            </a>
+            <a href="#inbound-exames" class="sidebar-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8"></path><path d="m8 12 4 4 4-4"></path></svg>
-                4. Inbound
+                5. Inbound — Exames e Laudos
+            </a>
+            <a href="#inbound-pacientes" class="sidebar-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                6. Inbound — Pacientes
             </a>
             <a href="#outbound" class="sidebar-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16V8"></path><path d="m16 12-4-4-4 4"></path></svg>
-                5. Outbound
+                7. Outbound (Beta)
             </a>
             <a href="#respostas" class="sidebar-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
-                6. Respostas HTTP
+                8. Respostas e Idempotência
             </a>
             <a href="#logs" class="sidebar-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><line x1="10" x2="8" y1="9" y2="9"></line></svg>
-                7. Logs
+                9. Logs e Auditoria
             </a>
             <a href="#boas-praticas" class="sidebar-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                8. Boas Práticas
+                10. Boas Práticas
             </a>
             <a href="#versionamento" class="sidebar-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="6" y1="3" y2="15"></line><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg>
-                9. Versionamento
+                11. Versionamento
             </a>
             <a href="#suporte" class="sidebar-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
-                10. Suporte
+                12. Suporte
             </a>
         </nav>
     </aside>
@@ -442,9 +448,9 @@
 
         <div class="container">
             <header style="margin-bottom: 4rem;">
-                <div class="badge badge-blue">API v1 – OFICIAL</div>
+                <div class="badge badge-blue">API DE INTEGRAÇÃO — HMAC-SHA256</div>
                 <h1>Nexus Med API <span>Documentação</span></h1>
-                <p>Integre sua clínica ou sistema hospitalar ao ecossistema Nexus Med. Nossa API robusta e escalável permite a sincronização em tempo real de pacientes, prontuários e dados clínicos.</p>
+                <p>Integre o laboratório, o sistema de recepção/PMS ou o ERP da clínica ao Nexus Med. Duas direções de integração: <strong style="color: var(--navy);">inbound</strong> (dado entra no Nexus Med, autenticado por assinatura HMAC-SHA256) e <strong style="color: var(--navy);">outbound</strong> (o Nexus Med envia documentos assinados/finalizados para o sistema do médico, ainda em Beta).</p>
             </header>
 
             <!-- 1. Visão Geral -->
@@ -453,278 +459,503 @@
                     <svg class="txt-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h9z"></path></svg>
                     1. Visão Geral
                 </h2>
-                <p>A API do Nexus Med permite a integração bidirecional entre o sistema de prontuário eletrônico e ecossistemas externos de saúde (ERPs, Agendas, BI e Faturamento).</p>
-                <h4>Casos de Uso</h4>
-                <ul style="margin-left: 1.5rem; color: var(--slate-600);">
-                    <li style="margin-bottom: 0.5rem;"><span class="txt-bold">Inbound:</span> Sincronização automática de dados de pacientes provenientes de sistemas externos.</li>
-                    <li><span class="txt-bold">Outbound:</span> Exportação manual de prontuários para sistemas de faturamento ou auditoria.</li>
+                <p>A API do Nexus Med conecta o prontuário eletrônico a sistemas externos de saúde — laboratórios, sistemas de recepção/PMS e ERPs — por três fluxos distintos, cada um com seu próprio contrato de dados.</p>
+                <h4>Fluxos Disponíveis</h4>
+                <ul style="margin-left: 1.5rem; color: var(--slate);">
+                    <li style="margin-bottom: 0.5rem;"><span class="txt-bold" style="color: var(--navy);">Inbound — Exames e Laudos:</span> um laboratório envia o resultado de um exame (JSON estruturado) ou o arquivo de um laudo (PDF/imagem) para vínculo automático com o paciente do médico.</li>
+                    <li style="margin-bottom: 0.5rem;"><span class="txt-bold" style="color: var(--navy);">Inbound — Pacientes:</span> o sistema de recepção/PMS externo da clínica sincroniza cadastro e atualização de pacientes.</li>
+                    <li><span class="txt-bold" style="color: var(--navy);">Outbound — Documentos <span class="badge badge-beta" style="margin:0 0 0 0.25rem; padding: 0.05rem 0.5rem; font-size: 0.65rem;">BETA</span>:</span> quando um documento se torna imutável (assinado ou finalizado), o Nexus Med envia automaticamente uma notificação para o <code>webhook_url</code> configurado pelo médico.</li>
                 </ul>
                 <div class="alert alert-blue" style="margin-top: 2rem;">
-                    <div class="alert-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h9z"></path></svg></div>
+                    <div class="alert-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg></div>
                     <div>
-                        <h4 class="mb-0" style="color: var(--blue-900);">Interoperabilidade</h4>
-                        <p style="font-size: 0.875rem; color: var(--blue-700);">Garantimos a comunicação eficiente entre plataformas para otimizar o fluxo de atendimento médico e administrativo.</p>
+                        <h4 class="mb-0" style="color: var(--navy);">Sem OAuth2, sem JWT</h4>
+                        <p style="font-size: 0.875rem; color: var(--navy); opacity: 0.85;">Toda integração de sistema externo (laboratório, PMS, ERP) autentica por <strong>assinatura HMAC-SHA256</strong> — não há login de usuário nem token OAuth para essas rotas. JWT é usado apenas quando o próprio médico está autenticado dentro do Nexus Med.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- 2. Base URL -->
-            <section id="base-url">
+            <!-- 2. Ambiente e Base URL -->
+            <section id="ambiente">
                 <h2>
                     <svg class="txt-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-                    2. Base URL
+                    2. Ambiente e Base URL
                 </h2>
                 <p>O ambiente de produção está acessível através da seguinte URL base:</p>
                 <div class="relative">
-                    <div class="code-container" style="background: var(--slate-900); color: var(--blue-500); padding-right: 4rem;">
-                        <pre id="base-url-text">https://api.iacomunica.com.br/nexusmed/v1</pre>
+                    <div class="code-container" style="padding-right: 4rem;">
+                        <pre id="base-url-text">https://ia-comunica-core-api.vercel.app</pre>
                         <button class="copy-btn" onclick="copyToClipboard('base-url-text', this)">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                         </button>
                     </div>
                 </div>
+                <p>Cada rota do Nexus Med tem um endpoint de teste de conectividade, sem autenticação, útil para validar que a integração enxerga o serviço antes de configurar HMAC:</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Health check</th><th>Fluxo</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="txt-mono txt-blue">GET /nexus/inbound-exam/health</td><td>Inbound — exames</td></tr>
+                            <tr><td class="txt-mono txt-blue">GET /nexus/laudos-inbound/health</td><td>Inbound — laudos/arquivos</td></tr>
+                            <tr><td class="txt-mono txt-blue">GET /nexus/inbound-patient/health</td><td>Inbound — pacientes</td></tr>
+                        </tbody>
+                    </table>
+                </div>
                 <div class="alert alert-amber">
                     <div class="alert-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg></div>
-                    <p><span class="txt-bold">Observação:</span> Todos os endpoints descritos nesta documentação partem desta URL base. É mandatório o uso de HTTPS para todas as requisições.</p>
+                    <p><span class="txt-bold">Observação:</span> não existe hoje um domínio customizado para esta API (ex.: <code>nexusmed.iacomunica.com.br</code>) — a URL base é o domínio raiz da Vercel do projeto. HTTPS é obrigatório em todas as requisições.</p>
                 </div>
             </section>
 
-            <!-- 3. Segurança -->
-            <section id="seguranca">
+            <!-- 3. Autenticação (HMAC) -->
+            <section id="autenticacao">
                 <h2>
                     <svg class="txt-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
-                    3. Segurança e Autenticação
+                    3. Autenticação — HMAC-SHA256 v2 (Inbound)
                 </h2>
-                <p>A autenticação é baseada em credenciais exclusivas por integração. Não há OAuth2 nem JWT nesta versão.</p>
-                <h4>Headers Obrigatórios (Inbound)</h4>
+                <p>As três rotas inbound (exames, laudos/arquivos e pacientes) compartilham o mesmo mecanismo de autenticação: uma credencial por médico/sistema externo, assinando cada requisição com HMAC-SHA256.</p>
+                <h4>Headers Obrigatórios</h4>
                 <div class="table-wrapper">
                     <table>
                         <thead>
                             <tr>
                                 <th>Header</th>
-                                <th>Tipo</th>
-                                <th>Obrigatório</th>
                                 <th>Descrição</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="txt-mono txt-blue">x-routing-key</td>
-                                <td>UUID</td>
-                                <td>Sim</td>
-                                <td class="txt-italic">Identificador único do médico/clínica</td>
+                                <td class="txt-mono txt-blue">x-nexus-tenant</td>
+                                <td>Identifica o médico/tenant destinatário — o <code>doctor_id</code> (UUID) ou, em algumas rotas, um alias alfanumérico previamente cadastrado.</td>
                             </tr>
                             <tr>
-                                <td class="txt-mono txt-blue">x-webhook-secret</td>
-                                <td>String</td>
-                                <td>Sim</td>
-                                <td class="txt-italic">Chave secreta da integração</td>
+                                <td class="txt-mono txt-blue">x-nexus-external-system</td>
+                                <td>Identificador do sistema externo (o mesmo usado no cadastro da credencial), ex.: <code>fleury</code>, <code>dasa</code>.</td>
+                            </tr>
+                            <tr>
+                                <td class="txt-mono txt-blue">x-nexus-timestamp</td>
+                                <td>Unix timestamp em segundos do momento do envio. Janela de aceitação: ±120 segundos.</td>
+                            </tr>
+                            <tr>
+                                <td class="txt-mono txt-blue">x-nexus-signature</td>
+                                <td>Assinatura HMAC-SHA256, formato <code>sha256=&lt;hex&gt;</code>.</td>
+                            </tr>
+                            <tr>
+                                <td class="txt-mono txt-blue">x-nexus-delivery-id</td>
+                                <td>Identificador único desta entrega, definido pelo sistema externo — chave de idempotência (ver seção 8).</td>
                             </tr>
                             <tr>
                                 <td class="txt-mono txt-blue">Content-Type</td>
-                                <td>String</td>
-                                <td>Sim</td>
-                                <td class="txt-italic">Deve ser application/json</td>
+                                <td>Deve ser exatamente <code>application/json</code> — sem isso o corpo bruto usado na verificação de assinatura não é capturado, e a requisição é rejeitada.</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="alert alert-rose">
-                    <div class="alert-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg></div>
-                    <div>
-                        <h4 class="mb-0 txt-italic">IMPORTANTE: Gestão de Segredos</h4>
-                        <ul style="margin-left: 1rem; font-size: 0.875rem;">
-                            <li>A <span class="txt-bold">x-webhook-secret</span> é exibida uma única vez no momento da criação da integração.</li>
-                            <li>Se perdida, é necessário criar uma nova integração.</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 4. Inbound -->
-            <section id="inbound">
-                <h2>
-                    <svg class="txt-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8"></path><path d="m8 12 4 4 4-4"></path></svg>
-                    4. Integração Inbound
-                </h2>
-                <p>Utilize este endpoint para o recebimento de pacientes provenientes de sistemas externos.</p>
-                <div class="flex items-center gap-2" style="margin-bottom: 1rem;">
-                    <span class="badge-green">POST</span>
-                    <code class="txt-bold">/integrations/inbound/patients</code>
-                </div>
-                <div class="alert alert-blue" style="background: var(--slate-100); border-color: var(--slate-200); color: var(--slate-700);">
-                    <div>
-                        <h5 class="txt-bold" style="margin-bottom: 0.5rem; color: var(--slate-900);">Regra de Negócio (Upsert):</h5>
-                        <p style="font-size: 0.875rem;">O endpoint opera exclusivamente com lógica de <span class="txt-bold">upsert automático</span>. Cada requisição POST processa o seguinte: Se não houver paciente com o <span class="txt-bold">external_id</span>, cria-se um novo; se existir, atualiza-se os dados.</p>
-                    </div>
-                </div>
-                <h4>Exemplo de Requisição</h4>
+                <h4>Cálculo da Assinatura</h4>
+                <p>A assinatura é calculada sobre um canonical de 8 linhas, separadas por <code>\n</code> (sem quebra final), sem nenhuma normalização de campo:</p>
                 <div class="relative">
-                    <div class="code-header">json</div>
+                    <div class="code-header">canonical</div>
                     <div class="code-container">
-                        <pre id="json-inbound">{
-  "event_type": "patient.created",
-  "origin_source": "erp_clinico",
-  "patient": {
-    "external_id": "EXT-1001",
-    "full_name": "João da Silva",
-    "phone": "11987654321",
-    "cpf": "12345678900",
-    "birth_date": "1980-05-12",
-    "email": "joao.silva@email.com"
-  }
-}</pre>
-                        <button class="copy-btn" onclick="copyToClipboard('json-inbound', this)">
+                        <pre id="canonical-example">NEXUS-HMAC-V2
+&lt;METODO HTTP EM MAIUSCULO&gt;
+&lt;PATH + QUERY EXATOS DA REQUISICAO&gt;
+&lt;x-nexus-timestamp&gt;
+&lt;x-nexus-tenant&gt;
+&lt;x-nexus-external-system&gt;
+&lt;x-nexus-delivery-id (ou vazio, se a rota nao exigir)&gt;
+&lt;SHA256_HEX(corpo exato da requisicao)&gt;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard('canonical-example', this)">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                         </button>
                     </div>
                 </div>
-            </section>
-
-            <!-- 5. Outbound -->
-            <section id="outbound">
-                <h2>
-                    <svg class="txt-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16V8"></path><path d="m16 12-4-4-4 4"></path></svg>
-                    5. Integração Outbound
-                </h2>
-                <p>Fluxo para o envio de prontuários e dados clínicos do Nexus Med para sistemas externos.</p>
-                <div class="list-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-                    <div class="list-item">
-                        <div class="item-content">
-                            <h5>Gatilho</h5>
-                            <p>Ação manual do médico através do botão "Exportar Prontuário".</p>
-                        </div>
+                <p style="font-size: 0.9375rem;"><code>NEXUS-HMAC-V2</code> é um separador de domínio criptográfico fixo, sempre exatamente esse texto — garante que esta assinatura nunca colide com outro uso de HMAC-SHA256 no ecossistema. O resultado final vira o header:</p>
+                <div class="relative">
+                    <div class="code-container">
+                        <pre id="signature-header">x-nexus-signature: sha256=&lt;hmac_sha256_hex(secret, canonical)&gt;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard('signature-header', this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
                     </div>
-                    <div class="list-item">
-                        <div class="item-content">
-                            <h5>Evento</h5>
-                            <p>O payload enviado conterá o evento <code>medical_record.exported</code>.</p>
-                        </div>
+                </div>
+                <div class="alert alert-rose">
+                    <div class="alert-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg></div>
+                    <div>
+                        <h4 class="mb-0 txt-italic">Assine exatamente os bytes transmitidos</h4>
+                        <p style="font-size: 0.875rem;">Se sua biblioteca HTTP reformatar o corpo depois de assinado (reordenar chaves, mudar indentação) ou normalizar a URL, o hash não bate mais. Assine os bytes exatos, na ordem exata em que serão transmitidos — inclusive path e query string.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- 6. Respostas HTTP -->
+            <!-- 4. Onboarding self-service -->
+            <section id="onboarding">
+                <h2>
+                    <svg class="txt-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    4. Como Obter a Credencial
+                    <span class="badge badge-self-service" style="margin: 0 0 0 0.5rem; padding: 0.15rem 0.6rem; font-size: 0.6875rem;">SELF-SERVICE</span>
+                </h2>
+                <p>O provisionamento da credencial HMAC é feito pelo próprio médico, dentro do Nexus Med — sem depender de um processo manual com o time da IA Comunica.</p>
+                <div class="list-grid">
+                    <div class="list-item">
+                        <div class="item-number">1</div>
+                        <div class="item-content">
+                            <h5>O médico gera a credencial</h5>
+                            <p>Dentro do Nexus Med: Configurações → Integrações → "Credenciais de integração".</p>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="item-number">2</div>
+                        <div class="item-content">
+                            <h5>Link de resgate de uso único</h5>
+                            <p>O médico recebe um link válido por 72 horas — ele mesmo nunca vê o valor da chave.</p>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="item-number">3</div>
+                        <div class="item-content">
+                            <h5>Envio ao contato técnico</h5>
+                            <p>O médico envia o link para o contato técnico do laboratório ou do sistema parceiro.</p>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="item-number">4</div>
+                        <div class="item-content">
+                            <h5>Resgate de uso único</h5>
+                            <p>O parceiro abre o link, a chave é revelada exatamente uma vez, e deve ser guardada com segurança a partir daí.</p>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="item-number">5</div>
+                        <div class="item-content">
+                            <h5>Sem processo manual</h5>
+                            <p>Nenhuma etapa depende do time da IA Comunica — o fluxo inteiro acontece dentro do produto.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert alert-amber">
+                    <div class="alert-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg></div>
+                    <p><span class="txt-bold">Se o link expirar ou a chave se perder,</span> não há como recuperar o valor — o médico precisa gerar uma nova credencial (rotação), o que invalida a anterior dentro de uma janela de transição.</p>
+                </div>
+            </section>
+
+            <!-- 5. Inbound — Exames e Laudos -->
+            <section id="inbound-exames">
+                <h2>
+                    <svg class="txt-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8"></path><path d="m8 12 4 4 4-4"></path></svg>
+                    5. Inbound — Exames e Laudos
+                </h2>
+                <p>Um laboratório ou sistema externo envia o resultado de um exame de duas formas: um <span class="txt-bold" style="color: var(--navy);">resultado estruturado (JSON)</span> ou o <span class="txt-bold" style="color: var(--navy);">arquivo de um laudo</span> (PDF/imagem). Os dois caminhos usam a mesma autenticação HMAC da seção 3.</p>
+
+                <h4>5.1 — Resultado estruturado</h4>
+                <div class="flex items-center gap-2" style="margin-bottom: 1rem;">
+                    <span class="badge-green">POST</span>
+                    <code class="txt-bold">/nexus/inbound-exam</code>
+                </div>
+                <p>Não há schema JSON rígido — o corpo é armazenado criptografado e processado depois, de forma assíncrona. Estrutura recomendada:</p>
+                <div class="relative">
+                    <div class="code-header">json</div>
+                    <div class="code-container">
+                        <pre id="json-exam">{
+  "delivery_id": "LAB-EXAMPLE-000123",
+  "external_system": "lab-exemplo",
+  "exam_type": "HEMOGRAMA",
+  "external_patient_id": "PAC-000123",
+  "exam_date": "2026-08-20",
+  "requesting_physician": "Dr. Fulano de Tal",
+  "notes": "Observações clínicas relevantes, se houver",
+  "results": {
+    "hemoglobina": "14.5 g/dL",
+    "hematocrito": "43%"
+  }
+}</pre>
+                        <button class="copy-btn" onclick="copyToClipboard('json-exam', this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="alert alert-blue" style="background: var(--ice); border-color: var(--silver); color: var(--navy);">
+                    <div>
+                        <h5 class="txt-bold" style="margin-bottom: 0.5rem; color: var(--navy);">Vínculo com o paciente:</h5>
+                        <p style="font-size: 0.875rem; color: var(--slate);">Sempre envie <code>external_patient_id</code> com um identificador estável do paciente. Sem ele, o exame cai em uma fila de pendências para vínculo manual do médico.</p>
+                    </div>
+                </div>
+                <p>Status de uma entrega específica: <code>GET /nexus/inbound-exam/:deliveryId/status</code> (mesma autenticação HMAC, com o path assinado).</p>
+
+                <h4>5.2 — Arquivo de laudo (fluxo em 2 chamadas)</h4>
+                <p>Quando o que o laboratório tem é um arquivo (PDF, imagem), o envio acontece em duas etapas — o arquivo nunca trafega pela <code>core-api</code>, só a autorização de upload:</p>
+                <div class="list-grid">
+                    <div class="list-item">
+                        <div class="item-number">1</div>
+                        <div class="item-content">
+                            <h5><span class="badge-green" style="margin-right:0.4rem;">POST</span><code>/nexus/laudos-inbound/upload-url</code></h5>
+                            <p>Autenticado por HMAC. Devolve uma signed URL de upload direto no Storage, referenciada por um <code>upload_ticket_id</code>.</p>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="item-number">2</div>
+                        <div class="item-content">
+                            <h5>PUT direto no Storage</h5>
+                            <p>O laboratório envia os bytes reais usando a <code>upload_url</code>/<code>token</code> recebidos — fora da <code>core-api</code>.</p>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div class="item-number">3</div>
+                        <div class="item-content">
+                            <h5><span class="badge-green" style="margin-right:0.4rem;">POST</span><code>/nexus/laudos-inbound/webhook</code></h5>
+                            <p>Notifica o Nexus Med do laudo recebido, referenciando o <code>upload_ticket_id</code> da etapa 1. Mesma autenticação HMAC.</p>
+                        </div>
+                    </div>
+                </div>
+                <p>Campos aceitos no <code>webhook</code> (além de <code>upload_ticket_id</code>): <code>lab_id</code>, <code>laudo_tipo</code>, <code>laudo_data</code>, <code>laudo_referencia</code> (chave de idempotência do lado do laboratório), <code>tipo_envio</code> (<code>laudo_pronto</code> ou <code>exame_bruto</code>), além de campos opcionais de identificação do paciente (<code>paciente_cpf_hash</code>, <code>paciente_nome</code>, <code>paciente_data_nascimento</code>) e metadados do arquivo (<code>arquivo_mime_type</code>, <code>arquivo_tamanho</code>, <code>arquivo_nome</code>).</p>
+                <div class="alert alert-amber">
+                    <div class="alert-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg></div>
+                    <p><span class="txt-bold">Limites técnicos:</span> corpo máximo de 256 KB em <code>/nexus/inbound-exam</code>. Rate limit de 60 req/min por par (tenant, sistema externo) em <code>/nexus/inbound-exam</code>, e 100 req/min em <code>/nexus/laudos-inbound/*</code>.</p>
+                </div>
+            </section>
+
+            <!-- 6. Inbound — Pacientes -->
+            <section id="inbound-pacientes">
+                <h2>
+                    <svg class="txt-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    6. Inbound — Pacientes
+                </h2>
+                <p>Sincronização de cadastro/atualização de paciente vinda do sistema de recepção/PMS externo da clínica — mesmo substrato de credencial HMAC das seções 3 e 5 (o mesmo secret cadastrado pelo médico serve para exames e para pacientes).</p>
+                <div class="flex items-center gap-2" style="margin-bottom: 1rem;">
+                    <span class="badge-green">POST</span>
+                    <code class="txt-bold">/nexus/inbound-patient</code>
+                </div>
+                <p>Também sem schema rígido. Campos reconhecidos no corpo:</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Campo</th><th>Descrição</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="txt-mono txt-blue">external_patient_id</td><td>Identificador do paciente no sistema externo (aceita também <code>patient_id</code>/<code>paciente_id</code> por tolerância). Usado primeiro na tentativa de vínculo.</td></tr>
+                            <tr><td class="txt-mono txt-blue">cpf</td><td>Usado como critério de vínculo/criação quando o checksum é válido.</td></tr>
+                            <tr><td class="txt-mono txt-blue">full_name</td><td>Obrigatório na prática para criação automática de um novo paciente.</td></tr>
+                            <tr><td class="txt-mono txt-blue">birth_date, gender, phone, email, address, cns</td><td>Campos administrativos complementares.</td></tr>
+                            <tr><td class="txt-mono txt-blue">clinic_external_ref</td><td>Referência da clínica no sistema externo — ajuda a resolver a clínica automaticamente quando o médico atende em mais de uma.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>Quando o vínculo automático não é possível (sem <code>external_patient_id</code> conhecido e sem CPF válido, por exemplo), o evento entra em uma fila de revisão para o médico resolver manualmente dentro do Nexus Med.</p>
+                <p>Status de uma entrega específica: <code>GET /nexus/inbound-patient/:deliveryId/status</code>. Rate limit: 60 req/min por par (tenant, sistema externo).</p>
+            </section>
+
+            <!-- 7. Outbound (Beta) -->
+            <section id="outbound">
+                <h2>
+                    <svg class="txt-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16V8"></path><path d="m16 12-4-4-4 4"></path></svg>
+                    7. Outbound — Envio de Documentos
+                    <span class="badge badge-beta" style="margin: 0 0 0 0.5rem; padding: 0.15rem 0.6rem; font-size: 0.6875rem;">BETA</span>
+                </h2>
+                <div class="alert alert-amber">
+                    <div class="alert-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg></div>
+                    <p><span class="txt-bold">Este fluxo está em Beta.</span> A engenharia está pronta e ativa, mas ainda não foi validada de ponta a ponta com um destinatário real em produção. Trate como preview técnico, não como contrato estável para uso imediato.</p>
+                </div>
+                <p>Quando um documento do Nexus Med se torna imutável — assinado (ICP-Brasil) ou finalizado, dependendo da preferência de assinatura configurada na integração — o Nexus Med envia automaticamente um <code>POST</code> para o <code>webhook_url</code> que o médico configurou dentro do produto.</p>
+                <h4>Envelope enviado</h4>
+                <p>O envelope <span class="txt-bold" style="color: var(--navy);">nunca inclui dado clínico bruto</span> — nome de paciente, CPF, CID ou conteúdo do documento. Só metadados e uma signed URL de download de curta duração:</p>
+                <div class="relative">
+                    <div class="code-header">json</div>
+                    <div class="code-container">
+                        <pre id="json-outbound">{
+  "event_id": "01hxxxxxxxxxxxxxxxxxxxxxxx",
+  "source": "nexus-med",
+  "type": "laudo.assinado",
+  "occurred_at": "2026-08-29T14:32:10.000Z",
+  "tenant_id": "doctor-uuid-real-do-medico",
+  "payload": {
+    "entity_type": "laudo",
+    "entity_id": "uuid-do-laudo",
+    "patient_external_id": "PAC-000123",
+    "document_type": "laudo_hemograma",
+    "signature_status": "signed_by_nexus",
+    "signature_method": "icp_brasil",
+    "finalized_at": "2026-08-29T14:32:05.000Z",
+    "signed_at": "2026-08-29T14:32:08.000Z",
+    "document_sha256": "&lt;sha256 hex do arquivo&gt;",
+    "download_url": "&lt;signed URL, TTL curto&gt;",
+    "download_expires_at": "2026-08-29T14:47:08.000Z"
+  }
+}</pre>
+                        <button class="copy-btn" onclick="copyToClipboard('json-outbound', this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                <p><code>patient_external_id</code> só é preenchido quando o paciente já está mapeado para um identificador externo — caso contrário, é <code>null</code>. <code>signed_at</code>/<code>signature_method</code> só são preenchidos quando <code>signature_status = "signed_by_nexus"</code>.</p>
+
+                <h4>Autenticação — NEXUS-OUTBOUND-HMAC-V1</h4>
+                <p>Esquema diferente da inbound (nomes de header e canonical distintos — não reaproveite código):</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Header</th><th>Descrição</th></tr></thead>
+                        <tbody>
+                            <tr><td class="txt-mono txt-blue">x-nexus-event-id</td><td>uuid-v7 do evento — o mesmo <code>event_id</code> do envelope.</td></tr>
+                            <tr><td class="txt-mono txt-blue">x-nexus-timestamp</td><td>Unix timestamp em segundos, no momento do envio.</td></tr>
+                            <tr><td class="txt-mono txt-blue">x-nexus-signature</td><td>HMAC-SHA256, formato <code>sha256=&lt;hex&gt;</code>, calculada sobre o canonical de 4 linhas abaixo.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="relative">
+                    <div class="code-header">canonical</div>
+                    <div class="code-container">
+                        <pre id="canonical-outbound">NEXUS-OUTBOUND-HMAC-V1
+&lt;x-nexus-event-id&gt;
+&lt;x-nexus-timestamp&gt;
+&lt;SHA256_HEX(corpo exato do envelope)&gt;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard('canonical-outbound', this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                </div>
+                <h4>Retentativas</h4>
+                <p>Até 5 tentativas de entrega, com backoff exponencial e jitter (~1min, 5min, 25min, 2h). Classificação da resposta do seu servidor:</p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Resposta</th><th>Classificação</th></tr></thead>
+                        <tbody>
+                            <tr><td><span class="txt-bold txt-emerald">2xx</span></td><td>Entregue — não retenta.</td></tr>
+                            <tr><td><span class="txt-bold txt-amber">429 / 5xx / timeout</span></td><td>Retentável — nova tentativa com backoff.</td></tr>
+                            <tr><td><span class="txt-bold txt-rose">4xx (exceto 429)</span></td><td>Falha terminal — nunca retenta.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="font-size: 0.9375rem;">Requisitos de segurança do envio: apenas HTTPS, sem seguir redirecionamento, timeout de 10s, corpo de resposta do seu servidor truncado antes de qualquer log. O <code>webhook_url</code> é configurado pelo médico dentro do Nexus Med, na própria integração.</p>
+            </section>
+
+            <!-- 8. Respostas HTTP e Idempotência -->
             <section id="respostas">
                 <h2>
                     <svg class="txt-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 11 3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
-                    6. Respostas HTTP
+                    8. Respostas HTTP e Idempotência
                 </h2>
                 <div class="table-wrapper">
                     <table>
                         <thead>
                             <tr>
                                 <th>Código</th>
-                                <th>Significado</th>
-                                <th>Descrição</th>
-                                <th>Exemplo</th>
+                                <th>Quando ocorre</th>
+                                <th>O que fazer</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><span class="txt-bold txt-emerald">200 / 201</span></td>
-                                <td class="txt-bold">Sucesso</td>
-                                <td class="txt-italic">Processada com sucesso.</td>
-                                <td><code>{"success": true}</code></td>
+                                <td><span class="txt-bold txt-emerald">202</span></td>
+                                <td class="txt-italic">Entrega nova, aceita e enfileirada.</td>
+                                <td>Sucesso — nada a fazer.</td>
+                            </tr>
+                            <tr>
+                                <td><span class="txt-bold txt-emerald">200</span></td>
+                                <td class="txt-italic">Reenvio de um <code>delivery_id</code> já processado (idempotência) ou resposta de <code>/health</code>.</td>
+                                <td>Sucesso — tratar como confirmação, não reenviar de novo.</td>
                             </tr>
                             <tr>
                                 <td><span class="txt-bold txt-amber">400</span></td>
-                                <td class="txt-bold">Bad Request</td>
-                                <td class="txt-italic">Payload inválido.</td>
-                                <td><code>{"error": "Missing fields"}</code></td>
+                                <td class="txt-italic">Header <code>x-nexus-delivery-id</code> ausente, ou corpo não é JSON válido.</td>
+                                <td>Corrigir a requisição — não é erro transitório.</td>
                             </tr>
                             <tr>
                                 <td><span class="txt-bold txt-rose">401</span></td>
-                                <td class="txt-bold">Unauthorized</td>
-                                <td class="txt-italic">Credenciais inválidas.</td>
-                                <td><code>{"error": "Unauthorized"}</code></td>
+                                <td class="txt-italic">Header de autenticação ausente, timestamp fora da janela, assinatura não confere, ou nenhum secret cadastrado para o par tenant+sistema.</td>
+                                <td>Verificar headers, timestamp e secret — não adianta reenviar sem corrigir a causa.</td>
                             </tr>
                             <tr>
-                                <td><span class="txt-bold txt-rose" style="color: var(--rose-900);">403</span></td>
-                                <td class="txt-bold">Forbidden</td>
-                                <td class="txt-italic">Integração desativada.</td>
-                                <td><code>{"error": "Forbidden"}</code></td>
+                                <td><span class="txt-bold txt-amber">429</span></td>
+                                <td class="txt-italic">Limite de requisições por minuto excedido.</td>
+                                <td>Reduzir a taxa de envio, aplicar backoff.</td>
                             </tr>
                             <tr>
-                                <td><span class="txt-bold" style="color: var(--slate-900);">500</span></td>
-                                <td class="txt-bold">Server Error</td>
-                                <td class="txt-italic">Falha interna.</td>
-                                <td><code>{"error": "Internal Error"}</code></td>
+                                <td><span class="txt-bold" style="color: var(--navy);">5xx</span></td>
+                                <td class="txt-italic">Falha interna do servidor.</td>
+                                <td>Retentar com backoff exponencial — seguro reenviar com o <span class="txt-bold">mesmo</span> <code>delivery_id</code>.</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-            </section>
-
-            <!-- 7. Logs -->
-            <section id="logs">
-                <h2>
-                    <svg class="txt-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><line x1="10" x2="8" y1="9" y2="9"></line></svg>
-                    7. Logs e Auditoria
-                </h2>
-                <p>Todas as transações são registradas na tabela <code>integration_events</code>, permitindo:</p>
-                <div class="flex gap-4" style="flex-wrap: wrap;">
-                    <div style="flex: 1; min-width: 150px; background: var(--slate-100); padding: 1rem; border-radius: 8px; text-align: center; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--slate-500);">Auditoria</div>
-                    <div style="flex: 1; min-width: 150px; background: var(--slate-100); padding: 1rem; border-radius: 8px; text-align: center; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--slate-500);">Rastreabilidade</div>
-                    <div style="flex: 1; min-width: 150px; background: var(--slate-100); padding: 1rem; border-radius: 8px; text-align: center; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--slate-500);">Depuração</div>
+                <h4>Idempotência</h4>
+                <p><code>delivery_id</code> é definido por quem envia (nunca pelo Nexus Med). A chave de unicidade real é o trio <code>(tenant, external_system, delivery_id)</code> — reenviar o mesmo <code>delivery_id</code> dentro desse par nunca processa duas vezes, e devolve o registro já persistido.</p>
+                <div class="alert alert-rose">
+                    <div class="alert-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg></div>
+                    <p><span class="txt-bold">Nunca reutilize um <code>delivery_id</code> para um evento diferente.</span> Só o identificador é comparado, não o corpo — reusar o mesmo id com um corpo diferente descarta o novo conteúdo silenciosamente, mantendo o da primeira tentativa.</p>
                 </div>
             </section>
 
-            <!-- 8. Boas Práticas -->
+            <!-- 9. Logs -->
+            <section id="logs">
+                <h2>
+                    <svg class="txt-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><line x1="10" x2="8" y1="9" y2="9"></line></svg>
+                    9. Logs e Auditoria
+                </h2>
+                <p>Por política de LGPD (Art. 46), o log de cada entrega <span class="txt-bold" style="color: var(--navy);">nunca contém o conteúdo do exame/laudo nem dado clínico de paciente</span>. Os campos registrados por entrega:</p>
+                <div class="flex gap-4" style="flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 150px; background: var(--ice); padding: 1rem; border-radius: 8px; text-align: center; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--slate); font-family: 'Space Grotesk', sans-serif;">delivery_id / external_system</div>
+                    <div style="flex: 1; min-width: 150px; background: var(--ice); padding: 1rem; border-radius: 8px; text-align: center; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--slate); font-family: 'Space Grotesk', sans-serif;">http_status / latency_ms</div>
+                    <div style="flex: 1; min-width: 150px; background: var(--ice); padding: 1rem; border-radius: 8px; text-align: center; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--slate); font-family: 'Space Grotesk', sans-serif;">payload_size_bytes</div>
+                </div>
+                <p style="margin-top: 1.5rem;">Em caso de falha de autenticação, o valor cru do <code>x-nexus-tenant</code> recebido nunca é registrado — só o desfecho e o <code>external_system</code>.</p>
+            </section>
+
+            <!-- 10. Boas Práticas -->
             <section id="boas-praticas">
                 <h2>
                     <svg class="txt-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                    8. Boas Práticas
+                    10. Boas Práticas
                 </h2>
                 <div class="list-grid">
                     <div class="list-item">
                         <div class="item-number">1</div>
                         <div class="item-content">
-                            <h5>Segurança de Credenciais</h5>
-                            <p>Mantenha a x-routing-key protegida e nunca a exponha em código client-side ou repositórios públicos.</p>
+                            <h5>Proteja o secret</h5>
+                            <p>Nunca exponha a credencial HMAC em código client-side, repositórios públicos ou logs. Ela nunca é enviada em texto claro pela IA Comunica — só pelo link de resgate de uso único.</p>
                         </div>
                     </div>
                     <div class="list-item">
                         <div class="item-number">2</div>
                         <div class="item-content">
-                            <h5>Tratamento de Erros</h5>
-                            <p>Implemente retentativas para erros de rede, mas respeite códigos de erro 4xx que indicam problemas no payload.</p>
+                            <h5>Assine os bytes exatos</h5>
+                            <p>Path, query e corpo entram na assinatura exatamente como serão transmitidos — sem reformatar o JSON nem normalizar a URL depois de calcular o hash.</p>
                         </div>
                     </div>
                     <div class="list-item">
                         <div class="item-number">3</div>
                         <div class="item-content">
-                            <h5>Processamento de Webhooks</h5>
-                            <p>Sempre retorne 2xx rapidamente e processe a carga útil em segundo plano para não travar a conexão.</p>
+                            <h5>Retentativas com critério</h5>
+                            <p>Retente com backoff em <code>429</code> e <code>5xx</code>/timeout. Nunca retente <code>400</code>/<code>401</code> sem corrigir a causa primeiro — vai gerar o mesmo erro de novo.</p>
                         </div>
                     </div>
                     <div class="list-item">
                         <div class="item-number">4</div>
                         <div class="item-content">
-                            <h5>Imutabilidade de IDs</h5>
-                            <p>Use external_id de forma consistente para evitar a criação de registros duplicados para o mesmo paciente.</p>
+                            <h5>Identificadores estáveis</h5>
+                            <p>Use <code>external_patient_id</code>/<code>delivery_id</code> de forma consistente — evita vínculo manual desnecessário e duplicação de registros.</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- 9. Versionamento -->
+            <!-- 11. Versionamento -->
             <section id="versionamento">
                 <h2>
                     <svg class="txt-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="6" y1="3" y2="15"></line><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg>
-                    9. Versionamento
+                    11. Versionamento
                 </h2>
-                <p>Esta é a primeira versão pública da API Nexus Med (v1). O versionamento é mantido desde o início para garantir compatibilidade futura e evitar mudanças incompatíveis à medida que novas funcionalidades forem adicionadas.</p>
+                <p>O contrato inbound está na sua <span class="txt-bold" style="color: var(--navy);">2ª versão do canonical HMAC (v2)</span>: a assinatura passou a vincular também o método HTTP, o path/query exatos e o <code>delivery_id</code>, fechando uma brecha onde uma assinatura válida podia ser reaproveitada trocando só o identificador de entrega. Foi uma mudança sem caminho de compatibilidade com a v1 — não havia integração real em produção no momento da migração.</p>
+                <p>O contrato outbound está na sua 1ª versão (<code>NEXUS-OUTBOUND-HMAC-V1</code>) e permanece em <span class="txt-bold" style="color: var(--navy);">Beta</span> (ver seção 7) até a primeira validação de ponta a ponta com um destinatário real.</p>
             </section>
 
             <!-- Divider de Encerramento -->
             <div class="support-divider"></div>
 
-            <!-- 10. Suporte -->
+            <!-- 12. Suporte -->
             <section id="suporte">
                 <h2>
                     <svg class="txt-blue" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
-                    10. Suporte
+                    12. Suporte
                 </h2>
                 <div class="support-card">
                     <svg class="support-bg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
@@ -777,7 +1008,7 @@
             const text = document.getElementById(elementId).innerText.trim();
             navigator.clipboard.writeText(text).then(() => {
                 const originalIcon = btn.innerHTML;
-                btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>`;
+                btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#00C2AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>`;
                 setTimeout(() => {
                     btn.innerHTML = originalIcon;
                 }, 2000);
