@@ -191,6 +191,10 @@
       errBox.innerHTML = '<strong>Para calcular, falta ajustar:</strong><ul>' + r.erros.map(function (x) {
         return '<li><button type="button" class="o-linkbtn" data-foco="' + (CAMPO_INPUT[x.campo] || '') + '">' + esc(x.mensagem) + '</button></li>';
       }).join('') + '</ul>';
+      ['r-quadro', 'r-acres-mensal', 'r-acres-anual', 'r-primeiro-ano', 'r-mensal', 'r-pct'].forEach(function (id) { $(id).textContent = '—'; $(id).classList.add('is-na'); });
+      $('r-novas').textContent = '—'; $('r-novas').removeAttribute('data-v'); $('r-jornada').textContent = '';
+      $('viz').innerHTML = ''; $('viz-legenda').innerHTML = ''; prevNovas = 0;
+      $('r-compare').querySelector('tbody').innerHTML = ''; $('r-bars').innerHTML = ''; $('r-memoria').innerHTML = '';
       $('r-mini').classList.remove('has-data');
       $('mini-novas').textContent = '—'; $('mini-custo').textContent = '—';
       anunciar('Faltam dados para calcular. ' + r.erros.map(function (x) { return x.mensagem; }).join(' '));
@@ -219,7 +223,7 @@
     var semCusto = !r.temCusto;
     setKpi('r-acres-mensal', semCusto ? null : brl(r.acrescimoMensal));
     setKpi('r-acres-anual', semCusto ? null : brl(r.acrescimoAnual));
-    $('r-primeiro-ano-label').textContent = 'Primeiro ano (de ' + MESES[r.mesInicio - 1] + ' a dezembro · ' + r.mesesPrimeiroAno + (r.mesesPrimeiroAno === 1 ? ' mês)' : ' meses)');
+    $('r-primeiro-ano-label').textContent = 'Primeiro ano (' + periodo(r.mesInicio) + ' · ' + r.mesesPrimeiroAno + (r.mesesPrimeiroAno === 1 ? ' mês)' : ' meses)');
     setKpi('r-primeiro-ano', semCusto ? null : brl(r.primeiroAno));
     setKpi('r-mensal', semCusto ? null : brl(r.custoAtual) + ' → ' + brl(r.custoFuturo));
     setKpi('r-pct', semCusto || r.percentual === null ? null : '+' + num(r.percentual, 1) + '%', semCusto ? null : 'Não se aplica (custo atual zero)');
@@ -273,8 +277,8 @@
         var b = el('div', 'o-bar');
         var base = r.custoAtual / max, total = c.mensal / max;
         b.innerHTML = '<span class="o-bar__label">' + horas(c.jornada) + '</span>' +
-          '<span class="o-bar__track"><span class="o-bar__add" style="transform:scaleX(0)"></span><span class="o-bar__base" style="transform:scaleX(0)"></span>' +
-          '<span class="o-bar__val">' + brl0(c.mensal) + '</span></span>';
+          '<span class="o-bar__track"><span class="o-bar__add" style="transform:scaleX(0)"></span><span class="o-bar__base" style="transform:scaleX(0)"></span></span>' +
+          '<span class="o-bar__val">' + brl0(c.mensal) + '</span>';
         bars.appendChild(b);
         var add = b.querySelector('.o-bar__add'), bs = b.querySelector('.o-bar__base');
         requestAnimationFrame(function () { requestAnimationFrame(function () {
@@ -284,6 +288,8 @@
       }
     });
   }
+
+  function periodo(m) { return m === 12 ? 'só dezembro' : 'de ' + MESES[m - 1] + ' a dezembro'; }
 
   function li(titulo, formula, nota) {
     return '<li><strong>' + titulo + '</strong><br><code>' + formula + '</code>' + (nota ? '<span class="o-memo-note">' + nota + '</span>' : '') + '</li>';
@@ -306,12 +312,12 @@
         'teto(' + num(r.pessoasHora, r.pessoasHora % 1 ? 2 : 0) + ' ÷ (' + hf + ' × ' + num(e.disponibilidade, e.disponibilidade % 1 ? 2 : 0) + '%)) = teto(' + num(r.pessoasHora / cap, 2) + ') = ' + num(r.alvo.referencia),
         'Contar só as horas de portas abertas (' + num(e.dias * e.horasDia, 2).replace(/,00$/, '') + 'h ÷ ' + hf + ') dimensionaria um posto, ' + num(r.postoUnicoQuadro) + ' pessoas, e não os ' + num(e.simultaneas) + ' postos simultâneos.'));
       out.push(li('Para comparar: a mesma demanda na jornada atual', 'teto(' + num(r.pessoasHora, r.pessoasHora % 1 ? 2 : 0) + ' ÷ (' + ha + ' × ' + num(e.disponibilidade, e.disponibilidade % 1 ? 2 : 0) + '%)) = ' + num(r.quadroDemandaJornadaAtual),
-        r.quadroDemandaJornadaAtual > r.pessoas ? 'A demanda informada já pede mais gente do que a equipe de hoje: vale revisar os dados ou a cobertura atual.' : null));
+        r.quadroDemandaJornadaAtual > r.pessoas ? 'A demanda informada já pede mais gente do que a equipe de hoje: vale revisar os dados ou a cobertura atual.' : r.quadroDemandaJornadaAtual < r.pessoas ? 'A demanda informada pede menos gente do que a equipe de hoje: confira se ela inclui todas as funções, faixas de horário, abertura e fechamento.' : null));
     }
     out.push(li('Novas contratações',
       'máximo(0; ' + num(r.alvo.referencia) + ' − ' + num(r.disponivel) + ' disponíveis) = ' + num(r.contratacoes),
       'Quadro futuro total = ' + num(r.disponivel) + ' disponíveis + ' + num(r.contratacoes) + ' contratações = ' + num(r.quadroFuturo) + '. Nenhum desligamento é presumido.' +
-      (r.futuraNaoMenor ? ' A jornada futura não é menor que a atual: por esta regra, não há horas a repor.' : '')));
+      (r.futuraNaoMenor && r.base === 'horas' ? ' A jornada futura não é menor que a atual: por esta regra, não há horas a repor.' : '')));
 
     var u = r.unitario;
     var benTxt;
@@ -328,7 +334,7 @@
         num(r.contratacoes) + ' × ' + brl(u.total) + ' = ' + brl(r.acrescimoMensal) + ' por mês · × 12 = ' + brl(r.acrescimoAnual) + ' por ano',
         'Custo dos novos contratados. Considera que o custo da equipe atual não muda (sem horas extras, adicionais ou benefícios por dia alterados).'));
       out.push(li('Primeiro ano, proporcional à admissão',
-        brl(r.acrescimoMensal) + ' × ' + r.mesesPrimeiroAno + (r.mesesPrimeiroAno === 1 ? ' mês' : ' meses') + ' (' + MESES[r.mesInicio - 1] + ' a dezembro) = ' + brl(r.primeiroAno),
+        brl(r.acrescimoMensal) + ' × ' + r.mesesPrimeiroAno + (r.mesesPrimeiroAno === 1 ? ' mês' : ' meses') + ' (' + periodo(r.mesInicio) + ') = ' + brl(r.primeiroAno),
         'Antes de custos pontuais de admissão (exames, uniforme, treinamento). O desembolso de caixa pode ter outra distribuição.'));
       if (r.percentual !== null) {
         out.push(li('Impacto percentual', brl(r.acrescimoMensal) + ' ÷ ' + brl(r.custoAtual) + ' × 100 = ' + num(r.percentual, 1) + '%',
@@ -447,10 +453,10 @@
     if (r.temCusto) {
       linhas.push('• Custo mensal por pessoa: ' + brl(r.unitario.total) + ' (encargos e provisões informados: ' + pct(C.toBasisPoints(e.encargosPct)) + ')');
       linhas.push('• Acréscimo mensal: ' + brl(r.acrescimoMensal) + ' · anual completo: ' + brl(r.acrescimoAnual));
-      linhas.push('• Primeiro ano (de ' + MESES[r.mesInicio - 1] + ' a dezembro): ' + brl(r.primeiroAno));
+      linhas.push('• Primeiro ano (' + periodo(r.mesInicio) + '): ' + brl(r.primeiroAno));
       if (r.percentual !== null) linhas.push('• Impacto no custo de pessoal: +' + num(r.percentual, 1) + '%');
     }
-    linhas.push('Estimativa por horas, ainda sem validação da distribuição de turnos.');
+    linhas.push((r.base === 'demanda' ? 'Estimativa por demanda em horas' : 'Estimativa por horas') + ', ainda sem validação da distribuição de turnos. Parâmetros a validar com contador/DP.');
     return linhas.join('\n');
   }
 
@@ -588,7 +594,7 @@
       var horasNecessarias = NECESSARIAS.reduce(function (a, b) { return a + b; }, 0) * HORAS_DIA;
       var def = deficits();
       var h = '';
-      h += '<div class="o-demo-rules"><span class="o-rule">Jornada semanal: até 40h <em>· origem: rede</em></span><span class="o-rule">Intervalo entre jornadas: mínimo 11h <em>· origem: rede</em></span><span class="o-rule">Descanso: 2 dias por semana <em>· origem: loja</em></span></div>';
+      h += '<div class="o-demo-rules"><span class="o-rule">Jornada semanal: até 40h <em>· origem: loja</em></span><span class="o-rule">Intervalo entre jornadas: mínimo 11h <em>· origem: rede</em></span><span class="o-rule">Descanso: 2 dias por semana</span></div>';
       h += '<p class="o-hours">Horas planejadas: <strong>' + horasPlanejadas + 'h</strong> · Horas necessárias: <strong>' + horasNecessarias + 'h</strong> · <span>' + (horasPlanejadas === horasNecessarias ? 'As horas fecham.' : 'As horas não fecham.') + (def.length ? ' A cobertura, não.' : ' E a cobertura também.') + '</span></p>';
       h += '<ul class="o-checks">' +
         check(true, 'Jornada semanal dentro do limite', '40h por pessoa (5 dias × 8h)') +
@@ -610,7 +616,7 @@
       }
 
       if (state.fase === 'publicada') {
-        h += '<div class="o-alert o-alert--ok" role="status"><p class="o-alert__t">' + IC_OK + 'Escala publicada.</p><p>A equipe já pode consultar seus horários. Uma nova alteração gera nova versão.</p>' +
+        h += '<div class="o-alert o-alert--ok" role="status"><p class="o-alert__t">' + IC_OK + 'Escala publicada.</p><p>A equipe já pode consultar seus horários.</p>' +
           '<div class="o-alert__actions"><button type="button" class="o-btn o-btn--quiet o-btn--sm" data-demo="reiniciar">Reiniciar demonstração</button></div></div>';
       } else {
         var podeRevisar = state.viuSugestao && !def.length;
@@ -802,7 +808,7 @@
      Revelação suave ao rolar
      ============================================================ */
   if (!reduceMotion && 'IntersectionObserver' in window) {
-    var alvos = qsa('.o-pillar, .o-how__step, .o-clear__col, .o-faq__item, .o-about .o-sec-head, .o-clear .o-sec-head, .o-faq .o-sec-head, .o-app, .o-who');
+    var alvos = qsa('.o-pillar, .o-how__step, .o-clear__col, .o-faq__item, .o-about .o-sec-head, .o-clear .o-sec-head, .o-faq .o-sec-head, .o-who');
     var io = new IntersectionObserver(function (en) {
       en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('is-in'); io.unobserve(x.target); } });
     }, { rootMargin: '0px 0px -8% 0px' });

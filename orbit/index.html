@@ -282,7 +282,7 @@
                 <div class="o-field">
                   <label for="f-vt" class="o-label">Vale-transporte concedido</label>
                   <div class="o-input-wrap o-input-wrap--prefix"><span class="o-input-prefix">R$</span><input id="f-vt" name="vt" class="o-input" type="text" inputmode="decimal" data-tipo="brl" value="0,00" aria-describedby="d-vt e-vt" /></div>
-                  <p class="o-help" id="d-vt">Valor total do VT no mês.</p>
+                  <p class="o-help" id="d-vt">Valor total do VT no mês. A participação usa 6% do salário básico; aqui usamos o salário informado acima.</p>
                   <p class="o-error" id="e-vt" hidden></p>
                 </div>
                 <div class="o-field">
@@ -378,7 +378,7 @@
             <div class="o-compare__table-wrap">
               <table class="o-compare__table" id="r-compare">
                 <caption class="o-sr">Comparativo de quadro e custo mensal por jornada</caption>
-                <thead><tr><th scope="col">Jornada</th><th scope="col">Quadro</th><th scope="col">Contratações</th><th scope="col">Custo mensal</th><th scope="col">Acréscimo</th></tr></thead>
+                <thead><tr><th scope="col">Jornada</th><th scope="col">Quadro</th><th scope="col">Novas</th><th scope="col">Custo mensal</th><th scope="col">Acréscimo</th></tr></thead>
                 <tbody></tbody>
               </table>
             </div>
@@ -524,7 +524,7 @@
       <div class="o-how">
         <h3 class="o-h3">Como funciona</h3>
         <ol class="o-how__steps">
-          <li class="o-how__step"><span class="o-how__n">1</span><div><strong>DP configura</strong><p>Regras, convenções e parâmetros de produtividade, com origem e histórico.</p></div></li>
+          <li class="o-how__step"><span class="o-how__n">1</span><div><strong>DP configura</strong><p>Regras e parâmetros de produtividade, com origem e histórico.</p></div></li>
           <li class="o-how__step"><span class="o-how__n">2</span><div><strong>A IA gera a escala</strong><p>Uma proposta de distribuição de turnos e folgas para o período.</p></div></li>
           <li class="o-how__step"><span class="o-how__n">3</span><div><strong>O Orbit aponta o que conferir</strong><p>Pontos de atenção e bloqueios aparecem antes da aprovação.</p></div></li>
           <li class="o-how__step"><span class="o-how__n">4</span><div><strong>O gestor revisa e aprova</strong><p>Ajusta o necessário e publica com consciência do que foi conferido.</p></div></li>
@@ -572,12 +572,12 @@
           <ul class="o-list">
             <li>Não valida a distribuição de turnos: uma estimativa por horas não é uma cobertura validada por escala.</li>
             <li>Não substitui o fechamento da folha nem transmite obrigações fiscais.</li>
-            <li>Não define alíquotas: a IA pode explicar resultados, mas o cálculo usa fórmulas fixas e os parâmetros que você informa.</li>
+            <li>Não define alíquotas: o cálculo usa fórmulas fixas e os parâmetros que você informa.</li>
             <li>Não promete economia nem garante o enquadramento do seu caso.</li>
           </ul>
         </div>
       </div>
-      <p class="o-clear__foot">No Orbit, regras aprovadas não mudam em silêncio: uma alteração gera nova versão e o histórico fica registrado.</p>
+      <p class="o-clear__foot">No Orbit, cada regra mostra a origem do valor (rede ou loja) e as alterações ficam registradas no histórico.</p>
     </div>
   </section>
 
