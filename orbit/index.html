@@ -1,0 +1,649 @@
+---
+---
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orbit — Simulador de quadro e custo de pessoal | IA Comunica</title>
+  <meta name="description" content="A jornada semanal vai para 42h e depois 40h. Simule quantas pessoas a mais sua operação precisa e quanto isso custa, com a memória de cálculo aberta. Orbit, da IA Comunica." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.iacomunica.com.br/orbit/" />
+  <meta name="theme-color" content="#0D0D0D" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="IA Comunica" />
+  <meta property="og:title" content="Orbit — Simulador de quadro e custo de pessoal" />
+  <meta property="og:description" content="Quantas pessoas a mais? Quanto isso custa? Simule a transição de jornada com a conta aberta, linha por linha." />
+  <meta property="og:url" content="https://www.iacomunica.com.br/orbit/" />
+  <meta property="og:image" content="https://www.iacomunica.com.br/orbit/assets/orbit-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Logo do Orbit sobre fundo escuro com o texto Simulador de quadro e custo de pessoal" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon-96x96.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/orbit/orbit.css" />
+
+  <!-- Cal.com (mesmo evento do site institucional) -->
+  <script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "reuniao-apresentacao-alinhamento", {origin:"https://app.cal.com"});
+  Cal.ns["reuniao-apresentacao-alinhamento"]("ui", {"hideEventTypeDetails":false,"layout":"month_view","cssVarsPerTheme":{"light":{"cal-brand":"#00C2AE"},"dark":{"cal-brand":"#00C2AE"}}});
+  </script>
+</head>
+<body>
+<a class="o-skip" href="#simulador">Pular para o simulador</a>
+
+{% include orbit-topbar.html %}
+
+<main id="conteudo">
+
+  <!-- =========================================================
+       1. HERO
+  ========================================================= -->
+  <section class="o-hero" aria-labelledby="hero-titulo">
+    <div class="o-hero__glow" aria-hidden="true"></div>
+    <div class="o-wrap o-hero__grid">
+      <div class="o-hero__text">
+        <img class="o-hero__logo" src="/orbit/assets/orbit-logo-escuro.png" width="240" height="96" alt="Orbit" />
+        <p class="o-eyebrow o-eyebrow--dark">A jornada semanal vai mudar</p>
+        <h1 id="hero-titulo" class="o-hero__title">
+          <span class="o-hero__q">Quantas pessoas a mais?</span>
+          <span class="o-hero__q o-hero__q--2">Quanto isso custa?</span>
+        </h1>
+        <p class="o-hero__lead">A Emenda Constitucional nº 141 encerra a escala 6x1 e reduz a jornada máxima para 42 horas e, depois, para 40 horas, sem redução salarial. Simule o impacto no seu quadro e no custo de pessoal com a conta aberta, linha por linha.</p>
+        <div class="o-hero__actions">
+          <a class="o-btn o-btn--teal o-btn--lg" href="#simulador" data-scroll>
+            Simular minha operação
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12m0 0 5-5m-5 5-5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="o-btn o-btn--ghost-dark o-btn--lg" href="#do-numero-a-escala" data-scroll>Ver o Orbit em ação</a>
+        </div>
+
+        <ol class="o-timeline" aria-label="Etapas da mudança de jornada previstas na EC nº 141">
+          <li class="o-timeline__item">
+            <span class="o-timeline__h">44h</span>
+            <span class="o-timeline__t">Limite até a primeira etapa</span>
+          </li>
+          <li class="o-timeline__item">
+            <span class="o-timeline__h">42h</span>
+            <span class="o-timeline__t">Dois meses após a publicação</span>
+          </li>
+          <li class="o-timeline__item">
+            <span class="o-timeline__h">40h</span>
+            <span class="o-timeline__t">Um ano depois dessa primeira etapa</span>
+          </li>
+        </ol>
+      </div>
+
+      <div class="o-hero__visual">
+        <div class="o-hcard" id="hero-escala" aria-hidden="true">
+          <div class="o-hcard__head">
+            <div>
+              <span class="o-hcard__title">Escala da semana · Salão</span>
+              <span class="o-hcard__sub">5 pessoas em 5x2 · turnos de 8h</span>
+            </div>
+            <span class="o-state o-state--neutral o-hcard__state" data-h="estado"><span data-h="estado-txt">Gerando escala</span></span>
+          </div>
+          <div class="o-hcard__grid" data-h="grid"></div>
+          <div class="o-hcard__msg" data-h="msg"></div>
+          <span class="o-hcard__tag">Dados demonstrativos</span>
+        </div>
+        <p class="o-sr">Ilustração com dados demonstrativos: uma escala semanal se monta, aponta um déficit de cobertura no sábado e o ajuste é revisado antes da aprovação.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       2. SIMULADOR
+  ========================================================= -->
+  <section class="o-sim" id="simulador" aria-labelledby="sim-titulo">
+    <div class="o-wrap">
+      <header class="o-sec-head">
+        <p class="o-eyebrow">Simulador de quadro e custo</p>
+        <h2 id="sim-titulo" class="o-h2">Três blocos. Uma resposta que você consegue explicar.</h2>
+        <p class="o-sec-lead">Diagnóstico, custo unitário e resultado. O cálculo acontece no seu navegador: nada do que você digita é enviado para a IA Comunica.</p>
+      </header>
+
+      <div class="o-example" id="sim-exemplo" role="status">
+        <div class="o-example__text">
+          <span class="o-badge o-badge--neutral" id="sim-modo-badge">Exemplo didático</span>
+          <span id="sim-modo-texto">Os campos vêm preenchidos com o exemplo do material do Orbit (100 pessoas, 44h, salário de R$ 2.000). Troque pelos seus números.</span>
+        </div>
+        <div class="o-example__actions">
+          <button type="button" class="o-btn o-btn--quiet o-btn--sm" id="sim-limpar">Começar com meus números</button>
+          <button type="button" class="o-btn o-btn--quiet o-btn--sm" id="sim-recarregar" hidden>Voltar ao exemplo didático</button>
+        </div>
+      </div>
+
+      <div class="o-sim__layout">
+        <form class="o-sim__form" id="sim-form" novalidate autocomplete="off" aria-describedby="sim-form-ajuda">
+          <p id="sim-form-ajuda" class="o-sr">Os resultados se atualizam enquanto você preenche. Campos com erro mostram a explicação logo abaixo.</p>
+
+          <!-- BLOCO 1 -->
+          <fieldset class="o-step" id="passo-1">
+            <legend class="o-step__legend"><span class="o-step__n" aria-hidden="true">1</span><span class="o-step__name"><span class="o-sr">Bloco 1: </span>Diagnóstico</span></legend>
+            <p class="o-step__hint">Quem está na operação hoje e para qual jornada você quer planejar.</p>
+
+            <div class="o-field-row">
+              <div class="o-field">
+                <label for="f-pessoas" class="o-label">Pessoas na equipe hoje</label>
+                <div class="o-input-wrap">
+                  <input id="f-pessoas" name="pessoas" class="o-input" type="text" inputmode="numeric" data-tipo="inteiro" value="100" aria-describedby="e-pessoas" />
+                  <span class="o-input-suffix">pessoas</span>
+                </div>
+                <p class="o-error" id="e-pessoas" hidden></p>
+              </div>
+              <div class="o-field">
+                <label for="f-jatual" class="o-label">Jornada semanal atual</label>
+                <div class="o-input-wrap">
+                  <input id="f-jatual" name="jornadaAtual" class="o-input" type="text" inputmode="decimal" data-tipo="horas" value="44" aria-describedby="d-jatual e-jatual" />
+                  <span class="o-input-suffix">h/semana</span>
+                </div>
+                <p class="o-help" id="d-jatual">Horas contratuais, sem contar intervalos.</p>
+                <p class="o-error" id="e-jatual" hidden></p>
+              </div>
+            </div>
+
+            <div class="o-field" role="radiogroup" aria-labelledby="l-jfut">
+              <span class="o-label" id="l-jfut">Jornada futura para o cálculo</span>
+              <div class="o-seg">
+                <label class="o-seg__opt"><input type="radio" name="jfut" value="42" /><span><strong>42h</strong><small>primeira etapa</small></span></label>
+                <label class="o-seg__opt"><input type="radio" name="jfut" value="40" checked /><span><strong>40h</strong><small>segunda etapa</small></span></label>
+                <label class="o-seg__opt"><input type="radio" name="jfut" value="outra" /><span><strong>Outra</strong><small>informar</small></span></label>
+              </div>
+              <div class="o-field o-field--inline" id="jfut-outra-wrap" hidden>
+                <label for="f-jfutura" class="o-label o-label--sm">Jornada futura informada</label>
+                <div class="o-input-wrap o-input-wrap--sm">
+                  <input id="f-jfutura" name="jornadaFutura" class="o-input" type="text" inputmode="decimal" data-tipo="horas" value="36" aria-describedby="e-jfutura" />
+                  <span class="o-input-suffix">h/semana</span>
+                </div>
+                <p class="o-error" id="e-jfutura" hidden></p>
+              </div>
+            </div>
+
+            <div class="o-field" role="radiogroup" aria-labelledby="l-base">
+              <span class="o-label" id="l-base">Base do cálculo</span>
+              <div class="o-choice">
+                <label class="o-choice__opt">
+                  <input type="radio" name="base" value="horas" checked />
+                  <span class="o-choice__body">
+                    <strong>Preservar as horas de hoje</strong>
+                    <small>Repõe o mesmo volume semanal de horas da equipe atual.</small>
+                  </span>
+                </label>
+                <label class="o-choice__opt">
+                  <input type="radio" name="base" value="demanda" />
+                  <span class="o-choice__body">
+                    <strong>Partir da demanda</strong>
+                    <small>Calcula pelas pessoas que precisam estar presentes ao mesmo tempo.</small>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="o-demanda" id="demanda-wrap" hidden>
+              <div class="o-field-row o-field-row--4">
+                <div class="o-field">
+                  <label for="f-dias" class="o-label">Dias de funcionamento</label>
+                  <div class="o-input-wrap"><input id="f-dias" name="dias" class="o-input" type="text" inputmode="numeric" data-tipo="inteiro" value="7" aria-describedby="e-dias" /><span class="o-input-suffix">por semana</span></div>
+                  <p class="o-error" id="e-dias" hidden></p>
+                </div>
+                <div class="o-field">
+                  <label for="f-horas" class="o-label">Horas abertas por dia</label>
+                  <div class="o-input-wrap"><input id="f-horas" name="horasDia" class="o-input" type="text" inputmode="decimal" data-tipo="horas" value="12" aria-describedby="e-horas" /><span class="o-input-suffix">h/dia</span></div>
+                  <p class="o-error" id="e-horas" hidden></p>
+                </div>
+                <div class="o-field">
+                  <label for="f-simult" class="o-label">Pessoas ao mesmo tempo</label>
+                  <div class="o-input-wrap"><input id="f-simult" name="simultaneas" class="o-input" type="text" inputmode="numeric" data-tipo="inteiro" value="3" aria-describedby="e-simult" /><span class="o-input-suffix">pessoas</span></div>
+                  <p class="o-error" id="e-simult" hidden></p>
+                </div>
+                <div class="o-field">
+                  <label for="f-disp" class="o-label">Disponibilidade efetiva</label>
+                  <div class="o-input-wrap"><input id="f-disp" name="disponibilidade" class="o-input" type="text" inputmode="decimal" data-tipo="pct" value="100" aria-describedby="d-disp e-disp" /><span class="o-input-suffix">%</span></div>
+                  <p class="o-help" id="d-disp">Parte da jornada em que a pessoa está de fato disponível. Considere férias e ausências uma única vez.</p>
+                  <p class="o-error" id="e-disp" hidden></p>
+                </div>
+              </div>
+              <div class="o-callout o-callout--info" id="demanda-explica" aria-live="polite"></div>
+            </div>
+
+            <details class="o-more">
+              <summary>Ajuste opcional: quadro disponível</summary>
+              <div class="o-field">
+                <label for="f-disponivel" class="o-label">Quadro disponível para cobrir a operação</label>
+                <div class="o-input-wrap o-input-wrap--sm"><input id="f-disponivel" name="disponivel" class="o-input" type="text" inputmode="numeric" data-tipo="inteiro" value="" placeholder="igual à equipe de hoje" aria-describedby="d-disponivel e-disponivel" /><span class="o-input-suffix">pessoas</span></div>
+                <p class="o-help" id="d-disponivel">Deixe em branco para usar a equipe de hoje. Diminua se parte da equipe está afastada; aumente se já há admissões confirmadas.</p>
+                <p class="o-error" id="e-disponivel" hidden></p>
+              </div>
+            </details>
+          </fieldset>
+
+          <!-- BLOCO 2 -->
+          <fieldset class="o-step" id="passo-2">
+            <legend class="o-step__legend"><span class="o-step__n" aria-hidden="true">2</span><span class="o-step__name"><span class="o-sr">Bloco 2: </span>Custo unitário</span></legend>
+            <p class="o-step__hint">Quanto custa, por mês, cada pessoa contratada. Use os números do seu DP ou contador.</p>
+
+            <div class="o-field-row">
+              <div class="o-field">
+                <label for="f-salario" class="o-label">Salário bruto médio</label>
+                <div class="o-input-wrap o-input-wrap--prefix"><span class="o-input-prefix">R$</span><input id="f-salario" name="salario" class="o-input" type="text" inputmode="decimal" data-tipo="brl" value="2.000,00" aria-describedby="e-salario" /></div>
+                <p class="o-error" id="e-salario" hidden></p>
+              </div>
+              <div class="o-field">
+                <label for="f-encargos" class="o-label">Encargos e provisões</label>
+                <div class="o-input-wrap"><input id="f-encargos" name="encargosPct" class="o-input" type="text" inputmode="decimal" data-tipo="pct" value="45" aria-describedby="d-encargos e-encargos" /><span class="o-input-suffix">% do salário</span></div>
+                <p class="o-help" id="d-encargos"><span id="encargos-reais">Equivale a R$ 900,00 por pessoa.</span> Percentual informado por você, não uma alíquota legal.</p>
+                <p class="o-error" id="e-encargos" hidden></p>
+              </div>
+            </div>
+
+            <details class="o-more o-more--soft">
+              <summary>O que entra nesse percentual (e o que não entra)</summary>
+              <div class="o-more__body">
+                <p>Some apenas o que a empresa paga ou provisiona sobre o salário, conforme o seu enquadramento:</p>
+                <ul class="o-list">
+                  <li>Encargos patronais, quando aplicáveis: FGTS, CPP/INSS patronal, RAT/FAP e terceiros.</li>
+                  <li>Provisões: 13º salário, adicional de férias e os encargos sobre eles.</li>
+                </ul>
+                <p><strong>Não inclua</strong> o INSS e o IRRF descontados do salário do empregado: eles já fazem parte do salário bruto. O regime tributário (Simples, Presumido ou Real) orienta o percentual, mas não define sozinho uma taxa única. No Anexo IV do Simples, por exemplo, a CPP fica fora do DAS. Confirme o valor com o seu contador.</p>
+              </div>
+            </details>
+
+            <div class="o-field" role="radiogroup" aria-labelledby="l-benmodo">
+              <span class="o-label" id="l-benmodo">Benefícios pagos pela empresa, por pessoa e por mês</span>
+              <div class="o-seg o-seg--2">
+                <label class="o-seg__opt"><input type="radio" name="benmodo" value="total" checked /><span><strong>Valor total</strong><small>já líquido</small></span></label>
+                <label class="o-seg__opt"><input type="radio" name="benmodo" value="detalhe" /><span><strong>Detalhar</strong><small>VR/VA, VT e saúde</small></span></label>
+              </div>
+            </div>
+
+            <div class="o-field" id="ben-total-wrap">
+              <label for="f-ben" class="o-label">Benefícios líquidos por pessoa</label>
+              <div class="o-input-wrap o-input-wrap--prefix o-input-wrap--sm"><span class="o-input-prefix">R$</span><input id="f-ben" name="beneficios" class="o-input" type="text" inputmode="decimal" data-tipo="brl" value="500,00" aria-describedby="d-ben e-ben" /></div>
+              <p class="o-help" id="d-ben">O que a empresa de fato suporta, já descontada a participação do empregado. Se o percentual de encargos já inclui benefícios, deixe zero.</p>
+              <p class="o-error" id="e-ben" hidden></p>
+            </div>
+
+            <div class="o-ben-detalhe" id="ben-detalhe-wrap" hidden>
+              <div class="o-field-row o-field-row--3">
+                <div class="o-field">
+                  <label for="f-vr" class="o-label">VR/VA</label>
+                  <div class="o-input-wrap o-input-wrap--prefix"><span class="o-input-prefix">R$</span><input id="f-vr" name="vr" class="o-input" type="text" inputmode="decimal" data-tipo="brl" value="0,00" aria-describedby="d-vr e-vr" /></div>
+                  <p class="o-help" id="d-vr">Custo da empresa no mês.</p>
+                  <p class="o-error" id="e-vr" hidden></p>
+                </div>
+                <div class="o-field">
+                  <label for="f-vt" class="o-label">Vale-transporte concedido</label>
+                  <div class="o-input-wrap o-input-wrap--prefix"><span class="o-input-prefix">R$</span><input id="f-vt" name="vt" class="o-input" type="text" inputmode="decimal" data-tipo="brl" value="0,00" aria-describedby="d-vt e-vt" /></div>
+                  <p class="o-help" id="d-vt">Valor total do VT no mês.</p>
+                  <p class="o-error" id="e-vt" hidden></p>
+                </div>
+                <div class="o-field">
+                  <label for="f-saude" class="o-label">Saúde</label>
+                  <div class="o-input-wrap o-input-wrap--prefix"><span class="o-input-prefix">R$</span><input id="f-saude" name="saude" class="o-input" type="text" inputmode="decimal" data-tipo="brl" value="0,00" aria-describedby="d-saude e-saude" /></div>
+                  <p class="o-help" id="d-saude">Parte paga pela empresa.</p>
+                  <p class="o-error" id="e-saude" hidden></p>
+                </div>
+              </div>
+              <div class="o-callout o-callout--info" id="vt-explica" aria-live="polite"></div>
+            </div>
+
+            <div class="o-field">
+              <label for="f-mes" class="o-label">Mês de início das contratações</label>
+              <div class="o-select-wrap">
+                <select id="f-mes" name="mesInicio" class="o-input o-select" aria-describedby="d-mes">
+                  <option value="1">Janeiro</option><option value="2">Fevereiro</option><option value="3">Março</option>
+                  <option value="4">Abril</option><option value="5">Maio</option><option value="6">Junho</option>
+                  <option value="7" selected>Julho</option><option value="8">Agosto</option><option value="9">Setembro</option>
+                  <option value="10">Outubro</option><option value="11">Novembro</option><option value="12">Dezembro</option>
+                </select>
+              </div>
+              <p class="o-help" id="d-mes">Usado para o custo proporcional no primeiro ano.</p>
+            </div>
+
+            <div class="o-unit" aria-live="off">
+              <span class="o-unit__label">Custo mensal por pessoa</span>
+              <span class="o-unit__value o-num" id="r-unit">R$ 3.400,00</span>
+              <span class="o-unit__parts" id="r-unit-parts">salário R$ 2.000,00 + encargos R$ 900,00 + benefícios R$ 500,00</span>
+            </div>
+          </fieldset>
+
+          <a class="o-btn o-btn--dark o-sim__to-result" href="#resultado" data-scroll>Ver o resultado</a>
+        </form>
+
+        <!-- BLOCO 3 — RESULTADO -->
+        <aside class="o-result" id="resultado" aria-labelledby="res-titulo" tabindex="-1">
+          <div class="o-print-head" aria-hidden="true">
+            <img src="/orbit/assets/orbit-logo-claro.png" width="160" height="64" alt="" />
+            <div>
+              <strong>Simulação de quadro e custo de pessoal</strong>
+              <span id="print-data"></span>
+            </div>
+          </div>
+
+          <div class="o-result__head">
+            <span class="o-step__n o-step__n--dark" aria-hidden="true">3</span>
+            <h3 id="res-titulo" class="o-result__title">Resultado</h3>
+            <span class="o-state o-state--warn" id="r-selo">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.8 15 14H1L8 1.8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M8 6.2v3.6M8 11.6v.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              <span id="r-selo-texto">Estimativa por horas — ainda não valida a distribuição de turnos</span>
+            </span>
+          </div>
+
+          <div class="o-result__hero">
+            <div class="o-result__big">
+              <span class="o-result__big-n o-num" id="r-novas">10</span>
+              <span class="o-result__big-l">novas contratações<span class="o-result__big-j o-num" id="r-jornada">44h → 40h</span></span>
+            </div>
+            <div class="o-team" id="viz" role="img" aria-label="Quadro estimado: equipe atual e novas contratações"></div>
+            <p class="o-team__legend" id="viz-legenda"></p>
+          </div>
+
+          <dl class="o-kpis">
+            <div class="o-kpi">
+              <dt>Quadro futuro total</dt>
+              <dd class="o-num" id="r-quadro">110 pessoas</dd>
+            </div>
+            <div class="o-kpi">
+              <dt>Acréscimo mensal</dt>
+              <dd class="o-num" id="r-acres-mensal">R$ 34.000,00</dd>
+            </div>
+            <div class="o-kpi">
+              <dt>Acréscimo anual completo</dt>
+              <dd class="o-num" id="r-acres-anual">R$ 408.000,00</dd>
+            </div>
+            <div class="o-kpi">
+              <dt id="r-primeiro-ano-label">Primeiro ano (a partir de julho)</dt>
+              <dd class="o-num" id="r-primeiro-ano">R$ 204.000,00</dd>
+            </div>
+            <div class="o-kpi">
+              <dt>Custo mensal hoje → depois</dt>
+              <dd class="o-num o-kpi__small" id="r-mensal">R$ 340.000,00 → R$ 374.000,00</dd>
+            </div>
+            <div class="o-kpi">
+              <dt>Impacto no custo de pessoal</dt>
+              <dd class="o-num" id="r-pct">+10,0%</dd>
+            </div>
+          </dl>
+
+          <div class="o-compare" aria-labelledby="cmp-titulo">
+            <h4 id="cmp-titulo" class="o-compare__title">Atual × 42h × 40h</h4>
+            <div class="o-compare__table-wrap">
+              <table class="o-compare__table" id="r-compare">
+                <caption class="o-sr">Comparativo de quadro e custo mensal por jornada</caption>
+                <thead><tr><th scope="col">Jornada</th><th scope="col">Quadro</th><th scope="col">Contratações</th><th scope="col">Custo mensal</th><th scope="col">Acréscimo</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <div class="o-bars" id="r-bars" aria-hidden="true"></div>
+          </div>
+
+          <details class="o-memoria" id="memoria">
+            <summary>
+              <span>Memória de cálculo</span>
+              <small>Cada fórmula com os seus números</small>
+            </summary>
+            <ol class="o-memoria__list" id="r-memoria"></ol>
+          </details>
+
+          <ul class="o-avisos" aria-label="Avisos importantes sobre este resultado">
+            <li>Valores de estimativa. Exemplos são didáticos e não representam um perfil tributário padrão.</li>
+            <li>Parâmetros contábeis e trabalhistas devem ser validados pelo seu contador ou DP. A aplicação da EC nº 141 ao seu caso depende de revisão trabalhista.</li>
+            <li>O INSS e o IRRF do empregado não entram como custo patronal.</li>
+            <li>O cálculo não aplica 20% automaticamente pela passagem de seis para cinco dias de trabalho.</li>
+            <li>Horas que fecham não garantem uma escala que fecha: a cobertura por dia e horário precisa ser conferida. Este resultado não promete economia.</li>
+          </ul>
+
+          <div class="o-result__actions">
+            <button type="button" class="o-btn o-btn--teal" id="act-whatsapp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19l-4 1Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+              Levar esta simulação para uma conversa
+            </button>
+            <a class="o-btn o-btn--dark" href="https://cal.com/ia.comunica/reuniao-apresentacao-alinhamento" target="_blank" rel="noopener noreferrer"
+               data-cal-link="ia.comunica/reuniao-apresentacao-alinhamento"
+               data-cal-namespace="reuniao-apresentacao-alinhamento"
+               data-cal-config='{"layout":"month_view","theme":"light"}'>Agendar uma conversa</a>
+            <button type="button" class="o-btn o-btn--quiet" id="act-copiar">Copiar resumo</button>
+            <button type="button" class="o-btn o-btn--quiet" id="act-pdf">Salvar em PDF</button>
+          </div>
+          <p class="o-result__note">Ao tocar em “Levar esta simulação”, o WhatsApp abre com um resumo dos resultados para você revisar antes de enviar. Nada é enviado sem a sua confirmação.</p>
+          <p class="o-sr" id="r-live" aria-live="polite" aria-atomic="true"></p>
+          <p class="o-toast" id="toast" role="status" aria-live="polite" hidden></p>
+        </aside>
+      </div>
+    </div>
+
+    <!-- barra fixa no mobile -->
+    <a class="o-mini" id="r-mini" href="#resultado" data-scroll aria-label="Ver resultado da simulação">
+      <span class="o-mini__item"><strong class="o-num" id="mini-novas">+10</strong> pessoas</span>
+      <span class="o-mini__item"><strong class="o-num" id="mini-custo">+R$ 34.000</strong>/mês</span>
+      <span class="o-mini__go">Ver resultado</span>
+    </a>
+  </section>
+
+  <!-- =========================================================
+       3. DO NÚMERO À ESCALA (demo)
+  ========================================================= -->
+  <section class="o-demo" id="do-numero-a-escala" aria-labelledby="demo-titulo">
+    <div class="o-wrap">
+      <header class="o-sec-head o-sec-head--dark">
+        <p class="o-eyebrow o-eyebrow--dark">Do número à escala</p>
+        <h2 id="demo-titulo" class="o-h2">Horas que fecham não garantem uma escala que fecha.</h2>
+        <p class="o-sec-lead">A soma de horas pode bater e ainda faltar gente no jantar de sábado. É aí que o Orbit entra: a IA gera a escala, as regras configuradas são conferidas e quem aprova vê cada ponto de atenção antes de publicar.</p>
+      </header>
+
+      <div class="o-app" id="demo-app">
+        <div class="o-app__bar">
+          <img src="/orbit/assets/orbit-logo-escuro.png" width="80" height="32" alt="Orbit" class="o-app__logo" />
+          <div class="o-app__ctx">
+            <span class="o-pill">Perfil: Gestor</span>
+            <span class="o-pill">Unidade demonstrativa</span>
+          </div>
+          <span class="o-app__demo-tag">Dados demonstrativos</span>
+        </div>
+
+        <div class="o-app__body">
+          <div class="o-app__toolbar">
+            <div>
+              <h3 class="o-app__title">Escalas · Salão</h3>
+              <p class="o-app__period">Semana demonstrativa · 4 pessoas em 5x2 · turnos de 11h–15h e 18h–22h</p>
+            </div>
+            <div class="o-app__status-wrap">
+              <span class="o-state o-state--neutral" id="demo-status">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10.5 2.5l3 3L6 13H3v-3l7.5-7.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+                <span>Rascunho</span>
+              </span>
+              <button type="button" class="o-btn o-btn--teal o-btn--sm" id="demo-gerar">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5v3M8 11.5v3M1.5 8h3M11.5 8h3M3.4 3.4l2.1 2.1M10.5 10.5l2.1 2.1M12.6 3.4l-2.1 2.1M5.5 10.5l-2.1 2.1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                Gerar escala
+              </button>
+            </div>
+          </div>
+
+          <div class="o-grid-wrap" tabindex="0" role="region" aria-label="Grade semanal demonstrativa (role horizontalmente no celular)">
+            <table class="o-grid" id="demo-grid">
+              <caption class="o-sr">Escala semanal demonstrativa por pessoa e dia</caption>
+              <thead>
+                <tr><th scope="col">Pessoa / turno</th><th scope="col">Seg</th><th scope="col">Ter</th><th scope="col">Qua</th><th scope="col">Qui</th><th scope="col">Sex</th><th scope="col">Sáb</th><th scope="col">Dom</th></tr>
+              </thead>
+              <tbody></tbody>
+              <tfoot></tfoot>
+            </table>
+          </div>
+
+          <div class="o-app__panel" id="demo-panel" aria-live="polite">
+            <p class="o-app__empty">Toque em <strong>Gerar escala</strong> para ver a primeira proposta.</p>
+          </div>
+        </div>
+      </div>
+      <p class="o-demo__foot">Exemplo conceitual com dados demonstrativos, inspirado na interface do Orbit. Regras e valores ilustrativos.</p>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       4. O QUE É O ORBIT
+  ========================================================= -->
+  <section class="o-about" id="o-que-e" aria-labelledby="about-titulo">
+    <div class="o-wrap">
+      <header class="o-sec-head">
+        <p class="o-eyebrow">O que é o Orbit</p>
+        <h2 id="about-titulo" class="o-h2">Sua equipe no ritmo da operação.</h2>
+        <p class="o-sec-lead">O Orbit é uma plataforma B2B de Workforce Intelligence para o planejamento de equipes, escalas e produtividade. Conecta produtividade, geração de escalas, regras configuradas e revisão humana.</p>
+      </header>
+
+      <div class="o-pillars">
+        <article class="o-pillar">
+          <span class="o-pillar__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="15" rx="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+          <h3 class="o-pillar__title">Escalas geradas, com revisão humana</h3>
+          <p>A IA gera a escala; o gestor revisa e aprova. A publicação continua sendo uma decisão de quem responde pela operação.</p>
+        </article>
+        <article class="o-pillar">
+          <span class="o-pillar__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M10 6h10M10 12h10M10 18h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="m3.5 6 1.5 1.5L7.5 5M3.5 12l1.5 1.5L7.5 11M3.5 18l1.5 1.5L7.5 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3 class="o-pillar__title">Regras configuradas e conferidas</h3>
+          <p>Jornada semanal, intervalo entre jornadas e outras regras ficam configuradas, com a origem do valor (rede ou loja) e o histórico de alterações. A escala é conferida antes de aprovar.</p>
+        </article>
+        <article class="o-pillar">
+          <span class="o-pillar__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+          <h3 class="o-pillar__title">Produtividade por equipe</h3>
+          <p>O Departamento Pessoal define os parâmetros de produtividade de cada equipe, e o planejamento passa a considerá-los.</p>
+        </article>
+        <article class="o-pillar">
+          <span class="o-pillar__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.5"/><path d="M3 19c.6-3.2 3-5 6-5s5.4 1.8 6 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M16 5.5a3 3 0 0 1 0 5.6M18.5 14.5c1.4.8 2.2 2.3 2.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+          <h3 class="o-pillar__title">Cada perfil vê o que precisa</h3>
+          <p>Gestor, Gerencial, Departamento Pessoal e Funcionário têm navegação e ações próprias, de acordo com o perfil e a unidade autorizados.</p>
+        </article>
+      </div>
+
+      <div class="o-how">
+        <h3 class="o-h3">Como funciona</h3>
+        <ol class="o-how__steps">
+          <li class="o-how__step"><span class="o-how__n">1</span><div><strong>DP configura</strong><p>Regras, convenções e parâmetros de produtividade, com origem e histórico.</p></div></li>
+          <li class="o-how__step"><span class="o-how__n">2</span><div><strong>A IA gera a escala</strong><p>Uma proposta de distribuição de turnos e folgas para o período.</p></div></li>
+          <li class="o-how__step"><span class="o-how__n">3</span><div><strong>O Orbit aponta o que conferir</strong><p>Pontos de atenção e bloqueios aparecem antes da aprovação.</p></div></li>
+          <li class="o-how__step"><span class="o-how__n">4</span><div><strong>O gestor revisa e aprova</strong><p>Ajusta o necessário e publica com consciência do que foi conferido.</p></div></li>
+          <li class="o-how__step"><span class="o-how__n">5</span><div><strong>A equipe consulta</strong><p>O funcionário acessa a escala publicada de forma simples.</p></div></li>
+        </ol>
+      </div>
+
+      <div class="o-who">
+        <h3 class="o-h3">Para quem</h3>
+        <p class="o-who__lead">Empresas com equipes operacionais a partir de 30 funcionários. O simulador começa pelos restaurantes.</p>
+        <ul class="o-who__list">
+          <li class="o-who__tag o-who__tag--first">Restaurantes</li>
+          <li class="o-who__tag">Varejo</li>
+          <li class="o-who__tag">Hotéis</li>
+          <li class="o-who__tag">Hospitais</li>
+          <li class="o-who__tag">Indústrias</li>
+          <li class="o-who__tag">Call centers</li>
+          <li class="o-who__tag">Clínicas</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       5. TRANSPARÊNCIA
+  ========================================================= -->
+  <section class="o-clear" aria-labelledby="clear-titulo">
+    <div class="o-wrap">
+      <header class="o-sec-head">
+        <p class="o-eyebrow">Transparência</p>
+        <h2 id="clear-titulo" class="o-h2">O que o simulador faz e o que ele não faz.</h2>
+      </header>
+      <div class="o-clear__grid">
+        <div class="o-clear__col o-clear__col--yes">
+          <h3 class="o-clear__h"><span class="o-state o-state--ok"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8.5 3.2 3L13 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Faz</span></h3>
+          <ul class="o-list">
+            <li>Estima o quadro por horas ou pela demanda informada, com a fórmula à vista.</li>
+            <li>Separa quadro futuro total de novas contratações.</li>
+            <li>Mostra o custo mensal equivalente, o acréscimo anual e o primeiro ano proporcional ao mês de admissão.</li>
+            <li>Usa o percentual de encargos que você informa, com a composição declarada.</li>
+          </ul>
+        </div>
+        <div class="o-clear__col o-clear__col--no">
+          <h3 class="o-clear__h"><span class="o-state o-state--neutral"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Não faz</span></h3>
+          <ul class="o-list">
+            <li>Não valida a distribuição de turnos: uma estimativa por horas não é uma cobertura validada por escala.</li>
+            <li>Não substitui o fechamento da folha nem transmite obrigações fiscais.</li>
+            <li>Não define alíquotas: a IA pode explicar resultados, mas o cálculo usa fórmulas fixas e os parâmetros que você informa.</li>
+            <li>Não promete economia nem garante o enquadramento do seu caso.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="o-clear__foot">No Orbit, regras aprovadas não mudam em silêncio: uma alteração gera nova versão e o histórico fica registrado.</p>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       6. FAQ
+  ========================================================= -->
+  <section class="o-faq" aria-labelledby="faq-titulo">
+    <div class="o-wrap o-wrap--narrow">
+      <header class="o-sec-head">
+        <p class="o-eyebrow">Perguntas frequentes</p>
+        <h2 id="faq-titulo" class="o-h2">Antes de levar o número para a reunião.</h2>
+      </header>
+      <div class="o-faq__list">
+        <details class="o-faq__item">
+          <summary>O que muda com a EC nº 141?</summary>
+          <div class="o-faq__a">
+            <p>Promulgada em 16 de outubro de 2026, a emenda encerra a escala 6x1 e prevê dois dias de descanso semanal. A jornada máxima passa a 42 horas dois meses após a publicação e a 40 horas um ano depois dessa primeira etapa, sem redução salarial. Jornadas que já são de 40 horas ou menos não sofrem redução proporcional, e cláusulas incompatíveis perdem a validade após 60 dias.</p>
+            <p>A aplicação ao seu caso concreto depende de revisão trabalhista e contábil. <a href="https://www12.senado.leg.br/noticias/materias/2026/10/16/congresso-promulga-o-fim-da-escala-6x1-e-aposentadoria-de-agentes-de-saude" target="_blank" rel="noopener noreferrer">Leia a notícia oficial no portal do Senado<span class="o-sr"> (abre em nova aba)</span></a>.</p>
+          </div>
+        </details>
+        <details class="o-faq__item">
+          <summary>Escala 5x2 é a mesma coisa que 40 horas?</summary>
+          <div class="o-faq__a"><p>Não. 5x2 descreve dias de trabalho e de descanso; 40h ou 42h descrevem a duração semanal. Caber no total semanal não autoriza qualquer duração diária: a distribuição precisa de validação própria.</p></div>
+        </details>
+        <details class="o-faq__item">
+          <summary>Por que o simulador não aplica 20% a mais de pessoas?</summary>
+          <div class="o-faq__a">
+            <p>Passar de seis para cinco dias tira 1/6 dos dias de cada pessoa (16,7%), e repor esse volume pede 6/5 − 1 = 20% mais pessoas, mas só se a duração diária e a cobertura forem constantes. Quando a mudança já está expressa na jornada (44h para 40h), aplicar os 20% em cima contaria as folgas duas vezes.</p>
+            <p>Por isso o simulador escolhe uma base coerente: pessoas-hora ou horas atuais. Percentuais manuais só fazem sentido como hipótese declarada.</p>
+          </div>
+        </details>
+        <details class="o-faq__item">
+          <summary>O que entra no custo por pessoa?</summary>
+          <div class="o-faq__a"><p>Salário bruto, encargos e provisões (pelo percentual que você informa) e benefícios líquidos, ou seja, o que a empresa suporta depois da participação do empregado. No vale-transporte, a participação é o menor valor entre o VT concedido e 6% do salário básico; o custo da empresa é a diferença.</p></div>
+        </details>
+        <details class="o-faq__item">
+          <summary>Meus dados são enviados para algum lugar?</summary>
+          <div class="o-faq__a"><p>Não. O cálculo roda no seu navegador e nada do que você digita é gravado ou enviado pelo simulador. Se você escolher levar a simulação para uma conversa, o WhatsApp abre com um resumo que você revisa antes de enviar.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       7. CTA FINAL
+  ========================================================= -->
+  <section class="o-final" aria-labelledby="final-titulo">
+    <div class="o-wrap o-final__inner">
+      <img src="/orbit/assets/orbit-logo-escuro.png" width="200" height="80" alt="Orbit" class="o-final__logo" />
+      <h2 id="final-titulo" class="o-h2 o-final__title">Do número estimado à escala aprovada.</h2>
+      <p class="o-final__lead">Leve a sua simulação para uma conversa com a IA Comunica e veja como o Orbit apoia o planejamento da sua equipe na nova jornada.</p>
+      <div class="o-final__actions">
+        <a class="o-btn o-btn--teal o-btn--lg" href="https://cal.com/ia.comunica/reuniao-apresentacao-alinhamento" target="_blank" rel="noopener noreferrer"
+           data-cal-link="ia.comunica/reuniao-apresentacao-alinhamento"
+           data-cal-namespace="reuniao-apresentacao-alinhamento"
+           data-cal-config='{"layout":"month_view","theme":"dark"}'>Agendar uma conversa</a>
+        <a class="o-btn o-btn--ghost-dark o-btn--lg" id="final-whatsapp" href="https://api.whatsapp.com/send/?phone=5561998747075&amp;text=Ol%C3%A1%2C+Emanuel%21+Quero+conhecer+o+Orbit+e+o+simulador+de+quadro+e+custo+de+pessoal.&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener noreferrer">Falar com o Emanuel no WhatsApp<span class="o-btn__sub">(61) 99874-7075</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+{% include orbit-footer.html %}
+
+<script src="/orbit/orbit-calc.js"></script>
+<script src="/orbit/orbit.js"></script>
+</body>
+</html>
