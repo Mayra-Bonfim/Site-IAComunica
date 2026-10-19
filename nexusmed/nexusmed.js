@@ -232,8 +232,8 @@
       var alerta = modo === 'mais' && (!!c.acimaReferenciaSeguranca || !!c.ritmoAtualAcimaReferencia);
       var nomeMod = r.modalidade.nome.charAt(0).toLowerCase() + r.modalidade.nome.slice(1);
       safety.classList.toggle('is-alert', alerta);
-      safety.innerHTML = (c.acimaReferenciaSeguranca && modo === 'mais' ? '<strong>Atenção: com este cenário, você laudaria cerca de ' + n1(c.laudosDiaComCenario) + ' exames por dia, acima do teto de ' + c.refTurno6h + ' por turno de 6 h relatado para ' + esc(nomeMod) + '.</strong> ' :
-        (c.ritmoAtualAcimaReferencia && modo === 'mais' ? '<strong>Seu ritmo atual já está acima da referência de segurança (' + c.refTurno6h + ' exames de ' + esc(nomeMod) + ' por turno de 6 h).</strong> ' : '<strong>Referência de segurança.</strong> ')) +
+      safety.innerHTML = (c.acimaReferenciaSeguranca && modo === 'mais' ? '<strong>Atenção: com este cenário, você laudaria cerca de ' + n1(c.laudosDiaComCenario) + ' exames por dia, acima do teto de ' + c.refTurno6h + ' por turno de 6 h relatado para ' + esc(nomeMod) + ' (considerando um turno por dia).</strong> ' :
+        (c.ritmoAtualAcimaReferencia && modo === 'mais' ? '<strong>Seu ritmo atual já está acima da referência de segurança (' + c.refTurno6h + ' exames de ' + esc(nomeMod) + ' por turno de 6 h, considerando um turno por dia).</strong> ' : '<strong>Referência de segurança.</strong> ')) +
         'Em pesquisa com radiologistas brasileiros, a mediana relatada foi de 20 exames por turno de 6 h, considerada razoável entre 16 e 28; varia por modalidade (radiografia 40 a 50; ultrassom 18 a 30; tomografia e ressonância 15 a 30) (Bretas et al., Radiologia Brasileira). Ritmo mais rápido está associado a mais erros: um estudo citado pelos autores viu erros relevantes subirem de 10% para 26,6% ao dobrar a velocidade de laudo. E leitores tendem a seguir a sugestão da IA mesmo quando ela está errada, o chamado viés de automação (Dratsch et al., Radiology, 2023).';
       var memo = [
         li('Laudos por mês', nq(e.L) + ' × ' + nq(e.D) + ' dias = ' + C.num(c.laudosMes, 1)),
@@ -243,7 +243,7 @@
         memo.push(li('Capacidade teórica de laudos a mais', 'ΔL = ' + C.num(c.laudosMes, 1) + ' × ' + C.num(c.r * 100) + '% ÷ (1 − ' + C.num(c.r * 100) + '%) = ' + n1(c.deltaLTeorico)));
         memo.push(li('Laudos pagos a mais', n1(c.deltaLTeorico) + ' × ' + C.num(e.phi * 100) + '% (sua resposta sobre a fila) = ' + n1(c.laudosPagos)));
         memo.push(li('Faturamento atual e ganho', C.num(c.laudosMes, 1) + ' × ' + brl2(C.toCents(e.v)) + ' = ' + brl2(c.faturamentoAtual) + ' · ganho ' + n1(c.laudosPagos) + ' × ' + brl2(C.toCents(e.v)) + ' = ' + brl2(c.ganhoFaturamento), 'Δ% = ' + C.num(e.phi * 100) + '% × ' + C.num(c.r * 100) + '% ÷ (1 − ' + C.num(c.r * 100) + '%) = ' + pct(c.pctFaturamento) + '.'));
-        memo.push(li('Ritmo com o cenário', nq(e.L) + ' + ' + n1(c.laudosPagos) + ' ÷ ' + nq(e.D) + ' dias = ' + n1(c.laudosDiaComCenario) + ' laudos por dia', c.refTurno6h != null ? 'Comparado com o teto de ' + c.refTurno6h + ' exames por turno de 6 h relatado para esta modalidade (Bretas et al.).' : 'O estudo não traz faixa para esta modalidade; sem comparação numérica.'));
+        memo.push(li('Ritmo com o cenário', nq(e.L) + ' + ' + n1(c.laudosPagos) + ' ÷ ' + nq(e.D) + ' dias = ' + n1(c.laudosDiaComCenario) + ' laudos por dia', c.refTurno6h != null ? 'Comparado com o teto de ' + c.refTurno6h + ' exames por turno de 6 h relatado para esta modalidade, considerando um turno por dia (Bretas et al.).' : 'O estudo não traz faixa para esta modalidade; sem comparação numérica.'));
       }
       if (pag === 'plantao') {
         memo.push(li('Horas liberadas por plantão', nq(e.horasPlantao) + ' h × ' + C.num(c.r * 100) + '% = ' + C.num(c.horasLiberadasPorPlantao, 2) + ' h'));

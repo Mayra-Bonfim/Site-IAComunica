@@ -125,7 +125,7 @@ Criada no Hub de Negócios em 19/10/2026, no mesmo modelo do Acervo (página est
 
 Criada no Hub de Negócios em 19/10/2026, no mesmo padrão do Orbit (página estática + includes Jekyll, container fluido até 1840px de conteúdo com padding `clamp(20px, 4vw, 80px)`), com identidade própria do Nexus Med (Brand Guidelines v1.0, abril/2026) e classes com prefixo `nx-`.
 
-**Seções:** hero Midnight (composição de marca com o símbolo oficial + 3 estudos de referência com fonte, rotulados "não são medições do Nexus Med"; sem interface inventada) → `#simulador` (dois simuladores em abas: Médico de consulta e Médico laudista) → O que é + fluxos de consulta e de laudo + documentos + perfis → O médico no controle (governança de IA) → FAQ → CTA final → rodapé (igual ao da home).
+**Seções:** hero Midnight (composição de marca com o símbolo oficial + 3 estudos de referência com fonte primária (Arndt 2017, Sinsky 2016, Gaffney 2022), rotulados como médicos dos EUA, "não são medições do Nexus Med nem dados do Brasil"; sem interface inventada) → `#simulador` (dois simuladores em abas: Médico de consulta e Médico laudista) → O que é + fluxos de consulta e de laudo + documentos + perfis → O médico no controle (governança de IA) → FAQ → CTA final → rodapé (igual ao da home).
 
 **Identidade:** Cobalt #1C4ED8, Teal #00C2AE, Navy #0B2545, Midnight #060E1C, Ice #EEF4FA, Slate #64748B. Texto em gradiente sobre fundo escuro usa Cobalt Light→Teal (#3B82F6→#00C2AE), porque Cobalt puro sobre Midnight não passa 3:1. Texto secundário sobre Ice usa Navy a 78% (Slate sobre Ice dá 4,3:1). O Google Fonts não tem Space Grotesk 800: o peso máximo carregado é 700. Logos inline a partir dos SVGs oficiais (`nexusmed/assets/`), com IDs de gradiente únicos por instância.
 
