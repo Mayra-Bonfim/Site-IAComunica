@@ -14,3 +14,6 @@ exclude:
 # Testes automatizados do motor de cálculo do simulador Orbit (node --test).
 # Não são páginas públicas: ficam fora do site publicado.
   - orbit/tests
+
+# Testes do motor dos simuladores do Nexus Med (node --test).
+  - nexusmed/tests
