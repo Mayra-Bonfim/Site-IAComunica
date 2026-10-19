@@ -100,12 +100,14 @@ Criada no Hub de Negócios em 19/10/2026, no mesmo modelo do Acervo (página est
 
 **Identidade:** só a logo OFICIAL do Orbit (`orbit/assets/orbit-logo-claro.png` e `orbit-logo-escuro.png`, recortadas das artes aprovadas com área livre de ¼ da altura do "o", sem alteração de cor/forma; a logo não é animada). Tokens do brandbook em `orbit.css` (teal #00C2AE, Teal Ink #007A70, Dark #0D0D0D, BG #FAFAFA, estados com texto + ícone, Space Grotesk 600 + DM Sans). **Restrição da Mayra (19/10/2026):** nenhum elemento visual ou animação pode aludir a órbita, planeta, anéis, trajetórias ou espaço — os grafismos são do universo de escala de trabalho (grade semanal, cobertura, crachás, linha do tempo, KPIs).
 
+**Público:** empresas com equipes operacionais a partir de 30 funcionários, de qualquer segmento; nada na página indica foco em um setor.
+
 **Simulador:**
 - Motor puro em `orbit/orbit-calc.js` (centavos/centésimos inteiros, sem ponto flutuante em dinheiro). Fórmulas: quadro por horas = teto(N × Hatual ÷ Hfutura); por demanda = teto(pessoas-hora ÷ (jornada × disponibilidade)); contratações = máx(0; referência − disponível); custo unitário = salário × (1 + e) + benefícios líquidos; VT patronal = VT − menor(VT; 6% do salário); primeiro ano = acréscimo mensal × (13 − mês de admissão).
 - Testes: `node --test orbit/tests/orbit-calc.test.js` (sem npm install). Casos de aceite do documento de concepção (100 pessoas 44→40 = 110/10; 44→42 = 105/5; exemplo completo R$ 340.000/357.000/374.000; 252 ÷ 40 = 7; VT 220→100 e 90→0; 4.100; julho = 6 meses; entradas inválidas; centavos).
 - Nada é enviado a servidor e nada é gravado (sem localStorage). Saídas: copiar resumo, salvar em PDF (`@media print` só com o resultado + memória de cálculo + avisos), WhatsApp com resumo pré-preenchido e Cal.com.
 
-**Contatos da página (diferentes da home):** WhatsApp do Emanuel `5561998747075` ((61) 99874-7075) — só nesta página; a home e o Acervo seguem com +55 61 3142-5518. Cal.com: `ia.comunica/reuniao-apresentacao-alinhamento` (o mesmo slug que a home usa; `comunica/...` retorna 404 — conferido em 19/10/2026).
+**Contatos da página (diferentes da home):** WhatsApp `5561998747075` — só nesta página e sem exibir o número (botões "Falar com a IA Comunica" e "Levar esta simulação para uma conversa", com texto pré-preenchido de abertura neutra); a home e o Acervo seguem com +55 61 3142-5518. Rodapé (`_includes/orbit-footer.html`) é cópia literal do rodapé da home, só com classes `o-footer__*` e caminho absoluto do logo. Cal.com: `ia.comunica/reuniao-apresentacao-alinhamento` (o mesmo slug que a home usa; `comunica/...` retorna 404 — conferido em 19/10/2026).
 
 **Jekyll:** `orbit/index.html` tem front matter vazio e usa `{% include orbit-topbar.html %}` e `{% include orbit-footer.html %}`. JS e CSS ficam em arquivos próprios (não passam pelo Liquid); não usar `{{`/`{%` literal no HTML. `orbit/tests` está em `exclude:` no `_config.yml`.
 

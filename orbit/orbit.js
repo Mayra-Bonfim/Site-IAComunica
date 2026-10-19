@@ -9,7 +9,7 @@
   var C = window.OrbitCalc;
   if (!C) return;
 
-  var WHATSAPP = '5561998747075'; // Emanuel — (61) 99874-7075 (contato exclusivo da página Orbit)
+  var WHATSAPP = '5561998747075'; // WhatsApp de contato da página Orbit (o número não é exibido na página)
   var PAGE_URL = 'https://www.iacomunica.com.br/orbit/';
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
@@ -470,8 +470,8 @@
   $('act-whatsapp').addEventListener('click', function () {
     var resumo = resumoTexto();
     var texto = resumo
-      ? 'Olá, Emanuel! Fiz uma simulação na página do Orbit e quero conversar sobre ela.\n\n' + resumo
-      : 'Olá, Emanuel! Quero conversar sobre o Orbit e o simulador de quadro e custo de pessoal.';
+      ? 'Olá! Fiz uma simulação na página do Orbit e quero conversar sobre ela.\n\n' + resumo
+      : 'Olá! Quero conhecer o Orbit e o simulador de quadro e custo de pessoal.';
     var url = 'https://api.whatsapp.com/send/?phone=' + WHATSAPP + '&text=' + encodeURIComponent(texto) + '&type=phone_number&app_absent=0';
     window.open(url, '_blank', 'noopener');
   });
@@ -705,7 +705,7 @@
     var estado = card.querySelector('[data-h="estado"]');
     var estadoTxt = card.querySelector('[data-h="estado-txt"]');
     var DIAS = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
-    var EQUIPE = [['AN', 'Salão'], ['BR', 'Salão'], ['CA', 'Caixa'], ['DI', 'Salão'], ['EL', 'Recepção']];
+    var EQUIPE = [['AN', 'Atendimento'], ['BR', 'Atendimento'], ['CA', 'Caixa'], ['DI', 'Atendimento'], ['EL', 'Recepção']];
     var NEC = [3, 4, 3, 3, 4, 5, 3];
     var FOLGAS = [[5, 6], [2, 3], [0, 6], [2, 3], [1, 4]];
     var cells = [], covs = [];
