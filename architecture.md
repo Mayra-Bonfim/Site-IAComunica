@@ -2,7 +2,7 @@
 
 **URL:** https://iacomunica.com.br  
 **GitHub:** https://github.com/Mayra-Bonfim/Site-IAComunica  
-**Última atualização:** 2026-07-19  
+**Última atualização:** 2026-10-19  
 **Responsável:** Mayra Madera + Sofia (IA Comunica)
 
 ---
@@ -14,7 +14,7 @@
 | Linguagem | HTML5 + CSS3 + JavaScript (ES6+) |
 | Framework | Nenhum — site estático puro |
 | Hospedagem | GitHub Pages |
-| Templating (só Acervo) | Jekyll nativo do GitHub Pages (`_includes/`, sem `_config.yml`) — ver seção "Acervo — Dependência do Jekyll" |
+| Templating (Acervo e Orbit) | Jekyll nativo do GitHub Pages (`_includes/`; `_config.yml` só com `exclude:`) — ver seção "Acervo — Dependência do Jekyll" |
 | Domínio | iacomunica.com.br (CNAME no repo) |
 | Fontes | Google Fonts (Space Grotesk, DM Sans, JetBrains Mono) |
 | Agendamento | Cal.com embed |
@@ -42,10 +42,20 @@ Site-IAComunica/
 │   ├── index.html                ← Hub principal do Acervo
 │   ├── acervo-tokens.css / acervo.css / acervo.js
 │   └── <slug>/index.html         ← 11 páginas de playbook
-├── _includes/                    ← Partials Jekyll usados pelo Acervo (NÃO mover para dentro de acervo/)
+├── orbit/                        ← Orbit: página de prospecção + simulador de quadro e custo (/orbit/, via Jekyll — ver seção dedicada)
+│   ├── index.html                ← página única (front matter vazio + includes orbit-*)
+│   ├── orbit.css                 ← estilos (tokens do Brand Book do Orbit)
+│   ├── orbit-calc.js             ← motor de cálculo puro (sem DOM), usado no navegador e nos testes
+│   ├── orbit.js                  ← interface: simulador, galeria "Orbit em ação" e ampliação das telas
+│   ├── assets/                   ← logo oficial do Orbit (claro/escuro) + orbit-og.png (1200×630)
+│   │   └── real/                 ← CAPTURAS REAIS do Orbit em produção (PNG + WebP), contas de teste com dados fictícios
+│   └── tests/                    ← testes node:test do motor (excluídos do build no _config.yml)
+├── _includes/                    ← Partials Jekyll usados pelo Acervo e pelo Orbit (NÃO mover para dentro das pastas)
 │   ├── acervo-topbar.html
 │   ├── acervo-footer.html
-│   └── acervo-head-theme.html
+│   ├── acervo-head-theme.html
+│   ├── orbit-topbar.html
+│   └── orbit-footer.html
 └── superafiliadoia/              ← Landing page afiliados (separada)
     ├── index.html
     └── CNAME
@@ -78,6 +88,31 @@ Isso quebraria silenciosamente as 12 páginas do Acervo em produção, sem erro 
 Se algum dia for necessário desativar o Jekyll para o app institucional (SPA), a solução correta é usar `_config.yml` com `exclude:`/`include:`, ou mover o SPA para hospedagem separada — nunca `.nojekyll` na raiz enquanto o Acervo depender de `_includes`.
 
 **Verificação real de Jekyll — não feita nesta sessão.** Não havia Ruby/Jekyll instalados na máquina. Foi tentado `winget install RubyInstallerTeam.Ruby.3.3` (sucesso) seguido de `gem install jekyll bundler`, mas a instalação do gem `jekyll` falhou por falta do toolchain MSYS2 (necessário para compilar uma dependência nativa) — completar isso exigiria instalar o MSYS2 também, um footprint maior do que fazia sentido só para essa verificação pontual. O Ruby foi desinstalado (`winget uninstall`) para não deixar resíduo na máquina. Em vez disso, a verificação foi feita por simulação: um script Python reproduziu manualmente a substituição literal do Liquid (`{% include %}` → conteúdo do partial, front matter removido) para os 12 arquivos migrados e comparou byte a byte com o conteúdo original (pré-migração, via `git show HEAD:<arquivo>`) — resultado: os 12 arquivos reconstroem o HTML original exatamente. Isso dá confiança alta de que o Jekyll real vai renderizar certo (o comportamento do `{% include %}` é substituição textual simples, bem documentado, sem lógica condicional nos nossos partials), mas **não é o mesmo que rodar o build real do Jekyll**. Confirmar visualmente no primeiro deploy real (GitHub Pages) após o merge.
+
+---
+
+## Orbit — Página de prospecção e simulador (`/orbit/`)
+
+Criada no Hub de Negócios em 19/10/2026, no mesmo modelo do Acervo (página estática + includes Jekyll). Layout largo: `.o-wrap` com até 1840px de conteúdo e padding lateral `clamp(20px, 4vw, 80px)` (medido: 77px em 1920, 58px em 1440, 51px em 1280) (topbar e rodapé incluídos); parágrafos limitados a ~70 caracteres por linha. URL final: `https://www.iacomunica.com.br/orbit/`.
+
+**Conteúdo (ordem):** hero (carrossel de 3 capturas reais da escala — Escala gerada, Revisão, Alertas — em moldura de navegador neutra: troca a cada 4,5 s com fade/slide horizontal, pausa no hover, no foco, com a aba oculta e com a ampliação aberta; botão Pausar/Retomar, setas e indicadores; sem avanço automático com prefers-reduced-motion; clique abre a ampliação) → simulador em 3 blocos (Diagnóstico → Custo unitário → Resultado) → "Orbit em ação" (âncora `#do-numero-a-escala`; galeria sem repetir as telas do hero, com abas por perfil — Gestor: Cadastro de funcionários; Departamento Pessoal: Regras e convenções, Cálculo de produtividade, Estrutura; Acesso: Login com SSO — e ampliação em `<dialog>`) → O que é o Orbit (pilares, como funciona, para quem) → Transparência → FAQ → CTA final → rodapé.
+
+**Fontes de conteúdo:** Brand Book do Orbit (Hub de Marketing, rev. 05 · 02/10/2026) e o documento "Orbit — Projeto Simulador Quadro & Custos" (v1.1, 19/10/2026). EC nº 141/2026 com link para a notícia oficial do Senado. Nada de preço, plano, cliente, número de mercado ou promessa de economia.
+
+**Identidade:** só a logo OFICIAL do Orbit (`orbit/assets/orbit-logo-claro.png` e `orbit-logo-escuro.png`, recortadas das artes aprovadas com área livre de ¼ da altura do "o", sem alteração de cor/forma; a logo não é animada). Tokens do brandbook em `orbit.css` (teal #00C2AE, Teal Ink #007A70, Dark #0D0D0D, BG #FAFAFA, estados com texto + ícone, Space Grotesk 600 + DM Sans). **Restrição da Mayra (19/10/2026):** nenhum elemento visual ou animação pode aludir a órbita, planeta, anéis, trajetórias ou espaço — os grafismos são do universo de escala de trabalho (grade semanal, cobertura, crachás, linha do tempo, KPIs).
+
+**Telas do produto = capturas reais (decisão da Mayra, 19/10/2026):** tudo o que mostra o Orbit por dentro é captura real de `orbit.iacomunica.com.br` com contas de teste e dados fictícios, em `orbit/assets/real/` (`gestor-escala`, `gestor-revisao`, `gestor-alertas`, `dp-regras`, `dp-calculo`, `dp-estrutura`, `cadastro-funcionarios`, `login-sso` — este último recortado para não mostrar a decoração circular do fundo da tela de login). Proibido simular UI do Orbit em HTML. Os pixels não são editados (callouts e o botão "Ampliar" ficam fora da imagem); `gestor-revisao` e `dp-regras` foram só recortados na base (884px de altura) para tirar o e-mail da conta de teste no rodapé da barra lateral. Antes de trocar uma captura, conferir que não aparece nome de empresa, CPF, e-mail nem URL. Rótulo na página: "Telas reais do Orbit. Dados fictícios de teste." Legendas descrevem só o que a tela mostra.
+
+**Público:** empresas com equipes operacionais a partir de 30 funcionários, de qualquer segmento; nada na página indica foco em um setor.
+
+**Simulador:**
+- Motor puro em `orbit/orbit-calc.js` (centavos/centésimos inteiros, sem ponto flutuante em dinheiro). Fórmulas: quadro por horas = teto(N × Hatual ÷ Hfutura); por demanda = teto(pessoas-hora ÷ (jornada × disponibilidade)); contratações = máx(0; referência − disponível); custo unitário = salário × (1 + e) + benefícios líquidos; VT patronal = VT − menor(VT; 6% do salário); primeiro ano = acréscimo mensal × (13 − mês de admissão).
+- Testes: `node --test orbit/tests/orbit-calc.test.js` (sem npm install). Casos de aceite do documento de concepção (100 pessoas 44→40 = 110/10; 44→42 = 105/5; exemplo completo R$ 340.000/357.000/374.000; 252 ÷ 40 = 7; VT 220→100 e 90→0; 4.100; julho = 6 meses; entradas inválidas; centavos).
+- Nada é enviado a servidor e nada é gravado (sem localStorage). Saídas: copiar resumo, salvar em PDF (`@media print` só com o resultado + memória de cálculo + avisos), WhatsApp com resumo pré-preenchido e Cal.com.
+
+**Contatos da página (diferentes da home):** WhatsApp `5561998747075` — só nesta página e sem exibir o número (botões "Falar com a IA Comunica" e "Levar esta simulação para uma conversa", com texto pré-preenchido de abertura neutra); a home e o Acervo seguem com +55 61 3142-5518. Rodapé (`_includes/orbit-footer.html`) é cópia literal do rodapé da home, só com classes `o-footer__*` e caminho absoluto do logo. Cal.com: `ia.comunica/reuniao-apresentacao-alinhamento` (o mesmo slug que a home usa; `comunica/...` retorna 404 — conferido em 19/10/2026).
+
+**Jekyll:** `orbit/index.html` tem front matter vazio e usa `{% include orbit-topbar.html %}` e `{% include orbit-footer.html %}`. JS e CSS ficam em arquivos próprios (não passam pelo Liquid); não usar `{{`/`{%` literal no HTML. `orbit/tests` está em `exclude:` no `_config.yml`.
 
 ---
 
@@ -329,7 +364,7 @@ git clone https://github.com/Mayra-Bonfim/Site-IAComunica.git /tmp/site-deploy
 
 > ⚠️ Nunca inventar outros descritores ou taglines para a empresa.
 
-**Produtos:** CRM IA Comunica, Nexus, Minutare, Civitas, Polaris
+**Produtos:** CRM IA Comunica, Nexus, Minutare, Orbit, Civitas, Polaris
 
 ---
 
