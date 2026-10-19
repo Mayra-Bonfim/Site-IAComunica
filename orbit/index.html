@@ -82,14 +82,78 @@
       </div>
 
       <div class="o-hero__visual">
-        <figure class="o-frame">
-          <div class="o-frame__bar" aria-hidden="true"><span></span><span></span><span></span><i></i></div>
-          <picture>
-            <source srcset="/orbit/assets/real/gestor-escala.webp" type="image/webp" />
-            <img class="o-frame__img" src="/orbit/assets/real/gestor-escala.png" width="1200" height="724" fetchpriority="high" decoding="async" alt="Tela real do Orbit, perfil Gestor: escala gerada com 14 funcionários escalados, 2472h, 57 de 60 turnos cobertos e a grade de turnos e folgas por dia." />
-          </picture>
-          <figcaption class="o-frame__cap">Tela real do Orbit · dados fictícios de teste</figcaption>
-        </figure>
+        <section class="o-car" id="hero-carrossel" aria-roledescription="carrossel" aria-label="Telas reais do Orbit">
+          <div class="o-frame">
+            <div class="o-frame__bar" aria-hidden="true"><span></span><span></span><span></span><i></i></div>
+            <div class="o-car__viewport">
+              <div class="o-car__slide is-on" role="group" aria-roledescription="tela" aria-label="1 de 6: Gestor · Escala gerada" data-cap="Gestor · Escala gerada">
+                <button type="button" class="o-car__shot" data-ampliar data-titulo="Gestor · Escala gerada" aria-label="Ampliar a tela Gestor · Escala gerada">
+                  <picture>
+                    <source srcset="/orbit/assets/real/gestor-escala.webp" type="image/webp" />
+                    <img src="/orbit/assets/real/gestor-escala.png" width="1200" height="724" fetchpriority="high" decoding="async" alt="Tela real do Orbit, perfil Gestor: resumo com 14 funcionários escalados, 2472h de horas totais, 57 de 60 turnos cobertos e 0 alertas abertos, acima da grade de turnos e folgas por funcionário e por dia, agrupada por equipe." />
+                  </picture>
+                </button>
+              </div>
+              <div class="o-car__slide" role="group" aria-roledescription="tela" aria-label="2 de 6: Gestor · Revisão da escala" aria-hidden="true" data-cap="Gestor · Revisão da escala">
+                <button type="button" class="o-car__shot" data-ampliar data-titulo="Gestor · Revisão da escala" aria-label="Ampliar a tela Gestor · Revisão da escala" tabindex="-1">
+                  <picture>
+                    <source srcset="/orbit/assets/real/gestor-revisao.webp" type="image/webp" />
+                    <img src="/orbit/assets/real/gestor-revisao.png" width="1440" height="884" loading="lazy" decoding="async" alt="Tela real do Orbit, perfil Gestor, aba Revisão: aviso de que a cobertura ficou abaixo da demanda em parte da escala, grade de turnos por funcionário e painel lateral com 2 gatilhos não avaliados, nenhuma violação nas regras verificadas e déficits por dia, como falta de 1 pessoa em Reposição em 29/10." />
+                  </picture>
+                </button>
+              </div>
+              <div class="o-car__slide" role="group" aria-roledescription="tela" aria-label="3 de 6: Gestor · Alertas" aria-hidden="true" data-cap="Gestor · Alertas">
+                <button type="button" class="o-car__shot" data-ampliar data-titulo="Gestor · Alertas" aria-label="Ampliar a tela Gestor · Alertas" tabindex="-1">
+                  <picture>
+                    <source srcset="/orbit/assets/real/gestor-alertas.webp" type="image/webp" />
+                    <img src="/orbit/assets/real/gestor-alertas.png" width="1440" height="690" loading="lazy" decoding="async" alt="Tela real do Orbit, perfil Gestor, aba Alertas: texto explicando que o Orbit nunca aplica uma escala que viole a folga ou o descanso obrigatório e que sinaliza déficits de cobertura para revisão, seguido de dois alertas de compliance sobre regras que não puderam ser conferidas por completo." />
+                  </picture>
+                </button>
+              </div>
+              <div class="o-car__slide" role="group" aria-roledescription="tela" aria-label="4 de 6: Departamento Pessoal · Regras e convenções" aria-hidden="true" data-cap="Departamento Pessoal · Regras e convenções">
+                <button type="button" class="o-car__shot" data-ampliar data-titulo="Departamento Pessoal · Regras e convenções" aria-label="Ampliar a tela Departamento Pessoal · Regras e convenções" tabindex="-1">
+                  <picture>
+                    <source srcset="/orbit/assets/real/dp-regras.webp" type="image/webp" />
+                    <img src="/orbit/assets/real/dp-regras.png" width="1440" height="884" loading="lazy" decoding="async" alt="Tela real do Orbit, perfil Departamento Pessoal, Regras e convenções: Padrão CLT ativo e cartões de regra da rede para folga aos domingos, limite de horas por semana, descanso semanal remunerado e descanso semanal seguido, com referência legal, opção de mudar a partir de uma data e histórico da regra." />
+                  </picture>
+                </button>
+              </div>
+              <div class="o-car__slide" role="group" aria-roledescription="tela" aria-label="5 de 6: Departamento Pessoal · Cálculo de produtividade" aria-hidden="true" data-cap="Departamento Pessoal · Cálculo de produtividade">
+                <button type="button" class="o-car__shot" data-ampliar data-titulo="Departamento Pessoal · Cálculo de produtividade" aria-label="Ampliar a tela Departamento Pessoal · Cálculo de produtividade" tabindex="-1">
+                  <picture>
+                    <source srcset="/orbit/assets/real/dp-calculo.webp" type="image/webp" />
+                    <img src="/orbit/assets/real/dp-calculo.png" width="1200" height="460" loading="lazy" decoding="async" alt="Tela real do Orbit, perfil Departamento Pessoal, Parâmetros de produtividade, aba Cálculo da métrica: Atendimento calculado como clientes atendidos dividido por horas trabalhadas e Operação como unidades produzidas ou movimentadas dividido por horas trabalhadas." />
+                  </picture>
+                </button>
+              </div>
+              <div class="o-car__slide" role="group" aria-roledescription="tela" aria-label="6 de 6: Departamento Pessoal · Estrutura" aria-hidden="true" data-cap="Departamento Pessoal · Estrutura">
+                <button type="button" class="o-car__shot" data-ampliar data-titulo="Departamento Pessoal · Estrutura" aria-label="Ampliar a tela Departamento Pessoal · Estrutura" tabindex="-1">
+                  <picture>
+                    <source srcset="/orbit/assets/real/dp-estrutura.webp" type="image/webp" />
+                    <img src="/orbit/assets/real/dp-estrutura.png" width="1200" height="460" loading="lazy" decoding="async" alt="Tela real do Orbit, perfil Departamento Pessoal, Estrutura: lista de macro equipes (Atendimento e Operação) e as micro equipes de Atendimento (Caixa e Atendimento ao cliente)." />
+                  </picture>
+                </button>
+              </div>
+            </div>
+            <div class="o-car__bar">
+              <p class="o-car__cap" id="car-cap" aria-live="off">Gestor · Escala gerada</p>
+              <div class="o-car__ctrls">
+                <button type="button" class="o-car__btn" id="car-prev" aria-label="Tela anterior"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <button type="button" class="o-car__btn o-car__btn--pause" id="car-pause" aria-pressed="false"><svg class="o-car__ic-pause" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3v10M11 3v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><svg class="o-car__ic-play" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3l8 5-8 5V3Z" fill="currentColor"/></svg><span id="car-pause-txt">Pausar</span></button>
+                <button type="button" class="o-car__btn" id="car-next" aria-label="Próxima tela"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              </div>
+            </div>
+            <div class="o-car__dots" role="group" aria-label="Escolher tela">
+              <button type="button" class="o-car__dot" data-ir="0" aria-label="Mostrar tela 1: Gestor · Escala gerada" aria-current="true"><span></span></button>
+              <button type="button" class="o-car__dot" data-ir="1" aria-label="Mostrar tela 2: Gestor · Revisão da escala"><span></span></button>
+              <button type="button" class="o-car__dot" data-ir="2" aria-label="Mostrar tela 3: Gestor · Alertas"><span></span></button>
+              <button type="button" class="o-car__dot" data-ir="3" aria-label="Mostrar tela 4: Departamento Pessoal · Regras e convenções"><span></span></button>
+              <button type="button" class="o-car__dot" data-ir="4" aria-label="Mostrar tela 5: Departamento Pessoal · Cálculo de produtividade"><span></span></button>
+              <button type="button" class="o-car__dot" data-ir="5" aria-label="Mostrar tela 6: Departamento Pessoal · Estrutura"><span></span></button>
+            </div>
+          </div>
+          <p class="o-frame__cap">Telas reais do Orbit · dados fictícios de teste</p>
+        </section>
       </div>
     </div>
   </section>

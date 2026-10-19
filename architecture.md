@@ -93,9 +93,9 @@ Se algum dia for necessário desativar o Jekyll para o app institucional (SPA), 
 
 ## Orbit — Página de prospecção e simulador (`/orbit/`)
 
-Criada no Hub de Negócios em 19/10/2026, no mesmo modelo do Acervo (página estática + includes Jekyll). URL final: `https://www.iacomunica.com.br/orbit/`.
+Criada no Hub de Negócios em 19/10/2026, no mesmo modelo do Acervo (página estática + includes Jekyll). Layout largo: `.o-wrap` com max-width 1560px e padding lateral `clamp(20px, 4vw, 72px)` (topbar e rodapé incluídos); parágrafos limitados a ~70 caracteres por linha. URL final: `https://www.iacomunica.com.br/orbit/`.
 
-**Conteúdo (ordem):** hero (captura real da escala gerada, em moldura de navegador neutra) → simulador em 3 blocos (Diagnóstico → Custo unitário → Resultado) → "Orbit em ação" (âncora `#do-numero-a-escala`; galeria com abas por perfil — Gestor: Escala gerada, Revisão, Alertas; Departamento Pessoal: Regras e convenções, Cálculo de produtividade, Estrutura — e ampliação em `<dialog>`) → O que é o Orbit (pilares, como funciona, para quem) → Transparência → FAQ → CTA final → rodapé.
+**Conteúdo (ordem):** hero (carrossel das 6 capturas reais em moldura de navegador neutra: troca a cada 4,5 s com fade/slide horizontal, pausa no hover, no foco, com a aba oculta e com a ampliação aberta; botão Pausar/Retomar, setas e indicadores; sem avanço automático com prefers-reduced-motion; clique abre a ampliação) → simulador em 3 blocos (Diagnóstico → Custo unitário → Resultado) → "Orbit em ação" (âncora `#do-numero-a-escala`; galeria com abas por perfil — Gestor: Escala gerada, Revisão, Alertas; Departamento Pessoal: Regras e convenções, Cálculo de produtividade, Estrutura — e ampliação em `<dialog>`) → O que é o Orbit (pilares, como funciona, para quem) → Transparência → FAQ → CTA final → rodapé.
 
 **Fontes de conteúdo:** Brand Book do Orbit (Hub de Marketing, rev. 05 · 02/10/2026) e o documento "Orbit — Projeto Simulador Quadro & Custos" (v1.1, 19/10/2026). EC nº 141/2026 com link para a notícia oficial do Senado. Nada de preço, plano, cliente, número de mercado ou promessa de economia.
 

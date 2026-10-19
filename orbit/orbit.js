@@ -572,10 +572,11 @@
         img.width = fonte.width; img.height = fonte.height;
         img.setAttribute('width', fonte.getAttribute('width')); img.setAttribute('height', fonte.getAttribute('height'));
         var painel = b.closest('figure');
-        $('lb-titulo').textContent = painel ? painel.querySelector('figcaption strong').textContent : 'Tela do Orbit';
+        $('lb-titulo').textContent = b.getAttribute('data-titulo') || (painel ? painel.querySelector('figcaption strong').textContent : 'Tela do Orbit');
         // no celular, abre direto em tamanho real para dar leitura
         setZoom(window.innerWidth < 768);
         dlg.showModal();
+        document.dispatchEvent(new CustomEvent('orbit:lightbox', { detail: true }));
         scroll.scrollTop = 0; scroll.scrollLeft = 0;
         $('lb-fechar').focus();
       });
@@ -584,7 +585,7 @@
     img.addEventListener('click', function () { setZoom(!dlg.classList.contains('is-zoom')); });
     $('lb-fechar').addEventListener('click', function () { dlg.close(); });
     dlg.addEventListener('click', function (ev) { if (ev.target === dlg) dlg.close(); });
-    dlg.addEventListener('close', function () { img.removeAttribute('src'); if (origem) origem.focus(); });
+    dlg.addEventListener('close', function () { img.removeAttribute('src'); if (origem) origem.focus(); document.dispatchEvent(new CustomEvent('orbit:lightbox', { detail: false })); });
     // prende o foco nos controles do diálogo
     dlg.addEventListener('keydown', function (ev) {
       if (ev.key !== 'Tab') return;
@@ -594,6 +595,78 @@
       if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
       else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
     });
+  })();
+
+  /* ============================================================
+     HERO — carrossel de telas reais (avanço automático com pausa)
+     ============================================================ */
+  (function carrossel() {
+    var car = $('hero-carrossel');
+    if (!car) return;
+    var slides = qsa('.o-car__slide', car);
+    var dots = qsa('.o-car__dot', car);
+    var cap = $('car-cap'), btnPause = $('car-pause'), txtPause = $('car-pause-txt');
+    var INTERVALO = 4500;
+    var atual = 0, timer = null;
+    var pausadoUsuario = reduceMotion; // reduced-motion: sem avanço automático
+    var hover = false, foco = false, lightbox = false;
+
+    function mostrar(i, porUsuario) {
+      atual = (i + slides.length) % slides.length;
+      slides.forEach(function (s, k) {
+        var on = k === atual;
+        s.classList.toggle('is-on', on);
+        if (on) s.removeAttribute('aria-hidden'); else s.setAttribute('aria-hidden', 'true');
+        var b = s.querySelector('.o-car__shot');
+        b.tabIndex = on ? 0 : -1;
+        var im = s.querySelector('img');
+        if (on && im.loading === 'lazy') im.loading = 'eager';
+      });
+      dots.forEach(function (d, k) { if (k === atual) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
+      cap.textContent = slides[atual].getAttribute('data-cap');
+      cap.setAttribute('aria-live', porUsuario ? 'polite' : 'off');
+      // pré-carrega a próxima para a transição não piscar
+      var prox = slides[(atual + 1) % slides.length].querySelector('img');
+      if (prox.loading === 'lazy') prox.loading = 'eager';
+      reiniciar();
+    }
+    function rodando() { return !pausadoUsuario && !hover && !foco && !lightbox && !document.hidden; }
+    function reiniciar() {
+      clearTimeout(timer);
+      car.classList.toggle('is-running', rodando());
+      // reinicia a barra de progresso do indicador ativo
+      dots.forEach(function (d) { d.classList.remove('is-prog'); });
+      if (rodando()) {
+        var d = dots[atual]; void d.offsetWidth; d.classList.add('is-prog');
+        timer = setTimeout(function () { mostrar(atual + 1, false); }, INTERVALO);
+      }
+    }
+    function setPausa(p) {
+      pausadoUsuario = p;
+      btnPause.setAttribute('aria-pressed', p ? 'true' : 'false');
+      txtPause.textContent = p ? 'Retomar' : 'Pausar';
+      btnPause.setAttribute('aria-label', p ? 'Retomar a troca automática de telas' : 'Pausar a troca automática de telas');
+      car.classList.toggle('is-paused', p);
+      reiniciar();
+    }
+
+    $('car-prev').addEventListener('click', function () { mostrar(atual - 1, true); });
+    $('car-next').addEventListener('click', function () { mostrar(atual + 1, true); });
+    btnPause.addEventListener('click', function () { setPausa(!pausadoUsuario); });
+    dots.forEach(function (d) { d.addEventListener('click', function () { mostrar(Number(d.getAttribute('data-ir')), true); }); });
+    car.addEventListener('keydown', function (ev) {
+      if (ev.key === 'ArrowRight') { ev.preventDefault(); mostrar(atual + 1, true); if (ev.target.classList.contains('o-car__dot')) dots[atual].focus(); }
+      else if (ev.key === 'ArrowLeft') { ev.preventDefault(); mostrar(atual - 1, true); if (ev.target.classList.contains('o-car__dot')) dots[atual].focus(); }
+    });
+    car.addEventListener('mouseenter', function () { hover = true; reiniciar(); });
+    car.addEventListener('mouseleave', function () { hover = false; reiniciar(); });
+    car.addEventListener('focusin', function () { foco = true; reiniciar(); });
+    car.addEventListener('focusout', function (ev) { if (!car.contains(ev.relatedTarget)) { foco = false; reiniciar(); } });
+    document.addEventListener('visibilitychange', reiniciar);
+    document.addEventListener('orbit:lightbox', function (ev) { lightbox = !!ev.detail; reiniciar(); });
+
+    setPausa(pausadoUsuario);
+    mostrar(0, false);
   })();
 
   /* ============================================================
