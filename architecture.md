@@ -46,8 +46,9 @@ Site-IAComunica/
 │   ├── index.html                ← página única (front matter vazio + includes orbit-*)
 │   ├── orbit.css                 ← estilos (tokens do Brand Book do Orbit)
 │   ├── orbit-calc.js             ← motor de cálculo puro (sem DOM), usado no navegador e nos testes
-│   ├── orbit.js                  ← interface: simulador, demonstração de escala, hero animado
+│   ├── orbit.js                  ← interface: simulador, galeria "Orbit em ação" e ampliação das telas
 │   ├── assets/                   ← logo oficial do Orbit (claro/escuro) + orbit-og.png (1200×630)
+│   │   └── real/                 ← CAPTURAS REAIS do Orbit em produção (PNG + WebP), contas de teste com dados fictícios
 │   └── tests/                    ← testes node:test do motor (excluídos do build no _config.yml)
 ├── _includes/                    ← Partials Jekyll usados pelo Acervo e pelo Orbit (NÃO mover para dentro das pastas)
 │   ├── acervo-topbar.html
@@ -94,11 +95,13 @@ Se algum dia for necessário desativar o Jekyll para o app institucional (SPA), 
 
 Criada no Hub de Negócios em 19/10/2026, no mesmo modelo do Acervo (página estática + includes Jekyll). URL final: `https://www.iacomunica.com.br/orbit/`.
 
-**Conteúdo (ordem):** hero (escala semanal demonstrativa que se monta, aponta déficit de cobertura no sábado e se resolve) → simulador em 3 blocos (Diagnóstico → Custo unitário → Resultado) → "Do número à escala" (demo interativa: gerar escala, ponto de atenção, sugestão de ajuste, revisão e aprovação) → O que é o Orbit (pilares, como funciona, para quem) → Transparência → FAQ → CTA final → rodapé.
+**Conteúdo (ordem):** hero (captura real da escala gerada, em moldura de navegador neutra) → simulador em 3 blocos (Diagnóstico → Custo unitário → Resultado) → "Orbit em ação" (âncora `#do-numero-a-escala`; galeria com abas por perfil — Gestor: Escala gerada, Revisão, Alertas; Departamento Pessoal: Regras e convenções, Cálculo de produtividade, Estrutura — e ampliação em `<dialog>`) → O que é o Orbit (pilares, como funciona, para quem) → Transparência → FAQ → CTA final → rodapé.
 
 **Fontes de conteúdo:** Brand Book do Orbit (Hub de Marketing, rev. 05 · 02/10/2026) e o documento "Orbit — Projeto Simulador Quadro & Custos" (v1.1, 19/10/2026). EC nº 141/2026 com link para a notícia oficial do Senado. Nada de preço, plano, cliente, número de mercado ou promessa de economia.
 
 **Identidade:** só a logo OFICIAL do Orbit (`orbit/assets/orbit-logo-claro.png` e `orbit-logo-escuro.png`, recortadas das artes aprovadas com área livre de ¼ da altura do "o", sem alteração de cor/forma; a logo não é animada). Tokens do brandbook em `orbit.css` (teal #00C2AE, Teal Ink #007A70, Dark #0D0D0D, BG #FAFAFA, estados com texto + ícone, Space Grotesk 600 + DM Sans). **Restrição da Mayra (19/10/2026):** nenhum elemento visual ou animação pode aludir a órbita, planeta, anéis, trajetórias ou espaço — os grafismos são do universo de escala de trabalho (grade semanal, cobertura, crachás, linha do tempo, KPIs).
+
+**Telas do produto = capturas reais (decisão da Mayra, 19/10/2026):** tudo o que mostra o Orbit por dentro é captura real de `orbit.iacomunica.com.br` com contas de teste e dados fictícios, em `orbit/assets/real/` (`gestor-escala`, `gestor-revisao`, `gestor-alertas`, `dp-regras`, `dp-calculo`, `dp-estrutura`). Proibido simular UI do Orbit em HTML. Os pixels não são editados (callouts e o botão "Ampliar" ficam fora da imagem); `gestor-revisao` e `dp-regras` foram só recortados na base (884px de altura) para tirar o e-mail da conta de teste no rodapé da barra lateral. Antes de trocar uma captura, conferir que não aparece nome de empresa, CPF, e-mail nem URL. Rótulo na página: "Telas reais do Orbit. Dados fictícios de teste." Legendas descrevem só o que a tela mostra.
 
 **Público:** empresas com equipes operacionais a partir de 30 funcionários, de qualquer segmento; nada na página indica foco em um setor.
 

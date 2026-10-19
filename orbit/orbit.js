@@ -519,289 +519,81 @@
   render();
 
   /* ============================================================
-     DEMONSTRAÇÃO — Do número à escala (dados demonstrativos)
+     ORBIT EM AÇÃO — galeria de telas reais + ampliação
      ============================================================ */
-  (function demo() {
-    var grid = $('demo-grid');
-    if (!grid) return;
-    var DIAS = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
-    var DIAS_LONGO = ['segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado', 'domingo'];
-    var PESSOAS = ['Atendimento 1', 'Atendimento 2', 'Atendimento 3', 'Atendimento 4'];
-    var NECESSARIAS = [2, 3, 3, 3, 3, 4, 2];
-    var FOLGAS_INICIAIS = [[5, 6], [0, 6], [1, 2], [3, 4]];
-    var TURNO = '11h–15h<br>18h–22h';
-    var HORAS_DIA = 8;
-    var state = { fase: 'vazio', folgas: null, viuSugestao: false, revisado: false };
-    var tbody = grid.querySelector('tbody'), tfoot = grid.querySelector('tfoot');
-    var panel = $('demo-panel'), status = $('demo-status'), btnGerar = $('demo-gerar');
+  (function galeria() {
+    var lista = document.querySelector('.o-gal__tabs');
+    if (!lista) return;
+    var tabs = qsa('[role="tab"]', lista);
 
-    function setStatus(tipo, texto, icon) {
-      status.className = 'o-state o-state--' + tipo;
-      status.innerHTML = icon + '<span>' + texto + '</span>';
-    }
-    var IC_DRAFT = '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10.5 2.5l3 3L6 13H3v-3l7.5-7.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>';
-    var IC_WARN = '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.8 15 14H1L8 1.8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M8 6.2v3.6M8 11.6v.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
-    var IC_OK = '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8.5 3.2 3L13 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-
-    function cobertura(folgas) {
-      return DIAS.map(function (_, d) { return PESSOAS.length - folgas.filter(function (f) { return f.indexOf(d) !== -1; }).length; });
-    }
-
-    function desenharGrade(modo, destaque, mudou) {
-      tbody.innerHTML = ''; tfoot.innerHTML = '';
-      PESSOAS.forEach(function (p, i) {
-        var tr = el('tr');
-        tr.innerHTML = '<th scope="row">' + p + '</th>';
-        DIAS.forEach(function (_, d) {
-          var td = el('td');
-          var cell = el('div', 'o-cell');
-          if (modo === 'vazio') { cell.innerHTML = '—'; }
-          else if (modo === 'sk') { cell.className += ' o-cell--sk'; cell.innerHTML = '&nbsp;<br>&nbsp;'; }
-          else {
-            var folga = state.folgas[i].indexOf(d) !== -1;
-            cell.className += folga ? ' o-cell--off' : ' o-cell--shift';
-            cell.innerHTML = folga ? 'Folga' : TURNO;
-            if (destaque && destaque.some(function (x) { return x[0] === i && x[1] === d; })) cell.className += ' o-cell--hl';
-            if (mudou && mudou.some(function (x) { return x[0] === i && x[1] === d; })) cell.className += ' o-cell--changed';
-          }
-          td.appendChild(cell); tr.appendChild(td);
-        });
-        tbody.appendChild(tr);
+    function ativar(tab, focar) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        var painel = $(t.getAttribute('aria-controls'));
+        painel.hidden = !on;
+        if (on && !reduceMotion) { painel.classList.remove('is-in'); void painel.offsetWidth; painel.classList.add('is-in'); }
       });
-      if (modo === 'cheio') {
-        var cob = cobertura(state.folgas);
-        var tr = el('tr');
-        tr.innerHTML = '<th scope="row">Cobertura do salão</th>';
-        DIAS.forEach(function (_, d) {
-          var td = el('td'), n = cob[d], need = NECESSARIAS[d];
-          var cls = n < need ? 'o-cov--low' : n > need ? 'o-cov--high' : 'o-cov--ok';
-          var txt = n < need ? 'faltam ' + (need - n) : n > need ? 'sobra ' + (n - need) : 'atendida';
-          td.innerHTML = '<div class="o-cov ' + cls + '"><span>' + n + ' de ' + need + '</span><small>' + txt + '</small></div>';
-          tr.appendChild(td);
-        });
-        tfoot.appendChild(tr);
-      }
+      if (focar) tab.focus();
     }
-
-    function deficits() {
-      var cob = cobertura(state.folgas);
-      return DIAS.map(function (_, d) { return { d: d, n: cob[d], need: NECESSARIAS[d] }; }).filter(function (x) { return x.n < x.need; });
-    }
-
-    function renderPainel() {
-      var cob = cobertura(state.folgas);
-      var horasPlanejadas = cob.reduce(function (a, b) { return a + b; }, 0) * HORAS_DIA;
-      var horasNecessarias = NECESSARIAS.reduce(function (a, b) { return a + b; }, 0) * HORAS_DIA;
-      var def = deficits();
-      var h = '';
-      h += '<div class="o-demo-rules"><span class="o-rule">Jornada semanal: até 40h <em>· origem: loja</em></span><span class="o-rule">Intervalo entre jornadas: mínimo 11h <em>· origem: rede</em></span><span class="o-rule">Descanso: 2 dias por semana</span></div>';
-      h += '<p class="o-hours">Horas planejadas: <strong>' + horasPlanejadas + 'h</strong> · Horas necessárias: <strong>' + horasNecessarias + 'h</strong> · <span>' + (horasPlanejadas === horasNecessarias ? 'As horas fecham.' : 'As horas não fecham.') + (def.length ? ' A cobertura, não.' : ' E a cobertura também.') + '</span></p>';
-      h += '<ul class="o-checks">' +
-        check(true, 'Jornada semanal dentro do limite', '40h por pessoa (5 dias × 8h)') +
-        check(true, 'Intervalo entre jornadas respeitado', '13h entre o fim às 22h e o início às 11h') +
-        check(true, 'Dois dias de descanso para cada pessoa', 'Escala 5x2') +
-        (def.length
-          ? check(false, 'Cobertura insuficiente em ' + def.map(function (x) { return DIAS_LONGO[x.d]; }).join(', '), def.map(function (x) { return DIAS[x.d] + ': ' + x.n + ' escaladas para ' + x.need + ' necessárias'; }).join(' · '))
-          : check(true, 'Cobertura atendida em todos os dias', 'Pessoas escaladas iguais às necessárias')) +
-        '</ul>';
-
-      if (def.length && state.fase !== 'sugestao') {
-        h += '<div class="o-alert" role="alert"><p class="o-alert__t">' + IC_WARN + 'Há um déficit de cobertura no sábado.</p><p>Revise a alocação antes de concluir a aprovação.</p>' +
-          '<div class="o-alert__actions"><button type="button" class="o-btn o-btn--dark o-btn--sm" data-demo="sugerir">Ver sugestão de ajuste</button></div></div>';
-      } else if (state.fase === 'sugestao') {
-        h += '<div class="o-alert"><p class="o-alert__t">' + IC_WARN + 'Sugestão de ajuste</p><p>Trocar a folga de Atendimento 1 de sábado para segunda. Segunda fica com 2 pessoas (necessárias: 2) e sábado com 4 (necessárias: 4). Jornada, intervalo e descanso continuam atendidos.</p>' +
-          '<div class="o-alert__actions"><button type="button" class="o-btn o-btn--teal o-btn--sm" data-demo="aplicar">Aplicar ajuste</button><button type="button" class="o-btn o-btn--quiet o-btn--sm" data-demo="manter">Manter como está</button></div></div>';
-      } else if (state.fase !== 'publicada') {
-        h += '<div class="o-alert o-alert--ok"><p class="o-alert__t">' + IC_OK + 'Pontos de atenção resolvidos.</p><p>Confira a escala e confirme a revisão para publicar.</p></div>';
-      }
-
-      if (state.fase === 'publicada') {
-        h += '<div class="o-alert o-alert--ok" role="status"><p class="o-alert__t">' + IC_OK + 'Escala publicada.</p><p>A equipe já pode consultar seus horários.</p>' +
-          '<div class="o-alert__actions"><button type="button" class="o-btn o-btn--quiet o-btn--sm" data-demo="reiniciar">Reiniciar demonstração</button></div></div>';
-      } else {
-        var podeRevisar = state.viuSugestao && !def.length;
-        var podeAprovar = podeRevisar && state.revisado;
-        h += '<div class="o-approve"><label><input type="checkbox" data-demo="revisar"' + (podeRevisar ? '' : ' disabled') + (state.revisado ? ' checked' : '') + ' /> Revisei os pontos de atenção e a cobertura</label>' +
-          '<button type="button" class="o-btn o-btn--teal" data-demo="aprovar"' + (podeAprovar ? '' : ' disabled aria-describedby="demo-why"') + '>Aprovar e publicar</button>' +
-          (podeAprovar ? '' : '<p class="o-help" id="demo-why" style="flex-basis:100%">' + (def.length ? 'A publicação fica disponível depois de resolver o déficit de cobertura.' : 'Confirme a revisão para habilitar a publicação.') + '</p>') + '</div>';
-      }
-      panel.innerHTML = h;
-    }
-
-    function check(ok, t, s) {
-      return '<li class="o-check ' + (ok ? 'o-check--ok' : 'o-check--warn') + '"><span class="o-check__ic">' + (ok ? IC_OK : IC_WARN) + '</span><span><span class="o-sr">' + (ok ? 'Conferido: ' : 'Ponto de atenção: ') + '</span>' + t + '<small>' + s + '</small></span></li>';
-    }
-
-    function gerar() {
-      btnGerar.disabled = true;
-      state = { fase: 'gerando', folgas: FOLGAS_INICIAIS.map(function (f) { return f.slice(); }), viuSugestao: false, revisado: false };
-      desenharGrade('sk');
-      panel.innerHTML = '<p class="o-app__empty">Gerando a escala e conferindo as regras configuradas…</p>';
-      setTimeout(function () {
-        state.fase = 'revisao';
-        desenharGrade('cheio');
-        setStatus('warn', 'Em revisão', IC_WARN);
-        renderPainel();
-        btnGerar.disabled = false;
-        btnGerar.lastChild.textContent = ' Gerar de novo';
-      }, reduceMotion ? 50 : 1400);
-    }
-
-    panel.addEventListener('click', function (ev) {
-      var b = ev.target.closest('[data-demo]');
-      if (!b || b.disabled) return;
-      var a = b.getAttribute('data-demo');
-      if (a === 'sugerir') {
-        state.fase = 'sugestao'; state.viuSugestao = true;
-        desenharGrade('cheio', [[0, 5], [0, 0]]);
-        renderPainel();
-        focar('aplicar');
-      } else if (a === 'aplicar') {
-        state.folgas[0] = [0, 6];
-        state.fase = 'revisao';
-        desenharGrade('cheio', null, [[0, 5], [0, 0]]);
-        renderPainel();
-        focar('revisar');
-      } else if (a === 'manter') {
-        state.fase = 'revisao';
-        desenharGrade('cheio');
-        renderPainel();
-      } else if (a === 'aprovar') {
-        state.fase = 'publicada';
-        setStatus('ok', 'Publicada', IC_OK);
-        renderPainel();
-        focar('reiniciar');
-      } else if (a === 'reiniciar') {
-        state = { fase: 'vazio', folgas: null, viuSugestao: false, revisado: false };
-        desenharGrade('vazio');
-        setStatus('neutral', 'Rascunho', IC_DRAFT);
-        panel.innerHTML = '<p class="o-app__empty">Toque em <strong>Gerar escala</strong> para ver a primeira proposta.</p>';
-        btnGerar.lastChild.textContent = ' Gerar escala';
-        btnGerar.focus();
-      }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { ativar(t, false); });
+      t.addEventListener('keydown', function (ev) {
+        var k = ev.key, alvo = null;
+        if (k === 'ArrowDown' || k === 'ArrowRight') alvo = tabs[(i + 1) % tabs.length];
+        else if (k === 'ArrowUp' || k === 'ArrowLeft') alvo = tabs[(i - 1 + tabs.length) % tabs.length];
+        else if (k === 'Home') alvo = tabs[0];
+        else if (k === 'End') alvo = tabs[tabs.length - 1];
+        if (alvo) { ev.preventDefault(); ativar(alvo, true); }
+      });
     });
-    panel.addEventListener('change', function (ev) {
-      if (ev.target.getAttribute('data-demo') === 'revisar') {
-        state.revisado = ev.target.checked;
-        renderPainel();
-        focar(state.revisado ? 'aprovar' : 'revisar');
-      }
-    });
-    function focar(acao) { var n = panel.querySelector('[data-demo="' + acao + '"]'); if (n && !n.disabled) n.focus({ preventScroll: true }); }
 
-    btnGerar.addEventListener('click', gerar);
-    desenharGrade('vazio');
-  })();
-
-  /* ============================================================
-     HERO — escala que se monta sozinha (dados demonstrativos)
-     Déficit de cobertura no sábado aparece, é revisado e se resolve.
-     ============================================================ */
-  (function heroEscala() {
-    var card = $('hero-escala');
-    if (!card) return;
-    var grid = card.querySelector('[data-h="grid"]');
-    var msg = card.querySelector('[data-h="msg"]');
-    var estado = card.querySelector('[data-h="estado"]');
-    var estadoTxt = card.querySelector('[data-h="estado-txt"]');
-    var DIAS = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
-    var EQUIPE = [['AN', 'Atendimento'], ['BR', 'Atendimento'], ['CA', 'Caixa'], ['DI', 'Atendimento'], ['EL', 'Recepção']];
-    var NEC = [3, 4, 3, 3, 4, 5, 3];
-    var FOLGAS = [[5, 6], [2, 3], [0, 6], [2, 3], [1, 4]];
-    var cells = [], covs = [];
-    var timers = [];
-    function later(fn, ms) { timers.push(setTimeout(fn, reduceMotion ? 0 : ms)); }
-
-    var h = '<span></span>' + DIAS.map(function (d) { return '<span class="o-hcard__dh">' + d + '</span>'; }).join('');
-    EQUIPE.forEach(function (p) {
-      h += '<span class="o-hcard__p"><span class="o-av">' + p[0] + '</span><span>' + p[1] + '</span></span>';
-      for (var d = 0; d < 7; d++) h += '<span class="o-hc"></span>';
-    });
-    h += '<span class="o-hcard__covl">Cobertura</span>';
-    for (var d2 = 0; d2 < 7; d2++) h += '<span class="o-hcov"><span class="o-hcov__fill"></span><span class="o-hcov__t"></span></span>';
-    grid.innerHTML = h;
-    var allCells = grid.querySelectorAll('.o-hc');
-    for (var i = 0; i < EQUIPE.length; i++) { cells.push([]); for (var j = 0; j < 7; j++) cells[i].push(allCells[i * 7 + j]); }
-    covs = Array.prototype.slice.call(grid.querySelectorAll('.o-hcov'));
-
-    function setEstado(tipo, txt) { estado.className = 'o-state o-state--' + tipo + ' o-hcard__state'; estadoTxt.textContent = txt; }
-    function pintar(i, d, animar) {
-      var c = cells[i][d], off = FOLGAS[i].indexOf(d) !== -1;
-      c.className = 'o-hc ' + (off ? 'is-off' : 'is-shift') + (animar && !reduceMotion ? ' is-in' : '');
-      c.textContent = off ? 'Folga' : '8h';
-    }
-    function cobertura() {
-      for (var d = 0; d < 7; d++) {
-        var n = EQUIPE.length - FOLGAS.filter(function (f) { return f.indexOf(d) !== -1; }).length;
-        var el2 = covs[d], need = NEC[d];
-        el2.className = 'o-hcov ' + (n < need ? 'is-low' : n > need ? 'is-high' : 'is-ok');
-        el2.firstChild.style.transform = 'scaleY(' + Math.min(1, n / 5).toFixed(3) + ')';
-        el2.lastChild.innerHTML = n + '/' + need + '<br>' + (n < need ? 'falta ' + (need - n) : n > need ? 'sobra' : 'ok');
-      }
-    }
-    function alerta(tipo, titulo, texto) {
-      var ic = tipo === 'ok'
-        ? '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8.5 3.2 3L13 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>'
-        : '<svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.8 15 14H1L8 1.8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M8 6.2v3.6M8 11.6v.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
-      msg.innerHTML = '<div class="o-alert' + (tipo === 'ok' ? ' o-alert--ok' : '') + '"><p class="o-alert__t">' + ic + titulo + '</p><p>' + texto + '</p></div>';
-    }
-
-    function rodar() {
-      timers.forEach(clearTimeout); timers = [];
-      FOLGAS[0] = [5, 6];
-      msg.innerHTML = '';
-      setEstado('neutral', 'Gerando escala');
-      cells.forEach(function (row) { row.forEach(function (c) { c.className = 'o-hc'; c.textContent = ''; }); });
-      covs.forEach(function (c) { c.className = 'o-hcov'; c.firstChild.style.transform = 'scaleY(0)'; c.lastChild.textContent = ''; });
-      var t = 300;
-      for (var d = 0; d < 7; d++) for (var i = 0; i < EQUIPE.length; i++) (function (i, d, t) { later(function () { pintar(i, d, true); }, t); })(i, d, t + (d * EQUIPE.length + i) * 45);
-      t += 7 * EQUIPE.length * 45 + 250;
-      later(function () {
-        cobertura();
-        setEstado('warn', 'Em revisão');
-        cells[0][5].classList.add('is-hl');
-        alerta('warn', 'Há um déficit de cobertura no sábado.', 'Revise a alocação antes de concluir a aprovação.');
-      }, t);
-      t += 2600;
-      later(function () {
-        cells[0][0].classList.add('is-hl');
-        alerta('warn', 'Sugestão de ajuste', 'Trocar a folga de AN de sábado para segunda.');
-      }, t);
-      t += 2200;
-      later(function () {
-        FOLGAS[0] = [0, 6];
-        pintar(0, 5, true); pintar(0, 0, true);
-        cells[0][5].classList.add('is-fixed'); cells[0][0].classList.add('is-fixed');
-        cobertura();
-        alerta('ok', 'Cobertura atendida em todos os dias.', 'O gestor revisou o ajuste e pode aprovar a publicação.');
-      }, t);
-      t += 2400;
-      later(function () {
-        setEstado('ok', 'Publicada');
-        alerta('ok', 'Escala aprovada e publicada.', 'A equipe já pode consultar seus horários.');
-      }, t);
-    }
-
-    if (reduceMotion) {
-      // estado final estático, sem animação
-      FOLGAS[0] = [0, 6];
-      for (var a = 0; a < EQUIPE.length; a++) for (var b = 0; b < 7; b++) pintar(a, b, false);
-      cobertura();
-      setEstado('ok', 'Publicada');
-      alerta('ok', 'Cobertura atendida em todos os dias.', 'O ajuste do sábado foi revisado antes da aprovação.');
+    // ---- ampliação (dialog nativo: Esc fecha, foco fica dentro)
+    var dlg = $('lightbox'), img = $('lb-img'), scroll = $('lb-scroll'), btnZoom = $('lb-zoom'), origem = null;
+    if (!dlg || typeof dlg.showModal !== 'function') {
+      // sem suporte a <dialog>: abre a imagem em nova aba
+      qsa('[data-ampliar]').forEach(function (b) {
+        b.addEventListener('click', function () { window.open(b.querySelector('img').currentSrc || b.querySelector('img').src, '_blank', 'noopener'); });
+      });
       return;
     }
-    rodar();
-    // repete quando o hero volta a aparecer, depois de concluído
-    if ('IntersectionObserver' in window) {
-      var visto = true, concluiu = false;
-      later(function () { concluiu = true; }, 300 + 35 * 45 + 250 + 2600 + 2200 + 2400 + 100);
-      new IntersectionObserver(function (en) {
-        var v = en[0].isIntersecting;
-        if (v && !visto && concluiu) { concluiu = false; rodar(); later(function () { concluiu = true; }, 10000); }
-        visto = v;
-      }, { threshold: 0.35 }).observe(card);
+    function setZoom(on) {
+      dlg.classList.toggle('is-zoom', on);
+      btnZoom.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btnZoom.textContent = on ? 'Ajustar à tela' : 'Ver em tamanho real';
     }
+    qsa('[data-ampliar]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var fonte = b.querySelector('img');
+        origem = b;
+        img.src = fonte.currentSrc || fonte.src;
+        img.alt = fonte.alt;
+        img.width = fonte.width; img.height = fonte.height;
+        img.setAttribute('width', fonte.getAttribute('width')); img.setAttribute('height', fonte.getAttribute('height'));
+        var painel = b.closest('figure');
+        $('lb-titulo').textContent = painel ? painel.querySelector('figcaption strong').textContent : 'Tela do Orbit';
+        // no celular, abre direto em tamanho real para dar leitura
+        setZoom(window.innerWidth < 768);
+        dlg.showModal();
+        scroll.scrollTop = 0; scroll.scrollLeft = 0;
+        $('lb-fechar').focus();
+      });
+    });
+    btnZoom.addEventListener('click', function () { setZoom(!dlg.classList.contains('is-zoom')); });
+    img.addEventListener('click', function () { setZoom(!dlg.classList.contains('is-zoom')); });
+    $('lb-fechar').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (ev) { if (ev.target === dlg) dlg.close(); });
+    dlg.addEventListener('close', function () { img.removeAttribute('src'); if (origem) origem.focus(); });
+    // prende o foco nos controles do diálogo
+    dlg.addEventListener('keydown', function (ev) {
+      if (ev.key !== 'Tab') return;
+      var f = qsa('button, [tabindex="0"]', dlg).filter(function (n) { return !n.disabled && n.offsetParent !== null; });
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
+      else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
+    });
   })();
 
   /* ============================================================

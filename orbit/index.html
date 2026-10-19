@@ -82,19 +82,14 @@
       </div>
 
       <div class="o-hero__visual">
-        <div class="o-hcard" id="hero-escala" aria-hidden="true">
-          <div class="o-hcard__head">
-            <div>
-              <span class="o-hcard__title">Escala da semana · Atendimento</span>
-              <span class="o-hcard__sub">5 pessoas em 5x2 · turnos de 8h</span>
-            </div>
-            <span class="o-state o-state--neutral o-hcard__state" data-h="estado"><span data-h="estado-txt">Gerando escala</span></span>
-          </div>
-          <div class="o-hcard__grid" data-h="grid"></div>
-          <div class="o-hcard__msg" data-h="msg"></div>
-          <span class="o-hcard__tag">Dados demonstrativos</span>
-        </div>
-        <p class="o-sr">Ilustração com dados demonstrativos: uma escala semanal se monta, aponta um déficit de cobertura no sábado e o ajuste é revisado antes da aprovação.</p>
+        <figure class="o-frame">
+          <div class="o-frame__bar" aria-hidden="true"><span></span><span></span><span></span><i></i></div>
+          <picture>
+            <source srcset="/orbit/assets/real/gestor-escala.webp" type="image/webp" />
+            <img class="o-frame__img" src="/orbit/assets/real/gestor-escala.png" width="1200" height="724" fetchpriority="high" decoding="async" alt="Tela real do Orbit, perfil Gestor: escala gerada com 14 funcionários escalados, 2472h, 57 de 60 turnos cobertos e a grade de turnos e folgas por dia." />
+          </picture>
+          <figcaption class="o-frame__cap">Tela real do Orbit · dados fictícios de teste</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -434,58 +429,126 @@
   <section class="o-demo" id="do-numero-a-escala" aria-labelledby="demo-titulo">
     <div class="o-wrap">
       <header class="o-sec-head o-sec-head--dark">
-        <p class="o-eyebrow o-eyebrow--dark">Do número à escala</p>
+        <p class="o-eyebrow o-eyebrow--dark">Orbit em ação</p>
         <h2 id="demo-titulo" class="o-h2">Horas que fecham não garantem uma escala que fecha.</h2>
         <p class="o-sec-lead">A soma de horas pode bater e ainda faltar gente no horário de pico de sábado. É aí que o Orbit entra: a IA gera a escala, as regras configuradas são conferidas e quem aprova vê cada ponto de atenção antes de publicar.</p>
       </header>
 
-      <div class="o-app" id="demo-app">
-        <div class="o-app__bar">
-          <img src="/orbit/assets/orbit-logo-escuro.png" width="80" height="32" alt="Orbit" class="o-app__logo" />
-          <div class="o-app__ctx">
-            <span class="o-pill">Perfil: Gestor</span>
-            <span class="o-pill">Unidade demonstrativa</span>
-          </div>
-          <span class="o-app__demo-tag">Dados demonstrativos</span>
+      <div class="o-gal" id="galeria">
+        <div class="o-gal__tabs" role="tablist" aria-label="Telas do Orbit por perfil" aria-orientation="vertical">
+          <p class="o-gal__group" aria-hidden="true">Gestor</p>
+          <button type="button" role="tab" class="o-gal__tab" id="tab-escala" aria-controls="painel-escala" aria-selected="true" tabindex="0"><span class="o-gal__tab-role">Gestor</span>Escala gerada</button>
+          <button type="button" role="tab" class="o-gal__tab" id="tab-revisao" aria-controls="painel-revisao" aria-selected="false" tabindex="-1"><span class="o-gal__tab-role">Gestor</span>Revisão</button>
+          <button type="button" role="tab" class="o-gal__tab" id="tab-alertas" aria-controls="painel-alertas" aria-selected="false" tabindex="-1"><span class="o-gal__tab-role">Gestor</span>Alertas</button>
+          <p class="o-gal__group" aria-hidden="true">Departamento Pessoal</p>
+          <button type="button" role="tab" class="o-gal__tab" id="tab-regras" aria-controls="painel-regras" aria-selected="false" tabindex="-1"><span class="o-gal__tab-role">Departamento Pessoal</span>Regras e convenções</button>
+          <button type="button" role="tab" class="o-gal__tab" id="tab-calculo" aria-controls="painel-calculo" aria-selected="false" tabindex="-1"><span class="o-gal__tab-role">Departamento Pessoal</span>Cálculo de produtividade</button>
+          <button type="button" role="tab" class="o-gal__tab" id="tab-estrutura" aria-controls="painel-estrutura" aria-selected="false" tabindex="-1"><span class="o-gal__tab-role">Departamento Pessoal</span>Estrutura</button>
         </div>
 
-        <div class="o-app__body">
-          <div class="o-app__toolbar">
-            <div>
-              <h3 class="o-app__title">Escalas · Salão</h3>
-              <p class="o-app__period">Semana demonstrativa · 4 pessoas em 5x2 · turnos de 11h–15h e 18h–22h</p>
-            </div>
-            <div class="o-app__status-wrap">
-              <span class="o-state o-state--neutral" id="demo-status">
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10.5 2.5l3 3L6 13H3v-3l7.5-7.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
-                <span>Rascunho</span>
-              </span>
-              <button type="button" class="o-btn o-btn--teal o-btn--sm" id="demo-gerar">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5v3M8 11.5v3M1.5 8h3M11.5 8h3M3.4 3.4l2.1 2.1M10.5 10.5l2.1 2.1M12.6 3.4l-2.1 2.1M5.5 10.5l-2.1 2.1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-                Gerar escala
-              </button>
-            </div>
-          </div>
+        <div class="o-gal__panels">
+          <figure class="o-gal__panel" id="painel-escala" role="tabpanel" aria-labelledby="tab-escala" tabindex="0">
+            <button type="button" class="o-shot" data-ampliar aria-label="Ampliar a tela Escala gerada">
+              <picture>
+                <source srcset="/orbit/assets/real/gestor-escala.webp" type="image/webp" />
+                <img src="/orbit/assets/real/gestor-escala.png" width="1200" height="724" loading="lazy" decoding="async" alt="Tela real do Orbit, perfil Gestor: resumo com 14 funcionários escalados, 2472h de horas totais, 57 de 60 turnos cobertos e 0 alertas abertos, acima da grade de turnos e folgas por funcionário e por dia, agrupada por equipe." />
+              </picture>
+              <span class="o-shot__zoom" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 2H2v4M10 2h4v4M6 14H2v-4M10 14h4v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Ampliar</span>
+            </button>
+            <figcaption class="o-gal__cap">
+              <strong>Escala gerada</strong>
+              <p>A escala do período, pessoa por pessoa: turnos, folgas e horas de cada dia, separados por equipe. No topo ficam o total de pessoas escaladas, as horas do período, os turnos cobertos e os alertas abertos.</p>
+              <p class="o-gal__note">Nesta escala de teste, as horas somam 2472h e 57 dos 60 turnos estão cobertos.</p>
+            </figcaption>
+          </figure>
 
-          <div class="o-grid-wrap" tabindex="0" role="region" aria-label="Grade semanal demonstrativa (role horizontalmente no celular)">
-            <table class="o-grid" id="demo-grid">
-              <caption class="o-sr">Escala semanal demonstrativa por pessoa e dia</caption>
-              <thead>
-                <tr><th scope="col">Pessoa / turno</th><th scope="col">Seg</th><th scope="col">Ter</th><th scope="col">Qua</th><th scope="col">Qui</th><th scope="col">Sex</th><th scope="col">Sáb</th><th scope="col">Dom</th></tr>
-              </thead>
-              <tbody></tbody>
-              <tfoot></tfoot>
-            </table>
-          </div>
+          <figure class="o-gal__panel" id="painel-revisao" role="tabpanel" aria-labelledby="tab-revisao" tabindex="0" hidden>
+            <button type="button" class="o-shot" data-ampliar aria-label="Ampliar a tela Revisão">
+              <picture>
+                <source srcset="/orbit/assets/real/gestor-revisao.webp" type="image/webp" />
+                <img src="/orbit/assets/real/gestor-revisao.png" width="1440" height="884" loading="lazy" decoding="async" alt="Tela real do Orbit, perfil Gestor, aba Revisão: aviso de que a cobertura ficou abaixo da demanda em parte da escala, grade de turnos por funcionário e painel lateral com 2 gatilhos não avaliados, nenhuma violação nas regras verificadas e déficits por dia, como falta de 1 pessoa em Reposição em 29/10." />
+              </picture>
+              <span class="o-shot__zoom" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 2H2v4M10 2h4v4M6 14H2v-4M10 14h4v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Ampliar</span>
+            </button>
+            <figcaption class="o-gal__cap">
+              <strong>Revisão</strong>
+              <p>Antes de aprovar, o gestor revisa a escala. Quando a cobertura fica abaixo da demanda, o Orbit avisa no topo e lista os pontos no painel lateral: gatilhos não avaliados, regras verificadas e cada déficit, com o dia e quantas pessoas faltam.</p>
+              <p class="o-gal__note">A soma de horas pode fechar e, mesmo assim, faltar gente em dias específicos. Esta tela mostra onde.</p>
+            </figcaption>
+          </figure>
 
-          <div class="o-app__panel" id="demo-panel" aria-live="polite">
-            <p class="o-app__empty">Toque em <strong>Gerar escala</strong> para ver a primeira proposta.</p>
-          </div>
+          <figure class="o-gal__panel" id="painel-alertas" role="tabpanel" aria-labelledby="tab-alertas" tabindex="0" hidden>
+            <button type="button" class="o-shot" data-ampliar aria-label="Ampliar a tela Alertas">
+              <picture>
+                <source srcset="/orbit/assets/real/gestor-alertas.webp" type="image/webp" />
+                <img src="/orbit/assets/real/gestor-alertas.png" width="1440" height="690" loading="lazy" decoding="async" alt="Tela real do Orbit, perfil Gestor, aba Alertas: texto explicando que o Orbit nunca aplica uma escala que viole a folga ou o descanso obrigatório e que sinaliza déficits de cobertura para revisão, seguido de dois alertas de compliance sobre regras que não puderam ser conferidas por completo." />
+              </picture>
+              <span class="o-shot__zoom" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 2H2v4M10 2h4v4M6 14H2v-4M10 14h4v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Ampliar</span>
+            </button>
+            <figcaption class="o-gal__cap">
+              <strong>Alertas</strong>
+              <p>Os alertas mostram o que o Orbit conseguiu conferir e o que não conseguiu. A folga e o descanso obrigatório são sempre respeitados; quando isso deixa a equipe com gente de menos num dia, o Orbit não decide sozinho e sinaliza o déficit para o gestor revisar.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="o-gal__panel" id="painel-regras" role="tabpanel" aria-labelledby="tab-regras" tabindex="0" hidden>
+            <button type="button" class="o-shot" data-ampliar aria-label="Ampliar a tela Regras e convenções">
+              <picture>
+                <source srcset="/orbit/assets/real/dp-regras.webp" type="image/webp" />
+                <img src="/orbit/assets/real/dp-regras.png" width="1440" height="884" loading="lazy" decoding="async" alt="Tela real do Orbit, perfil Departamento Pessoal, Regras e convenções: Padrão CLT ativo e cartões de regra da rede para folga aos domingos, limite de horas por semana, descanso semanal remunerado e descanso semanal seguido, com referência legal, opção de mudar a partir de uma data e histórico da regra." />
+              </picture>
+              <span class="o-shot__zoom" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 2H2v4M10 2h4v4M6 14H2v-4M10 14h4v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Ampliar</span>
+            </button>
+            <figcaption class="o-gal__cap">
+              <strong>Regras e convenções</strong>
+              <p>O Departamento Pessoal configura as regras da rede, como folga aos domingos, limite de horas por semana e descanso semanal, com a referência legal quando ela existe. A nova regra começa a valer na data escolhida, escalas já publicadas não mudam e a regra anterior fica guardada no histórico.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="o-gal__panel" id="painel-calculo" role="tabpanel" aria-labelledby="tab-calculo" tabindex="0" hidden>
+            <button type="button" class="o-shot" data-ampliar aria-label="Ampliar a tela Cálculo de produtividade">
+              <picture>
+                <source srcset="/orbit/assets/real/dp-calculo.webp" type="image/webp" />
+                <img src="/orbit/assets/real/dp-calculo.png" width="1200" height="460" loading="lazy" decoding="async" alt="Tela real do Orbit, perfil Departamento Pessoal, Parâmetros de produtividade, aba Cálculo da métrica: Atendimento calculado como clientes atendidos dividido por horas trabalhadas e Operação como unidades produzidas ou movimentadas dividido por horas trabalhadas." />
+              </picture>
+              <span class="o-shot__zoom" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 2H2v4M10 2h4v4M6 14H2v-4M10 14h4v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Ampliar</span>
+            </button>
+            <figcaption class="o-gal__cap">
+              <strong>Cálculo de produtividade</strong>
+              <p>Cada macro equipe tem um cálculo de produtividade, o mesmo para todas as unidades da rede: o que a equipe entrega dividido pelas horas trabalhadas no mês. No teste, Atendimento mede clientes por hora e Operação, unidades por hora.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="o-gal__panel" id="painel-estrutura" role="tabpanel" aria-labelledby="tab-estrutura" tabindex="0" hidden>
+            <button type="button" class="o-shot" data-ampliar aria-label="Ampliar a tela Estrutura">
+              <picture>
+                <source srcset="/orbit/assets/real/dp-estrutura.webp" type="image/webp" />
+                <img src="/orbit/assets/real/dp-estrutura.png" width="1200" height="460" loading="lazy" decoding="async" alt="Tela real do Orbit, perfil Departamento Pessoal, Estrutura: lista de macro equipes (Atendimento e Operação) e as micro equipes de Atendimento (Caixa e Atendimento ao cliente)." />
+              </picture>
+              <span class="o-shot__zoom" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 2H2v4M10 2h4v4M6 14H2v-4M10 14h4v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Ampliar</span>
+            </button>
+            <figcaption class="o-gal__cap">
+              <strong>Estrutura</strong>
+              <p>O Departamento Pessoal cria as macro e micro equipes, que valem para todas as unidades da rede. O Gestor e o Gerente de cada unidade colocam as pessoas em cada uma.</p>
+            </figcaption>
+          </figure>
         </div>
       </div>
-      <p class="o-demo__foot">Exemplo conceitual com dados demonstrativos, inspirado na interface do Orbit. Regras e valores ilustrativos.</p>
+      <p class="o-demo__foot">Telas reais do Orbit. Dados fictícios de teste.</p>
     </div>
   </section>
+
+  <dialog class="o-lb" id="lightbox" aria-labelledby="lb-titulo">
+    <div class="o-lb__bar">
+      <p class="o-lb__title" id="lb-titulo">Tela do Orbit</p>
+      <button type="button" class="o-btn o-btn--quiet o-btn--sm" id="lb-zoom" aria-pressed="false">Ver em tamanho real</button>
+      <button type="button" class="o-btn o-btn--teal o-btn--sm" id="lb-fechar">Fechar<span class="o-sr"> (Esc)</span></button>
+    </div>
+    <div class="o-lb__scroll" id="lb-scroll" tabindex="0" aria-label="Imagem ampliada; role para ver os detalhes">
+      <img id="lb-img" alt="" />
+    </div>
+    <p class="o-lb__foot">Telas reais do Orbit. Dados fictícios de teste.</p>
+  </dialog>
 
   <!-- =========================================================
        4. O QUE É O ORBIT
