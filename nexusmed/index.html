@@ -1,0 +1,342 @@
+---
+---
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus Med — Copiloto clínico com IA para médicos | IA Comunica</title>
+  <meta name="description" content="Nexus Med: copiloto clínico com IA que transcreve a consulta, estrutura o prontuário SOAP e prepara o pré-laudo. A IA sugere; o médico revisa, decide e assina." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.iacomunica.com.br/nexusmed/" />
+  <meta name="theme-color" content="#060E1C" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="IA Comunica" />
+  <meta property="og:title" content="Nexus Med — Menos burocracia. Mais medicina." />
+  <meta property="og:description" content="Copiloto clínico com IA: transcrição da consulta, prontuário SOAP por especialidade e pré-laudo por imagem. O médico revisa, decide e assina." />
+  <meta property="og:url" content="https://www.iacomunica.com.br/nexusmed/" />
+  <meta property="og:image" content="https://www.iacomunica.com.br/nexusmed/assets/nexusmed-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Logo do Nexus Med sobre fundo escuro com a frase Menos burocracia. Mais medicina." />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon-96x96.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/nexusmed/nexusmed.css" />
+
+  <!-- Cal.com (mesmo evento do site institucional) -->
+  <script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "reuniao-apresentacao-alinhamento", {origin:"https://app.cal.com"});
+  Cal.ns["reuniao-apresentacao-alinhamento"]("ui", {"hideEventTypeDetails":false,"layout":"month_view","cssVarsPerTheme":{"light":{"cal-brand":"#1C4ED8"},"dark":{"cal-brand":"#00C2AE"}}});
+  </script>
+</head>
+<body>
+<a class="nx-skip" href="#conteudo">Pular para o conteúdo</a>
+
+{% include nexusmed-topbar.html %}
+
+<main id="conteudo">
+
+  <!-- =========================================================
+       1. HERO (Midnight)
+  ========================================================= -->
+  <section class="nx-hero nx-dark" aria-labelledby="hero-titulo">
+    <span class="nx-watermark" aria-hidden="true">N</span>
+    <div class="nx-wrap nx-hero__grid">
+      <div class="nx-hero__text">
+        <p class="nx-eyebrow">Menos burocracia. Mais medicina.</p>
+        <h1 id="hero-titulo" class="nx-hero__title">Quanto tempo você devolve <span class="nx-grad-text">ao seu dia?</span></h1>
+        <p class="nx-hero__lead">O Nexus Med é um copiloto clínico com IA. Ele transcreve a consulta, organiza o prontuário no padrão SOAP e prepara o pré-laudo a partir da imagem do exame. A IA sugere; o médico revisa, decide e assina.</p>
+        <div class="nx-hero__actions">
+          <a class="nx-btn nx-btn--teal nx-btn--lg" href="#simulador" data-scroll>
+            Calcular meu tempo
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12m0 0 5-5m-5 5-5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="nx-btn nx-btn--ghost nx-btn--lg" href="#o-que-e" data-scroll>Ver o Nexus Med por dentro</a>
+        </div>
+        <p class="nx-hero__status">Produto em desenvolvimento avançado, com piloto privado em preparação.</p>
+      </div>
+
+      <div class="nx-hero__visual">
+        <!-- Contêiner do carrossel de telas reais: fica oculto até haver capturas (ver NX_TELAS_HERO em nexusmed.js) -->
+        <section class="nx-car" id="nx-hero-telas" aria-roledescription="carrossel" aria-label="Telas reais do Nexus Med" hidden></section>
+
+        <div class="nx-brandart" id="nx-brandart">
+          <svg class="nx-brandart__mark" viewBox="0 0 64 78" fill="none" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="nxh_seam" x1="0" y1="10" x2="0" y2="68" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#1C4ED8"/><stop offset="100%" stop-color="#00C2AE"/></linearGradient>
+              <clipPath id="nxh_l"><rect x="0" y="0" width="32" height="78"/></clipPath>
+              <clipPath id="nxh_r"><rect x="32" y="0" width="32" height="78"/></clipPath>
+            </defs>
+            <path d="M10,68 L10,10 L54,68 L54,10" stroke="#1C4ED8" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" fill="none" clip-path="url(#nxh_l)"/>
+            <path d="M10,68 L10,10 L54,68 L54,10" stroke="#00C2AE" stroke-width="8.5" stroke-linecap="square" stroke-linejoin="miter" fill="none" clip-path="url(#nxh_r)"/>
+            <line x1="32" y1="12" x2="32" y2="66" stroke="url(#nxh_seam)" stroke-width="1.5" opacity="0.55"/>
+            <circle cx="32" cy="39" r="3.5" fill="url(#nxh_seam)" opacity="0.95"/>
+          </svg>
+          <div class="nx-brandart__roles" aria-hidden="true">
+            <span class="nx-role nx-role--doc"><i></i>O médico decide</span>
+            <span class="nx-role nx-role--ia"><i></i>A IA estrutura</span>
+          </div>
+
+          <div class="nx-refs" aria-labelledby="refs-titulo">
+            <p class="nx-refs__label" id="refs-titulo">Estudos de referência, não são medições do Nexus Med</p>
+            <ul class="nx-refs__list">
+              <li class="nx-ref">
+                <span class="nx-ref__n">5,9 h</span>
+                <span class="nx-ref__t">de um dia de 11,4 h gastas no prontuário eletrônico.</span>
+                <span class="nx-ref__src">Annals of Family Medicine, 2017 · doi 10.1370/afm.2121</span>
+              </li>
+              <li class="nx-ref">
+                <span class="nx-ref__n">65%</span>
+                <span class="nx-ref__t">dos médicos gastam mais de 10 h por semana com burocracia.</span>
+                <span class="nx-ref__src">Medscape Physician Burnout &amp; Lifestyle Report, 2019</span>
+              </li>
+              <li class="nx-ref">
+                <span class="nx-ref__n">52 h</span>
+                <span class="nx-ref__t">por semana é a jornada média de trabalho dos médicos brasileiros.</span>
+                <span class="nx-ref__src">FGV/IBRE</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="nx-accent-line" aria-hidden="true"></span>
+  </section>
+
+  <!-- =========================================================
+       2. SIMULADORES (reservado — a especificação será definida)
+  ========================================================= -->
+  <section class="nx-sim" id="simulador" aria-labelledby="sim-titulo">
+    <div class="nx-wrap">
+      <header class="nx-sec-head">
+        <h2 id="sim-titulo" class="nx-h2">Simuladores</h2>
+      </header>
+      <div class="nx-sim__slot" id="nx-simuladores"></div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       3. O QUE É + COMO FUNCIONA + PARA QUEM
+  ========================================================= -->
+  <section class="nx-about" id="o-que-e" aria-labelledby="about-titulo">
+    <div class="nx-wrap">
+      <header class="nx-sec-head">
+        <p class="nx-eyebrow nx-eyebrow--ink">O que é o Nexus Med</p>
+        <h2 id="about-titulo" class="nx-h2">O copiloto que cuida da documentação enquanto você cuida do paciente.</h2>
+        <p class="nx-sec-lead">Um prontuário inteligente para médicos, com IA em segundo plano. A IA transcreve, organiza e sugere. O médico valida, edita e decide.</p>
+      </header>
+
+      <div class="nx-flows">
+        <article class="nx-flow">
+          <header class="nx-flow__head">
+            <span class="nx-flow__tag">Consulta</span>
+            <h3 class="nx-h3">Da conversa ao prontuário</h3>
+          </header>
+          <ol class="nx-steps">
+            <li class="nx-step"><span class="nx-step__n">1</span><div><strong>Consulta</strong><p>A gravação do áudio começa com o consentimento do paciente, seguindo um roteiro pensado para CFM e LGPD. Dá para pausar e retomar.</p></div></li>
+            <li class="nx-step"><span class="nx-step__n">2</span><div><strong>Transcrição</strong><p>A conversa vira texto, com um campo próprio para as orientações dadas verbalmente.</p></div></li>
+            <li class="nx-step"><span class="nx-step__n">3</span><div><strong>Prontuário SOAP</strong><p>A IA organiza o prontuário no padrão SOAP, com campos da sua especialidade, e sugere códigos CID-10 durante a consulta.</p></div></li>
+            <li class="nx-step"><span class="nx-step__n">4</span><div><strong>Revisão do médico</strong><p>Você revisa, edita e decide antes de finalizar.</p></div></li>
+            <li class="nx-step nx-step--end"><span class="nx-step__n">5</span><div><strong>Finalização</strong><p>Finalizado, o prontuário fica imutável. Depois, só adendos formais, que não apagam o original.</p></div></li>
+          </ol>
+        </article>
+
+        <article class="nx-flow">
+          <header class="nx-flow__head">
+            <span class="nx-flow__tag nx-flow__tag--teal">Laudo</span>
+            <h3 class="nx-h3">Da imagem ao laudo</h3>
+          </header>
+          <ol class="nx-steps">
+            <li class="nx-step"><span class="nx-step__n">1</span><div><strong>Imagem do exame</strong><p>O exame entra na fila de laudos, com templates para mais de 10 especialidades.</p></div></li>
+            <li class="nx-step"><span class="nx-step__n">2</span><div><strong>Pré-laudo</strong><p>A IA prepara um pré-laudo editável a partir da imagem do exame. A impressão diagnóstica nunca é preenchida pela IA.</p></div></li>
+            <li class="nx-step"><span class="nx-step__n">3</span><div><strong>Revisão do médico</strong><p>Você revisa os achados, edita e escreve a impressão diagnóstica.</p></div></li>
+            <li class="nx-step nx-step--end"><span class="nx-step__n">4</span><div><strong>Finalização</strong><p>A assinatura é sempre do médico. Finalizado, o laudo fica imutável e aceita adendos formais.</p></div></li>
+          </ol>
+        </article>
+      </div>
+
+      <div class="nx-docs">
+        <h3 class="nx-h3">Documentos da sua especialidade</h3>
+        <ul class="nx-chips">
+          <li>Receitas</li><li>Atestados</li><li>Encaminhamentos</li><li>Pedido de exames em bloco</li>
+          <li>Receita de óculos</li><li>Receita de controle especial</li><li>Receita pediátrica com cálculo de dose por kg, confirmado pelo médico</li>
+        </ul>
+      </div>
+
+      <div class="nx-profiles" aria-labelledby="perfis-titulo">
+        <h3 class="nx-h3" id="perfis-titulo">Para quem</h3>
+        <div class="nx-profiles__grid">
+          <article class="nx-card">
+            <span class="nx-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c.8-3.6 3.6-5.6 7-5.6s6.2 2 7 5.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <h4 class="nx-card__title">Médico autônomo</h4>
+            <p>Consulta, prontuário, documentos e laudos no mesmo lugar, para quem atende no próprio consultório.</p>
+          </article>
+          <article class="nx-card">
+            <span class="nx-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M8 9h8M8 13h8M8 17h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <h4 class="nx-card__title">Médico laudista</h4>
+            <p>Um perfil focado na fila de exames: imagem, pré-laudo, revisão e finalização, sem o fluxo de consulta.</p>
+          </article>
+          <article class="nx-card">
+            <span class="nx-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 20V8l8-4 8 4v12" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 20v-5h6v5M12 8v4M10 10h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <h4 class="nx-card__title">Clínica com vários médicos</h4>
+            <p>Cada médico com o seu espaço e os seus dados isolados, na mesma clínica.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       4. O MÉDICO NO CONTROLE (Navy)
+  ========================================================= -->
+  <section class="nx-control nx-dark nx-dark--navy" id="no-controle" aria-labelledby="control-titulo">
+    <span class="nx-watermark nx-watermark--right" aria-hidden="true">N</span>
+    <div class="nx-wrap">
+      <header class="nx-sec-head">
+        <p class="nx-eyebrow">O médico no controle</p>
+        <h2 id="control-titulo" class="nx-h2">A IA sugere. Você decide.</h2>
+        <p class="nx-sec-lead">A IA transcreve e estrutura, mas não decide. O médico é o único autor do prontuário e do laudo.</p>
+      </header>
+      <div class="nx-control__grid">
+        <article class="nx-gcard">
+          <h3 class="nx-gcard__title">Pensado para a Resolução CFM 2.454/2026</h3>
+          <p>O uso de IA fica registrado no prontuário, e o médico é avisado de que a IA é uma ferramenta auxiliar.</p>
+        </article>
+        <article class="nx-gcard">
+          <h3 class="nx-gcard__title">A IA não escolhe o diagnóstico</h3>
+          <p>No laudo, a impressão diagnóstica nunca é preenchida automaticamente. Ela é escrita pelo médico.</p>
+        </article>
+        <article class="nx-gcard">
+          <h3 class="nx-gcard__title">Registro que não se apaga</h3>
+          <p>Prontuário e laudo ficam imutáveis depois de finalizados. Correções entram como adendos formais, sem apagar o original.</p>
+        </article>
+        <article class="nx-gcard">
+          <h3 class="nx-gcard__title">A assinatura é sempre do médico</h3>
+          <p>A assinatura digital certificada (ICP-Brasil) está em implementação.</p>
+        </article>
+        <article class="nx-gcard">
+          <h3 class="nx-gcard__title">Dados isolados por médico</h3>
+          <p>Cada médico só acessa os próprios dados, com isolamento no banco de dados (Row Level Security). Um produto pensado para a LGPD.</p>
+        </article>
+      </div>
+      <blockquote class="nx-quote">
+        <p>“A IA transcreve e estrutura, mas não decide. O médico é o único autor do prontuário.”</p>
+        <footer>Princípio de Governança de IA, Nexus Med</footer>
+      </blockquote>
+    </div>
+    <span class="nx-accent-line" aria-hidden="true"></span>
+  </section>
+
+  <!-- 5. GALERIA "Nexus Med por dentro": não é renderizada até haver capturas reais.
+       Estrutura em <template id="nx-galeria-tpl">; ativação pela lista NX_TELAS em nexusmed.js. -->
+  <template id="nx-galeria-tpl">
+    <section class="nx-gal-sec nx-dark" id="por-dentro" aria-labelledby="gal-titulo">
+      <div class="nx-wrap">
+        <header class="nx-sec-head">
+          <p class="nx-eyebrow">Nexus Med por dentro</p>
+          <h2 id="gal-titulo" class="nx-h2">Telas reais do Nexus Med.</h2>
+        </header>
+        <div class="nx-gal">
+          <div class="nx-gal__tabs" role="tablist" aria-label="Telas do Nexus Med" aria-orientation="vertical"></div>
+          <div class="nx-gal__panels"></div>
+        </div>
+        <p class="nx-gal__foot">Telas reais do Nexus Med. Dados fictícios de teste.</p>
+      </div>
+    </section>
+  </template>
+
+  <!-- =========================================================
+       6. FAQ
+  ========================================================= -->
+  <section class="nx-faq" id="perguntas" aria-labelledby="faq-titulo">
+    <div class="nx-wrap">
+      <header class="nx-sec-head">
+        <p class="nx-eyebrow nx-eyebrow--ink">Perguntas frequentes</p>
+        <h2 id="faq-titulo" class="nx-h2">O que todo médico pergunta antes.</h2>
+      </header>
+      <div class="nx-faq__list">
+        <details class="nx-faq__item">
+          <summary>A IA decide alguma coisa?</summary>
+          <div class="nx-faq__a"><p>Não. A IA transcreve, organiza e sugere. O médico revisa, edita e decide antes de finalizar. No laudo, a impressão diagnóstica nunca é preenchida pela IA.</p></div>
+        </details>
+        <details class="nx-faq__item">
+          <summary>Quem assina o prontuário e o laudo?</summary>
+          <div class="nx-faq__a"><p>Sempre o médico. A assinatura digital certificada (ICP-Brasil) está em implementação.</p></div>
+        </details>
+        <details class="nx-faq__item">
+          <summary>E se a IA errar?</summary>
+          <div class="nx-faq__a"><p>Tudo o que a IA sugere é editável e passa pela revisão do médico antes de ser finalizado. O uso de IA fica registrado no prontuário. Depois de finalizado, correções entram como adendo formal, sem apagar o original.</p></div>
+        </details>
+        <details class="nx-faq__item">
+          <summary>Como ficam os meus dados e os dos meus pacientes?</summary>
+          <div class="nx-faq__a"><p>Os dados ficam isolados por médico: cada um só acessa os próprios registros. A gravação da consulta começa com o consentimento do paciente, e o produto foi pensado para a LGPD.</p></div>
+        </details>
+        <details class="nx-faq__item">
+          <summary>Quanto custa?</summary>
+          <div class="nx-faq__a"><p>Os preços ainda estão a definir. Fale com a gente para conversar sobre o seu caso.</p></div>
+        </details>
+        <details class="nx-faq__item">
+          <summary>Funciona para a minha especialidade?</summary>
+          <div class="nx-faq__a"><p>O prontuário tem campos por especialidade, os laudos têm templates para mais de 10 especialidades e os documentos se ajustam à especialidade ativa. Conte para a gente qual é a sua.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       7. CTA FINAL
+  ========================================================= -->
+  <section class="nx-final nx-dark" aria-labelledby="final-titulo">
+    <div class="nx-wrap nx-final__inner">
+      <svg class="nx-logo nx-logo--final" width="280" height="80" viewBox="0 0 280 80" fill="none" role="img" aria-label="Nexus Med">
+        <defs>
+          <linearGradient id="nxf_seam" x1="0" y1="10" x2="0" y2="70" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#1C4ED8"/><stop offset="100%" stop-color="#00C2AE"/></linearGradient>
+          <clipPath id="nxf_left"><rect x="0" y="0" width="32" height="80"/></clipPath>
+          <clipPath id="nxf_right"><rect x="32" y="0" width="32" height="80"/></clipPath>
+        </defs>
+        <path d="M6,70 L6,10 L58,70 L58,10" stroke="#1C4ED8" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" fill="none" clip-path="url(#nxf_left)"/>
+        <path d="M6,70 L6,10 L58,70 L58,10" stroke="#00C2AE" stroke-width="8.5" stroke-linecap="square" stroke-linejoin="miter" fill="none" clip-path="url(#nxf_right)"/>
+        <line x1="32" y1="12" x2="32" y2="68" stroke="url(#nxf_seam)" stroke-width="1.5" opacity="0.55"/>
+        <circle cx="32" cy="40" r="3.5" fill="url(#nxf_seam)" opacity="0.95"/>
+        <text x="80" y="50" font-family="'Space Grotesk', -apple-system, sans-serif" font-weight="800" font-size="36" letter-spacing="2" fill="#FFFFFF">NEXUS</text>
+        <text x="81" y="65" font-family="'DM Sans', -apple-system, sans-serif" font-weight="400" font-size="11" letter-spacing="5" fill="rgba(255,255,255,0.5)">MED</text>
+      </svg>
+      <h2 id="final-titulo" class="nx-h2 nx-final__title">Para que a medicina volte a ser sobre pessoas.</h2>
+      <p class="nx-final__lead">Conte como é a sua rotina de consultas e laudos. A gente mostra o Nexus Med e tira as suas dúvidas.</p>
+      <div class="nx-final__actions">
+        <a class="nx-btn nx-btn--teal nx-btn--lg" href="https://cal.com/ia.comunica/reuniao-apresentacao-alinhamento" target="_blank" rel="noopener noreferrer"
+           data-cal-link="ia.comunica/reuniao-apresentacao-alinhamento"
+           data-cal-namespace="reuniao-apresentacao-alinhamento"
+           data-cal-config='{"layout":"month_view","theme":"dark"}'>Falar com a IA Comunica</a>
+        <a class="nx-btn nx-btn--ghost nx-btn--lg" href="mailto:nexusmed@iacomunica.com.br?subject=Quero%20conhecer%20o%20Nexus%20Med">nexusmed@iacomunica.com.br</a>
+      </div>
+    </div>
+    <span class="nx-accent-line" aria-hidden="true"></span>
+  </section>
+
+</main>
+
+{% include nexusmed-footer.html %}
+
+<dialog class="nx-lb" id="nx-lightbox" aria-labelledby="nx-lb-titulo">
+  <div class="nx-lb__bar">
+    <p class="nx-lb__title" id="nx-lb-titulo">Tela do Nexus Med</p>
+    <button type="button" class="nx-btn nx-btn--ghost nx-btn--sm" id="nx-lb-zoom" aria-pressed="false">Ver em tamanho real</button>
+    <button type="button" class="nx-btn nx-btn--teal nx-btn--sm" id="nx-lb-fechar">Fechar<span class="nx-sr"> (Esc)</span></button>
+  </div>
+  <div class="nx-lb__scroll" id="nx-lb-scroll" tabindex="0" aria-label="Imagem ampliada; role para ver os detalhes">
+    <img id="nx-lb-img" alt="" />
+  </div>
+  <p class="nx-lb__foot">Telas reais do Nexus Med. Dados fictícios de teste.</p>
+</dialog>
+
+<script src="/nexusmed/nexusmed.js"></script>
+</body>
+</html>
