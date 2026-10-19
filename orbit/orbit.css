@@ -64,8 +64,9 @@ p { margin: 0; }
 .o-skip { position: absolute; left: 12px; top: -60px; z-index: 300; background: var(--o-teal); color: var(--o-dark); padding: 10px 16px; border-radius: var(--o-r-ctl); font-weight: 600; text-decoration: none; transition: top var(--o-t); }
 .o-skip:focus { top: 12px; }
 
-.o-wrap { width: 100%; max-width: 1560px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 72px); }
-.o-wrap--narrow { max-width: 1560px; }
+:root { --o-pad-x: clamp(20px, 4vw, 80px); }
+.o-wrap { width: 100%; max-width: calc(1840px + 2 * var(--o-pad-x)); margin: 0 auto; padding: 0 var(--o-pad-x); }
+.o-wrap--narrow { max-width: calc(1840px + 2 * var(--o-pad-x)); }
 
 /* ---------- Botões ---------- */
 .o-btn {
@@ -158,7 +159,7 @@ p { margin: 0; }
 
 @media (min-width: 960px) {
   .o-hero { padding: 72px 0 96px; }
-  .o-hero__grid { grid-template-columns: minmax(0, 42fr) minmax(0, 58fr); gap: clamp(32px, 3.5vw, 64px); }
+  .o-hero__grid { grid-template-columns: minmax(0, 40fr) minmax(0, 60fr); gap: clamp(32px, 3.5vw, 72px); }
   .o-hero__logo { width: 200px; }
 }
 @media (max-width: 480px) {
@@ -184,7 +185,7 @@ p { margin: 0; }
 
 .o-sim__layout { display: grid; gap: 24px; align-items: start; }
 @media (min-width: 1040px) {
-  .o-sim__layout { grid-template-columns: minmax(0, 1fr) minmax(0, clamp(470px, 36vw, 600px)); gap: clamp(28px, 2.5vw, 44px); }
+  .o-sim__layout { grid-template-columns: minmax(0, 1fr) minmax(0, clamp(470px, 38vw, 720px)); gap: clamp(28px, 2.5vw, 48px); }
   .o-result { position: sticky; top: calc(var(--o-top-h) + 16px); max-height: calc(100vh - var(--o-top-h) - 32px); overflow: auto; overscroll-behavior: contain; scrollbar-width: thin; }
   .o-sim__to-result { display: none !important; }
 }
@@ -659,4 +660,12 @@ p { margin: 0; }
 @media (max-width: 480px) { .o-car__btn span { display: none; } .o-car__btn { padding: 0 8px; } .o-car__cap { font-size: 12.5px; } }
 @media (prefers-reduced-motion: reduce) { .o-car__slide { transition: none !important; transform: none !important; } }
 
-@media (min-width: 960px) { .o-hero__title { font-size: clamp(36px, 3.3vw, 50px); } }
+@media (min-width: 960px) { .o-hero__title { font-size: clamp(36px, 3.3vw, 62px); } }
+
+@media (min-width: 1600px) {
+  .o-pillars { gap: 20px; }
+  .o-clear__grid { gap: 24px; }
+  .o-team { grid-template-columns: repeat(auto-fill, 18px); }
+}
+@media (min-width: 1500px) { .o-kpis { grid-template-columns: repeat(3, 1fr); } }
+.o-clear__col .o-list li, .o-pillar p, .o-how__step p { max-width: 72ch; }

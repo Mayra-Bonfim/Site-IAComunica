@@ -93,7 +93,7 @@ Se algum dia for necessário desativar o Jekyll para o app institucional (SPA), 
 
 ## Orbit — Página de prospecção e simulador (`/orbit/`)
 
-Criada no Hub de Negócios em 19/10/2026, no mesmo modelo do Acervo (página estática + includes Jekyll). Layout largo: `.o-wrap` com max-width 1560px e padding lateral `clamp(20px, 4vw, 72px)` (topbar e rodapé incluídos); parágrafos limitados a ~70 caracteres por linha. URL final: `https://www.iacomunica.com.br/orbit/`.
+Criada no Hub de Negócios em 19/10/2026, no mesmo modelo do Acervo (página estática + includes Jekyll). Layout largo: `.o-wrap` com até 1840px de conteúdo e padding lateral `clamp(20px, 4vw, 80px)` (medido: 77px em 1920, 58px em 1440, 51px em 1280) (topbar e rodapé incluídos); parágrafos limitados a ~70 caracteres por linha. URL final: `https://www.iacomunica.com.br/orbit/`.
 
 **Conteúdo (ordem):** hero (carrossel das 6 capturas reais em moldura de navegador neutra: troca a cada 4,5 s com fade/slide horizontal, pausa no hover, no foco, com a aba oculta e com a ampliação aberta; botão Pausar/Retomar, setas e indicadores; sem avanço automático com prefers-reduced-motion; clique abre a ampliação) → simulador em 3 blocos (Diagnóstico → Custo unitário → Resultado) → "Orbit em ação" (âncora `#do-numero-a-escala`; galeria com abas por perfil — Gestor: Escala gerada, Revisão, Alertas; Departamento Pessoal: Regras e convenções, Cálculo de produtividade, Estrutura — e ampliação em `<dialog>`) → O que é o Orbit (pilares, como funciona, para quem) → Transparência → FAQ → CTA final → rodapé.
 
