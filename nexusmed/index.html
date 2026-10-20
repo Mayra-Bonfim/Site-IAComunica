@@ -44,84 +44,79 @@
 <main id="conteudo">
 
   <!-- =========================================================
-       1. HERO (Midnight)
+       1. HERO (Midnight): só tipografia, título enorme e marca-d'água N
   ========================================================= -->
   <section class="nx-hero nx-dark" aria-labelledby="hero-titulo">
     <span class="nx-watermark" aria-hidden="true">N</span>
-    <div class="nx-wrap nx-hero__grid">
-      <div class="nx-hero__text">
-        <p class="nx-eyebrow">Menos burocracia. Mais medicina.</p>
-        <h1 id="hero-titulo" class="nx-hero__title">Quanto tempo você devolve <span class="nx-grad-text">ao seu dia?</span></h1>
+    <div class="nx-wrap nx-hero__stack">
+      <p class="nx-eyebrow">Menos burocracia. Mais medicina.</p>
+      <h1 id="hero-titulo" class="nx-hero__title">Você aceitaria aumentar seu faturamento <span class="nx-grad-text">sem aumentar a quantidade de horas trabalhadas?</span></h1>
+      <div class="nx-hero__foot">
         <p class="nx-hero__lead">O Nexus Med é um copiloto clínico com IA. Ele transcreve a consulta, organiza o prontuário no padrão SOAP e prepara o pré-laudo a partir da imagem do exame. A IA sugere; o médico revisa, decide e finaliza.</p>
         <div class="nx-hero__actions">
           <a class="nx-btn nx-btn--teal nx-btn--lg" href="#simulador" data-scroll>
             Calcular meu tempo
             <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12m0 0 5-5m-5 5-5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a class="nx-btn nx-btn--ghost nx-btn--lg" href="#por-dentro" data-scroll>Ver o Nexus Med por dentro</a>
-        </div>
-        <p class="nx-hero__status">Produto em desenvolvimento avançado, com piloto privado em preparação.</p>
-      </div>
-
-      <div class="nx-hero__visual">
-        <!-- Contêiner do carrossel de telas reais: fica oculto até haver capturas (ver NX_TELAS_HERO em nexusmed.js) -->
-        <section class="nx-car" id="nx-hero-telas" aria-roledescription="carrossel" aria-label="Telas reais do Nexus Med" hidden></section>
-
-        <div class="nx-brandart" id="nx-brandart">
-          <svg class="nx-brandart__mark" viewBox="0 0 64 78" fill="none" aria-hidden="true" focusable="false">
-            <defs>
-              <linearGradient id="nxh_seam" x1="0" y1="10" x2="0" y2="68" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#1C4ED8"/><stop offset="100%" stop-color="#00C2AE"/></linearGradient>
-              <clipPath id="nxh_l"><rect x="0" y="0" width="32" height="78"/></clipPath>
-              <clipPath id="nxh_r"><rect x="32" y="0" width="32" height="78"/></clipPath>
-            </defs>
-            <path d="M10,68 L10,10 L54,68 L54,10" stroke="#1C4ED8" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" fill="none" clip-path="url(#nxh_l)"/>
-            <path d="M10,68 L10,10 L54,68 L54,10" stroke="#00C2AE" stroke-width="8.5" stroke-linecap="square" stroke-linejoin="miter" fill="none" clip-path="url(#nxh_r)"/>
-            <line x1="32" y1="12" x2="32" y2="66" stroke="url(#nxh_seam)" stroke-width="1.5" opacity="0.55"/>
-            <circle cx="32" cy="39" r="3.5" fill="url(#nxh_seam)" opacity="0.95"/>
-          </svg>
-          <div class="nx-brandart__roles" aria-hidden="true">
-            <span class="nx-role nx-role--doc"><i></i>O médico decide</span>
-            <span class="nx-role nx-role--ia"><i></i>A IA estrutura</span>
-          </div>
-
-          <div class="nx-refs" role="region" aria-labelledby="refs-titulo">
-            <p class="nx-refs__label" id="refs-titulo">No Brasil. Estudos de referência, não são medições do Nexus Med.</p>
-            <ul class="nx-refs__list nx-refs__list--2">
-              <li class="nx-ref">
-                <span class="nx-ref__n">20 exames</span>
-                <span class="nx-ref__t">por turno de 6 h: a mediana de produtividade de radiologistas brasileiros (autorrelato). 62% são pagos só por produção.</span>
-                <span class="nx-ref__src">Bretas et al., Radiologia Brasileira · pesquisa com membros do CBR, 2º semestre de 2018</span>
-              </li>
-              <li class="nx-ref">
-                <span class="nx-ref__n">13 a 26 min</span>
-                <span class="nx-ref__t">de duração média da consulta particular de cardiologia, conforme o consultório. Oito serviços de Ribeirão Preto.</span>
-                <span class="nx-ref__src">Arroyo, tese FEA-USP, 2007 · doi 10.11606/t.12.2007.tde-04052007-182713</span>
-              </li>
-            </ul>
-            <p class="nx-refs__label nx-refs__label--2">Nos EUA. Estudos de referência com médicos americanos.</p>
-            <ul class="nx-refs__list">
-              <li class="nx-ref">
-                <span class="nx-ref__n">5,9 h</span>
-                <span class="nx-ref__t">por dia (355 min) no prontuário eletrônico, numa jornada de 11,4 h. Médicos de família nos EUA.</span>
-                <span class="nx-ref__src">Arndt et al., Annals of Family Medicine, 2017 · 142 médicos · doi 10.1370/afm.2121</span>
-              </li>
-              <li class="nx-ref">
-                <span class="nx-ref__n">27%</span>
-                <span class="nx-ref__t">do tempo em contato direto com o paciente; 49,2% em prontuário e trabalho de mesa. Médicos nos EUA.</span>
-                <span class="nx-ref__src">Sinsky et al., Annals of Internal Medicine, 2016 · 57 médicos</span>
-              </li>
-              <li class="nx-ref">
-                <span class="nx-ref__n">1,77 h</span>
-                <span class="nx-ref__t">por dia documentando fora do expediente, em média (autorrelato). Pesquisa nacional nos EUA.</span>
-                <span class="nx-ref__src">Gaffney et al., JAMA Internal Medicine, 2022 · doi 10.1001/jamainternmed.2022.0372</span>
-              </li>
-            </ul>
-            <p class="nx-refs__note">Os estudos brasileiros acima medem produtividade e duração da consulta, não o tempo de prontuário: não encontramos estudo brasileiro consolidado sobre isso. O estudo de 2007 é antigo e de uma só especialidade e cidade.</p>
-          </div>
+          <a class="nx-btn nx-btn--ghost nx-btn--lg" href="#evidencias" data-scroll>Ver o que dizem os estudos</a>
         </div>
       </div>
     </div>
     <span class="nx-accent-line" aria-hidden="true"></span>
+  </section>
+
+  <!-- =========================================================
+       1b. EVIDÊNCIAS: estudos com fonte primária verificada em 20/10/2026
+  ========================================================= -->
+  <section class="nx-ev" id="evidencias" aria-labelledby="ev-titulo">
+    <div class="nx-wrap">
+      <header class="nx-sec-head">
+        <p class="nx-eyebrow nx-eyebrow--ink">O que dizem os estudos</p>
+        <h2 id="ev-titulo" class="nx-h2">A ciência já mediu o que você sente no consultório.</h2>
+        <p class="nx-sec-lead">Pesquisas e artigos publicados em revistas médicas confirmam o que você vive todo dia: horas de prontuário, burnout e uma IA que já faz parte da rotina de milhares de colegas. Cada número abaixo vem com a fonte e o ano.</p>
+      </header>
+
+      <div class="nx-ev__chap">
+        <div class="nx-ev__side"><span class="nx-ev__idx">01</span><h3 class="nx-h3">Para onde vai o tempo do médico</h3></div>
+        <ul class="nx-ev__rows">
+          <li class="nx-evr"><span class="nx-evr__n">27%</span><div><p class="nx-evr__t">do dia em contato direto com o paciente. 49,2% vão para prontuário e trabalho de mesa. Observação de 430 horas com 57 médicos nos EUA.</p><p class="nx-evr__src">Sinsky et al., Annals of Internal Medicine, 2016</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">5,9 h</span><div><p class="nx-evr__t">por dia (355 min) no prontuário eletrônico, numa jornada de 11,4 h. 142 médicos de família nos EUA, por registros do sistema.</p><p class="nx-evr__src">Arndt et al., Annals of Family Medicine, 2017 · doi 10.1370/afm.2121</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">1,77 h</span><div><p class="nx-evr__t">por dia documentando fora do expediente, em média (autorrelato). Pesquisa nacional nos EUA.</p><p class="nx-evr__src">Gaffney et al., JAMA Internal Medicine, 2022 · doi 10.1001/jamainternmed.2022.0372</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">20 exames</span><div><p class="nx-evr__t">por turno de 6 h é a mediana de produtividade de radiologistas brasileiros (autorrelato); 62% são pagos só por produção.</p><p class="nx-evr__src">Bretas et al., Radiologia Brasileira · pesquisa com membros do CBR</p></div></li>
+        </ul>
+      </div>
+
+      <div class="nx-ev__chap">
+        <div class="nx-ev__side"><span class="nx-ev__idx">02</span><h3 class="nx-h3">O custo humano: burnout e qualidade de vida</h3></div>
+        <ul class="nx-ev__rows">
+          <li class="nx-evr"><span class="nx-evr__n">45,2%</span><div><p class="nx-evr__t">dos médicos americanos relataram ao menos um sintoma de burnout em 2023. 7.643 respondentes. Os médicos têm risco maior que o restante da força de trabalho dos EUA (OR 1,82).</p><p class="nx-evr__src">Shanafelt et al., Mayo Clinic Proceedings, 2025 · doi 10.1016/j.mayocp.2024.11.031</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">31,8%</span><div><p class="nx-evr__t">dos médicos trabalham 60 horas por semana ou mais, contra 5,4% dos trabalhadores de outras áreas. Satisfeitos com o equilíbrio entre trabalho e vida: 40,3% dos médicos contra 62,3%.</p><p class="nx-evr__src">Shanafelt et al., Mayo Clinic Proceedings, 2025</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">+0,76</span><div><p class="nx-evr__t">ponto no índice de burnout (0 a 10) em médicos com tempo de documentação fora do horário acima da mediana. É uma associação, não prova de causa. 318 médicos ambulatoriais.</p><p class="nx-evr__src">Apathy et al., JAMIA, 2024 · doi 10.1093/jamia/ocae193</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">35</span><div><p class="nx-evr__t">estudos numa revisão sistemática: tempo total no prontuário, tempo fora do horário e carga de documentação estão entre os fatores associados ao bem-estar do médico.</p><p class="nx-evr__src">Nguyen et al., JAMIA, 2020</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">7,5–61,7%</span><div><p class="nx-evr__t">é a faixa de burnout em estudos brasileiros, conforme o critério e a especialidade: 7,5% com critério das três dimensões (121 médicos de um município); 61,7% em intensivistas de cinco capitais (180 médicos), contando alto nível em ao menos uma dimensão.</p><p class="nx-evr__src">Becker et al., Frontiers in Health Services, 2021 · Tironi et al., Rev Bras Ter Intensiva (SciELO)</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">31,3%</span><div><p class="nx-evr__t">de esgotamento emocional em 2.374 médicos de todas as regiões do país em maio e junho de 2020, contra 18,9% estimados para antes da pandemia.</p><p class="nx-evr__src">Prestes, dissertação, Faculdade de Saúde Pública da USP, 2023 · doi 10.11606/d.6.2023.tde-05122023-154518</p></div></li>
+        </ul>
+      </div>
+
+      <div class="nx-ev__chap">
+        <div class="nx-ev__side"><span class="nx-ev__idx">03</span><h3 class="nx-h3">A IA já mudou o consultório</h3></div>
+        <ul class="nx-ev__rows">
+          <li class="nx-evr"><span class="nx-evr__n">81%</span><div><p class="nx-evr__t">dos médicos americanos usam IA na prática profissional, mais que o dobro dos 38% de 2023. A média passou de 1,1 para 2,3 usos por médico. 1.692 respondentes.</p><p class="nx-evr__src">AMA, Physician Survey on Augmented Intelligence, jan. e fev. de 2026</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">28%</span><div><p class="nx-evr__t">já usam IA para documentar códigos, prontuários e notas de consulta. Outros 30% para notas de evolução, instruções de alta e planos de cuidado.</p><p class="nx-evr__src">AMA, 2026</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">70%</span><div><p class="nx-evr__t">veem oportunidade de a IA automatizar tarefas clínicas e administrativas que contribuem para o burnout. Mais de três quartos dizem que a IA melhora a capacidade de cuidar do paciente (eram 65% em 2023).</p><p class="nx-evr__src">AMA, 2026</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">88%</span><div><p class="nx-evr__t">têm alguma preocupação com perda de habilidades, e 40% estão igualmente animados e preocupados. 85% querem ser consultados na adoção. O médico no controle é o que a categoria pede.</p><p class="nx-evr__src">AMA, 2026 · pesquisa de autorrelato, só médicos dos EUA</p></div></li>
+        </ul>
+      </div>
+
+      <div class="nx-ev__chap">
+        <div class="nx-ev__side"><span class="nx-ev__idx">04</span><h3 class="nx-h3">Qualidade de vida e faturamento, juntos?</h3></div>
+        <ul class="nx-ev__rows">
+          <li class="nx-evr"><span class="nx-evr__n">−10%</span><div><p class="nx-evr__t">no tempo de documentação e <strong>+1,7% de consultas por semana</strong> em médicos que adotaram scribe de IA. 8.581 clínicos em 5 centros dos EUA. Estudo observacional.</p><p class="nx-evr__src">Rotenstein et al., JAMA, 2026 · doi 10.1001/jama.2026.2253</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">+2,8%</span><div><p class="nx-evr__t">de consultas por semana e +5,8% de produtividade medida em unidades de trabalho (wRVU), sem mudança nas glosas. 1.565 médicos, 1,2 milhão de consultas.</p><p class="nx-evr__src">Holmgren et al., JAMA Network Open, 2026 · doi 10.1001/jamanetworkopen.2025.53233</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">−9,5%</span><div><p class="nx-evr__t">no tempo gasto na nota, em ensaio randomizado com 238 médicos de 14 especialidades, com melhora na carga de tarefas e no burnout.</p><p class="nx-evr__src">Lukac et al., NEJM AI, 2025 · doi 10.1056/aioa2501000</p></div></li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <!-- =========================================================
@@ -461,7 +456,7 @@
           <div class="nx-gal__tabs" role="tablist" aria-label="Telas do Nexus Med" aria-orientation="vertical"></div>
           <div class="nx-gal__panels"></div>
         </div>
-        <p class="nx-gal__foot">Telas reais do Nexus Med. Dados fictícios de teste.</p>
+        <p class="nx-gal__foot">Telas reais do Nexus Med. Dados fictícios.</p>
       </div>
     </section>
   </template>
@@ -498,7 +493,7 @@
         </details>
         <details class="nx-faq__item">
           <summary>O cálculo dos simuladores é uma promessa?</summary>
-          <div class="nx-faq__a"><p>Não. É uma simulação com as premissas que você informa e com percentuais de estudos feitos com outros produtos. O Nexus Med ainda não tem medição própria: o piloto privado está em preparação.</p></div>
+          <div class="nx-faq__a"><p>Não. É uma simulação com as premissas que você informa e com percentuais de estudos publicados. O resultado real depende da sua rotina e do volume da sua agenda.</p></div>
         </details>
         <details class="nx-faq__item">
           <summary>Funciona para a minha especialidade?</summary>
@@ -552,7 +547,7 @@
   <div class="nx-lb__scroll" id="nx-lb-scroll" tabindex="0" aria-label="Imagem ampliada; role para ver os detalhes">
     <img id="nx-lb-img" alt="" />
   </div>
-  <p class="nx-lb__foot">Telas reais do Nexus Med. Dados fictícios de teste.</p>
+  <p class="nx-lb__foot">Telas reais do Nexus Med. Dados fictícios.</p>
 </dialog>
 
 <script src="/nexusmed/nexusmed-calc.js"></script>

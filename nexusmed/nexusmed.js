@@ -17,7 +17,7 @@
          alt: 'Tela real do Nexus Med: ...',
          legenda: 'O que a tela mostra, em linguagem simples.' }
      ------------------------------------------------------------ */
-  var NX_TELAS_HERO = [     // carrossel do hero (3 a 6 telas)
+  var NX_TELAS = [          // galeria "Nexus Med por dentro" (todas as telas num lugar só)
     { arquivo: 'consulta-prontuario', largura: 1920, altura: 1200, titulo: 'Sala de consulta', grupo: 'Consulta',
       alt: 'Tela real do Nexus Med: sala de consulta com os dados da paciente, a área de gravação e transcrição e o prontuário no formato SOAP.',
       legenda: 'A sala de consulta reúne a paciente, a gravação e o prontuário SOAP em uma só tela.' },
@@ -26,9 +26,7 @@
       legenda: 'A IA organiza o texto do laudo. A impressão diagnóstica é escrita só pelo médico.' },
     { arquivo: 'laudo-assinatura', largura: 1920, altura: 1200, titulo: 'Conferência antes de assinar', grupo: 'Laudo',
       alt: 'Tela real do Nexus Med: conferência do laudo com duas confirmações do médico antes da assinatura.',
-      legenda: 'O médico confirma que revisou o texto e que a impressão diagnóstica é dele. A assinatura digital certificada está em implementação.' }
-  ];
-  var NX_TELAS = [          // galeria "Nexus Med por dentro" (não repetir as do hero)
+      legenda: 'O médico confirma que revisou o texto e que a impressão diagnóstica é dele. A assinatura digital certificada está em implementação.' },
     { arquivo: 'consulta-documentos', largura: 1920, altura: 1200, titulo: 'Documentos da consulta', grupo: 'Consulta',
       alt: 'Tela real do Nexus Med: aba de documentos da consulta, com opções para gerar laudo, receita, atestado e encaminhamento.',
       legenda: 'Da mesma consulta, o médico gera laudo, receita, atestado e encaminhamento.' },
@@ -388,65 +386,7 @@
     });
   })();
 
-  /* ---------- Carrossel do hero (só se houver telas) ---------- */
-  (function carrossel() {
-    var car = $('nx-hero-telas');
-    if (!car || !NX_TELAS_HERO.length) return;
-    var html = '<div class="nx-frame"><div class="nx-frame__bar" aria-hidden="true"><span></span><span></span><span></span><i></i></div><div class="nx-car__viewport">';
-    NX_TELAS_HERO.forEach(function (t, i) {
-      html += '<div class="nx-car__slide' + (i ? '' : ' is-on') + '" role="group" aria-roledescription="tela" aria-label="' + (i + 1) + ' de ' + NX_TELAS_HERO.length + ': ' + esc(t.titulo) + '" data-cap="' + esc(t.titulo) + '"' + (i ? ' aria-hidden="true"' : '') + '>' +
-        '<button type="button" class="nx-car__shot" data-ampliar data-titulo="' + esc(t.titulo) + '" aria-label="Ampliar a tela ' + esc(t.titulo) + '"' + (i ? ' tabindex="-1"' : '') + '>' + picture(t, i === 0) + '</button></div>';
-    });
-    html += '</div><div class="nx-car__bar"><p class="nx-car__cap" id="nx-car-cap" aria-live="off"></p>' +
-      '<button type="button" class="nx-car__btn" id="nx-car-prev" aria-label="Tela anterior">‹</button>' +
-      '<button type="button" class="nx-car__btn" id="nx-car-pause" aria-pressed="false"><span id="nx-car-pause-txt">Pausar</span></button>' +
-      '<button type="button" class="nx-car__btn" id="nx-car-next" aria-label="Próxima tela">›</button></div><div class="nx-car__dots" role="group" aria-label="Escolher tela">';
-    NX_TELAS_HERO.forEach(function (t, i) { html += '<button type="button" class="nx-car__dot" data-ir="' + i + '" aria-label="Mostrar tela ' + (i + 1) + ': ' + esc(t.titulo) + '"><span></span></button>'; });
-    html += '</div></div><p class="nx-car__label">Telas reais do Nexus Med · dados fictícios de teste</p>';
-    car.innerHTML = html;
-    car.hidden = false;
-    $('nx-brandart').hidden = true;
-
-    var slides = qsa('.nx-car__slide', car), dots = qsa('.nx-car__dot', car);
-    var cap = $('nx-car-cap'), btnPause = $('nx-car-pause'), txt = $('nx-car-pause-txt');
-    var atual = 0, timer = null, pausado = reduceMotion, hover = false, foco = false, lb = false;
-    function rodando() { return !pausado && !hover && !foco && !lb && !document.hidden; }
-    function reiniciar() {
-      clearTimeout(timer);
-      car.classList.toggle('is-running', rodando());
-      dots.forEach(function (d) { d.classList.remove('is-prog'); });
-      if (rodando()) { var d = dots[atual]; void d.offsetWidth; d.classList.add('is-prog'); timer = setTimeout(function () { mostrar(atual + 1, false); }, 4500); }
-    }
-    function mostrar(i, usuario) {
-      atual = (i + slides.length) % slides.length;
-      slides.forEach(function (s, k) {
-        var on = k === atual;
-        s.classList.toggle('is-on', on);
-        if (on) s.removeAttribute('aria-hidden'); else s.setAttribute('aria-hidden', 'true');
-        s.querySelector('.nx-car__shot').tabIndex = on ? 0 : -1;
-        var im = s.querySelector('img'); if (on && im.loading === 'lazy') im.loading = 'eager';
-      });
-      dots.forEach(function (d, k) { if (k === atual) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
-      cap.textContent = slides[atual].getAttribute('data-cap');
-      cap.setAttribute('aria-live', usuario ? 'polite' : 'off');
-      reiniciar();
-    }
-    function setPausa(p) { pausado = p; btnPause.setAttribute('aria-pressed', String(p)); txt.textContent = p ? 'Retomar' : 'Pausar'; reiniciar(); }
-    $('nx-car-prev').addEventListener('click', function () { mostrar(atual - 1, true); });
-    $('nx-car-next').addEventListener('click', function () { mostrar(atual + 1, true); });
-    btnPause.addEventListener('click', function () { setPausa(!pausado); });
-    dots.forEach(function (d) { d.addEventListener('click', function () { mostrar(Number(d.getAttribute('data-ir')), true); }); });
-    car.addEventListener('keydown', function (ev) { if (ev.key === 'ArrowRight') { ev.preventDefault(); mostrar(atual + 1, true); } else if (ev.key === 'ArrowLeft') { ev.preventDefault(); mostrar(atual - 1, true); } });
-    car.addEventListener('mouseenter', function () { hover = true; reiniciar(); });
-    car.addEventListener('mouseleave', function () { hover = false; reiniciar(); });
-    car.addEventListener('focusin', function () { foco = true; reiniciar(); });
-    car.addEventListener('focusout', function (ev) { if (!car.contains(ev.relatedTarget)) { foco = false; reiniciar(); } });
-    document.addEventListener('visibilitychange', reiniciar);
-    document.addEventListener('nx:lightbox', function (ev) { lb = !!ev.detail; reiniciar(); });
-    setPausa(pausado); mostrar(0, false);
-  })();
-
-  /* ---------- Ampliação (dialog nativo) ---------- */
+/* ---------- Ampliação (dialog nativo) ---------- */
   (function lightbox() {
     var gatilhos = qsa('[data-ampliar]');
     var dlg = $('nx-lightbox');
