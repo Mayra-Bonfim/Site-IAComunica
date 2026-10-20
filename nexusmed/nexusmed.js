@@ -17,8 +17,28 @@
          alt: 'Tela real do Nexus Med: ...',
          legenda: 'O que a tela mostra, em linguagem simples.' }
      ------------------------------------------------------------ */
-  var NX_TELAS_HERO = [];   // carrossel do hero (3 a 6 telas)
-  var NX_TELAS = [];        // galeria "Nexus Med por dentro" (não repetir as do hero)
+  var NX_TELAS_HERO = [     // carrossel do hero (3 a 6 telas)
+    { arquivo: 'consulta-prontuario', largura: 1920, altura: 1200, titulo: 'Sala de consulta', grupo: 'Consulta',
+      alt: 'Tela real do Nexus Med: sala de consulta com os dados da paciente, a área de gravação e transcrição e o prontuário no formato SOAP.',
+      legenda: 'A sala de consulta reúne a paciente, a gravação e o prontuário SOAP em uma só tela.' },
+    { arquivo: 'laudo-revisao-ia', largura: 1920, altura: 1200, titulo: 'Revisão do laudo', grupo: 'Laudo',
+      alt: 'Tela real do Nexus Med: revisão do texto de laudo estruturado pela IA, com o campo de impressão diagnóstica reservado ao médico.',
+      legenda: 'A IA organiza o texto do laudo. A impressão diagnóstica é escrita só pelo médico.' },
+    { arquivo: 'laudo-assinatura', largura: 1920, altura: 1200, titulo: 'Conferência antes de assinar', grupo: 'Laudo',
+      alt: 'Tela real do Nexus Med: conferência do laudo com duas confirmações do médico antes da assinatura.',
+      legenda: 'O médico confirma que revisou o texto e que a impressão diagnóstica é dele. A assinatura digital certificada está em implementação.' }
+  ];
+  var NX_TELAS = [          // galeria "Nexus Med por dentro" (não repetir as do hero)
+    { arquivo: 'consulta-documentos', largura: 1920, altura: 1200, titulo: 'Documentos da consulta', grupo: 'Consulta',
+      alt: 'Tela real do Nexus Med: aba de documentos da consulta, com opções para gerar laudo, receita, atestado e encaminhamento.',
+      legenda: 'Da mesma consulta, o médico gera laudo, receita, atestado e encaminhamento.' },
+    { arquivo: 'laudo-achados', largura: 1920, altura: 1200, titulo: 'Achados do exame', grupo: 'Laudo',
+      alt: 'Tela real do Nexus Med: passo de achados do exame, com área para ditar ou escrever e o botão para estruturar com IA.',
+      legenda: 'O médico dita ou escreve os achados e pede para a IA estruturar o texto.' },
+    { arquivo: 'login', largura: 1920, altura: 1200, titulo: 'Acesso', grupo: 'Acesso',
+      alt: 'Tela real do Nexus Med: acesso com e-mail e senha.',
+      legenda: 'Acesso individual de cada médico, com e-mail e senha.' }
+  ];
 
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function $(id) { return document.getElementById(id); }
