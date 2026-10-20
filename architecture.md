@@ -42,6 +42,9 @@ Site-IAComunica/
 │   ├── index.html                ← Hub principal do Acervo
 │   ├── acervo-tokens.css / acervo.css / acervo.js
 │   └── <slug>/index.html         ← 11 páginas de playbook
+├── nexusmed/                     ← Nexus Med: página de produto (/nexusmed/, via Jekyll — ver seção dedicada). NÃO confundir com docs/nexusmed/
+│   ├── index.html / nexusmed.css / nexusmed.js
+│   └── assets/                   ← SVGs oficiais do Nexus (logo/mark) + nexusmed-og.png
 ├── orbit/                        ← Orbit: página de prospecção + simulador de quadro e custo (/orbit/, via Jekyll — ver seção dedicada)
 │   ├── index.html                ← página única (front matter vazio + includes orbit-*)
 │   ├── orbit.css                 ← estilos (tokens do Brand Book do Orbit)
@@ -55,7 +58,9 @@ Site-IAComunica/
 │   ├── acervo-footer.html
 │   ├── acervo-head-theme.html
 │   ├── orbit-topbar.html
-│   └── orbit-footer.html
+│   ├── orbit-footer.html
+│   ├── nexusmed-topbar.html      ← topbar "IA Comunica / Nexus Med" (logo negativa do Nexus inline)
+│   └── nexusmed-footer.html      ← cópia literal do rodapé da home (classes nx-footer__*)
 └── superafiliadoia/              ← Landing page afiliados (separada)
     ├── index.html
     └── CNAME
@@ -113,6 +118,24 @@ Criada no Hub de Negócios em 19/10/2026, no mesmo modelo do Acervo (página est
 **Contatos da página (diferentes da home):** WhatsApp `5561998747075` — só nesta página e sem exibir o número (botões "Falar com a IA Comunica" e "Levar esta simulação para uma conversa", com texto pré-preenchido de abertura neutra); a home e o Acervo seguem com +55 61 3142-5518. Rodapé (`_includes/orbit-footer.html`) é cópia literal do rodapé da home, só com classes `o-footer__*` e caminho absoluto do logo. Cal.com: `ia.comunica/reuniao-apresentacao-alinhamento` (o mesmo slug que a home usa; `comunica/...` retorna 404 — conferido em 19/10/2026).
 
 **Jekyll:** `orbit/index.html` tem front matter vazio e usa `{% include orbit-topbar.html %}` e `{% include orbit-footer.html %}`. JS e CSS ficam em arquivos próprios (não passam pelo Liquid); não usar `{{`/`{%` literal no HTML. `orbit/tests` está em `exclude:` no `_config.yml`.
+
+---
+
+## Nexus Med — Página de produto (`/nexusmed/`)
+
+Criada no Hub de Negócios em 19/10/2026, no mesmo padrão do Orbit (página estática + includes Jekyll, container fluido até 1840px de conteúdo com padding `clamp(20px, 4vw, 80px)`), com identidade própria do Nexus Med (Brand Guidelines v1.0, abril/2026) e classes com prefixo `nx-`.
+
+**Seções:** hero Midnight (composição de marca com o símbolo oficial + 3 estudos de referência com fonte primária (Arndt 2017, Sinsky 2016, Gaffney 2022), rotulados como médicos dos EUA, "não são medições do Nexus Med nem dados do Brasil"; sem interface inventada) → `#simulador` (dois simuladores em abas: Médico de consulta e Médico laudista) → O que é + fluxos de consulta e de laudo + documentos + perfis → O médico no controle (governança de IA) → FAQ → CTA final → rodapé (igual ao da home).
+
+**Identidade:** Cobalt #1C4ED8, Teal #00C2AE, Navy #0B2545, Midnight #060E1C, Ice #EEF4FA, Slate #64748B. Texto em gradiente sobre fundo escuro usa Cobalt Light→Teal (#3B82F6→#00C2AE), porque Cobalt puro sobre Midnight não passa 3:1. Texto secundário sobre Ice usa Navy a 78% (Slate sobre Ice dá 4,3:1). O Google Fonts não tem Space Grotesk 800: o peso máximo carregado é 700. Logos inline a partir dos SVGs oficiais (`nexusmed/assets/`), com IDs de gradiente únicos por instância.
+
+**Simuladores (`#simulador`):** motor em `nexusmed/nexusmed-calc.js` (sem DOM; dinheiro em centavos; cenários, φ da pergunta de demanda, modalidades, teto de segurança por modalidade e `VERSAO` das premissas ficam no topo do arquivo) e interface no bloco `simuladores()` de `nexusmed.js`. Fonte única das premissas e fórmulas: `hubs/negocios/pesquisa/mercado/nexus-med-simuladores-tempo-faturamento-2026-10-19.md` (monorepo). Regras fixas: faturamento mensal (% e R$) e "valor do tempo" aparecem lado a lado e NUNCA são somados; tempo fora do expediente só conta em qualidade de vida; consulta com cenários 10/20/30% (otimista rotulado acima do medido) e aviso acima de +8%; laudista com 5/10/15% (teto 15%), modalidade sem estudo só no conservador, plantão sem aumento de renda (horas e R$/hora equivalente), misto só horas; aviso de segurança sempre visível, destacado só quando o cenário leva o ritmo acima do teto da modalidade (Bretas et al.: radiografia 50, ultrassom/TC/RM 30 por turno de 6 h). Rótulos obrigatórios, painel de fontes (autor, ano e periódico, sem marca nem hospital), memória de cálculo, Copiar resumo e Salvar em PDF (`window.print` com CSS de impressão). Tudo roda no navegador; nada é enviado. Testes: `node --test nexusmed/tests/nexusmed-calc.test.js` (pasta excluída do build no `_config.yml`).
+
+**Telas reais (desligadas até haver capturas):** o hero tem um carrossel (`#nx-hero-telas`, oculto) e a galeria "Nexus Med por dentro" está num `<template id="nx-galeria-tpl">` que não é renderizado. Para ativar: colocar PNG + WebP em `nexusmed/assets/real/` e preencher `NX_TELAS_HERO` e/ou `NX_TELAS` no topo de `nexusmed.js` (formato documentado no comentário). Com a lista vazia nada aparece.
+
+**Fatos permitidos (revisados em 19/10/2026):** só o que está no brief do Nexus Med. Assinatura digital no padrão ICP-Brasil EM IMPLEMENTAÇÃO (não usar "certificado/certificada") — não afirmar como disponível nem citar parceiros; PIN de assinatura foi removido do produto (não mencionar); produto em desenvolvimento avançado com piloto privado em preparação. Sem preço, sem número de usuários, sem nome de médico/clínica, sem parceiros.
+
+**Contato:** Cal.com `ia.comunica/reuniao-apresentacao-alinhamento` e botão "Falar com a IA Comunica" abre o WhatsApp do Emanuel (número não aparece escrito na página, igual à /orbit). Sem e-mail no CTA. Não linkar o app nem onexusmed.com.br.
 
 ---
 

@@ -1,0 +1,556 @@
+---
+---
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus Med — Copiloto clínico com IA para médicos | IA Comunica</title>
+  <meta name="description" content="Nexus Med: copiloto clínico com IA que transcreve a consulta, estrutura o prontuário SOAP e prepara o pré-laudo. A IA sugere; o médico revisa, decide e finaliza." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.iacomunica.com.br/nexusmed/" />
+  <meta name="theme-color" content="#060E1C" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="IA Comunica" />
+  <meta property="og:title" content="Nexus Med — Menos burocracia. Mais medicina." />
+  <meta property="og:description" content="Copiloto clínico com IA: transcrição da consulta, prontuário SOAP por especialidade e pré-laudo por imagem. O médico revisa, decide e finaliza." />
+  <meta property="og:url" content="https://www.iacomunica.com.br/nexusmed/" />
+  <meta property="og:image" content="https://www.iacomunica.com.br/nexusmed/assets/nexusmed-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Logo do Nexus Med sobre fundo escuro com a frase Menos burocracia. Mais medicina." />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="/favicon-96x96.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/nexusmed/nexusmed.css" />
+
+  <!-- Cal.com (mesmo evento do site institucional) -->
+  <script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "reuniao-apresentacao-alinhamento", {origin:"https://app.cal.com"});
+  Cal.ns["reuniao-apresentacao-alinhamento"]("ui", {"hideEventTypeDetails":false,"layout":"month_view","cssVarsPerTheme":{"light":{"cal-brand":"#1C4ED8"},"dark":{"cal-brand":"#00C2AE"}}});
+  </script>
+</head>
+<body>
+<a class="nx-skip" href="#conteudo">Pular para o conteúdo</a>
+
+{% include nexusmed-topbar.html %}
+
+<main id="conteudo">
+
+  <!-- =========================================================
+       1. HERO (Midnight): só tipografia, título enorme e marca-d'água N
+  ========================================================= -->
+  <section class="nx-hero nx-dark" aria-labelledby="hero-titulo">
+    <span class="nx-watermark" aria-hidden="true">N</span>
+    <div class="nx-wrap nx-hero__stack">
+      <p class="nx-eyebrow">Menos burocracia. Mais medicina.</p>
+      <h1 id="hero-titulo" class="nx-hero__title">Você aceitaria aumentar seu faturamento <span class="nx-grad-text">sem aumentar a quantidade de horas trabalhadas?</span></h1>
+      <div class="nx-hero__foot">
+        <p class="nx-hero__lead">O Nexus Med é um copiloto clínico com IA. Ele transcreve a consulta, organiza o prontuário no padrão SOAP e prepara o pré-laudo a partir da imagem do exame. A IA sugere; o médico revisa, decide e finaliza.</p>
+        <div class="nx-hero__actions">
+          <a class="nx-btn nx-btn--teal nx-btn--lg" href="#simulador" data-scroll>
+            Calcular meu tempo
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12m0 0 5-5m-5 5-5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="nx-btn nx-btn--ghost nx-btn--lg" href="#evidencias" data-scroll>Ver o que dizem os estudos</a>
+        </div>
+      </div>
+    </div>
+    <span class="nx-accent-line" aria-hidden="true"></span>
+  </section>
+
+  <!-- =========================================================
+       1b. EVIDÊNCIAS: estudos com fonte primária verificada em 20/10/2026
+  ========================================================= -->
+  <section class="nx-ev" id="evidencias" aria-labelledby="ev-titulo">
+    <div class="nx-wrap">
+      <header class="nx-sec-head">
+        <p class="nx-eyebrow nx-eyebrow--ink">O que dizem os estudos</p>
+        <h2 id="ev-titulo" class="nx-h2">A ciência já mediu o que você sente no consultório.</h2>
+        <p class="nx-sec-lead">Pesquisas e artigos publicados em revistas médicas confirmam o que você vive todo dia: horas de prontuário, burnout e uma IA que já faz parte da rotina de milhares de colegas. Cada número abaixo vem com a fonte e o ano.</p>
+      </header>
+
+      <div class="nx-ev__chap">
+        <div class="nx-ev__side"><span class="nx-ev__idx">01</span><h3 class="nx-h3">Para onde vai o tempo do médico</h3></div>
+        <ul class="nx-ev__rows">
+          <li class="nx-evr"><span class="nx-evr__n">27%</span><div><p class="nx-evr__t">do dia em contato direto com o paciente. 49,2% vão para prontuário e trabalho de mesa. Observação de 430 horas com 57 médicos nos EUA.</p><p class="nx-evr__src">Sinsky et al., Annals of Internal Medicine, 2016</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">5,9 h</span><div><p class="nx-evr__t">por dia (355 min) no prontuário eletrônico, numa jornada de 11,4 h. 142 médicos de família nos EUA, por registros do sistema.</p><p class="nx-evr__src">Arndt et al., Annals of Family Medicine, 2017 · doi 10.1370/afm.2121</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">1,77 h</span><div><p class="nx-evr__t">por dia documentando fora do expediente, em média (autorrelato). Pesquisa nacional nos EUA.</p><p class="nx-evr__src">Gaffney et al., JAMA Internal Medicine, 2022 · doi 10.1001/jamainternmed.2022.0372</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">20 exames</span><div><p class="nx-evr__t">por turno de 6 h é a mediana de produtividade de radiologistas brasileiros (autorrelato); 62% são pagos só por produção.</p><p class="nx-evr__src">Bretas et al., Radiologia Brasileira · pesquisa com membros do CBR</p></div></li>
+        </ul>
+      </div>
+
+      <div class="nx-ev__chap">
+        <div class="nx-ev__side"><span class="nx-ev__idx">02</span><h3 class="nx-h3">O custo humano: burnout e qualidade de vida</h3></div>
+        <ul class="nx-ev__rows">
+          <li class="nx-evr"><span class="nx-evr__n">45,2%</span><div><p class="nx-evr__t">dos médicos americanos relataram ao menos um sintoma de burnout em 2023. 7.643 respondentes. Os médicos têm risco maior que o restante da força de trabalho dos EUA (OR 1,82).</p><p class="nx-evr__src">Shanafelt et al., Mayo Clinic Proceedings, 2025 · doi 10.1016/j.mayocp.2024.11.031</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">31,8%</span><div><p class="nx-evr__t">dos médicos trabalham 60 horas por semana ou mais, contra 5,4% dos trabalhadores de outras áreas. Satisfeitos com o equilíbrio entre trabalho e vida: 40,3% dos médicos contra 62,3%.</p><p class="nx-evr__src">Shanafelt et al., Mayo Clinic Proceedings, 2025</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">+0,76</span><div><p class="nx-evr__t">ponto no índice de burnout (0 a 10) em médicos com tempo de documentação fora do horário acima da mediana. É uma associação, não prova de causa. 318 médicos ambulatoriais.</p><p class="nx-evr__src">Apathy et al., JAMIA, 2024 · doi 10.1093/jamia/ocae193</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">35</span><div><p class="nx-evr__t">estudos numa revisão sistemática: tempo total no prontuário, tempo fora do horário e carga de documentação estão entre os fatores associados ao bem-estar do médico.</p><p class="nx-evr__src">Nguyen et al., JAMIA, 2020</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">7,5–61,7%</span><div><p class="nx-evr__t">é a faixa de burnout em estudos brasileiros, conforme o critério e a especialidade: 7,5% com critério das três dimensões (121 médicos de um município); 61,7% em intensivistas de cinco capitais (180 médicos), contando alto nível em ao menos uma dimensão.</p><p class="nx-evr__src">Becker et al., Frontiers in Health Services, 2021 · Tironi et al., Rev Bras Ter Intensiva (SciELO)</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">31,3%</span><div><p class="nx-evr__t">de esgotamento emocional em 2.374 médicos de todas as regiões do país em maio e junho de 2020, contra 18,9% estimados para antes da pandemia.</p><p class="nx-evr__src">Prestes, dissertação, Faculdade de Saúde Pública da USP, 2023 · doi 10.11606/d.6.2023.tde-05122023-154518</p></div></li>
+        </ul>
+      </div>
+
+      <div class="nx-ev__chap">
+        <div class="nx-ev__side"><span class="nx-ev__idx">03</span><h3 class="nx-h3">A IA já mudou o consultório</h3></div>
+        <ul class="nx-ev__rows">
+          <li class="nx-evr"><span class="nx-evr__n">81%</span><div><p class="nx-evr__t">dos médicos americanos usam IA na prática profissional, mais que o dobro dos 38% de 2023. A média passou de 1,1 para 2,3 usos por médico. 1.692 respondentes.</p><p class="nx-evr__src">AMA, Physician Survey on Augmented Intelligence, jan. e fev. de 2026</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">28%</span><div><p class="nx-evr__t">já usam IA para documentar códigos, prontuários e notas de consulta. Outros 30% para notas de evolução, instruções de alta e planos de cuidado.</p><p class="nx-evr__src">AMA, 2026</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">70%</span><div><p class="nx-evr__t">veem oportunidade de a IA automatizar tarefas clínicas e administrativas que contribuem para o burnout. Mais de três quartos dizem que a IA melhora a capacidade de cuidar do paciente (eram 65% em 2023).</p><p class="nx-evr__src">AMA, 2026</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">88%</span><div><p class="nx-evr__t">têm alguma preocupação com perda de habilidades, e 40% estão igualmente animados e preocupados. 85% querem ser consultados na adoção. O médico no controle é o que a categoria pede.</p><p class="nx-evr__src">AMA, 2026 · pesquisa de autorrelato, só médicos dos EUA</p></div></li>
+        </ul>
+      </div>
+
+      <div class="nx-ev__chap">
+        <div class="nx-ev__side"><span class="nx-ev__idx">04</span><h3 class="nx-h3">Qualidade de vida e faturamento, juntos?</h3></div>
+        <ul class="nx-ev__rows">
+          <li class="nx-evr"><span class="nx-evr__n">−10%</span><div><p class="nx-evr__t">no tempo de documentação e <strong>+1,7% de consultas por semana</strong> em médicos que adotaram scribe de IA. 8.581 clínicos em 5 centros dos EUA. Estudo observacional.</p><p class="nx-evr__src">Rotenstein et al., JAMA, 2026 · doi 10.1001/jama.2026.2253</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">+2,8%</span><div><p class="nx-evr__t">de consultas por semana e +5,8% de produtividade medida em unidades de trabalho (wRVU), sem mudança nas glosas. 1.565 médicos, 1,2 milhão de consultas.</p><p class="nx-evr__src">Holmgren et al., JAMA Network Open, 2026 · doi 10.1001/jamanetworkopen.2025.53233</p></div></li>
+          <li class="nx-evr"><span class="nx-evr__n">−9,5%</span><div><p class="nx-evr__t">no tempo gasto na nota, em ensaio randomizado com 238 médicos de 14 especialidades, com melhora na carga de tarefas e no burnout.</p><p class="nx-evr__src">Lukac et al., NEJM AI, 2025 · doi 10.1056/aioa2501000</p></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       2. SIMULADORES (reservado — a especificação será definida)
+  ========================================================= -->
+  <section class="nx-sim" id="simulador" aria-labelledby="sim-titulo">
+    <div class="nx-wrap">
+      <header class="nx-sec-head">
+        <h2 id="sim-titulo" class="nx-h2">Simuladores</h2>
+        <p class="nx-sec-lead nx-sim__privacy">O cálculo acontece no seu navegador: nada do que você digita é enviado para a IA Comunica.</p>
+      </header>
+
+      <div class="nx-simtabs" role="tablist" aria-label="Escolha o simulador">
+        <button type="button" role="tab" class="nx-simtab" id="tab-consulta" aria-controls="sim-consulta" aria-selected="true" tabindex="0">
+          <span class="nx-simtab__t">Médico de consulta</span><span class="nx-simtab__s">prontuário de cada atendimento</span>
+        </button>
+        <button type="button" role="tab" class="nx-simtab" id="tab-laudo" aria-controls="sim-laudo" aria-selected="false" tabindex="-1">
+          <span class="nx-simtab__t">Médico laudista</span><span class="nx-simtab__s">tempo por laudo</span>
+        </button>
+      </div>
+
+      <!-- ===================== CONSULTA ===================== -->
+      <div class="nx-simpanel" id="sim-consulta" role="tabpanel" aria-labelledby="tab-consulta" data-sim="consulta">
+        <div class="nx-sim__layout">
+          <form class="nx-form" novalidate autocomplete="off" data-form="consulta">
+            <p class="nx-example"><span class="nx-tag">Exemplo ilustrativo</span> Troque pelos seus números. Nenhum valor abaixo é média de mercado.</p>
+
+            <fieldset class="nx-fs">
+              <legend class="nx-fs__lg">Como você usaria o tempo devolvido?</legend>
+              <div class="nx-seg nx-seg--2">
+                <label class="nx-seg__opt"><input type="radio" name="uso-consulta" value="mais" checked /><span>Atender mais</span></label>
+                <label class="nx-seg__opt"><input type="radio" name="uso-consulta" value="qv" /><span>Mais qualidade de vida</span></label>
+              </div>
+            </fieldset>
+
+            <div class="nx-grid2">
+              <div class="nx-field"><label for="c-N">Consultas por dia</label><div class="nx-in"><input id="c-N" data-k="N" type="text" inputmode="decimal" value="16" aria-describedby="e-c-N" /><span>consultas</span></div><p class="nx-err" id="e-c-N" hidden></p></div>
+              <div class="nx-field"><label for="c-D">Dias de atendimento por mês</label><div class="nx-in"><input id="c-D" data-k="D" type="text" inputmode="decimal" value="20" aria-describedby="e-c-D" /><span>dias</span></div><p class="nx-err" id="e-c-D" hidden></p></div>
+              <div class="nx-field"><label for="c-T">Minutos de agenda por consulta</label><div class="nx-in"><input id="c-T" data-k="T" type="text" inputmode="decimal" value="30" aria-describedby="e-c-T" /><span>min</span></div><p class="nx-err" id="e-c-T" hidden></p></div>
+              <div class="nx-field"><label for="c-tIn">Minutos de prontuário por consulta, dentro do horário</label><div class="nx-in"><input id="c-tIn" data-k="tIn" type="text" inputmode="decimal" value="7" aria-describedby="e-c-tIn" /><span>min</span></div><p class="nx-err" id="e-c-tIn" hidden></p></div>
+              <div class="nx-field"><label for="c-tOut">Minutos de prontuário por consulta, fora do expediente <small>(opcional)</small></label><div class="nx-in"><input id="c-tOut" data-k="tOut" type="text" inputmode="decimal" value="0" aria-describedby="h-c-tOut e-c-tOut" /><span>min</span></div><p class="nx-help" id="h-c-tOut">Conta só para qualidade de vida, nunca para faturamento.</p><p class="nx-err" id="e-c-tOut" hidden></p></div>
+              <div class="nx-field"><label for="c-V">Valor líquido médio recebido por consulta</label><div class="nx-in nx-in--pre"><span>R$</span><input id="c-V" data-k="V" data-brl type="text" inputmode="decimal" value="300,00" aria-describedby="h-c-V e-c-V" /></div><p class="nx-help" id="h-c-V">Para convênio, tabelas públicas de 2025 trazem, na maioria, de R$ 100 a R$ 145 por consulta (CREMERJ e APM).</p><p class="nx-err" id="e-c-V" hidden></p></div>
+            </div>
+
+            <fieldset class="nx-fs" data-so="mais">
+              <legend class="nx-fs__lg">Se você tivesse mais tempo na agenda, conseguiria encaixar mais pacientes pagantes?</legend>
+              <div class="nx-seg nx-seg--3">
+                <label class="nx-seg__opt"><input type="radio" name="phi-consulta" value="sim" /><span>Sim, tenho fila de espera</span></label>
+                <label class="nx-seg__opt"><input type="radio" name="phi-consulta" value="talvez" checked /><span>Talvez</span></label>
+                <label class="nx-seg__opt"><input type="radio" name="phi-consulta" value="nao" /><span>Não, minha agenda já tem horários vagos</span></label>
+              </div>
+            </fieldset>
+
+            <details class="nx-more">
+              <summary>Valor do seu tempo (opcional)</summary>
+              <div class="nx-field"><label for="c-vh">Valor da sua hora</label><div class="nx-in nx-in--pre"><span>R$</span><input id="c-vh" data-k="valorHora" data-brl type="text" inputmode="decimal" value="" placeholder="calculado com os seus números" aria-describedby="h-c-vh e-c-vh" /></div><p class="nx-help" id="h-c-vh">Em branco, usamos o valor da consulta × 60 ÷ minutos de agenda.</p><p class="nx-err" id="e-c-vh" hidden></p></div>
+            </details>
+          </form>
+
+          <div class="nx-res" data-res="consulta" role="region" aria-labelledby="res-c-tit">
+            <h3 class="nx-res__title" id="res-c-tit">Resultado por mês</h3>
+            <div class="nx-cards" role="radiogroup" aria-label="Cenário de redução do tempo de prontuário" data-cards></div>
+            <div class="nx-main" data-main></div>
+            <div class="nx-alt" data-alt></div>
+            <p class="nx-anchor">Estudos independentes mediram +1,7% a +2,8% de consultas por semana, em centros acadêmicos dos EUA; um estudo não achou ganho.</p>
+            <div class="nx-warn" data-warn hidden></div>
+            <ul class="nx-labels">
+              <li>Simulação com as premissas que você informou. Não é resultado medido do Nexus Med nem promessa de ganho financeiro.</li>
+              <li>Os percentuais de redução vêm de estudos com outros produtos (scribes ambientais e rascunho de laudo por IA), na maioria nos EUA, entre 2023 e 2026. Fontes e anos abaixo.</li>
+              <li>O faturamento só aumenta se você tiver demanda para os horários liberados. Estudos independentes mediram +1,7% a +2,8% de consultas por semana.</li>
+              <li>O Nexus gera rascunho. Revisão, edição e decisão final são sempre do médico (Resolução CFM 2.454/2026).</li>
+              <li>Nenhum estudo mediu o tempo de revisão e edição do rascunho; seu tempo real pode ser menor que o do cenário.</li>
+              <li class="nx-labels__v">Premissas v1 · outubro/2026.</li>
+            </ul>
+            <details class="nx-memo"><summary>Memória de cálculo</summary><ol class="nx-memo__list" data-memo></ol></details>
+            <details class="nx-src">
+              <summary>De onde vêm os percentuais</summary>
+              <div class="nx-src__body">
+                <h4>Redução do tempo de escrita da nota (medida em sistema, estudos com outros produtos)</h4>
+                <ul>
+                  <li>Ensaio randomizado com 238 médicos: −9,5% em um dos produtos testados; o outro produto do mesmo ensaio teve −1,7%, sem significância (Lukac et al., NEJM AI, 2025).</li>
+                  <li>Coorte em 5 centros acadêmicos dos EUA: −10,0% no tempo de documentação (Rotenstein et al., JAMA, 2026).</li>
+                  <li>Série temporal com 220 clínicos: −15% no tempo de nota aos 150 dias; −7% no início (Waken et al., JAMIA, 2026, pré-publicação).</li>
+                  <li>Estudo pré e pós com 46 clínicos: de 10,3 para 8,2 min por consulta (Duggan et al., JAMA Network Open, 2025).</li>
+                  <li>Piloto prospectivo com 79 médicos: −21% entre usuários frequentes (JMIR Medical Informatics, 2026).</li>
+                  <li>Faixa completa: de −1,7% (sem significância) a −21%. Os cenários do simulador usam 10%, 20% e 30%; 30% fica acima do que estudos independentes mediram. Números de 50% a 72% vêm de fornecedores e autorrelato e não são usados.</li>
+                </ul>
+                <h4>Tempo fora do expediente (só qualidade de vida)</h4>
+                <ul>
+                  <li>−18% (Waken et al., JAMIA, 2026, pré-publicação); −16,9% no modelo (Duggan et al., JAMA Network Open, 2025); −13%, sem significância (JMIR Medical Informatics, 2026); −3,1 min por 8 h de agenda, sem significância (Rotenstein et al., JAMA, 2026); −0,50 h por dia, que perde significância sem os valores extremos (Afshar et al., NEJM AI, 2025). Cenários: 10%, 15% e 20%.</li>
+                </ul>
+                <h4>Consultas a mais por semana</h4>
+                <ul>
+                  <li>+1,7% (Rotenstein et al., JAMA, 2026) e +2,8% (Holmgren et al., JAMA Network Open, 2026), em estudos observacionais nos EUA.</li>
+                  <li>Sem ganho de vazão: o ciclo por paciente não mudou de forma significativa (Tan et al., JMIR Medical Informatics, 2026).</li>
+                </ul>
+                <h4>Tempo de revisão do rascunho</h4>
+                <ul><li>Nenhum dos ensaios randomizados incluídos em uma revisão sistemática de 2026 mediu o tempo de edição do rascunho (relatório de avaliação de tecnologia em saúde, Suécia, 2026).</li></ul>
+                <h4>Fração do tempo que vira consulta paga (a sua resposta sobre a agenda)</h4>
+                <ul><li>Sim, com fila: 75%. Talvez: 50%. Não, com horários vagos: 0%. É uma premissa do simulador, não vem de estudo; com os números do exemplo, o moderado com “talvez” cai perto da faixa medida de +1,7% a +2,8%.</li></ul>
+              </div>
+            </details>
+            <div class="nx-res__actions">
+              <button type="button" class="nx-btn nx-btn--cobalt" data-act="copiar">Copiar resumo</button>
+              <button type="button" class="nx-btn nx-btn--line" data-act="pdf">Salvar em PDF</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== LAUDISTA ===================== -->
+      <div class="nx-simpanel" id="sim-laudo" role="tabpanel" aria-labelledby="tab-laudo" data-sim="laudo" hidden>
+        <div class="nx-sim__layout">
+          <form class="nx-form" novalidate autocomplete="off" data-form="laudo">
+            <p class="nx-example"><span class="nx-tag">Exemplo ilustrativo</span> Troque pelos seus números. Nenhum valor abaixo é média de mercado.</p>
+
+            <fieldset class="nx-fs">
+              <legend class="nx-fs__lg">Como você usaria o tempo devolvido?</legend>
+              <div class="nx-seg nx-seg--2">
+                <label class="nx-seg__opt"><input type="radio" name="uso-laudo" value="mais" checked /><span>Laudar mais</span></label>
+                <label class="nx-seg__opt"><input type="radio" name="uso-laudo" value="qv" /><span>Mais qualidade de vida</span></label>
+              </div>
+            </fieldset>
+
+            <div class="nx-grid2">
+              <div class="nx-field nx-field--wide"><label for="l-mod">Modalidade</label>
+                <div class="nx-sel"><select id="l-mod" data-k="modalidade" aria-describedby="h-l-mod"></select></div>
+                <p class="nx-help" id="h-l-mod">Só a radiografia tem estudo de referência em prática real.</p></div>
+              <div class="nx-field"><label for="l-L">Laudos por dia</label><div class="nx-in"><input id="l-L" data-k="L" type="text" inputmode="decimal" value="25" aria-describedby="e-l-L" /><span>laudos</span></div><p class="nx-err" id="e-l-L" hidden></p></div>
+              <div class="nx-field"><label for="l-D">Dias por mês</label><div class="nx-in"><input id="l-D" data-k="D" type="text" inputmode="decimal" value="20" aria-describedby="e-l-D" /><span>dias</span></div><p class="nx-err" id="e-l-D" hidden></p></div>
+              <div class="nx-field nx-field--wide"><label for="l-t">Minutos por laudo, do abrir o exame até finalizar</label><div class="nx-in"><input id="l-t" data-k="t" type="text" inputmode="decimal" value="6" aria-describedby="e-l-t" /><span>min</span></div><p class="nx-err" id="e-l-t" hidden></p></div>
+            </div>
+
+            <fieldset class="nx-fs">
+              <legend class="nx-fs__lg">Como você recebe?</legend>
+              <div class="nx-seg nx-seg--3">
+                <label class="nx-seg__opt"><input type="radio" name="pag-laudo" value="producao" checked /><span>Por produção (valor por laudo)</span></label>
+                <label class="nx-seg__opt"><input type="radio" name="pag-laudo" value="misto" /><span>Misto (fixo + produção)</span></label>
+                <label class="nx-seg__opt"><input type="radio" name="pag-laudo" value="plantao" /><span>Plantão fixo</span></label>
+              </div>
+            </fieldset>
+
+            <div class="nx-grid2" data-pag="producao">
+              <div class="nx-field"><label for="l-v">Valor por laudo</label><div class="nx-in nx-in--pre"><span>R$</span><input id="l-v" data-k="v" data-brl type="text" inputmode="decimal" value="40,00" aria-describedby="e-l-v" /></div><p class="nx-err" id="e-l-v" hidden></p></div>
+            </div>
+            <div class="nx-grid2" data-pag="plantao" hidden>
+              <div class="nx-field"><label for="l-hp">Horas do plantão</label><div class="nx-in"><input id="l-hp" data-k="horasPlantao" type="text" inputmode="decimal" value="6" aria-describedby="e-l-hp" /><span>h</span></div><p class="nx-err" id="e-l-hp" hidden></p></div>
+              <div class="nx-field"><label for="l-vp">Valor do plantão</label><div class="nx-in nx-in--pre"><span>R$</span><input id="l-vp" data-k="valorPlantao" data-brl type="text" inputmode="decimal" value="" placeholder="informe o valor" aria-describedby="e-l-vp" /></div><p class="nx-err" id="e-l-vp" hidden></p></div>
+            </div>
+
+            <fieldset class="nx-fs" data-so="mais" data-pag="producao">
+              <legend class="nx-fs__lg">Há exames esperando na fila para você laudar?</legend>
+              <div class="nx-seg nx-seg--3">
+                <label class="nx-seg__opt"><input type="radio" name="phi-laudo" value="sim" /><span>Sim</span></label>
+                <label class="nx-seg__opt"><input type="radio" name="phi-laudo" value="talvez" checked /><span>Talvez</span></label>
+                <label class="nx-seg__opt"><input type="radio" name="phi-laudo" value="nao" /><span>Não</span></label>
+              </div>
+            </fieldset>
+
+            <details class="nx-more">
+              <summary>Valor do seu tempo (opcional)</summary>
+              <div class="nx-field"><label for="l-vh">Valor da sua hora</label><div class="nx-in nx-in--pre"><span>R$</span><input id="l-vh" data-k="valorHora" data-brl type="text" inputmode="decimal" value="" placeholder="calculado com os seus números" aria-describedby="h-l-vh e-l-vh" /></div><p class="nx-help" id="h-l-vh">Em branco, usamos valor por laudo × 60 ÷ minutos por laudo (no plantão, valor do plantão ÷ horas).</p><p class="nx-err" id="e-l-vh" hidden></p></div>
+            </details>
+          </form>
+
+          <div class="nx-res" data-res="laudo" role="region" aria-labelledby="res-l-tit">
+            <h3 class="nx-res__title" id="res-l-tit">Resultado por mês</h3>
+            <div class="nx-nostudy" data-nostudy hidden>Sem estudo de referência para esta modalidade: mostramos só o cenário mais conservador.</div>
+            <div class="nx-cards" role="radiogroup" aria-label="Cenário de redução do tempo por laudo" data-cards></div>
+            <div class="nx-main" data-main></div>
+            <div class="nx-alt" data-alt></div>
+            <div class="nx-safety" data-safety><strong>Referência de segurança.</strong> Em pesquisa com radiologistas brasileiros, a mediana relatada foi de 20 exames por turno de 6 h, considerada razoável entre 16 e 28; varia por modalidade (radiografia 40 a 50; ultrassom 18 a 30; tomografia e ressonância 15 a 30) (Bretas et al., Radiologia Brasileira). Ritmo mais rápido está associado a mais erros: um estudo citado pelos autores viu erros relevantes subirem de 10% para 26,6% ao dobrar a velocidade de laudo. E leitores tendem a seguir a sugestão da IA mesmo quando ela está errada, o chamado viés de automação (Dratsch et al., Radiology, 2023).</div>
+            <ul class="nx-labels">
+              <li>Simulação com as premissas que você informou. Não é resultado medido do Nexus Med nem promessa de ganho financeiro.</li>
+              <li>Os percentuais de redução vêm de estudos com outros produtos (scribes ambientais e rascunho de laudo por IA), na maioria nos EUA, entre 2023 e 2026. Fontes e anos abaixo.</li>
+              <li>O Nexus gera rascunho. Revisão, edição e decisão final são sempre do médico (Resolução CFM 2.454/2026).</li>
+              <li>O faturamento só aumenta se você recebe por produção e tem exames para laudar no tempo liberado.</li>
+              <li>Laudistas pagos por plantão ou valor fixo não aumentam renda com mais produtividade; no misto, o ganho depende do limiar do fixo. Nesses casos mostramos horas.</li>
+              <li>Nenhum estudo mediu o tempo de revisão e edição do rascunho; seu tempo real pode ser menor que o do cenário.</li>
+              <li class="nx-labels__v">Premissas v1 · outubro/2026.</li>
+            </ul>
+            <details class="nx-memo"><summary>Memória de cálculo</summary><ol class="nx-memo__list" data-memo></ol></details>
+            <details class="nx-src">
+              <summary>De onde vêm os percentuais</summary>
+              <div class="nx-src__body">
+                <h4>Redução do tempo por laudo com rascunho por IA (estudos com outros produtos)</h4>
+                <ul>
+                  <li>Prática real, 23.960 radiografias: tempo de documentação −15,5% (de 189,2 s para 159,8 s), sem diferença de acurácia clínica na revisão por pares (Huang et al., JAMA Network Open, 2025).</li>
+                  <li>Troca de software de laudo, dados do próprio fornecedor: −2,1%. Usamos como piso.</li>
+                  <li>Caso de fornecedor: −20% na mediana do tempo no laudo. Só informativo, não usado nos cenários.</li>
+                  <li>Estudos de leitores ou simulados, fora da prática real: −42%, com queda da sensibilidade para nódulos (Hong et al., Radiology, 2025); −25% (Hong et al., JACR, 2025); −24% em rascunhos simulados (Acosta et al., 2024, pré-publicação).</li>
+                  <li>Faixa completa: de −2,1% a −42%. Os cenários do simulador usam 5%, 10% e 15%, com teto de 15% (perto do único resultado em prática real publicado em periódico, 15,5%).</li>
+                  <li>Não encontramos estudo de rascunho por IA em prática real para outras modalidades além da radiografia.</li>
+                </ul>
+                <h4>Fração do tempo que vira laudo pago (a sua resposta sobre a fila)</h4>
+                <ul><li>Sim: 75%. Talvez: 50%. Não: 0%. É uma premissa do simulador, não vem de estudo.</li></ul>
+                <h4>Referência de segurança</h4>
+                <ul>
+                  <li>Produtividade relatada por radiologistas brasileiros, por turno de 6 h (Bretas et al., “Estimating the productivity of radiologists in Brazil”, Radiologia Brasileira).</li>
+                  <li>Viés de automação: a acurácia caiu quando a sugestão da IA estava errada (Dratsch et al., Radiology, 2023).</li>
+                </ul>
+              </div>
+            </details>
+            <div class="nx-res__actions">
+              <button type="button" class="nx-btn nx-btn--cobalt" data-act="copiar">Copiar resumo</button>
+              <button type="button" class="nx-btn nx-btn--line" data-act="pdf">Salvar em PDF</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="nx-toast" id="nx-toast" role="status" aria-live="polite" hidden></p>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       3. O QUE É + COMO FUNCIONA + PARA QUEM
+  ========================================================= -->
+  <section class="nx-about" id="o-que-e" aria-labelledby="about-titulo">
+    <div class="nx-wrap">
+      <header class="nx-sec-head">
+        <p class="nx-eyebrow nx-eyebrow--ink">O que é o Nexus Med</p>
+        <h2 id="about-titulo" class="nx-h2">O copiloto que cuida da documentação enquanto você cuida do paciente.</h2>
+        <p class="nx-sec-lead">Um prontuário inteligente para médicos, com IA em segundo plano. A IA transcreve, organiza e sugere. O médico valida, edita e decide.</p>
+      </header>
+
+      <div class="nx-flows">
+        <article class="nx-flow">
+          <header class="nx-flow__head">
+            <span class="nx-flow__tag">Consulta</span>
+            <h3 class="nx-h3">Da conversa ao prontuário</h3>
+          </header>
+          <ol class="nx-steps">
+            <li class="nx-step"><span class="nx-step__n">1</span><div><strong>Consulta</strong><p>A gravação do áudio começa com o consentimento do paciente, seguindo um roteiro pensado para CFM e LGPD. Dá para pausar e retomar.</p></div></li>
+            <li class="nx-step"><span class="nx-step__n">2</span><div><strong>Transcrição</strong><p>A conversa vira texto, com um campo próprio para as orientações dadas verbalmente.</p></div></li>
+            <li class="nx-step"><span class="nx-step__n">3</span><div><strong>Prontuário SOAP</strong><p>A IA organiza o prontuário no padrão SOAP, com campos da sua especialidade, e sugere códigos CID-10 durante a consulta.</p></div></li>
+            <li class="nx-step"><span class="nx-step__n">4</span><div><strong>Revisão do médico</strong><p>Você revisa, edita e decide antes de finalizar.</p></div></li>
+            <li class="nx-step nx-step--end"><span class="nx-step__n">5</span><div><strong>Finalização</strong><p>Finalizado, o prontuário fica imutável. Depois, só adendos formais, que não apagam o original.</p></div></li>
+          </ol>
+        </article>
+
+        <article class="nx-flow">
+          <header class="nx-flow__head">
+            <span class="nx-flow__tag nx-flow__tag--teal">Laudo</span>
+            <h3 class="nx-h3">Da imagem ao laudo</h3>
+          </header>
+          <ol class="nx-steps">
+            <li class="nx-step"><span class="nx-step__n">1</span><div><strong>Imagem do exame</strong><p>O exame entra na fila de laudos, com templates para mais de 10 especialidades.</p></div></li>
+            <li class="nx-step"><span class="nx-step__n">2</span><div><strong>Pré-laudo</strong><p>A IA prepara um pré-laudo editável a partir da imagem do exame. A impressão diagnóstica nunca é preenchida pela IA.</p></div></li>
+            <li class="nx-step"><span class="nx-step__n">3</span><div><strong>Revisão do médico</strong><p>Você revisa os achados, edita e escreve a impressão diagnóstica.</p></div></li>
+            <li class="nx-step nx-step--end"><span class="nx-step__n">4</span><div><strong>Finalização</strong><p>A assinatura é sempre do médico. Finalizado, o laudo fica imutável e aceita adendos formais.</p></div></li>
+          </ol>
+        </article>
+      </div>
+
+      <div class="nx-docs">
+        <h3 class="nx-h3">Documentos da sua especialidade</h3>
+        <ul class="nx-chips">
+          <li>Receitas</li><li>Atestados</li><li>Encaminhamentos</li><li>Pedido de exames em bloco</li>
+          <li>Receita de óculos</li><li>Receita de controle especial</li><li>Receita pediátrica com cálculo de dose por kg, confirmado pelo médico</li>
+        </ul>
+      </div>
+
+      <div class="nx-profiles" aria-labelledby="perfis-titulo">
+        <h3 class="nx-h3" id="perfis-titulo">Para quem</h3>
+        <div class="nx-profiles__grid">
+          <article class="nx-card">
+            <span class="nx-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.6"/><path d="M5 20c.8-3.6 3.6-5.6 7-5.6s6.2 2 7 5.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <h4 class="nx-card__title">Médico autônomo</h4>
+            <p>Consulta, prontuário, documentos e laudos no mesmo lugar, para quem atende no próprio consultório.</p>
+          </article>
+          <article class="nx-card">
+            <span class="nx-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M8 9h8M8 13h8M8 17h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <h4 class="nx-card__title">Médico laudista</h4>
+            <p>Um perfil focado na fila de exames: imagem, pré-laudo, revisão e finalização, sem o fluxo de consulta.</p>
+          </article>
+          <article class="nx-card">
+            <span class="nx-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 20V8l8-4 8 4v12" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 20v-5h6v5M12 8v4M10 10h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <h4 class="nx-card__title">Clínica com vários médicos</h4>
+            <p>Cada médico com o seu espaço e os seus dados isolados, na mesma clínica.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       4. O MÉDICO NO CONTROLE (Navy)
+  ========================================================= -->
+  <section class="nx-control nx-dark nx-dark--navy" id="no-controle" aria-labelledby="control-titulo">
+    <span class="nx-watermark nx-watermark--right" aria-hidden="true">N</span>
+    <div class="nx-wrap">
+      <header class="nx-sec-head">
+        <p class="nx-eyebrow">O médico no controle</p>
+        <h2 id="control-titulo" class="nx-h2">A IA sugere. Você decide.</h2>
+        <p class="nx-sec-lead">A IA transcreve e estrutura, mas não decide. O médico é o único autor do prontuário e do laudo.</p>
+      </header>
+      <div class="nx-control__grid">
+        <article class="nx-gcard">
+          <h3 class="nx-gcard__title">Pensado para a Resolução CFM 2.454/2026</h3>
+          <p>O uso de IA fica registrado no prontuário, e o médico é avisado de que a IA é uma ferramenta auxiliar.</p>
+        </article>
+        <article class="nx-gcard">
+          <h3 class="nx-gcard__title">A IA não escolhe o diagnóstico</h3>
+          <p>No laudo, a impressão diagnóstica nunca é preenchida automaticamente. Ela é escrita pelo médico.</p>
+        </article>
+        <article class="nx-gcard">
+          <h3 class="nx-gcard__title">Registro que não se apaga</h3>
+          <p>Prontuário e laudo ficam imutáveis depois de finalizados. Correções entram como adendos formais, sem apagar o original.</p>
+        </article>
+        <article class="nx-gcard">
+          <h3 class="nx-gcard__title">A assinatura é sempre do médico</h3>
+          <p>A assinatura digital no padrão ICP-Brasil está em implementação.</p>
+        </article>
+        <article class="nx-gcard">
+          <h3 class="nx-gcard__title">Dados isolados por médico</h3>
+          <p>Cada médico só acessa os próprios dados, com isolamento no banco de dados (Row Level Security). Um produto pensado para a LGPD.</p>
+        </article>
+      </div>
+      <blockquote class="nx-quote">
+        <p>“A IA transcreve e estrutura, mas não decide. O médico é o único autor do prontuário.”</p>
+        <footer>Princípio de Governança de IA, Nexus Med</footer>
+      </blockquote>
+    </div>
+    <span class="nx-accent-line" aria-hidden="true"></span>
+  </section>
+
+  <!-- 5. GALERIA "Nexus Med por dentro": não é renderizada até haver capturas reais.
+       Estrutura em <template id="nx-galeria-tpl">; ativação pela lista NX_TELAS em nexusmed.js. -->
+  <template id="nx-galeria-tpl">
+    <section class="nx-gal-sec nx-dark" id="por-dentro" aria-labelledby="gal-titulo">
+      <div class="nx-wrap">
+        <header class="nx-sec-head">
+          <p class="nx-eyebrow">Nexus Med por dentro</p>
+          <h2 id="gal-titulo" class="nx-h2">Telas reais do Nexus Med.</h2>
+        </header>
+        <div class="nx-gal">
+          <div class="nx-gal__tabs" role="tablist" aria-label="Telas do Nexus Med" aria-orientation="vertical"></div>
+          <div class="nx-gal__panels"></div>
+        </div>
+        <p class="nx-gal__foot">Telas reais do Nexus Med. Dados fictícios.</p>
+      </div>
+    </section>
+  </template>
+
+  <!-- =========================================================
+       6. FAQ
+  ========================================================= -->
+  <section class="nx-faq" id="perguntas" aria-labelledby="faq-titulo">
+    <div class="nx-wrap">
+      <header class="nx-sec-head">
+        <p class="nx-eyebrow nx-eyebrow--ink">Perguntas frequentes</p>
+        <h2 id="faq-titulo" class="nx-h2">O que todo médico pergunta antes.</h2>
+      </header>
+      <div class="nx-faq__list">
+        <details class="nx-faq__item">
+          <summary>A IA decide alguma coisa?</summary>
+          <div class="nx-faq__a"><p>Não. A IA transcreve, organiza e sugere. O médico revisa, edita e decide antes de finalizar. No laudo, a impressão diagnóstica nunca é preenchida pela IA.</p></div>
+        </details>
+        <details class="nx-faq__item">
+          <summary>Quem assina o prontuário e o laudo?</summary>
+          <div class="nx-faq__a"><p>Sempre o médico. A assinatura digital no padrão ICP-Brasil está em implementação.</p></div>
+        </details>
+        <details class="nx-faq__item">
+          <summary>E se a IA errar?</summary>
+          <div class="nx-faq__a"><p>Tudo o que a IA sugere é editável e passa pela revisão do médico antes de ser finalizado. O uso de IA fica registrado no prontuário. Depois de finalizado, correções entram como adendo formal, sem apagar o original.</p></div>
+        </details>
+        <details class="nx-faq__item">
+          <summary>Como ficam os meus dados e os dos meus pacientes?</summary>
+          <div class="nx-faq__a"><p>Os dados ficam isolados por médico: cada um só acessa os próprios registros. A gravação da consulta começa com o consentimento do paciente, e o produto foi pensado para a LGPD.</p></div>
+        </details>
+        <details class="nx-faq__item">
+          <summary>Quanto custa?</summary>
+          <div class="nx-faq__a"><p>Os preços ainda estão a definir. Fale com a gente para conversar sobre o seu caso.</p></div>
+        </details>
+        <details class="nx-faq__item">
+          <summary>O cálculo dos simuladores é uma promessa?</summary>
+          <div class="nx-faq__a"><p>Não. É uma simulação com as premissas que você informa e com percentuais de estudos publicados. O resultado real depende da sua rotina e do volume da sua agenda.</p></div>
+        </details>
+        <details class="nx-faq__item">
+          <summary>Funciona para a minha especialidade?</summary>
+          <div class="nx-faq__a"><p>O prontuário tem campos por especialidade, os laudos têm templates para mais de 10 especialidades e os documentos se ajustam à especialidade ativa. Conte para a gente qual é a sua.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       7. CTA FINAL
+  ========================================================= -->
+  <section class="nx-final nx-dark" aria-labelledby="final-titulo">
+    <div class="nx-wrap nx-final__inner">
+      <svg class="nx-logo nx-logo--final" width="280" height="80" viewBox="0 0 280 80" fill="none" role="img" aria-label="Nexus Med">
+        <defs>
+          <linearGradient id="nxf_seam" x1="0" y1="10" x2="0" y2="70" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#1C4ED8"/><stop offset="100%" stop-color="#00C2AE"/></linearGradient>
+          <clipPath id="nxf_left"><rect x="0" y="0" width="32" height="80"/></clipPath>
+          <clipPath id="nxf_right"><rect x="32" y="0" width="32" height="80"/></clipPath>
+        </defs>
+        <path d="M6,70 L6,10 L58,70 L58,10" stroke="#1C4ED8" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" fill="none" clip-path="url(#nxf_left)"/>
+        <path d="M6,70 L6,10 L58,70 L58,10" stroke="#00C2AE" stroke-width="8.5" stroke-linecap="square" stroke-linejoin="miter" fill="none" clip-path="url(#nxf_right)"/>
+        <line x1="32" y1="12" x2="32" y2="68" stroke="url(#nxf_seam)" stroke-width="1.5" opacity="0.55"/>
+        <circle cx="32" cy="40" r="3.5" fill="url(#nxf_seam)" opacity="0.95"/>
+        <text x="80" y="50" font-family="'Space Grotesk', -apple-system, sans-serif" font-weight="800" font-size="36" letter-spacing="2" fill="#FFFFFF">NEXUS</text>
+        <text x="81" y="65" font-family="'DM Sans', -apple-system, sans-serif" font-weight="400" font-size="11" letter-spacing="5" fill="rgba(255,255,255,0.5)">MED</text>
+      </svg>
+      <h2 id="final-titulo" class="nx-h2 nx-final__title">Para que a medicina volte a ser sobre pessoas.</h2>
+      <p class="nx-final__lead">Conte como é a sua rotina de consultas e laudos. A gente mostra o Nexus Med e tira as suas dúvidas.</p>
+      <div class="nx-final__actions">
+        <a class="nx-btn nx-btn--teal nx-btn--lg" href="https://cal.com/ia.comunica/reuniao-apresentacao-alinhamento" target="_blank" rel="noopener noreferrer"
+           data-cal-link="ia.comunica/reuniao-apresentacao-alinhamento"
+           data-cal-namespace="reuniao-apresentacao-alinhamento"
+           data-cal-config='{"layout":"month_view","theme":"dark"}'>Agendar uma apresentação</a>
+        <a class="nx-btn nx-btn--ghost nx-btn--lg" href="https://api.whatsapp.com/send/?phone=5561998747075&amp;text=Ol%C3%A1%21+Quero+conhecer+o+Nexus+Med.&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener noreferrer">Falar com a IA Comunica</a>
+      </div>
+    </div>
+    <span class="nx-accent-line" aria-hidden="true"></span>
+  </section>
+
+</main>
+
+{% include nexusmed-footer.html %}
+
+<dialog class="nx-lb" id="nx-lightbox" aria-labelledby="nx-lb-titulo">
+  <div class="nx-lb__bar">
+    <p class="nx-lb__title" id="nx-lb-titulo">Tela do Nexus Med</p>
+    <button type="button" class="nx-btn nx-btn--ghost nx-btn--sm" id="nx-lb-zoom" aria-pressed="false">Ver em tamanho real</button>
+    <button type="button" class="nx-btn nx-btn--teal nx-btn--sm" id="nx-lb-fechar">Fechar<span class="nx-sr"> (Esc)</span></button>
+  </div>
+  <div class="nx-lb__scroll" id="nx-lb-scroll" tabindex="0" aria-label="Imagem ampliada; role para ver os detalhes">
+    <img id="nx-lb-img" alt="" />
+  </div>
+  <p class="nx-lb__foot">Telas reais do Nexus Med. Dados fictícios.</p>
+</dialog>
+
+<script src="/nexusmed/nexusmed-calc.js"></script>
+<script src="/nexusmed/nexusmed.js"></script>
+</body>
+</html>
