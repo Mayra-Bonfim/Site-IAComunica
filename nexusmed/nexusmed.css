@@ -144,6 +144,8 @@ p { margin: 0; }
 .nx-refs__label { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--nx-teal-l); margin-bottom: 16px; }
 .nx-refs__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
 @media (min-width: 640px) { .nx-refs__list { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 640px) { .nx-refs__list--2 { grid-template-columns: repeat(2, 1fr); } }
+.nx-refs__label--2 { margin-top: 26px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, .10); }
 .nx-ref { display: grid; gap: 6px; align-content: start; }
 .nx-ref__n { font-family: var(--nx-font-display); font-weight: 800; font-size: clamp(32px, 2.8vw, 46px); line-height: 1; font-variant-numeric: tabular-nums; background: var(--nx-grad-dark); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .nx-ref__t { font-size: 14.5px; color: #fff; line-height: 1.45; }

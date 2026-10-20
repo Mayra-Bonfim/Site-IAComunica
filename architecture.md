@@ -135,7 +135,7 @@ Criada no Hub de Negócios em 19/10/2026, no mesmo padrão do Orbit (página est
 
 **Fatos permitidos (revisados em 19/10/2026):** só o que está no brief do Nexus Med. Assinatura digital no padrão ICP-Brasil EM IMPLEMENTAÇÃO (não usar "certificado/certificada") — não afirmar como disponível nem citar parceiros; PIN de assinatura foi removido do produto (não mencionar); produto em desenvolvimento avançado com piloto privado em preparação. Sem preço, sem número de usuários, sem nome de médico/clínica, sem parceiros.
 
-**Contato:** Cal.com `ia.comunica/reuniao-apresentacao-alinhamento` e e-mail nexusmed@iacomunica.com.br. Sem WhatsApp. Não linkar o app nem onexusmed.com.br.
+**Contato:** Cal.com `ia.comunica/reuniao-apresentacao-alinhamento` e botão "Falar com a IA Comunica" abre o WhatsApp do Emanuel (número não aparece escrito na página, igual à /orbit). Sem e-mail no CTA. Não linkar o app nem onexusmed.com.br.
 
 ---
 
