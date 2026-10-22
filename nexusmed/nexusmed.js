@@ -350,7 +350,7 @@
     }
     var inicial = {};
     ['consulta', 'laudo'].forEach(function (tipo) { inicial[tipo] = assinatura(sec.querySelector('[data-form="' + tipo + '"]')); });
-    var abertos = [];
+    var abertos = [], imprimindo = false;
     window.addEventListener('beforeprint', function () {
       var d = new Date();
       ['consulta', 'laudo'].forEach(function (tipo) {
@@ -367,9 +367,15 @@
         partes.push('iacomunica.com.br/nexusmed');
         alvo.textContent = partes.join(' · ');
       });
-      abertos = qsa('.nx-memo, .nx-src', sec).map(function (d) { var o = d.open; d.open = true; return o; });
+      if (!imprimindo) abertos = qsa('.nx-memo, .nx-src', sec).map(function (d) { return d.open; });
+      imprimindo = true;
+      qsa('.nx-memo, .nx-src', sec).forEach(function (d) { d.open = true; });
     });
-    window.addEventListener('afterprint', function () { qsa('.nx-memo, .nx-src', sec).forEach(function (d, i) { d.open = abertos[i]; }); });
+    window.addEventListener('afterprint', function () {
+      if (!imprimindo) return;
+      imprimindo = false;
+      qsa('.nx-memo, .nx-src', sec).forEach(function (d, i) { d.open = abertos[i]; });
+    });
   })();
 
   /* ---------- Galeria (só se houver telas) ---------- */
@@ -450,6 +456,12 @@
     }, { rootMargin: '0px 0px -8% 0px' });
     alvos.forEach(function (n, i) { n.classList.add('nx-reveal'); n.style.transitionDelay = ((i % 5) * 50) + 'ms'; io.observe(n); });
   }
+
+  /* ---------- Agendar: o Cal abre o modal na mesma aba; href="#" não pode rolar ao topo ---------- */
+  document.addEventListener('click', function (ev) {
+    var a = ev.target.closest && ev.target.closest('a[data-cal-link][href="#"]');
+    if (a) ev.preventDefault();
+  });
 
   /* ---------- Âncoras internas: rolar e mover o foco ---------- */
   document.addEventListener('click', function (ev) {

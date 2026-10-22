@@ -451,6 +451,24 @@
     <span class="nx-accent-line" aria-hidden="true"></span>
   </section>
 
+  <!-- 5. GALERIA "Nexus Med por dentro": não é renderizada até haver capturas reais.
+       Estrutura em <template id="nx-galeria-tpl">; ativação pela lista NX_TELAS em nexusmed.js. -->
+  <template id="nx-galeria-tpl">
+    <section class="nx-gal-sec nx-dark" id="por-dentro" aria-labelledby="gal-titulo">
+      <div class="nx-wrap">
+        <header class="nx-sec-head">
+          <p class="nx-eyebrow">Nexus Med por dentro</p>
+          <h2 id="gal-titulo" class="nx-h2">Telas reais do Nexus Med.</h2>
+        </header>
+        <div class="nx-gal">
+          <div class="nx-gal__tabs" role="tablist" aria-label="Telas do Nexus Med" aria-orientation="vertical"></div>
+          <div class="nx-gal__panels"></div>
+        </div>
+        <p class="nx-gal__foot">Telas reais do Nexus Med. Dados fictícios.</p>
+      </div>
+    </section>
+  </template>
+
   <!-- =========================================================
        4b. INTEGRAÇÕES
   ========================================================= -->
@@ -482,24 +500,6 @@
       <p class="nx-sec-lead nx-integ__cta">Conte qual sistema a sua clínica usa e a gente avalia a integração.</p>
     </div>
   </section>
-
-  <!-- 5. GALERIA "Nexus Med por dentro": não é renderizada até haver capturas reais.
-       Estrutura em <template id="nx-galeria-tpl">; ativação pela lista NX_TELAS em nexusmed.js. -->
-  <template id="nx-galeria-tpl">
-    <section class="nx-gal-sec nx-dark" id="por-dentro" aria-labelledby="gal-titulo">
-      <div class="nx-wrap">
-        <header class="nx-sec-head">
-          <p class="nx-eyebrow">Nexus Med por dentro</p>
-          <h2 id="gal-titulo" class="nx-h2">Telas reais do Nexus Med.</h2>
-        </header>
-        <div class="nx-gal">
-          <div class="nx-gal__tabs" role="tablist" aria-label="Telas do Nexus Med" aria-orientation="vertical"></div>
-          <div class="nx-gal__panels"></div>
-        </div>
-        <p class="nx-gal__foot">Telas reais do Nexus Med. Dados fictícios.</p>
-      </div>
-    </section>
-  </template>
 
   <!-- =========================================================
        6. FAQ

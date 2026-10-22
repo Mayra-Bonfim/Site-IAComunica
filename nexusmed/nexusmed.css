@@ -408,7 +408,9 @@ p { margin: 0; }
   .nx-warn, .nx-nostudy, .nx-safety.is-alert { background: #FDE68A !important; border-color: #D97706 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .nx-safety, .nx-anchor, .nx-labels, .nx-alt { break-inside: avoid; }
   .nx-memo, .nx-src { break-inside: auto; }
-  .nx-memo > summary, .nx-src > summary { min-height: 0; }
+  .nx-memo { break-before: page; }
+  .nx-memo > summary, .nx-src > summary { min-height: 0; list-style: none; break-after: avoid; }
+  .nx-memo > summary::-webkit-details-marker, .nx-src > summary::-webkit-details-marker { display: none; }
   .nx-memo__list li { break-inside: avoid; }
   .nx-memo__list code { background: #F1F5F9; }
   .nx-src__body h4 { color: #0B2545 !important; }
