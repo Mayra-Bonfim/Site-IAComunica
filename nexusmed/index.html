@@ -177,6 +177,10 @@
           </form>
 
           <div class="nx-res" data-res="consulta" role="region" aria-labelledby="res-c-tit">
+                        <div class="nx-print-head" aria-hidden="true">
+              <svg class="nx-logo nx-logo--print" width="130" height="37" viewBox="0 0 280 80" fill="none"><defs><linearGradient id="nxpc_seam" x1="0" y1="10" x2="0" y2="70" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#1C4ED8"/><stop offset="100%" stop-color="#00C2AE"/></linearGradient><clipPath id="nxpc_l"><rect x="0" y="0" width="32" height="80"/></clipPath><clipPath id="nxpc_r"><rect x="32" y="0" width="32" height="80"/></clipPath></defs><path d="M6,70 L6,10 L58,70 L58,10" stroke="#1C4ED8" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" fill="none" clip-path="url(#nxpc_l)"/><path d="M6,70 L6,10 L58,70 L58,10" stroke="#00C2AE" stroke-width="8.5" stroke-linecap="square" stroke-linejoin="miter" fill="none" clip-path="url(#nxpc_r)"/><line x1="32" y1="12" x2="32" y2="68" stroke="url(#nxpc_seam)" stroke-width="1.5" opacity="0.5"/><circle cx="32" cy="40" r="3.5" fill="url(#nxpc_seam)" opacity="0.95"/><text x="80" y="50" font-family="'Space Grotesk', -apple-system, sans-serif" font-weight="800" font-size="36" letter-spacing="2" fill="#0B2545">NEXUS</text><text x="81" y="65" font-family="'DM Sans', -apple-system, sans-serif" font-weight="400" font-size="11" letter-spacing="5" fill="#64748B">MED</text></svg>
+              <div><strong>Simulação Nexus Med</strong><span data-print-data></span></div>
+            </div>
             <h3 class="nx-res__title" id="res-c-tit">Resultado por mês</h3>
             <div class="nx-cards" role="radiogroup" aria-label="Cenário de redução do tempo de prontuário" data-cards></div>
             <div class="nx-main" data-main></div>
@@ -283,6 +287,10 @@
           </form>
 
           <div class="nx-res" data-res="laudo" role="region" aria-labelledby="res-l-tit">
+                        <div class="nx-print-head" aria-hidden="true">
+              <svg class="nx-logo nx-logo--print" width="130" height="37" viewBox="0 0 280 80" fill="none"><defs><linearGradient id="nxpl_seam" x1="0" y1="10" x2="0" y2="70" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#1C4ED8"/><stop offset="100%" stop-color="#00C2AE"/></linearGradient><clipPath id="nxpl_l"><rect x="0" y="0" width="32" height="80"/></clipPath><clipPath id="nxpl_r"><rect x="32" y="0" width="32" height="80"/></clipPath></defs><path d="M6,70 L6,10 L58,70 L58,10" stroke="#1C4ED8" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" fill="none" clip-path="url(#nxpl_l)"/><path d="M6,70 L6,10 L58,70 L58,10" stroke="#00C2AE" stroke-width="8.5" stroke-linecap="square" stroke-linejoin="miter" fill="none" clip-path="url(#nxpl_r)"/><line x1="32" y1="12" x2="32" y2="68" stroke="url(#nxpl_seam)" stroke-width="1.5" opacity="0.5"/><circle cx="32" cy="40" r="3.5" fill="url(#nxpl_seam)" opacity="0.95"/><text x="80" y="50" font-family="'Space Grotesk', -apple-system, sans-serif" font-weight="800" font-size="36" letter-spacing="2" fill="#0B2545">NEXUS</text><text x="81" y="65" font-family="'DM Sans', -apple-system, sans-serif" font-weight="400" font-size="11" letter-spacing="5" fill="#64748B">MED</text></svg>
+              <div><strong>Simulação Nexus Med</strong><span data-print-data></span></div>
+            </div>
             <h3 class="nx-res__title" id="res-l-tit">Resultado por mês</h3>
             <div class="nx-nostudy" data-nostudy hidden>Sem estudo de referência para esta modalidade: mostramos só o cenário mais conservador.</div>
             <div class="nx-cards" role="radiogroup" aria-label="Cenário de redução do tempo por laudo" data-cards></div>
@@ -431,7 +439,7 @@
           <p>A assinatura digital no padrão ICP-Brasil está em implementação.</p>
         </article>
         <article class="nx-gcard">
-          <h3 class="nx-gcard__title">Dados isolados por médico</h3>
+          <h3 class="nx-gcard__title">Segurança dos dados</h3>
           <p>Cada médico só acessa os próprios dados, com isolamento no banco de dados (Row Level Security). Um produto pensado para a LGPD.</p>
         </article>
       </div>
@@ -441,6 +449,38 @@
       </blockquote>
     </div>
     <span class="nx-accent-line" aria-hidden="true"></span>
+  </section>
+
+  <!-- =========================================================
+       4b. INTEGRAÇÕES
+  ========================================================= -->
+  <section class="nx-integ" id="integracoes" aria-labelledby="integ-titulo">
+    <div class="nx-wrap">
+      <header class="nx-sec-head">
+        <p class="nx-eyebrow nx-eyebrow--ink">Integrações</p>
+        <h2 id="integ-titulo" class="nx-h2">Conecta com os sistemas que a sua clínica ou o seu hospital já usa.</h2>
+        <p class="nx-sec-lead">O Nexus Med troca dados com laboratórios, sistemas de recepção e o sistema de gestão da clínica, por API, com assinatura em cada requisição.</p>
+      </header>
+      <div class="nx-profiles__grid">
+          <article class="nx-card">
+            <span class="nx-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9.5 4h5M10.5 4v5.2L5.6 18a1.6 1.6 0 0 0 1.4 2.4h10a1.6 1.6 0 0 0 1.4-2.4l-4.9-8.8V4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 14.5h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <h3 class="nx-card__title">Laboratórios e exames</h3>
+            <p>Recebe resultados de exames e laudos dos laboratórios e os vincula ao paciente do médico.</p>
+          </article>
+          <article class="nx-card">
+            <span class="nx-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="8" r="3.4" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 20c.8-3.6 3.4-5.6 6.5-5.6 1.2 0 2.2.3 3.1.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M18 14v6M15 17h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <h3 class="nx-card__title">Recepção e cadastro de pacientes</h3>
+            <p>Recebe o cadastro de pacientes do sistema de recepção da clínica, sem precisar digitar de novo.</p>
+          </article>
+          <article class="nx-card">
+            <span class="nx-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M10 5H6.5A2.5 2.5 0 0 0 4 7.5v10A2.5 2.5 0 0 0 6.5 20h10a2.5 2.5 0 0 0 2.5-2.5V14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M13 4h7v7M20 4l-9 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <h3 class="nx-card__title">Saída para o sistema da clínica</h3>
+            <p>Envia laudos, documentos e prontuários finalizados ao sistema da clínica ou do hospital, por webhook.</p>
+          </article>
+      </div>
+      <p class="nx-sec-lead nx-integ__note">Cada requisição é assinada (HMAC-SHA256) e as credenciais são geradas pelo próprio médico, com link de uso único. Na saída, o envio leva só identificadores e o hash do documento; o conteúdo clínico é baixado por um link autenticado de curta duração.</p>
+      <p class="nx-sec-lead nx-integ__cta">Conte qual sistema a sua clínica usa e a gente avalia a integração.</p>
+    </div>
   </section>
 
   <!-- 5. GALERIA "Nexus Med por dentro": não é renderizada até haver capturas reais.
@@ -485,11 +525,19 @@
         </details>
         <details class="nx-faq__item">
           <summary>Como ficam os meus dados e os dos meus pacientes?</summary>
-          <div class="nx-faq__a"><p>Os dados ficam isolados por médico: cada um só acessa os próprios registros. A gravação da consulta começa com o consentimento do paciente, e o produto foi pensado para a LGPD.</p></div>
+          <div class="nx-faq__a"><p>Os dados ficam isolados por médico: cada um só acessa os próprios registros. A gravação da consulta começa com o consentimento do paciente, e o produto foi pensado para a LGPD e para a <a href="https://sistemas.cfm.org.br/normas/arquivos/resolucoes/BR/2026/2454_2026.pdf" target="_blank" rel="noopener noreferrer" aria-label="Resolução CFM 2.454/2026 (PDF, abre em nova aba)">Resolução CFM 2.454/2026</a>, que normatiza o uso da inteligência artificial na medicina.</p></div>
+        </details>
+        <details class="nx-faq__item">
+          <summary>O Nexus Med é seguro?</summary>
+          <div class="nx-faq__a"><p>A <a href="https://sistemas.cfm.org.br/normas/arquivos/resolucoes/BR/2026/2454_2026.pdf" target="_blank" rel="noopener noreferrer" aria-label="Resolução CFM 2.454/2026 (PDF, abre em nova aba)">Resolução CFM 2.454/2026</a>, que normatiza o uso da inteligência artificial na medicina, determina que os dados usados nesses sistemas sejam tratados conforme a LGPD (art. 16) e protegidos contra perda, alteração, acesso não autorizado e vazamento (art. 17). O Nexus Med foi pensado para essas exigências: cada médico só acessa os próprios dados, o prontuário finalizado fica imutável e o uso de IA fica registrado no prontuário. A decisão e a responsabilidade clínicas continuam sendo do médico.</p></div>
+        </details>
+        <details class="nx-faq__item">
+          <summary>Como o banco de dados é protegido?</summary>
+          <div class="nx-faq__a"><p>Cada médico só acessa os próprios registros: o isolamento é feito no próprio banco de dados, com Row Level Security. O prontuário finalizado fica imutável, porque o banco bloqueia a alteração. As credenciais de integração e os exames recebidos de laboratórios são armazenados criptografados (AES-256-GCM), e o acesso a esses exames fica registrado em log de auditoria.</p></div>
         </details>
         <details class="nx-faq__item">
           <summary>Quanto custa?</summary>
-          <div class="nx-faq__a"><p>Os preços ainda estão a definir. Fale com a gente para conversar sobre o seu caso.</p></div>
+          <div class="nx-faq__a"><p>Fale com a gente para conversar sobre o seu caso.</p></div>
         </details>
         <details class="nx-faq__item">
           <summary>O cálculo dos simuladores é uma promessa?</summary>
@@ -498,6 +546,10 @@
         <details class="nx-faq__item">
           <summary>Funciona para a minha especialidade?</summary>
           <div class="nx-faq__a"><p>O prontuário tem campos por especialidade, os laudos têm templates para mais de 10 especialidades e os documentos se ajustam à especialidade ativa. Conte para a gente qual é a sua.</p></div>
+        </details>
+        <details class="nx-faq__item">
+          <summary>Os documentos podem ter a identidade visual da minha clínica?</summary>
+          <div class="nx-faq__a"><p>Sim. Receitas, atestados e os demais documentos gerados podem levar o logotipo e os textos de cabeçalho e rodapé da sua clínica.</p></div>
         </details>
       </div>
     </div>
@@ -524,7 +576,7 @@
       <h2 id="final-titulo" class="nx-h2 nx-final__title">Para que a medicina volte a ser sobre pessoas.</h2>
       <p class="nx-final__lead">Conte como é a sua rotina de consultas e laudos. A gente mostra o Nexus Med e tira as suas dúvidas.</p>
       <div class="nx-final__actions">
-        <a class="nx-btn nx-btn--teal nx-btn--lg" href="https://cal.com/ia.comunica/reuniao-apresentacao-alinhamento" target="_blank" rel="noopener noreferrer"
+        <a class="nx-btn nx-btn--teal nx-btn--lg" href="#"
            data-cal-link="ia.comunica/reuniao-apresentacao-alinhamento"
            data-cal-namespace="reuniao-apresentacao-alinhamento"
            data-cal-config='{"layout":"month_view","theme":"dark"}'>Agendar uma apresentação</a>

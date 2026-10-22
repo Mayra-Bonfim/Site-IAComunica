@@ -344,8 +344,31 @@
       function fb() { var ta = document.createElement('textarea'); ta.value = txt; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); ok(); } catch (er) { toast('Não foi possível copiar.'); } document.body.removeChild(ta); }
       if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(txt).then(ok, fb); else fb();
     }
+    /* ---------- Impressão / PDF: cabeçalho e blocos abertos ---------- */
+    function assinatura(form) {
+      return qsa('input, select', form).map(function (i) { return (i.type === 'radio' || i.type === 'checkbox') ? (i.checked ? '1' : '0') : i.value; }).join('|');
+    }
+    var inicial = {};
+    ['consulta', 'laudo'].forEach(function (tipo) { inicial[tipo] = assinatura(sec.querySelector('[data-form="' + tipo + '"]')); });
     var abertos = [];
-    window.addEventListener('beforeprint', function () { abertos = qsa('.nx-memo, .nx-src', sec).map(function (d) { var o = d.open; d.open = true; return o; }); });
+    window.addEventListener('beforeprint', function () {
+      var d = new Date();
+      ['consulta', 'laudo'].forEach(function (tipo) {
+        var box = sec.querySelector('[data-res="' + tipo + '"]'), alvo = box && box.querySelector('[data-print-data]');
+        if (!alvo) return;
+        var u = ultimo[tipo], partes = ['Gerado em ' + d.toLocaleDateString('pt-BR')];
+        partes.push(tipo === 'consulta' ? 'médico de consulta' : 'médico laudista');
+        if (u) {
+          var cid = tipo === 'consulta' ? estado.consulta.cen : u.cen;
+          var c = u.r.cenarios.filter(function (x) { return x.id === cid; })[0];
+          if (c) partes.push('cenário ' + c.nome.toLowerCase());
+        }
+        partes.push(assinatura(sec.querySelector('[data-form="' + tipo + '"]')) === inicial[tipo] ? 'exemplo ilustrativo' : 'números informados');
+        partes.push('iacomunica.com.br/nexusmed');
+        alvo.textContent = partes.join(' · ');
+      });
+      abertos = qsa('.nx-memo, .nx-src', sec).map(function (d) { var o = d.open; d.open = true; return o; });
+    });
     window.addEventListener('afterprint', function () { qsa('.nx-memo, .nx-src', sec).forEach(function (d, i) { d.open = abertos[i]; }); });
   })();
 

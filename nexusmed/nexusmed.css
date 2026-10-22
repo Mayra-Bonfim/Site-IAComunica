@@ -181,6 +181,13 @@ p { margin: 0; }
 .nx-quote footer { margin-top: 10px; font-size: 13px; color: var(--nx-on-dark-2); }
 
 /* ============================================================
+   4b. INTEGRAÇÕES (reaproveita nx-sec-head, nx-card e nx-profiles__grid)
+   ============================================================ */
+.nx-integ { padding: clamp(64px, 7vw, 112px) 0 0; }
+.nx-integ__note { margin-top: clamp(24px, 2.4vw, 36px); max-width: 78ch; }
+.nx-integ__cta { color: var(--nx-navy); font-weight: 600; }
+
+/* ============================================================
    6. FAQ
    ============================================================ */
 .nx-faq { padding: clamp(64px, 7vw, 112px) 0; }
@@ -194,6 +201,7 @@ p { margin: 0; }
 .nx-faq__item[open] > summary::after { transform: translateY(-30%) rotate(-135deg); }
 .nx-faq__a { padding: 0 20px 20px; display: grid; gap: 10px; color: var(--nx-text-2); font-size: 15.5px; }
 .nx-faq__a p { max-width: 72ch; }
+.nx-faq__a a { text-underline-offset: 3px; }
 
 /* ============================================================
    7. CTA FINAL
@@ -371,15 +379,39 @@ p { margin: 0; }
 .nx-errbox ul { margin: 0; padding-left: 18px; }
 .nx-toast { margin-top: 12px; background: var(--nx-teal); color: var(--nx-midnight); font-weight: 600; padding: 8px 12px; border-radius: var(--nx-r-ctl); width: fit-content; }
 
+.nx-print-head { display: none; }
 @media print {
-  .nx-hero, .nx-about, .nx-control, .nx-faq, .nx-final, .nx-footer, .nx-simtabs, .nx-form, .nx-res__actions, .nx-toast { display: none !important; }
-  body { background: #fff; }
-  .nx-sim { padding: 0; }
+  @page { size: A4; margin: 14mm 14mm 16mm; }
+  html, body { background: #fff !important; font-size: 11pt; }
+  .nx-hero, .nx-about, .nx-control, .nx-integ, .nx-gal-sec, .nx-faq, .nx-final, .nx-footer, .nx-simtabs, .nx-form, .nx-res__actions, .nx-toast, .nx-sim .nx-sec-head { display: none !important; }
+  .nx-sim { padding: 0 !important; }
+  .nx-wrap { max-width: none; padding: 0; }
   .nx-sim__layout { display: block; }
-  .nx-res { position: static; background: #fff; color: #0B2545; border: 1px solid #E2EAF4; }
+  .nx-res { position: static; overflow: visible; background: #fff; color: #0B2545; border: 0; border-radius: 0; padding: 0; gap: 14px; }
   .nx-res *, .nx-res .nx-main__big small { color: #0B2545 !important; }
-  .nx-main, .nx-labels, .nx-memo, .nx-src, .nx-safety, .nx-anchor, .nx-card-c, .nx-warn, .nx-nostudy { background: #fff !important; border: 1px solid #E2EAF4 !important; }
-  .nx-card-c.is-on { border: 2px solid #1C4ED8 !important; }
+  .nx-print-head { display: flex !important; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 12px; position: relative; }
+  .nx-print-head::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--nx-grad); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .nx-print-head .nx-logo--print { width: 130px; height: auto; flex: none; }
+  .nx-print-head div { display: grid; text-align: right; font-size: 10pt; }
+  .nx-res .nx-print-head div, .nx-res .nx-print-head span { color: #64748B !important; }
+  .nx-print-head strong { font-family: var(--nx-font-display); font-size: 13pt; }
+  .nx-res .nx-print-head strong { color: #0B2545 !important; }
+  .nx-res__title { font-size: 15pt; }
+  .nx-cards, .nx-cards.is-single { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: none; }
+  .nx-card-c, .nx-main, .nx-labels, .nx-memo, .nx-src, .nx-safety, .nx-anchor, .nx-warn, .nx-nostudy { background: #fff !important; border: 1px solid #E2EAF4 !important; }
+  .nx-card-c { box-shadow: none; break-inside: avoid; }
+  .nx-card-c.is-on { border: 2px solid #1C4ED8 !important; background: #EEF4FA !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .nx-card-c__n em { background: #E2EAF4; }
+  .nx-main { background: #EEF4FA !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; break-inside: avoid; }
+  .nx-main__big { color: #1C4ED8 !important; }
+  .nx-alt { border-left-color: #1C4ED8; }
+  .nx-warn, .nx-nostudy, .nx-safety.is-alert { background: #FDE68A !important; border-color: #D97706 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .nx-safety, .nx-anchor, .nx-labels, .nx-alt { break-inside: avoid; }
+  .nx-memo, .nx-src { break-inside: auto; }
+  .nx-memo > summary, .nx-src > summary { min-height: 0; }
+  .nx-memo__list li { break-inside: avoid; }
+  .nx-memo__list code { background: #F1F5F9; }
+  .nx-src__body h4 { color: #0B2545 !important; }
   .nx-res::after { display: none; }
 }
 
