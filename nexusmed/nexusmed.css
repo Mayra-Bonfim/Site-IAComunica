@@ -328,6 +328,7 @@ p { margin: 0; }
 .nx-sel select { width: 100%; min-height: 48px; border: 1px solid var(--nx-silver); border-radius: var(--nx-r-ctl); padding: 10px 40px 10px 14px; font: inherit; font-size: 16px; color: var(--nx-navy); background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='m1 1.5 5 5 5-5' stroke='%2364748B' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 14px center; appearance: none; -webkit-appearance: none; cursor: pointer; }
 .nx-sel select:focus-visible { outline: none; border-color: var(--nx-cobalt); box-shadow: 0 0 0 3px var(--nx-ring); }
 .nx-help { font-size: 13px; color: var(--nx-slate); line-height: 1.45; }
+.nx-sec-head .nx-help { margin-top: 12px; }
 .nx-err { font-size: 13px; color: #B91C1C; font-weight: 500; }
 .nx-more > summary { cursor: pointer; font-weight: 600; font-size: 14px; color: var(--nx-cobalt); min-height: 32px; display: inline-flex; align-items: center; }
 .nx-more[open] > summary { margin-bottom: 12px; }
