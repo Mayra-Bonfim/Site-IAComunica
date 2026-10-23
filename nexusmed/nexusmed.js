@@ -26,7 +26,7 @@
       legenda: 'A IA organiza o texto do laudo. A impressão diagnóstica é escrita só pelo médico.' },
     { arquivo: 'laudo-assinatura', largura: 1920, altura: 1200, titulo: 'Conferência antes de assinar', grupo: 'Laudo',
       alt: 'Tela real do Nexus Med: conferência do laudo com duas confirmações do médico antes da assinatura.',
-      legenda: 'O médico confirma que revisou o texto e que a impressão diagnóstica é dele. A assinatura digital certificada está em implementação.' },
+      legenda: 'O médico confirma que revisou o texto e que a impressão diagnóstica é dele.' },
     { arquivo: 'consulta-documentos', largura: 1920, altura: 1200, titulo: 'Documentos da consulta', grupo: 'Consulta',
       alt: 'Tela real do Nexus Med: aba de documentos da consulta, com opções para gerar laudo, receita, atestado e encaminhamento.',
       legenda: 'Da mesma consulta, o médico gera laudo, receita, atestado e encaminhamento.' },
