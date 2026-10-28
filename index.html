@@ -35,7 +35,16 @@
       </a>
 
       <nav class="nav__links" aria-label="Navegação principal">
-        <a href="#nexus" class="nav__link">Nexus</a>
+        <div class="nav__dropdown" id="nav-produtos">
+          <button type="button" class="nav__link nav__dropbtn" id="nav-produtos-btn" aria-expanded="false" aria-controls="nav-produtos-menu" aria-haspopup="true">
+            Nossos produtos
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="m2.5 4.5 3.5 3.5 3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav__dropmenu" id="nav-produtos-menu" hidden>
+            <a href="/nexusmed/" class="nav__dropitem">Nexus Med</a>
+            <a href="/orbit/" class="nav__dropitem">Orbit</a>
+          </div>
+        </div>
         <a href="#automacoes" class="nav__link">Automações</a>
         <a href="/acervo/" class="nav__link">Acervo</a>
         <a href="#sobre" class="nav__link">Sobre</a>
@@ -60,7 +69,9 @@
 
     <!-- Mobile menu -->
     <div class="nav__mobile" id="mobile-menu" aria-hidden="true">
-      <a href="#nexus" class="nav__mobile-link">Nexus</a>
+      <p class="nav__mobile-group">Nossos produtos</p>
+      <a href="/nexusmed/" class="nav__mobile-link nav__mobile-sub">Nexus Med</a>
+      <a href="/orbit/" class="nav__mobile-link nav__mobile-sub">Orbit</a>
       <a href="#automacoes" class="nav__mobile-link">Automações</a>
       <a href="/acervo/" class="nav__mobile-link">Acervo</a>
       <a href="#sobre" class="nav__mobile-link">Sobre</a>
@@ -254,10 +265,63 @@
         </div>
       </article>
 
+      <!-- ORBIT — Produto em destaque -->
+      <article class="nexus-destaque nexus-destaque--orbit" id="orbit" aria-label="Produto Orbit">
+        <div class="nexus-destaque__content">
+          <span class="produto-tag">Workforce Intelligence</span>
+          <h3 class="nexus-destaque__nome">Orbit</h3>
+          <p class="nexus-destaque__desc">
+            O Orbit é a plataforma para planejar equipes, escalas e produtividade. A IA gera a escala com as regras da sua empresa já configuradas, e o gestor revisa e aprova.
+          </p>
+          <a href="/orbit/" class="btn btn--teal btn--lg">
+            Conhecer o Orbit <span aria-hidden="true">→</span>
+          </a>
+        </div>
+        <div class="nexus-destaque__video nexus-destaque__video--orbit">
+          <section class="orb-car" id="orb-car" aria-roledescription="carrossel" aria-label="Telas reais do Orbit">
+            <div class="orb-car__bar-top" aria-hidden="true"><span></span><span></span><span></span><i></i></div>
+            <div class="orb-car__viewport">
+            <div class="orb-car__slide is-on" role="group" aria-roledescription="tela" aria-label="1 de 3: Gestor · Escala gerada" data-cap="Gestor · Escala gerada">
+              <picture>
+                <source srcset="/orbit/assets/real/gestor-escala.webp" type="image/webp" />
+                <img src="/orbit/assets/real/gestor-escala.png" width="1200" height="724" loading="lazy" decoding="async" alt="Tela real do Orbit, perfil Gestor: resumo com 14 funcionários escalados, 2472h de horas totais, 57 de 60 turnos cobertos e 0 alertas abertos, acima da grade de turnos e folgas por funcionário e por dia, agrupada por equipe." />
+              </picture>
+            </div>
+            <div class="orb-car__slide" role="group" aria-roledescription="tela" aria-label="2 de 3: Gestor · Revisão da escala" aria-hidden="true" data-cap="Gestor · Revisão da escala">
+              <picture>
+                <source srcset="/orbit/assets/real/gestor-revisao.webp" type="image/webp" />
+                <img src="/orbit/assets/real/gestor-revisao.png" width="1440" height="884" loading="lazy" decoding="async" alt="Tela real do Orbit, perfil Gestor, aba Revisão: aviso de que a cobertura ficou abaixo da demanda em parte da escala, grade de turnos por funcionário e painel lateral com 2 gatilhos não avaliados, nenhuma violação nas regras verificadas e déficits por dia, como falta de 1 pessoa em Reposição em 29/10." />
+              </picture>
+            </div>
+            <div class="orb-car__slide" role="group" aria-roledescription="tela" aria-label="3 de 3: Gestor · Alertas" aria-hidden="true" data-cap="Gestor · Alertas">
+              <picture>
+                <source srcset="/orbit/assets/real/gestor-alertas.webp" type="image/webp" />
+                <img src="/orbit/assets/real/gestor-alertas.png" width="1440" height="690" loading="lazy" decoding="async" alt="Tela real do Orbit, perfil Gestor, aba Alertas: texto explicando que o Orbit nunca aplica uma escala que viole a folga ou o descanso obrigatório e que sinaliza déficits de cobertura para revisão, seguido de dois alertas de compliance sobre regras que não puderam ser conferidas por completo." />
+              </picture>
+            </div>
+            </div>
+            <div class="orb-car__bar">
+              <p class="orb-car__cap" id="orb-car-cap" aria-live="off">Gestor · Escala gerada</p>
+              <div class="orb-car__ctrls">
+                <button type="button" class="orb-car__btn" id="orb-car-prev" aria-label="Tela anterior"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <button type="button" class="orb-car__btn" id="orb-car-pause" aria-pressed="false" aria-label="Pausar a troca automática de telas"><span id="orb-car-pause-txt">Pausar</span></button>
+                <button type="button" class="orb-car__btn" id="orb-car-next" aria-label="Próxima tela"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m6 3 5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              </div>
+            </div>
+            <div class="orb-car__dots" role="group" aria-label="Escolher tela">
+              <button type="button" class="orb-car__dot" data-ir="0" aria-label="Mostrar tela 1: Gestor · Escala gerada" aria-current="true"><span></span></button>
+              <button type="button" class="orb-car__dot" data-ir="1" aria-label="Mostrar tela 2: Gestor · Revisão da escala"><span></span></button>
+              <button type="button" class="orb-car__dot" data-ir="2" aria-label="Mostrar tela 3: Gestor · Alertas"><span></span></button>
+            </div>
+            <p class="orb-car__legenda">Telas reais do Orbit · dados fictícios de teste</p>
+          </section>
+        </div>
+      </article>
+
       <!-- ECOSSISTEMA — Menção discreta outros produtos -->
       <div class="ecossistema-mencao" id="crm">
         <p class="ecossistema-mencao__desc">
-          Além do Nexus, a IA Comunica desenvolve soluções de CRM inteligente, gestão de documentos e sistemas sob medida — com projetos em parceria para operações que precisam de algo além do padrão.
+          Além do Nexus e do Orbit, a IA Comunica desenvolve soluções de CRM inteligente, gestão de documentos e sistemas sob medida — com projetos em parceria para operações que precisam de algo além do padrão.
         </p>
         <a href="https://api.whatsapp.com/send/?phone=556131425518&text=Gostaria+de+conversar+estrategicamente+sobre+as+solu%C3%A7%C3%B5es+da+IA+Comunica.&type=phone_number&app_absent=0"
           class="btn btn--teal btn--lg ecossistema-mencao__cta"

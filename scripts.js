@@ -270,3 +270,96 @@
     });
   });
 })();
+
+
+/* ── NAV: NOSSOS PRODUTOS (dropdown) ──────────────────────── */
+(function initProdutosDropdown() {
+  const btn = document.getElementById('nav-produtos-btn');
+  const menu = document.getElementById('nav-produtos-menu');
+  if (!btn || !menu) return;
+
+  function abrir(open) {
+    btn.setAttribute('aria-expanded', String(open));
+    menu.hidden = !open;
+  }
+
+  btn.addEventListener('click', () => abrir(menu.hidden));
+  document.addEventListener('click', (e) => {
+    if (!menu.hidden && !btn.parentElement.contains(e.target)) abrir(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !menu.hidden) { abrir(false); btn.focus(); }
+  });
+})();
+
+
+/* ── ORBIT: CARROSSEL DE TELAS REAIS ──────────────────────── */
+(function initOrbitCarrossel() {
+  const car = document.getElementById('orb-car');
+  if (!car) return;
+
+  const slides = Array.from(car.querySelectorAll('.orb-car__slide'));
+  const dots = Array.from(car.querySelectorAll('.orb-car__dot'));
+  const cap = document.getElementById('orb-car-cap');
+  const btnPause = document.getElementById('orb-car-pause');
+  const txtPause = document.getElementById('orb-car-pause-txt');
+  const reduzir = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const INTERVALO = 4500;
+  let atual = 0, timer = null, pausado = reduzir, hover = false, foco = false, visivel = false;
+
+  function rodando() { return !pausado && !hover && !foco && visivel && !document.hidden; }
+
+  function reiniciar() {
+    clearTimeout(timer);
+    car.classList.toggle('is-running', rodando());
+    dots.forEach((d) => d.classList.remove('is-prog'));
+    if (rodando()) {
+      const d = dots[atual]; void d.offsetWidth; d.classList.add('is-prog');
+      timer = setTimeout(() => mostrar(atual + 1, false), INTERVALO);
+    }
+  }
+
+  function mostrar(i, porUsuario) {
+    atual = (i + slides.length) % slides.length;
+    slides.forEach((s, k) => {
+      const on = k === atual;
+      s.classList.toggle('is-on', on);
+      if (on) s.removeAttribute('aria-hidden'); else s.setAttribute('aria-hidden', 'true');
+      const im = s.querySelector('img');
+      if (on && im.loading === 'lazy') im.loading = 'eager';
+    });
+    dots.forEach((d, k) => { if (k === atual) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
+    cap.textContent = slides[atual].getAttribute('data-cap');
+    cap.setAttribute('aria-live', porUsuario ? 'polite' : 'off');
+    const prox = slides[(atual + 1) % slides.length].querySelector('img');
+    if (prox.loading === 'lazy') prox.loading = 'eager';
+    reiniciar();
+  }
+
+  function setPausa(p) {
+    pausado = p;
+    btnPause.setAttribute('aria-pressed', String(p));
+    txtPause.textContent = p ? 'Retomar' : 'Pausar';
+    btnPause.setAttribute('aria-label', p ? 'Retomar a troca automática de telas' : 'Pausar a troca automática de telas');
+    reiniciar();
+  }
+
+  document.getElementById('orb-car-prev').addEventListener('click', () => mostrar(atual - 1, true));
+  document.getElementById('orb-car-next').addEventListener('click', () => mostrar(atual + 1, true));
+  btnPause.addEventListener('click', () => setPausa(!pausado));
+  dots.forEach((d) => d.addEventListener('click', () => mostrar(Number(d.getAttribute('data-ir')), true)));
+  car.addEventListener('mouseenter', () => { hover = true; reiniciar(); });
+  car.addEventListener('mouseleave', () => { hover = false; reiniciar(); });
+  car.addEventListener('focusin', () => { foco = true; reiniciar(); });
+  car.addEventListener('focusout', (e) => { if (!car.contains(e.relatedTarget)) { foco = false; reiniciar(); } });
+  document.addEventListener('visibilitychange', reiniciar);
+
+  // só avança enquanto o carrossel está na tela
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((en) => { visivel = en[0].isIntersecting; reiniciar(); }, { threshold: 0.25 }).observe(car);
+  } else {
+    visivel = true;
+  }
+
+  setPausa(pausado);
+})();
