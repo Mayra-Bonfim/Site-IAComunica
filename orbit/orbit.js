@@ -673,7 +673,7 @@
      Revelação suave ao rolar
      ============================================================ */
   if (!reduceMotion && 'IntersectionObserver' in window) {
-    var alvos = qsa('.o-pillar, .o-how__step, .o-clear__col, .o-faq__item, .o-about .o-sec-head, .o-clear .o-sec-head, .o-faq .o-sec-head, .o-who');
+    var alvos = qsa('.o-pillar, .o-how__step, .o-faq__item, .o-about .o-sec-head, .o-faq .o-sec-head, .o-who');
     var io = new IntersectionObserver(function (en) {
       en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('is-in'); io.unobserve(x.target); } });
     }, { rootMargin: '0px 0px -8% 0px' });
@@ -693,4 +693,12 @@
     alvo.focus({ preventScroll: true });
     if (history.replaceState) history.replaceState(null, '', '#' + id);
   });
+
+  /* Agendar conversa: abre só o pop-up do Cal.com, na própria página.
+     O href fica como reserva se o script do Cal.com não estiver disponível. */
+  document.addEventListener('click', function (ev) {
+    var a = ev.target.closest('a[data-cal-link]');
+    if (!a || ev.defaultPrevented || ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
+    if (window.Cal && window.Cal.loaded) ev.preventDefault();
+  }, true);
 })();

@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Orbit — Simulador de quadro e custo de pessoal | IA Comunica</title>
+  <title>Orbit — Sua equipe no ritmo da operação | IA Comunica</title>
   <meta name="description" content="A jornada semanal vai para 42h e depois 40h. Simule quantas pessoas a mais sua operação precisa e quanto isso custa, com a memória de cálculo aberta. Orbit, da IA Comunica." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.iacomunica.com.br/orbit/" />
@@ -14,13 +14,13 @@
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:site_name" content="IA Comunica" />
-  <meta property="og:title" content="Orbit — Simulador de quadro e custo de pessoal" />
+  <meta property="og:title" content="Orbit — Sua equipe no ritmo da operação" />
   <meta property="og:description" content="Quantas pessoas a mais? Quanto isso custa? Simule a transição de jornada com a conta aberta, linha por linha." />
   <meta property="og:url" content="https://www.iacomunica.com.br/orbit/" />
   <meta property="og:image" content="https://www.iacomunica.com.br/orbit/assets/orbit-og.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Logo do Orbit sobre fundo escuro com o texto Simulador de quadro e custo de pessoal" />
+  <meta property="og:image:alt" content="Logo do Orbit sobre fundo escuro com a pergunta: Quantas pessoas a mais? Quanto isso custa?" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="icon" href="/favicon-96x96.png" />
@@ -438,7 +438,7 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19l-4 1Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
               Levar esta simulação para uma conversa
             </button>
-            <a class="o-btn o-btn--dark" href="https://cal.com/ia.comunica/reuniao-apresentacao-alinhamento" target="_blank" rel="noopener noreferrer"
+            <a class="o-btn o-btn--dark" href="https://cal.com/ia.comunica/reuniao-apresentacao-alinhamento"
                data-cal-link="ia.comunica/reuniao-apresentacao-alinhamento"
                data-cal-namespace="reuniao-apresentacao-alinhamento"
                data-cal-config='{"layout":"month_view","theme":"light"}'>Agendar uma conversa</a>
@@ -450,6 +450,8 @@
           <p class="o-toast" id="toast" role="status" aria-live="polite" hidden></p>
         </aside>
       </div>
+
+      <p class="o-sim__note">O simulador é uma estimativa para planejamento. Ele não valida a distribuição de turnos, porque uma estimativa por horas não é uma cobertura validada por escala. Não substitui o fechamento da folha nem transmite obrigações fiscais, não define alíquotas (o cálculo usa fórmulas fixas e os parâmetros que você informa) e não promete economia nem garante o enquadramento do seu caso. Confirme os parâmetros com o seu contador ou com o RH.</p>
     </div>
 
     <!-- barra fixa no mobile -->
@@ -620,7 +622,7 @@
 
       <div class="o-who">
         <h3 class="o-h3">Para quem</h3>
-        <p class="o-who__lead">Empresas com equipes operacionais a partir de 30 funcionários, de qualquer segmento. O simulador funciona para qualquer setor.</p>
+        <p class="o-who__lead">Empresas com equipes operacionais a partir de 10 funcionários, de qualquer segmento.</p>
         <ul class="o-who__list">
           <li class="o-who__tag">Restaurantes</li>
           <li class="o-who__tag">Supermercados</li>
@@ -636,73 +638,54 @@
   </section>
 
   <!-- =========================================================
-       5. TRANSPARÊNCIA
-  ========================================================= -->
-  <section class="o-clear" aria-labelledby="clear-titulo">
-    <div class="o-wrap">
-      <header class="o-sec-head">
-        <p class="o-eyebrow">Transparência</p>
-        <h2 id="clear-titulo" class="o-h2">O que o simulador faz e o que ele não faz.</h2>
-      </header>
-      <div class="o-clear__grid">
-        <div class="o-clear__col o-clear__col--yes">
-          <h3 class="o-clear__h"><span class="o-state o-state--ok"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8.5 3.2 3L13 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Faz</span></h3>
-          <ul class="o-list">
-            <li>Estima o quadro por horas ou pela demanda informada, com a fórmula à vista.</li>
-            <li>Separa quadro futuro total de novas contratações.</li>
-            <li>Mostra o custo mensal equivalente, o acréscimo anual e o primeiro ano proporcional ao mês de admissão.</li>
-            <li>Usa o percentual de encargos que você informa, com a composição declarada.</li>
-          </ul>
-        </div>
-        <div class="o-clear__col o-clear__col--no">
-          <h3 class="o-clear__h"><span class="o-state o-state--neutral"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Não faz</span></h3>
-          <ul class="o-list">
-            <li>Não valida a distribuição de turnos: uma estimativa por horas não é uma cobertura validada por escala.</li>
-            <li>Não substitui o fechamento da folha nem transmite obrigações fiscais.</li>
-            <li>Não define alíquotas: o cálculo usa fórmulas fixas e os parâmetros que você informa.</li>
-            <li>Não promete economia nem garante o enquadramento do seu caso.</li>
-          </ul>
-        </div>
-      </div>
-      <p class="o-clear__foot">No Orbit, cada regra mostra a origem do valor (rede ou loja) e as alterações ficam registradas no histórico.</p>
-    </div>
-  </section>
-
-  <!-- =========================================================
        6. FAQ
   ========================================================= -->
   <section class="o-faq" aria-labelledby="faq-titulo">
     <div class="o-wrap o-wrap--narrow">
       <header class="o-sec-head">
         <p class="o-eyebrow">Perguntas frequentes</p>
-        <h2 id="faq-titulo" class="o-h2">Antes de levar o número para a reunião.</h2>
+        <h2 id="faq-titulo" class="o-h2">O que você precisa saber sobre o Orbit.</h2>
       </header>
       <div class="o-faq__list">
         <details class="o-faq__item">
-          <summary>O que muda com a EC nº 141?</summary>
-          <div class="o-faq__a">
-            <p>Promulgada em 16 de outubro de 2026, a emenda encerra a escala 6x1 e prevê dois dias de descanso semanal. A jornada máxima passa a 42 horas dois meses após a publicação e a 40 horas um ano depois dessa primeira etapa, sem redução salarial. Jornadas que já são de 40 horas ou menos não sofrem redução proporcional, e cláusulas incompatíveis perdem a validade após 60 dias.</p>
-            <p>A aplicação ao seu caso concreto depende de revisão trabalhista e contábil. <a href="https://www12.senado.leg.br/noticias/materias/2026/10/16/congresso-promulga-o-fim-da-escala-6x1-e-aposentadoria-de-agentes-de-saude" target="_blank" rel="noopener noreferrer">Leia a notícia oficial no portal do Senado<span class="o-sr"> (abre em nova aba)</span></a>.</p>
-          </div>
+          <summary>O que muda com a EC nº 141 e como o Orbit ajuda?</summary>
+          <div class="o-faq__a"><p>Promulgada em 16 de outubro de 2026, a emenda encerra a escala 6x1 e prevê dois dias de descanso semanal. A jornada máxima passa a 42 horas dois meses após a publicação e a 40 horas um ano depois dessa primeira etapa, sem redução salarial. Jornadas que já são de 40 horas ou menos não sofrem redução proporcional, e cláusulas incompatíveis perdem a validade após 60 dias.</p><p>Com a jornada nova, turnos e folgas precisam ser redistribuídos. É nesse ponto que o Orbit entra: ele gera a escala com as regras da sua empresa já configuradas e confere o resultado antes da aprovação. A aplicação ao seu caso concreto depende de revisão trabalhista e contábil. <a href="https://www12.senado.leg.br/noticias/materias/2026/10/16/congresso-promulga-o-fim-da-escala-6x1-e-aposentadoria-de-agentes-de-saude" target="_blank" rel="noopener noreferrer">Leia a notícia oficial no portal do Senado<span class="o-sr"> (abre em nova aba)</span></a>.</p></div>
         </details>
         <details class="o-faq__item">
-          <summary>Escala 5x2 é a mesma coisa que 40 horas?</summary>
-          <div class="o-faq__a"><p>Não. 5x2 descreve dias de trabalho e de descanso; 40h ou 42h descrevem a duração semanal. Caber no total semanal não autoriza qualquer duração diária: a distribuição precisa de validação própria.</p></div>
+          <summary>A IA monta a escala sozinha?</summary>
+          <div class="o-faq__a"><p>A IA gera a proposta de escala. O Orbit confere as regras e mostra o que precisa de atenção. Nada é publicado sem revisão: a decisão continua com quem responde pela operação.</p></div>
         </details>
         <details class="o-faq__item">
-          <summary>Por que o simulador não aplica 20% a mais de pessoas?</summary>
-          <div class="o-faq__a">
-            <p>Passar de seis para cinco dias tira 1/6 dos dias de cada pessoa (16,7%), e repor esse volume pede 6/5 − 1 = 20% mais pessoas, mas só se a duração diária e a cobertura forem constantes. Quando a mudança já está expressa na jornada (44h para 40h), aplicar os 20% em cima contaria as folgas duas vezes.</p>
-            <p>Por isso o simulador escolhe uma base coerente: pessoas-hora ou horas atuais. Percentuais manuais só fazem sentido como hipótese declarada.</p>
-          </div>
+          <summary>Como funciona a revisão da escala?</summary>
+          <div class="o-faq__a"><p>A escala gerada passa por duas etapas de revisão. Primeiro, o gestor operacional revisa e ajusta o que for necessário. Depois, ela passa também pela revisão do gestor administrativo, antes de ser publicada. Cada etapa fica registrada, com quem fez e quando.</p></div>
         </details>
         <details class="o-faq__item">
-          <summary>O que entra no custo por pessoa?</summary>
-          <div class="o-faq__a"><p>Salário bruto, encargos e provisões (pelo percentual que você informa) e benefícios líquidos, ou seja, o que a empresa suporta depois da participação do empregado. No vale-transporte, a participação é o menor valor entre o VT concedido e 6% do salário básico; o custo da empresa é a diferença.</p></div>
+          <summary>Quais regras trabalhistas o Orbit confere?</summary>
+          <div class="o-faq__a"><p>Jornada semanal, descanso, intervalo entre jornadas, limites mensais de horas e outras regras ficam configuradas no Orbit. Antes de aprovar, a escala é conferida contra elas: o que viola uma regra aparece como alerta e impede a publicação até ser resolvido.</p></div>
         </details>
         <details class="o-faq__item">
-          <summary>Meus dados são enviados para algum lugar?</summary>
-          <div class="o-faq__a"><p>Não. O cálculo roda no seu navegador e nada do que você digita é gravado ou enviado pelo simulador. Se você escolher levar a simulação para uma conversa, o WhatsApp abre com um resumo que você revisa antes de enviar.</p></div>
+          <summary>Posso colocar os acordos coletivos da minha empresa?</summary>
+          <div class="o-faq__a"><p>Sim. Os parâmetros legais são da sua empresa, e a autonomia para configurá-los também. O Departamento Pessoal cadastra no Orbit as regras do acordo ou da convenção coletiva que valem para o seu negócio, por rede ou por unidade, com a data a partir da qual passam a valer. Dá para importar várias regras de uma vez, por planilha.</p><p>Cada regra mostra de onde veio (rede ou unidade) e guarda o histórico de alterações. Quando o acordo muda, basta atualizar a regra com a nova data de vigência. A escala passa a ser conferida contra o que a sua empresa de fato pactuou, e não contra um modelo genérico.</p></div>
+        </details>
+        <details class="o-faq__item">
+          <summary>O Orbit considera feriados e o movimento do comércio?</summary>
+          <div class="o-faq__a"><p>Sim. Feriados nacionais, estaduais e regionais entram no planejamento. Quando o seu negócio muda de ritmo por causa de feriados, eventos, datas comemorativas ou sazonalidade, o Orbit considera a demanda esperada e distribui a equipe de acordo: mais pessoas nos dias e turnos de maior movimento, e a escala ajustada quando a operação pede.</p></div>
+        </details>
+        <details class="o-faq__item">
+          <summary>O funcionário também acessa o Orbit?</summary>
+          <div class="o-faq__a"><p>Sim. Cada funcionário tem acesso ao Orbit para consultar a própria escala. Qualquer modificação feita na escala aparece no acesso dele em tempo real.</p></div>
+        </details>
+        <details class="o-faq__item">
+          <summary>O Orbit se integra a outros sistemas?</summary>
+          <div class="o-faq__a"><p>Sim. O Orbit é aberto a integrações com sistemas de ponto, ERP, sistemas de RH e ferramentas de BI, para que a escala e os dados da operação conversem com o que a sua empresa já usa. Na conversa com a IA Comunica, você conta quais sistemas usa hoje.</p></div>
+        </details>
+        <details class="o-faq__item">
+          <summary>Como é o acesso, e quem alterou o quê?</summary>
+          <div class="o-faq__a"><p>O acesso é por e-mail e senha ou por login corporativo (SSO), e cada perfil vê apenas o que precisa. As alterações em regras e escalas ficam registradas no histórico, com quem fez e quando.</p></div>
+        </details>
+        <details class="o-faq__item">
+          <summary>O Orbit serve para o meu tipo de negócio?</summary>
+          <div class="o-faq__a"><p>Serve para empresas com equipes operacionais a partir de 10 funcionários, de qualquer segmento: restaurantes, supermercados, varejo, hotéis, hospitais, indústrias, call centers, clínicas e outros.</p></div>
         </details>
       </div>
     </div>
@@ -717,7 +700,7 @@
       <h2 id="final-titulo" class="o-h2 o-final__title">Do número estimado à escala aprovada.</h2>
       <p class="o-final__lead">Leve a sua simulação para uma conversa com a IA Comunica e veja como o Orbit apoia o planejamento da sua equipe na nova jornada.</p>
       <div class="o-final__actions">
-        <a class="o-btn o-btn--teal o-btn--lg" href="https://cal.com/ia.comunica/reuniao-apresentacao-alinhamento" target="_blank" rel="noopener noreferrer"
+        <a class="o-btn o-btn--teal o-btn--lg" href="https://cal.com/ia.comunica/reuniao-apresentacao-alinhamento"
            data-cal-link="ia.comunica/reuniao-apresentacao-alinhamento"
            data-cal-namespace="reuniao-apresentacao-alinhamento"
            data-cal-config='{"layout":"month_view","theme":"dark"}'>Agendar uma conversa</a>
