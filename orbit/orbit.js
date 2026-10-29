@@ -673,7 +673,7 @@
      Revelação suave ao rolar
      ============================================================ */
   if (!reduceMotion && 'IntersectionObserver' in window) {
-    var alvos = qsa('.o-pillar, .o-how__step, .o-faq__item, .o-about .o-sec-head, .o-faq .o-sec-head, .o-who');
+    var alvos = qsa('.o-pillar, .o-how__step, .o-faq__item, .o-about .o-sec-head, .o-benef .o-sec-head, .o-faq .o-sec-head, .o-who');
     var io = new IntersectionObserver(function (en) {
       en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('is-in'); io.unobserve(x.target); } });
     }, { rootMargin: '0px 0px -8% 0px' });
