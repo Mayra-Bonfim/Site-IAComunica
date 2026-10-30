@@ -899,3 +899,11 @@ p { margin: 0; }
   .o-result .o-leitura { background:#F5F5F5 !important; color:#3D3D3D !important; border:1px solid #E5E5E5; border-left:3px solid #00C2AE; -webkit-print-color-adjust:exact; print-color-adjust:exact; break-inside:avoid; }
   .o-result .o-leitura strong { color:#0D0D0D !important; }
 }
+
+/* ===== PDF: última página = blocos do Orbit + assinatura no rodapé da página ===== */
+@media print {
+  .o-reveal { opacity:1 !important; transform:none !important; }
+  .o-benef { order:9; margin-top:0; padding:0 !important; break-before:page; display:flex !important; flex-direction:column; height:262mm; overflow:hidden; }
+  .o-benef > .o-wrap { flex:none; }
+  .o-benef .o-print-credito { margin-top:auto; }
+}
