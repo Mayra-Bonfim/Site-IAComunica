@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/orbit/orbit.css?v=20261029" />
+  <link rel="stylesheet" href="/orbit/orbit.css?v=20261030c" />
 
   <!-- Cal.com (mesmo evento do site institucional) -->
   <script type="text/javascript">
@@ -188,15 +188,12 @@
         <p class="o-sec-lead">Diagnóstico, custo unitário e resultado. O cálculo acontece no seu navegador: nada do que você digita é enviado para a IA Comunica.</p>
       </header>
 
-      <div class="o-example" id="sim-exemplo" role="status">
+      <div class="o-example is-user" id="sim-exemplo" role="status">
         <div class="o-example__text">
-          <span class="o-badge o-badge--neutral" id="sim-modo-badge">Exemplo didático</span>
-          <span id="sim-modo-texto">Os campos vêm preenchidos com o exemplo do material do Orbit (100 pessoas, 44h, salário de R$ 2.000). Troque pelos seus números.</span>
+          <span class="o-badge o-badge--teal" id="sim-modo-badge">Seus números</span>
+          <span id="sim-modo-texto">Envie a escala da sua operação ou preencha à mão. O cálculo fica no seu navegador.</span>
         </div>
-        <div class="o-example__actions">
-          <button type="button" class="o-btn o-btn--quiet o-btn--sm" id="sim-limpar">Começar com meus números</button>
-          <button type="button" class="o-btn o-btn--quiet o-btn--sm" id="sim-recarregar" hidden>Voltar ao exemplo didático</button>
-        </div>
+        <p class="o-help o-example__scope">Serve para qualquer negócio que trabalha com escala: loja, restaurante, clínica, indústria, serviços.</p>
       </div>
 
       <div class="o-sim__layout">
@@ -206,18 +203,20 @@
           <!-- BLOCO 1 -->
           <fieldset class="o-step" id="passo-1">
             <legend class="o-step__legend"><span class="o-step__n" aria-hidden="true">1</span><span class="o-step__name"><span class="o-sr">Bloco 1: </span>Diagnóstico</span></legend>
-            <p class="o-step__hint">Quem está na operação hoje e para qual jornada você quer planejar.</p>
+            <p class="o-step__hint">Como a escala funciona hoje e para qual regime você quer planejar.</p>
+
+            <div class="o-field" role="radiogroup" aria-labelledby="l-ratual">
+              <span class="o-label" id="l-ratual">Regime de escala de hoje</span>
+              <div class="o-seg o-seg--4">
+                <label class="o-seg__opt"><input type="radio" name="ratual" value="6x1" checked /><span><strong>6x1</strong><small>6 dias, 1 de folga</small></span></label>
+                <label class="o-seg__opt"><input type="radio" name="ratual" value="5x2" /><span><strong>5x2</strong><small>5 dias, 2 de folga</small></span></label>
+                <label class="o-seg__opt"><input type="radio" name="ratual" value="4x3" /><span><strong>4x3</strong><small>4 dias, 3 de folga</small></span></label>
+                <label class="o-seg__opt"><input type="radio" name="ratual" value="12x36" /><span><strong>12x36</strong><small>12h de trabalho, 36h de descanso</small></span></label>
+              </div>
+            </div>
 
             <div class="o-field-row">
-              <div class="o-field">
-                <label for="f-pessoas" class="o-label">Pessoas na equipe hoje</label>
-                <div class="o-input-wrap">
-                  <input id="f-pessoas" name="pessoas" class="o-input" type="text" inputmode="numeric" data-tipo="inteiro" value="100" aria-describedby="e-pessoas" />
-                  <span class="o-input-suffix">pessoas</span>
-                </div>
-                <p class="o-error" id="e-pessoas" hidden></p>
-              </div>
-              <div class="o-field">
+              <div class="o-field" id="jatual-wrap">
                 <label for="f-jatual" class="o-label">Jornada semanal atual</label>
                 <div class="o-input-wrap">
                   <input id="f-jatual" name="jornadaAtual" class="o-input" type="text" inputmode="decimal" data-tipo="horas" value="44" aria-describedby="d-jatual e-jatual" />
@@ -226,94 +225,97 @@
                 <p class="o-help" id="d-jatual">Horas contratuais, sem contar intervalos.</p>
                 <p class="o-error" id="e-jatual" hidden></p>
               </div>
-            </div>
-
-            <div class="o-field" role="radiogroup" aria-labelledby="l-jfut">
-              <span class="o-label" id="l-jfut">Jornada futura para o cálculo</span>
-              <div class="o-seg">
-                <label class="o-seg__opt"><input type="radio" name="jfut" value="42" /><span><strong>42h</strong><small>primeira etapa</small></span></label>
-                <label class="o-seg__opt"><input type="radio" name="jfut" value="40" checked /><span><strong>40h</strong><small>segunda etapa</small></span></label>
-                <label class="o-seg__opt"><input type="radio" name="jfut" value="outra" /><span><strong>Outra</strong><small>informar</small></span></label>
-              </div>
-              <div class="o-field o-field--inline" id="jfut-outra-wrap" hidden>
-                <label for="f-jfutura" class="o-label o-label--sm">Jornada futura informada</label>
-                <div class="o-input-wrap o-input-wrap--sm">
-                  <input id="f-jfutura" name="jornadaFutura" class="o-input" type="text" inputmode="decimal" data-tipo="horas" value="36" aria-describedby="e-jfutura" />
-                  <span class="o-input-suffix">h/semana</span>
-                </div>
-                <p class="o-error" id="e-jfutura" hidden></p>
-              </div>
-            </div>
-
-            <div class="o-field" role="radiogroup" aria-labelledby="l-base">
-              <span class="o-label" id="l-base">Base do cálculo</span>
-              <div class="o-choice">
-                <label class="o-choice__opt">
-                  <input type="radio" name="base" value="horas" checked />
-                  <span class="o-choice__body">
-                    <strong>Preservar as horas de hoje</strong>
-                    <small>Repõe o mesmo volume semanal de horas da equipe atual.</small>
-                  </span>
-                </label>
-                <label class="o-choice__opt">
-                  <input type="radio" name="base" value="demanda" />
-                  <span class="o-choice__body">
-                    <strong>Partir da demanda</strong>
-                    <small>Calcula pelas pessoas que precisam estar presentes ao mesmo tempo.</small>
-                  </span>
-                </label>
-              </div>
-            </div>
-
-            <div class="o-demanda" id="demanda-wrap" hidden>
-              <div class="o-field-row o-field-row--4">
-                <div class="o-field">
-                  <label for="f-dias" class="o-label">Dias de funcionamento</label>
-                  <div class="o-input-wrap"><input id="f-dias" name="dias" class="o-input" type="text" inputmode="numeric" data-tipo="inteiro" value="7" aria-describedby="e-dias" /><span class="o-input-suffix">por semana</span></div>
-                  <p class="o-error" id="e-dias" hidden></p>
-                </div>
-                <div class="o-field">
-                  <label for="f-horas" class="o-label">Horas abertas por dia</label>
-                  <div class="o-input-wrap"><input id="f-horas" name="horasDia" class="o-input" type="text" inputmode="decimal" data-tipo="horas" value="12" aria-describedby="e-horas" /><span class="o-input-suffix">h/dia</span></div>
-                  <p class="o-error" id="e-horas" hidden></p>
-                </div>
-                <div class="o-field">
-                  <label for="f-simult" class="o-label">Pessoas ao mesmo tempo</label>
-                  <div class="o-input-wrap"><input id="f-simult" name="simultaneas" class="o-input" type="text" inputmode="numeric" data-tipo="inteiro" value="3" aria-describedby="e-simult" /><span class="o-input-suffix">pessoas</span></div>
-                  <p class="o-error" id="e-simult" hidden></p>
-                </div>
-                <div class="o-field">
-                  <label for="f-disp" class="o-label">Disponibilidade efetiva</label>
-                  <div class="o-input-wrap"><input id="f-disp" name="disponibilidade" class="o-input" type="text" inputmode="decimal" data-tipo="pct" value="100" aria-describedby="d-disp e-disp" /><span class="o-input-suffix">%</span></div>
-                  <p class="o-help" id="d-disp">Parte da jornada em que a pessoa está de fato disponível. Considere férias e ausências uma única vez.</p>
-                  <p class="o-error" id="e-disp" hidden></p>
-                </div>
-              </div>
-              <div class="o-callout o-callout--info" id="demanda-explica" aria-live="polite"></div>
-            </div>
-
-            <details class="o-more">
-              <summary>Ajuste opcional: quadro disponível</summary>
               <div class="o-field">
-                <label for="f-disponivel" class="o-label">Quadro disponível para cobrir a operação</label>
-                <div class="o-input-wrap o-input-wrap--sm"><input id="f-disponivel" name="disponivel" class="o-input" type="text" inputmode="numeric" data-tipo="inteiro" value="" placeholder="igual à equipe de hoje" aria-describedby="d-disponivel e-disponivel" /><span class="o-input-suffix">pessoas</span></div>
-                <p class="o-help" id="d-disponivel">Deixe em branco para usar a equipe de hoje. Diminua se parte da equipe está afastada; aumente se já há admissões confirmadas.</p>
-                <p class="o-error" id="e-disponivel" hidden></p>
+                <label for="f-intervalo" class="o-label">Intervalo de refeição</label>
+                <div class="o-input-wrap">
+                  <input id="f-intervalo" name="intervalo" class="o-input" type="text" inputmode="decimal" data-tipo="horas" value="1" aria-describedby="d-intervalo e-intervalo" />
+                  <span class="o-input-suffix">hora(s)</span>
+                </div>
+                <p class="o-help" id="d-intervalo">Somado aos turnos de mais de 6h: a pessoa fica na casa o tempo de trabalho mais o intervalo.</p>
+                <p class="o-error" id="e-intervalo" hidden></p>
               </div>
-            </details>
+            </div>
+
+            <div class="o-field" role="radiogroup" aria-labelledby="l-etapa">
+              <span class="o-label" id="l-etapa">Etapa da jornada (Emenda Constitucional nº 141)</span>
+              <div class="o-seg o-seg--2">
+                <label class="o-seg__opt"><input type="radio" name="etapa" value="42" /><span><strong>42h por semana</strong><small>primeira etapa · a partir de dez/2026</small></span></label>
+                <label class="o-seg__opt"><input type="radio" name="etapa" value="40" checked /><span><strong>40h por semana</strong><small>segunda etapa · a partir de dez/2027</small></span></label>
+              </div>
+            </div>
+
+            <div class="o-field" role="radiogroup" aria-labelledby="l-rfut">
+              <span class="o-label" id="l-rfut">Regime pretendido</span>
+              <div class="o-seg">
+                <label class="o-seg__opt"><input type="radio" name="rfut" value="5x2" /><span><strong>5x2</strong><small>5 dias, 2 de folga</small></span></label>
+                <label class="o-seg__opt" id="opt-4x3"><input type="radio" name="rfut" value="4x3" /><span><strong>4x3</strong><small>turnos de 10h · só na etapa de 40h</small></span></label>
+                <label class="o-seg__opt"><input type="radio" name="rfut" value="12x36" checked /><span><strong>12x36</strong><small>12h de trabalho, 36h de descanso</small></span></label>
+              </div>
+              <p class="o-error" id="e-rfut" hidden></p>
+              <div class="o-callout o-callout--info" id="regime-explica" aria-live="polite"></div>
+            </div>
           </fieldset>
 
-          <!-- BLOCO 2 -->
+          <!-- BLOCO 2 — FUNÇÕES E DEMANDA -->
           <fieldset class="o-step" id="passo-2">
-            <legend class="o-step__legend"><span class="o-step__n" aria-hidden="true">2</span><span class="o-step__name"><span class="o-sr">Bloco 2: </span>Custo unitário</span></legend>
-            <p class="o-step__hint">Quanto custa, por mês, cada pessoa contratada. Use os números do seu DP ou contador.</p>
+            <legend class="o-step__legend"><span class="o-step__n" aria-hidden="true">2</span><span class="o-step__name"><span class="o-sr">Bloco 2: </span>Funções e demanda</span></legend>
+            <p class="o-step__hint">Cada função tem a sua equipe, o seu salário e os seus horários de demanda. Importe a escala que você já usa para o simulador partir dos dias e dos movimentos reais, ou preencha à mão.</p>
+
+            <div class="o-import" id="import-box">
+              <div class="o-import__acoes">
+                <button type="button" class="o-btn o-btn--dark o-btn--sm" id="imp-btn">Importar escala (.xlsx ou CSV)</button>
+                <input type="file" id="imp-file" accept=".xlsx,.csv,.txt,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,text/csv,text/plain" hidden />
+                <a class="o-btn o-btn--quiet o-btn--sm" id="imp-modelo" href="#" download="modelo-escala-orbit.csv">Baixar modelo CSV</a>
+                <button type="button" class="o-btn o-btn--quiet o-btn--sm" id="imp-voltar" hidden>Voltar ao preenchimento manual</button>
+              </div>
+              <p class="o-help" id="imp-ajuda">Envie a escala da semana do jeito que você já usa: a planilha (.xlsx) com um bloco por equipe, os dias da semana e os horários de cada pessoa. O simulador conta as pessoas e as horas de cada dia. O arquivo é lido no seu navegador e não é enviado a lugar nenhum. Também aceita CSV com uma linha por turno (use o modelo).</p>
+              <p class="o-help o-import__status" id="imp-status" role="status" aria-live="polite" hidden></p>
+            </div>
+
+            <div class="o-escala" id="escala-resumo" hidden>
+              <h4 class="o-compare__title">O que o simulador leu da sua escala</h4>
+              <div class="o-compare__table-wrap">
+                <table class="o-compare__table" id="escala-tabela">
+                  <caption class="o-sr">Pessoas e horas trabalhadas em cada dia da semana, somando todas as equipes</caption>
+                  <thead><tr><th scope="col">Dia</th><th scope="col">Pessoas na escala</th><th scope="col">Horas trabalhadas</th></tr></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+              <p class="o-help">É a partir dessas horas, dia a dia, que o simulador calcula quantas pessoas o regime escolhido precisa. Confira a equipe de cada função e informe o salário de cada uma abaixo.</p>
+            </div>
+
+            <div class="o-funcoes" id="funcoes" role="group" aria-label="Funções"></div>
+            <div class="o-faixas__acoes">
+              <button type="button" class="o-btn o-btn--quiet o-btn--sm" id="funcao-add">+ Adicionar função</button>
+              <span class="o-help" id="funcao-limite" hidden>Máximo de 40 funções.</span>
+            </div>
+            <p class="o-error" id="e-funcoes" hidden></p>
+            <p class="o-help" id="faixa-ajuda">Faixas que atravessam a meia-noite terminam depois dela (ex.: das 23:00 às 01:00). Faixas que se sobrepõem na mesma função somam as pessoas.</p>
+
+            <div class="o-field" role="group" aria-labelledby="l-dias" id="dias-bloco">
+              <span class="o-label" id="l-dias">Movimento em cada dia da semana</span>
+              <div class="o-dias" id="dias-wrap">
+                <div class="o-field"><label class="o-label o-label--sm" for="f-dia-0">Seg</label><div class="o-input-wrap"><input id="f-dia-0" class="o-input" type="text" inputmode="decimal" data-tipo="pct" value="100" /><span class="o-input-suffix">%</span></div></div>
+                <div class="o-field"><label class="o-label o-label--sm" for="f-dia-1">Ter</label><div class="o-input-wrap"><input id="f-dia-1" class="o-input" type="text" inputmode="decimal" data-tipo="pct" value="100" /><span class="o-input-suffix">%</span></div></div>
+                <div class="o-field"><label class="o-label o-label--sm" for="f-dia-2">Qua</label><div class="o-input-wrap"><input id="f-dia-2" class="o-input" type="text" inputmode="decimal" data-tipo="pct" value="100" /><span class="o-input-suffix">%</span></div></div>
+                <div class="o-field"><label class="o-label o-label--sm" for="f-dia-3">Qui</label><div class="o-input-wrap"><input id="f-dia-3" class="o-input" type="text" inputmode="decimal" data-tipo="pct" value="100" /><span class="o-input-suffix">%</span></div></div>
+                <div class="o-field"><label class="o-label o-label--sm" for="f-dia-4">Sex</label><div class="o-input-wrap"><input id="f-dia-4" class="o-input" type="text" inputmode="decimal" data-tipo="pct" value="100" /><span class="o-input-suffix">%</span></div></div>
+                <div class="o-field"><label class="o-label o-label--sm" for="f-dia-5">Sáb</label><div class="o-input-wrap"><input id="f-dia-5" class="o-input" type="text" inputmode="decimal" data-tipo="pct" value="100" /><span class="o-input-suffix">%</span></div></div>
+                <div class="o-field"><label class="o-label o-label--sm" for="f-dia-6">Dom</label><div class="o-input-wrap"><input id="f-dia-6" class="o-input" type="text" inputmode="decimal" data-tipo="pct" value="100" /><span class="o-input-suffix">%</span></div></div>
+              </div>
+              <p class="o-help">100% é a demanda das faixas acima. Use 150% num dia que precisa de 50% mais gente e 0% se a operação fecha.</p>
+              <p class="o-error" id="e-dias" hidden></p>
+            </div>
+
+            <div class="o-callout o-callout--info" id="demanda-explica" aria-live="polite"></div>
+          </fieldset>
+
+          <!-- BLOCO 3 — CUSTO -->
+          <fieldset class="o-step" id="passo-3">
+            <legend class="o-step__legend"><span class="o-step__n" aria-hidden="true">3</span><span class="o-step__name"><span class="o-sr">Bloco 3: </span>Custo unitário</span></legend>
+            <p class="o-step__hint">Quanto a empresa paga por mês além do salário de cada função (o salário você informou no bloco 2). Use os números do seu DP ou contador.</p>
 
             <div class="o-field-row">
-              <div class="o-field">
-                <label for="f-salario" class="o-label">Salário bruto médio</label>
-                <div class="o-input-wrap o-input-wrap--prefix"><span class="o-input-prefix">R$</span><input id="f-salario" name="salario" class="o-input" type="text" inputmode="decimal" data-tipo="brl" value="2.000,00" aria-describedby="e-salario" /></div>
-                <p class="o-error" id="e-salario" hidden></p>
-              </div>
               <div class="o-field">
                 <label for="f-encargos" class="o-label">Encargos e provisões</label>
                 <div class="o-input-wrap"><input id="f-encargos" name="encargosPct" class="o-input" type="text" inputmode="decimal" data-tipo="pct" value="45" aria-describedby="d-encargos e-encargos" /><span class="o-input-suffix">% do salário</span></div>
@@ -360,7 +362,7 @@
                 <div class="o-field">
                   <label for="f-vt" class="o-label">Vale-transporte concedido</label>
                   <div class="o-input-wrap o-input-wrap--prefix"><span class="o-input-prefix">R$</span><input id="f-vt" name="vt" class="o-input" type="text" inputmode="decimal" data-tipo="brl" value="0,00" aria-describedby="d-vt e-vt" /></div>
-                  <p class="o-help" id="d-vt">Valor total do VT no mês. A participação usa 6% do salário básico; aqui usamos o salário informado acima.</p>
+                  <p class="o-help" id="d-vt">Valor total do VT no mês, por pessoa. A participação usa 6% do salário básico de cada função.</p>
                   <p class="o-error" id="e-vt" hidden></p>
                 </div>
                 <div class="o-field">
@@ -387,7 +389,7 @@
             </div>
 
             <div class="o-unit" aria-live="off">
-              <span class="o-unit__label">Custo mensal por pessoa</span>
+              <span class="o-unit__label">Custo mensal médio por pessoa</span>
               <span class="o-unit__value o-num" id="r-unit">R$ 3.400,00</span>
               <span class="o-unit__parts" id="r-unit-parts">salário R$ 2.000,00 + encargos R$ 900,00 + benefícios R$ 500,00</span>
             </div>
@@ -396,7 +398,7 @@
           <a class="o-btn o-btn--dark o-sim__to-result" href="#resultado" data-scroll>Ver o resultado</a>
         </form>
 
-        <!-- BLOCO 3 — RESULTADO -->
+        <!-- BLOCO 4 — RESULTADO -->
         <aside class="o-result" id="resultado" aria-labelledby="res-titulo" tabindex="-1">
           <div class="o-print-head" aria-hidden="true">
             <img src="/orbit/assets/orbit-logo-claro.png" width="160" height="64" alt="" />
@@ -407,22 +409,24 @@
           </div>
 
           <div class="o-result__head">
-            <span class="o-step__n o-step__n--dark" aria-hidden="true">3</span>
+            <span class="o-step__n o-step__n--dark" aria-hidden="true">4</span>
             <h3 id="res-titulo" class="o-result__title">Resultado</h3>
             <span class="o-state o-state--warn" id="r-selo">
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.8 15 14H1L8 1.8Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M8 6.2v3.6M8 11.6v.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-              <span id="r-selo-texto">Estimativa por horas — ainda não valida a distribuição de turnos</span>
+              <span id="r-selo-texto">Estimativa por demanda e turnos — não substitui a escala real</span>
             </span>
           </div>
 
           <div class="o-result__hero">
             <div class="o-result__big">
               <span class="o-result__big-n o-num" id="r-novas">10</span>
-              <span class="o-result__big-l">novas contratações<span class="o-result__big-j o-num" id="r-jornada">44h → 40h</span></span>
+              <span class="o-result__big-l">novas contratações<span class="o-result__big-j o-num" id="r-jornada">6x1 → 12x36 · 40h</span></span>
             </div>
             <div class="o-team" id="viz" role="img" aria-label="Quadro estimado: equipe atual e novas contratações"></div>
             <p class="o-team__legend" id="viz-legenda"></p>
           </div>
+
+          <div class="o-callout o-callout--info o-leitura" id="r-leitura" aria-live="polite"></div>
 
           <dl class="o-kpis">
             <div class="o-kpi">
@@ -452,15 +456,30 @@
           </dl>
 
           <div class="o-compare" aria-labelledby="cmp-titulo">
-            <h4 id="cmp-titulo" class="o-compare__title">Atual × 42h × 40h</h4>
+            <h4 id="cmp-titulo" class="o-compare__title">Hoje × regimes</h4>
             <div class="o-compare__table-wrap">
               <table class="o-compare__table" id="r-compare">
-                <caption class="o-sr">Comparativo de quadro e custo mensal por jornada</caption>
-                <thead><tr><th scope="col">Jornada</th><th scope="col">Quadro</th><th scope="col">Novas</th><th scope="col">Custo mensal</th><th scope="col">Acréscimo</th></tr></thead>
+                <caption class="o-sr">Comparativo de quadro e custo mensal por regime de escala</caption>
+                <thead><tr><th scope="col">Regime</th><th scope="col">Quadro</th><th scope="col">Novas</th><th scope="col">Custo mensal</th><th scope="col">Acréscimo</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <h4 id="fun-titulo" class="o-compare__title o-compare__title--sub">Por função, no seu regime pretendido</h4>
+            <div class="o-compare__table-wrap">
+              <table class="o-compare__table" id="r-funcoes">
+                <caption class="o-sr">Quadro e contratações por função</caption>
+                <thead><tr><th scope="col">Função</th><th scope="col">Hoje</th><th scope="col">Pede hoje</th><th scope="col">Pede no regime</th><th scope="col">Contratar</th><th scope="col">Acréscimo</th></tr></thead>
                 <tbody></tbody>
               </table>
             </div>
             <div class="o-bars" id="r-bars" aria-hidden="true"></div>
+          </div>
+
+          <div class="o-exemplo-cta" id="exemplo-cta">
+            <button type="button" class="o-btn o-btn--teal o-btn--lg" id="exemplo-abrir" disabled>
+              <span id="exemplo-btn-txt">Ver exemplo de escala no regime pretendido</span>
+              <span class="o-btn__sub">Uma semana completa, montada com o quadro calculado</span>
+            </button>
           </div>
 
           <details class="o-memoria" id="memoria">
@@ -473,10 +492,11 @@
 
           <ul class="o-avisos" aria-label="Avisos importantes sobre este resultado">
             <li>Valores de estimativa. Exemplos são didáticos e não representam um perfil tributário padrão.</li>
+            <li>Cada regime de escala tem exigências próprias na CLT e em acordos e convenções coletivas. Converse com o seu jurídico antes de decidir.</li>
             <li>Parâmetros contábeis e trabalhistas devem ser validados pelo seu contador ou DP. A aplicação da EC nº 141 ao seu caso depende de revisão trabalhista.</li>
             <li>O INSS e o IRRF do empregado não entram como custo patronal.</li>
-            <li>O cálculo não aplica 20% automaticamente pela passagem de seis para cinco dias de trabalho.</li>
-            <li>Horas que fecham não garantem uma escala que fecha: a cobertura por dia e horário precisa ser conferida. Este resultado não promete economia.</li>
+            <li>O cálculo usa turnos de duração fixa por regime, com o intervalo de refeição que você informou somado aos turnos de mais de 6h, e mantém o salário de cada função e os benefícios iguais em todos os regimes. Benefícios pagos por dia trabalhado, como o vale-transporte, não são ajustados.</li>
+            <li>Este resultado cobre a demanda de cada função por faixa de horário e dia da semana, mas não monta a escala nem promete economia. Férias e ausências não entram na conta.</li>
           </ul>
 
           <div class="o-result__actions">
@@ -621,6 +641,14 @@
     <p class="o-lb__foot">Telas reais do Orbit. Dados fictícios de teste.</p>
   </dialog>
 
+  <dialog class="o-lb o-ex" id="exemplo-modal" aria-labelledby="exemplo-titulo">
+    <div class="o-lb__bar">
+      <p class="o-lb__title" id="exemplo-titulo">Exemplo de escala</p>
+      <button type="button" class="o-btn o-btn--teal o-btn--sm" id="exemplo-fechar">Fechar<span class="o-sr"> (Esc)</span></button>
+    </div>
+    <div class="o-ex__corpo" id="exemplo-corpo" tabindex="0"></div>
+  </dialog>
+
   <!-- =========================================================
        4. O QUE É O ORBIT
   ========================================================= -->
@@ -755,7 +783,8 @@
 
 {% include orbit-footer.html %}
 
-<script src="/orbit/orbit-calc.js"></script>
-<script src="/orbit/orbit.js?v=20261029"></script>
+<script src="/orbit/orbit-calc.js?v=20261030c"></script>
+<script src="/orbit/orbit-xlsx.js?v=20261030c"></script>
+<script src="/orbit/orbit.js?v=20261030c"></script>
 </body>
 </html>

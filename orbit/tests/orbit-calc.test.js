@@ -164,3 +164,173 @@ test('dinheiro em centavos inteiros: sem erro de ponto flutuante', () => {
   assert.equal(C.quadroPorHoras(37, 44, 42.5), 39); // 38,30… → 39
   assert.equal(r.primeiroAno, r.acrescimoMensal * 10);
 });
+
+/* ============================================================
+   Regimes de escala (6x1, 5x2, 4x3, 12x36) — simularRegimes
+   Perfis didáticos (números ilustrativos, não são dados reais).
+   ============================================================ */
+const faixasRestaurante = [
+  { ini: 5, fim: 9, pessoas: 2 }, { ini: 9, fim: 12, pessoas: 3 }, { ini: 12, fim: 16, pessoas: 6 },
+  { ini: 16, fim: 19, pessoas: 2 }, { ini: 19, fim: 23, pessoas: 5 }, { ini: 23, fim: 1, pessoas: 2 }
+];
+function entradaRegime(over) {
+  return Object.assign({
+    pessoas: 20, regimeAtual: '6x1', jornadaAtual: 44, regimeFuturo: '12x36', etapa: 40,
+    faixas: faixasRestaurante, dias: [100, 100, 100, 100, 150, 150, 150], disponibilidade: 100,
+    salario: 2000, encargosPct: 45, beneficiosModo: 'total', beneficios: 500, mesInicio: 7
+  }, over || {});
+}
+const quadros = (r) => Object.fromEntries(r.cenarios.map((c) => [c.atual ? 'hoje' : c.regime, c.referencia]));
+
+test('regimes — restaurante com pico de fim de semana: 12x36 pede mais gente que 5x2 e 4x3', () => {
+  const r = C.simularRegimes(entradaRegime({ etapa: 40 }));
+  assert.equal(r.ok, true);
+  assert.deepEqual(quadros(r), { hoje: 20, '5x2': 23, '4x3': 24, '12x36': 28 });
+  assert.equal(r.quadroDemandaHoje, 20);
+  assert.equal(r.contratacoes, 8);       // 28 − 20 disponíveis
+  assert.equal(r.quadroFuturo, 28);
+});
+
+test('regimes — etapa de 42h: 12x36 usa a média de 42h (3,5 turnos) e o 4x3 não é oferecido', () => {
+  const r = C.simularRegimes(entradaRegime({ etapa: 42 }));
+  assert.deepEqual(quadros(r), { hoje: 20, '5x2': 23, '12x36': 26 });
+  assert.deepEqual(C.regimesDaEtapa(42), ['5x2', '12x36']);
+  assert.deepEqual(C.regimesDaEtapa(40), ['5x2', '4x3', '12x36']);
+});
+
+test('regimes — sem variação de movimento na semana, 12x36 não pede gente a mais que hoje', () => {
+  const r = C.simularRegimes(entradaRegime({ etapa: 42, dias: [100, 100, 100, 100, 100, 100, 100] }));
+  const q = quadros(r);
+  assert.equal(q['12x36'], q.hoje);
+  assert.ok(q['5x2'] > q.hoje);
+});
+
+test('regimes — 4x3 com etapa de 42h é rejeitado', () => {
+  const r = C.simularRegimes(entradaRegime({ etapa: 42, regimeFuturo: '4x3' }));
+  assert.equal(r.ok, false);
+  assert.ok(r.erros.some((x) => x.campo === 'regimeFuturo'));
+});
+
+test('regimes — empresa que já está em 12x36 compara com 5x2 em condições justas', () => {
+  const r = C.simularRegimes(entradaRegime({ regimeAtual: '12x36', regimeFuturo: '5x2', etapa: 40, pessoas: 28 }));
+  assert.equal(r.ok, true);
+  assert.equal(r.cenarios[0].regime, '12x36');
+  assert.equal(r.cenarios[0].referencia, 26); // pico 13 × 7 dias ÷ 3,5 dias por pessoa
+  assert.equal(r.quadroDemandaHoje, 26);
+});
+
+test('regimes — faixa que atravessa a meia-noite (23:00 às 01:00) e dia fechado (0%)', () => {
+  const r = C.simularRegimes(entradaRegime({ dias: [100, 100, 100, 100, 100, 100, 0] }));
+  assert.equal(r.ok, true);
+  assert.equal(r.diasAbertos, 6);
+  assert.equal(r.demandaHoje.porDia[6], 0);
+});
+
+test('regimes — disponibilidade de 90% aumenta o quadro de todos os regimes', () => {
+  const cheio = quadros(C.simularRegimes(entradaRegime()));
+  const noventa = quadros(C.simularRegimes(entradaRegime({ disponibilidade: 90 })));
+  for (const k of Object.keys(cheio)) assert.ok(noventa[k] >= cheio[k], k);
+  assert.ok(noventa['5x2'] > cheio['5x2']);
+});
+
+test('regimes — custo: contratações × custo unitário, sem desligamento presumido', () => {
+  const r = C.simularRegimes(entradaRegime({ pessoas: 40, regimeFuturo: '5x2' }));
+  assert.equal(r.contratacoes, 0);          // 23 < 40 disponíveis
+  assert.equal(r.acrescimoMensal, 0);
+  const s = C.simularRegimes(entradaRegime({ regimeFuturo: '5x2' }));
+  assert.equal(s.contratacoes, 3);
+  assert.equal(s.acrescimoMensal, 3 * 340000);
+});
+
+test('regimes — validação das faixas e dos dias', () => {
+  const sem = C.simularRegimes(entradaRegime({ faixas: [] }));
+  assert.equal(sem.ok, false);
+  const igual = C.simularRegimes(entradaRegime({ faixas: [{ ini: 8, fim: 8, pessoas: 2 }] }));
+  assert.ok(igual.erros.some((x) => x.campo === 'faixa-1-fim'));
+  const pessoas = C.simularRegimes(entradaRegime({ faixas: [{ ini: 8, fim: 12, pessoas: 0 }] }));
+  assert.ok(pessoas.erros.some((x) => x.campo === 'faixa-1-pessoas'));
+  const fechado = C.simularRegimes(entradaRegime({ dias: [0, 0, 0, 0, 0, 0, 0] }));
+  assert.ok(fechado.erros.some((x) => x.campo === 'dias'));
+  const disp = C.simularRegimes(entradaRegime({ disponibilidade: 0 }));
+  assert.ok(disp.erros.some((x) => x.campo === 'disponibilidade'));
+});
+
+/* ---------- Versão comparativa: simulação por função e importação de escala ---------- */
+const hh = (s) => { const [a, b] = s.split(':').map(Number); return a + b / 60; };
+const fn = (nome, hoje, salario, faixas, dias) => ({
+  nome, hoje, salario,
+  semana: C.semanaDeFaixas(faixas.map(([i, f, p]) => ({ ini: hh(i), fim: hh(f), pessoas: p })), dias || [100, 100, 100, 100, 100, 100, 0])
+});
+const base = { regimeAtual: '6x1', jornadaAtual: 44, regimeFuturo: '5x2', etapa: 40, intervalo: 1, encargosPct: 45, beneficios: 500 };
+
+test('por função: o intervalo soma ao turno e uma janela de 9h cabe em um turno de 8h', () => {
+  const r = C.simularFuncoes({ ...base, funcoes: [fn('Recepcionista', 2, 2000, [['08:00', '17:00', 1]])] });
+  assert.equal(r.ok, true);
+  const cinco = r.cenarios.find((c) => c.regime === '5x2');
+  // 8h de trabalho + 1h de intervalo = 9h na casa: 6 turnos na semana ÷ 5 dias = 2 pessoas
+  assert.equal(cinco.funcoes[0].referencia, 2);
+  assert.equal(cinco.presenca, 9);
+});
+
+test('por função: sem intervalo a mesma janela exige turnos a mais', () => {
+  const r = C.simularFuncoes({ ...base, intervalo: 0, funcoes: [fn('Recepcionista', 2, 2000, [['08:00', '17:00', 1]])] });
+  assert.equal(r.cenarios.find((c) => c.regime === '5x2').funcoes[0].referencia, 3); // 2 turnos por dia × 6 dias ÷ 5 = 2,4 → 3
+});
+
+test('por função: cada função usa o seu salário no custo', () => {
+  const r = C.simularFuncoes({
+    ...base, regimeFuturo: '12x36', encargosPct: 0, beneficios: 0,
+    funcoes: [fn('A', 1, 2000, [['08:00', '16:00', 1]]), fn('B', 1, 5000, [['08:00', '16:00', 1]])]
+  });
+  assert.equal(r.custoAtual, 700000);
+  const a = r.alvo.funcoes;
+  assert.equal(a[0].unitario, 200000);
+  assert.equal(a[1].unitario, 500000);
+  assert.equal(r.acrescimoMensal, a[0].contratacoes * 200000 + a[1].contratacoes * 500000);
+});
+
+test('por função: modo variação ignora a folga ou a falta entre a equipe informada e a demanda', () => {
+  const f = [fn('X', 1, 2000, [['08:00', '17:00', 1]])];
+  const v = C.simularFuncoes({ ...base, funcoes: f, base: 'variacao' });
+  const q = C.simularFuncoes({ ...base, funcoes: f, base: 'equipe' });
+  const cv = v.cenarios.find((c) => c.regime === '5x2'), cq = q.cenarios.find((c) => c.regime === '5x2');
+  assert.equal(cv.contratacoes, Math.max(0, cv.funcoes[0].referencia - v.cenarios[0].funcoes[0].referencia));
+  assert.equal(cq.contratacoes, Math.max(0, cq.funcoes[0].referencia - 1));
+});
+
+test('por função: validações', () => {
+  const campos = (e) => C.simularFuncoes(e).erros.map((x) => x.campo);
+  assert.ok(campos({ ...base, funcoes: [] }).includes('funcoes'));
+  assert.ok(campos({ ...base, funcoes: [{ nome: 'A', hoje: NaN, salario: 0, semana: [[], [], [], [], [], [], []] }] }).includes('funcao-1-hoje'));
+  assert.ok(campos({ ...base, funcoes: [{ nome: 'A', hoje: 1, salario: 0, semana: [[], [], [], [], [], [], []] }] }).includes('funcao-1-faixas'));
+  assert.ok(campos({ ...base, intervalo: 5, funcoes: [fn('A', 1, 0, [['08:00', '12:00', 1]])] }).includes('intervalo'));
+  assert.ok(campos({ ...base, etapa: 42, regimeFuturo: '4x3', funcoes: [fn('A', 1, 0, [['08:00', '12:00', 1]])] }).includes('regimeFuturo'));
+});
+
+test('importar escala: funções, pessoas, dias e salário', () => {
+  const csv = 'Colaborador;Função;Dia;Início;Fim;Salário\nAna;Recepcionista;segunda;08:00;17:00;2.200,00\nAna;Recepcionista;terça;08:00;17:00;2.200,00\nBia;Recepcionista;terça;08:00;17:00;2.400,00\nCarla;Gerente;sábado;22:00;02:00;\n';
+  const r = C.importarEscala(csv);
+  assert.equal(r.ok, true);
+  assert.equal(r.funcoes.length, 2);
+  const rec = r.funcoes[0];
+  assert.equal(rec.nome, 'Recepcionista'); assert.equal(rec.hoje, 2); assert.equal(rec.salario, 2300);
+  assert.deepEqual(rec.semana[0], [{ ini: 8, fim: 17, pessoas: 1 }]);
+  assert.deepEqual(rec.semana[1], [{ ini: 8, fim: 17, pessoas: 2 }]);
+  assert.deepEqual(rec.semana[2], []);
+  const ger = r.funcoes[1];
+  assert.equal(ger.salario, null);
+  assert.deepEqual(ger.semana[5], [{ ini: 22, fim: 26, pessoas: 1 }]);
+});
+
+test('importar escala: datas de várias semanas viram a média por dia da semana', () => {
+  const csv = 'Colaborador,Funcao,Data,Inicio,Fim\nA,Caixa,05/10/2026,09:00,13:00\nB,Caixa,05/10/2026,09:00,13:00\nA,Caixa,12/10/2026,09:00,13:00\n';
+  const r = C.importarEscala(csv);
+  assert.equal(r.ok, true);
+  assert.deepEqual(r.funcoes[0].semana[0], [{ ini: 9, fim: 13, pessoas: 2 }]); // média 1,5 → 2
+});
+
+test('importar escala: erros claros', () => {
+  assert.equal(C.importarEscala('a;b\n1;2').ok, false);
+  assert.match(C.importarEscala('Colaborador;Função;Dia\nA;B;seg').erro, /início, fim/);
+  assert.equal(C.importarEscala('Colaborador;Função;Dia;Início;Fim\nA;B;xx;08:00;17:00').ok, false);
+});
