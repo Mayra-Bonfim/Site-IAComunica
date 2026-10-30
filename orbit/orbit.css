@@ -885,3 +885,17 @@ p { margin: 0; }
 .ox-duplo .ox-sem { min-width:0; width:9%; font-size:11px; }
 .ox-duplo .ox-tabela tr.ox-total th, .ox-duplo .ox-tabela tr.ox-total td { font-size:11px; padding:3px 2px; }
 .ox-duplo .ox-tabela tr.ox-grupo th { padding:3px 8px; font-size:10.5px; }
+
+/* ===== PDF: assinatura no fim da última página (só na impressão) ===== */
+.o-print-credito { display:none; }
+@media print {
+  .o-print-credito { display:block; margin-top:18px; padding:18px 16px; background:#0D0D0D; text-align:center; border-radius:12px; break-inside:avoid; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .o-print-credito strong { display:block; color:#00C2AE; font-family:var(--o-font-display); font-weight:600; font-size:13pt; margin-bottom:6px; }
+  .o-print-credito span { display:block; color:rgba(255,255,255,.72); font-size:9.5pt; line-height:1.4; }
+}
+
+/* ===== PDF: texto de leitura legível (antes saía branco sobre branco) ===== */
+@media print {
+  .o-result .o-leitura { background:#F5F5F5 !important; color:#3D3D3D !important; border:1px solid #E5E5E5; border-left:3px solid #00C2AE; -webkit-print-color-adjust:exact; print-color-adjust:exact; break-inside:avoid; }
+  .o-result .o-leitura strong { color:#0D0D0D !important; }
+}
