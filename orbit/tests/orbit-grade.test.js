@@ -70,7 +70,7 @@ test('importar grade: duas semanas viram a média por dia da semana', () => {
 
 const entradaGrade = (rf) => ({
   regimeAtual: '6x1', jornadaAtual: 44, regimeFuturo: rf, etapa: 40, intervalo: 0.5, base: 'variacao',
-  funcoes: C.importarGrade(grade()).funcoes.map((f) => ({ nome: f.nome, hoje: f.hoje, salario: 2000, escala: f.escala })),
+  funcoes: C.importarGrade(grade()).funcoes.map((f) => ({ nome: f.nome, hoje: f.hoje, salario: 2000, escala: f.escala, nomes: f.nomes })),
   encargosPct: 50, beneficiosModo: 'total', beneficios: 0, mesInicio: 1
 });
 
@@ -194,6 +194,19 @@ test('exemplo de escala 12x36: mesmo número em turno nos dias abertos, nunca em
     f.linhas.forEach((l) => { for (let d = 0; d < 6; d++) assert.ok(!(l.dias[d] && l.dias[d + 1])); });
     assert.equal(f.semCobertura, 0);
   });
+});
+
+test('exemplo de escala: nenhum nome se repete, nem as vagas novas de equipes diferentes', () => {
+  const e = comIntervalo('4x3'), r = C.simularFuncoes(e);
+  const ex = C.gerarEscalaExemplo(e, r);
+  const nomes = ex.flatMap((f) => f.linhas.map((l) => l.nome));
+  assert.ok(nomes.some((n) => /^Nova pessoa/.test(n)));
+  assert.equal(new Set(nomes).size, nomes.length);
+  // sem nomes na entrada (preenchimento manual): "Pessoa N" também é único na escala inteira
+  const manual = comIntervalo('4x3');
+  manual.funcoes.forEach((f) => { delete f.nomes; });
+  const nm = C.gerarEscalaExemplo(manual, C.simularFuncoes(manual)).flatMap((f) => f.linhas.map((l) => l.nome));
+  assert.equal(new Set(nm).size, nm.length);
 });
 
 test('exemplo de escala: contratações contam contra a equipe informada', () => {

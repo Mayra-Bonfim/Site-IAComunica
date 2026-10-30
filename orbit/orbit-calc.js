@@ -1112,6 +1112,7 @@
    */
   function gerarEscalaExemplo(e, r) {
     var alvo = r.alvo, intervalo = e.intervalo || 0, T = alvo.turno, presH = T + (T > 6 ? intervalo : 0);
+    var contagemNova = 0;   // as vagas novas são numeradas na escala inteira, para dois nomes não ficarem iguais
     return e.funcoes.map(function (f, fi) {
       var lin = alvo.funcoes[fi], N = lin.quadro;
       if (N > 500) return { nome: lin.nome, pessoas: N, grande: true, linhas: [], emTurno: [0, 0, 0, 0, 0, 0, 0], pede: [0, 0, 0, 0, 0, 0, 0], semCobertura: 0, interjornada: 0 };
@@ -1124,7 +1125,7 @@
         return { dias: cel, turnos: n, horas: n * T };
       });
       var nomes = f.nomes || [];
-      linhas.forEach(function (l, k) { l.nome = k < nomes.length ? nomes[k] : (nomes.length ? 'Nova pessoa ' + (k - nomes.length + 1) : 'Pessoa ' + (k + 1)); });
+      linhas.forEach(function (l, k) { l.nome = k < nomes.length ? nomes[k] : (nomes.length ? 'Nova pessoa ' + (++contagemNova) : 'Pessoa ' + (++contagemNova)); });
       var falta = 0;
       g.pede.forEach(function (x, d) { if (emTurno[d] < x) falta += x - emTurno[d]; });
       return { nome: lin.nome, pessoas: N, linhas: linhas, emTurno: emTurno, pede: g.pede, semCobertura: falta, interjornada: alvo.rigido ? 0 : violacoesInterjornada(g.plan, presH), foraDoExemplo: Math.max(0, nomes.length - N), comNomes: nomes.length > 0 };
